@@ -1,0 +1,118 @@
+-- In dieser Datei sollen alle Tabellen für die Datenbank verzeichnet werden
+--
+--
+-- Erzeuge Tabellen
+--
+-- Erzeuge Tabelle 'language'
+CREATE TABLE `language` (
+  `name` varchar(255) collate utf8_unicode_ci NOT NULL default '',
+  `de` varchar(255) collate utf8_unicode_ci NOT NULL default '',
+  `en` varchar(255) collate utf8_unicode_ci NOT NULL default '',
+  PRIMARY KEY  (`name`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+--
+--
+-- Erzeuge Tabelle 'user_login'
+--
+CREATE TABLE `user_login` (
+  `id` int(11) NOT NULL auto_increment,
+  `jid` varchar(255) collate utf8_unicode_ci NOT NULL default '',
+  `nick` varchar(20) collate utf8_unicode_ci NOT NULL default '',
+  `passwd` varchar(255) collate utf8_unicode_ci NOT NULL default '',
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+--
+--
+-- Erzeuge Tabelle 'user_details'
+--
+CREATE TABLE `user_details` (
+  `id` int(11) NOT NULL default '0',
+  `REALNAME` varchar(255) collate utf8_unicode_ci NOT NULL default '',
+  `BIRTHDATE` date NOT NULL default '0000-00-00',
+  `COUNTRY` varchar(255) collate utf8_unicode_ci NOT NULL default '',
+  `CITY` varchar(255) collate utf8_unicode_ci NOT NULL default '',
+  `ORIGINAL_FROM` varchar(255) collate utf8_unicode_ci NOT NULL default '',
+  `LANGUAGES` varchar(255) collate utf8_unicode_ci NOT NULL default '',
+  `HOBBYS` varchar(255) collate utf8_unicode_ci NOT NULL default '',
+  `COMPUTER` varchar(255) collate utf8_unicode_ci NOT NULL default '',
+  `COMPUTER_OS` varchar(255) collate utf8_unicode_ci NOT NULL default '',
+  `GEEKCODE` text collate utf8_unicode_ci NOT NULL,
+  `PUBLICKEY` text collate utf8_unicode_ci NOT NULL,
+  `FAVORITE_FILM` varchar(255) collate utf8_unicode_ci NOT NULL default '',
+  `FAVORITE_BOOK` varchar(255) collate utf8_unicode_ci NOT NULL default '',
+  `FAVORITE_MUSIK` varchar(255) collate utf8_unicode_ci NOT NULL default '',
+  `FAVORITE_SERIES` varchar(255) collate utf8_unicode_ci NOT NULL default ''
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+--
+--
+-- Erzeuge Tabelle 'tags'
+--
+CREATE TABLE `tags` (
+  `id` int(11) NOT NULL auto_increment,
+  `tag` varchar(255) collate utf8_unicode_ci NOT NULL default '',
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+--
+--
+-- Erzeuge Tabelle 'user_tags'
+--
+CREATE TABLE `user_tags` (
+  `user_id` int(11) NOT NULL default '0',
+  `tag_id` int(11) NOT NULL default '0'
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+--
+--
+--
+-- Setze Inhalt
+-- Setze Inhalt fuer 'languages'
+--
+
+INSERT INTO `language` VALUES ('STARTPAGE', 'Startseite', 'Startpage');
+INSERT INTO `language` VALUES ('WIKI', 'Wiki', 'Wiki');
+INSERT INTO `language` VALUES ('PORTAL', 'Portal', 'Portal');
+INSERT INTO `language` VALUES ('LOGIN', 'Anmelden', 'Login');
+INSERT INTO `language` VALUES ('DEVELOPERS', 'Entwickler', 'Developers');
+INSERT INTO `language` VALUES ('NEWS', 'Neuigkeiten', 'News');
+INSERT INTO `language` VALUES ('GAME_OF_MONTH', 'Spiel des Monats', 'Game of month');
+INSERT INTO `language` VALUES ('MEMBER_SEARCH', 'Mitgliedersuche', 'Membersearch');
+INSERT INTO `language` VALUES ('REALNAME', 'Richtiger Name', 'Realname');
+INSERT INTO `language` VALUES ('BIRTHDATE', 'Geburtstag', 'Date of Birth');
+INSERT INTO `language` VALUES ('COUNTRY', 'Land', 'Country');
+INSERT INTO `language` VALUES ('CITY', 'Stadt', 'City');
+INSERT INTO `language` VALUES ('ORIGINAL_FROM', 'Herkunftsland', 'Country of origin');
+INSERT INTO `language` VALUES ('LANGUAGES', 'Sprachen', 'Spoken Languages');
+INSERT INTO `language` VALUES ('HOBBYS', 'Hobbys', 'Hobbys');
+INSERT INTO `language` VALUES ('COMPUTER', 'Hardware', 'Hardware');
+INSERT INTO `language` VALUES ('COMPUTER_OS', 'Betriebssystem', 'Operating System');
+INSERT INTO `language` VALUES ('GEEKCODE', 'Geekcode', 'Geekcode');
+INSERT INTO `language` VALUES ('PUBLICKEY', 'GnuPG Public Key', 'GnuPG Public Key');
+INSERT INTO `language` VALUES ('FAVORITE_FILM', 'Lieblingsfilm', 'Favorite film');
+INSERT INTO `language` VALUES ('FAVORITE_SERIES', 'Lieblingsserie', 'Favorite series');
+INSERT INTO `language` VALUES ('FAVORITE_BOOK', 'Lieblingsbuch', 'Favorite book');
+INSERT INTO `language` VALUES ('FAVORITE_MUSIK', 'Lieblingsmusik', 'Favorite musik');
+INSERT INTO `language` VALUES ('NICK', 'Nick', 'Nickname');
+INSERT INTO `language` VALUES ('JID', 'Jabber ID', 'Jabber ID');
+INSERT INTO `language` VALUES ('FAVORITES', 'Lieblings Dinge von', 'Favorites of');
+INSERT INTO `language` VALUES ('ABOUT', 'Über', 'About');
+INSERT INTO `language` VALUES ('COMPUTER_OF', 'Computer von', 'Computer of');
+INSERT INTO `language` VALUES ('USER_PAGE_OF', 'Benutzerseite von', 'Userpage of');
+INSERT INTO `language` VALUES ('SHOW_PUBLICKEY', 'Zeige Public Key', 'Show Public Key');
+INSERT INTO `language` VALUES ('PUBLICKEY_OF', 'Public Key von', 'Public Key of');
+INSERT INTO `language` VALUES ('SHOW_USER_PAGE_OF', 'Zeige Benutzerseite von', 'Show Userpage of');
+INSERT INTO `language` VALUES ('REGISTER', 'Registrieren', 'Register');
+INSERT INTO `language` VALUES ('USERS', 'Benutzer', 'Users');
+INSERT INTO `language` VALUES ('MEMBERS', 'Mitglieder', 'Members');
+INSERT INTO `language` VALUES ('PW', 'Passwort', 'Password');
+INSERT INTO `language` VALUES ('PW_AGAIN', 'Passwort wiederholen', 'Repeat password');
+INSERT INTO `language` VALUES ('ONLY_LETTERS_3', 'Keine Leer- oder Sonderzeichen und mindestens drei Zeichen', 'No empty or special characters and at least three characters');
+INSERT INTO `language` VALUES ('UNACCEPT_JID', 'Ungültige Jabber ID', 'Illegal Jabber ID');
+INSERT INTO `language` VALUES ('ONLY_LETTERS_6', 'Keine Leer- oder Sonderzeichen und mindestens sechs Zeichen', 'No empty or special characters and at least six characters');
+INSERT INTO `language` VALUES ('PW_NOT_SAME', 'Die Passwörter stimmen nicht überein', 'The passwords are not the same');
+INSERT INTO `language` VALUES ('SUCCESS_REG', 'Erfolgreich registriert', 'Successfully registered');
+INSERT INTO `language` VALUES ('NICK_EXISTS', 'Nick existiert bereits', 'Nickname already exists');
+INSERT INTO `language` VALUES ('JID_EXISTS', 'Jabber ID existiert bereits', 'Jabber ID already exists');
+INSERT INTO `language` VALUES ('LOGOUT', 'Abmelden', 'Logout');
+INSERT INTO `language` VALUES ('OPTIONS', 'Optionen', 'Options');
+INSERT INTO `language` VALUES ('CHANGEPW', 'Passwort ändern', 'Change password');
+INSERT INTO `language` VALUES ('CHANGEDETAILS', 'Benutzer Details ändern', 'Change user details');
+INSERT INTO `language` VALUES ('RMACC', 'Lösche Account', 'Remove account'); 
