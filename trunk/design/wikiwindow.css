@@ -1,0 +1,57 @@
+#wikiwindow p{
+    background-color: #c7e0ff;
+    padding: 2px;
+    font-family: Verdana, Arial, sans-serif;
+    color: #000000;
+    font-size: 10pt;
+    margin-top: 0px;
+}
+#wikiwindow table{
+    background-color: #c7e0ff;
+    font-family: Verdana, Arial, sans-serif;
+    color: #000000;
+    font-size: 10pt;
+    margin-top: 0px;
+    width: 400px;
+    margin-bottom: 12px;
+}
+#wikiwindow td.links{
+    width: 200px;
+    text-align: right;
+}
+#wikiwindow td.rechts{
+    width: 200px;
+}
+#wikiwindow {
+    position: absolute;
+    top: 130px;
+    left: 160px;
+    width: 400px;
+}
+#wikiwindow h1{
+    padding: 4px;
+    font-family: Verdana, Arial, sans-serif;
+    color: #c7e0ff;
+    font-size: 10pt;
+    margin: 0px;
+}
+#quickinfo {
+    position: absolute;
+    top: 130px;
+    left: 570px;
+    width: 190px;
+}
+#quickinfo h1{
+    padding: 4px;
+    font-family: Verdana, Arial, sans-serif;
+    color: #c7e0ff;
+    font-size: 10pt;
+    margin: 0px;
+}
+#quickinfo p{
+    background-color: #c7e0ff;
+    padding: 2px;
+    font-family: Verdana, Arial, sans-serif;
+    color: #000000;
+    font-size: 10pt;
+    margin-top: 0px;

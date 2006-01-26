@@ -1,0 +1,35 @@
+<?php
+$user_id = 4;
+include('classes/jforg_template.php');
+include('classes/jforg_user.php');
+$user = new jforg_user();
+$template = new jforg_template();
+$template->set_path('design');
+$template->set_frame('tablepage','lila');
+$template->hover_on('lila');
+$user_details = $user->get_details($user_id);
+$content = $content.'<tr><td valign="top">{LANG_NICK}</td><td valign="top">'.$user->get_nick($user_id).'</td></tr>';
+$content = $content.'<tr><td valign="top">{LANG_JID}</td><td valign="top">'.$user->get_jid($user_id).'</td></tr>';
+$content = $content.'<tr><td colspan="2"><b>{LANG_ABOUT} '.$user->get_nick($user_id).'</b></td></tr>';
+$content = $content.'<tr><td valign="top" class="left">{LANG_REALNAME}</td><td valign="top" class="right">'.$user_details['REALNAME'].'</td></tr>';
+$content = $content.'<tr><td valign="top">{LANG_BIRTHDATE}</td><td valign="top">'.$user_details['BIRTHDATE'].'</td></tr>';
+$content = $content.'<tr><td valign="top">{LANG_COUNTRY}</td><td valign="top">'.$user_details['COUNTRY'].'</td></tr>';
+$content = $content.'<tr><td valign="top">{LANG_CITY}</td><td valign="top">'.$user_details['CITY'].'</td></tr>';
+$content = $content.'<tr><td valign="top">{LANG_ORIGINAL_FROM}</td><td valign="top">'.$user_details['ORIGINAL_FROM'].'</td></tr>';
+$content = $content.'<tr><td valign="top">{LANG_LANGUAGES}</td><td valign="top">'.$user_details['LANGUAGES'].'</td></tr>';
+$content = $content.'<tr><td valign="top">{LANG_HOBBYS}</td><td valign="top">'.$user_details['HOBBYS'].'</td></tr>';
+$content = $content.'<tr><td colspan="2"><b>{LANG_COMPUTER_OF} '.$user->get_nick($user_id).'</b></td></tr>';
+$content = $content.'<tr><td valign="top">{LANG_COMPUTER}</td><td valign="top">'.$user_details['COMPUTER'].'</td></tr>';
+$content = $content.'<tr><td valign="top">{LANG_COMPUTER_OS}</td><td valign="top">'.$user_details['COMPUTER_OS'].'</td></tr>';
+$content = $content.'<tr><td valign="top">{LANG_GEEKCODE}</td><td valign="top">'.$user_details['GEEKCODE'].'</td></tr>';
+//$content = $content.'<tr><td valign="top">{LANG_PUBLICKEY}</td><td valign="top">'.$user_details['PUBLICKEY'].'</td></tr>';
+$content = $content.'<tr><td colspan="2"><b>{LANG_FAVORITES} '.$user->get_nick($user_id).'</b></td></tr>';
+$content = $content.'<tr><td valign="top">{LANG_FAVORITE_FILM}</td><td valign="top">'.$user_details['FAVORITE_FILM'].'</td></tr>';
+$content = $content.'<tr><td valign="top">{LANG_FAVORITE_SERIES}</td><td valign="top">'.$user_details['FAVORITE_SERIES'].'</td></tr>';
+$content = $content.'<tr><td valign="top">{LANG_FAVORITE_MUSIK}</td><td valign="top">'.$user_details['FAVORITE_MUSIK'].'</td></tr>';
+$content = $content.'<tr><td valign="top">{LANG_FAVORITE_BOOK}</td><td valign="top">'.$user_details['FAVORITE_BOOK'].'</td></tr>';
+$template->replace('FULLPAGE_HEADER','{LANG_USER_PAGE_OF} '.$user->get_nick($user_id));
+$template->replace('FULLPAGE_TEXT',$content);
+$template->translate('en');
+$template->write();
+?>

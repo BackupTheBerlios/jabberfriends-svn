@@ -1,0 +1,40 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+    <head>
+        <title>JForg :: {META_TITLE}</title>
+            <link rel="stylesheet" type="text/css" href="/design/main.css" />
+            <link rel="stylesheet" type="text/css" href="/design/{FRAME_CSS}.css" />
+            <style type="text/css">
+                #strich {
+                    position: fixed;
+                    left: 150px;
+                    top: 0px;
+                    width: 1px;
+                    height: 100%;
+                    background-color: #4b72b0;
+                } 
+            </style>
+            <meta name="description" content="{META_DESCRIPTION}" />
+            <meta name="auther" content="{META_AUTHER}" />
+            <meta name="keywords" content="{META_KEYWORDS}" />
+    </head>
+    <body>
+        <div id="strich"></div>
+        <div id="header">
+            <img src="/gfx/logo.jpg" alt="JabberFriends.org -- All around the world"/>
+        </div>
+        <div id="leiste">
+            <div id="login"><a href="{LINK_LOGIN}">{LOGIN}</a> / <a href="{LINK_REGISTER}">{REGISTER}</a></div>
+            <div id="sprache">Select your language: <a href="{LINK_GERMAN}">Deutsch</a> / <a href="{LINK_ENGLISH}">English</a></div>
+        </div>
+        <div id="navigation">
+            <a class="tuerkis" href="{LINK_STARTPAGE}">{LANG_STARTPAGE}</a>
+            <a class="green" href="{LINK_MEMBERS}">{LANG_MEMBERS}</a>
+            <a class="lila" href="{LINK_PORTAL}">{LANG_PORTAL}</a>
+            <a class="red" href="{LINK_WIKI}">{LANG_WIKI}</a>
+            <a class="yellow" href="{LINK_DEVELOPERS}">{LANG_DEVELOPERS}</a>
+        </div>
+{CONTENT}
+    </body>
+</html>
+ 

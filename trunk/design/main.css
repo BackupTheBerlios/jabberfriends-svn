@@ -1,0 +1,121 @@
+body {
+    background-color: #80a7d8;
+}
+#strich {
+    position: absolute;
+    left: 146px;
+    top: 0px;
+    width: 1px;
+    height: 100%;
+    background-color: #4b72b0;
+}
+#header {
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    width: 100%;
+    height: 100px;
+    background-image:url(/gfx/header.gif);
+    background-repeat:repeat-x;
+}
+#leiste {
+    position: absolute;
+    left: 0px;
+    top: 100px;
+    width: 100%;
+    height: 20px;
+    padding: 0px;
+    background-color: #4b72b0;
+}
+#sprache {
+    position: absolute;
+    color: #c7e0ff;
+    font-size: 10pt;
+    font-family: Verdana, Arial, sans-serif;
+    text-align: right;
+    width: 460px;
+    font-weight: bold;
+    left: 300px;
+}
+#sprache a {
+    color: #c7e0ff;
+    font-size: 10pt;
+    font-family: Verdana, Arial, sans-serif;
+    width: 760px;
+    font-weight: bold;
+    text-decoration: none;
+}
+#login {
+    left: 1em;
+    position: absolute;
+    color: #c7e0ff;
+    font-size: 10pt;
+    font-family: Verdana, Arial, sans-serif;
+    text-align: left;
+    width: 760px;
+    font-weight: bold;
+}
+#login a {
+    color: #c7e0ff;
+    font-size: 10pt;
+    font-family: Verdana, Arial, sans-serif;
+    width: 760px;
+    font-weight: bold;
+    text-decoration: none;
+}
+#navigation {
+    position: absolute;
+    width: 150px;
+    top: 120px;
+    left: 0px;
+}
+#navigation a {
+    width: 146px;
+    color: #c7e0ff;
+    font-size: 10pt;
+    font-family: Verdana, Arial, sans-serif;
+    text-decoration: none;
+    font-weight: bold;
+    display:block;
+    border-bottom: 1px solid #4b72b0;
+    padding-left: 4px;
+    padding-top: 4px;
+    padding-bottom: 4px;
+    
+}
+#navigation a.green:hover {
+    background-color: #4bb072;
+}
+#navigation a.red:hover {
+    background-color: #b04b4b;
+}
+#navigation a.yellow:hover {
+    background-color: #b0ae4b;
+}
+#navigation a.lila:hover {
+    background-color: #864bb0;
+}
+#navigation a.tuerkis:hover {
+    background-color: #4ba7b0;
+}
+a {
+    font-family: Verdana, Arial, sans-serif;
+    color: #4b72b0;
+    font-size: 10pt;
+}
+a:hover {
+    color: #80a7d8;
+}
+input {
+    border: 1px solid #4b72b0;
+    width: 300px;
+}
+input.submit {
+    background-color: #c7e0ff;
+    font-weight: bold;
+    width: auto;
+}
+em {
+    color: red;
+    font-style: normal;
+}
