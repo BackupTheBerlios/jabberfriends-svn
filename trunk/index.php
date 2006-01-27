@@ -1,35 +1,39 @@
-<?php
-$user_id = 4;
-include('classes/jforg_template.php');
-include('classes/jforg_user.php');
-$user = new jforg_user();
-$template = new jforg_template();
-$template->set_path('design');
-$template->set_frame('tablepage','lila');
-$template->hover_on('lila');
-$user_details = $user->get_details($user_id);
-$content = $content.'<tr><td valign="top">{LANG_NICK}</td><td valign="top">'.$user->get_nick($user_id).'</td></tr>';
-$content = $content.'<tr><td valign="top">{LANG_JID}</td><td valign="top">'.$user->get_jid($user_id).'</td></tr>';
-$content = $content.'<tr><td colspan="2"><b>{LANG_ABOUT} '.$user->get_nick($user_id).'</b></td></tr>';
-$content = $content.'<tr><td valign="top" class="left">{LANG_REALNAME}</td><td valign="top" class="right">'.$user_details['REALNAME'].'</td></tr>';
-$content = $content.'<tr><td valign="top">{LANG_BIRTHDATE}</td><td valign="top">'.$user_details['BIRTHDATE'].'</td></tr>';
-$content = $content.'<tr><td valign="top">{LANG_COUNTRY}</td><td valign="top">'.$user_details['COUNTRY'].'</td></tr>';
-$content = $content.'<tr><td valign="top">{LANG_CITY}</td><td valign="top">'.$user_details['CITY'].'</td></tr>';
-$content = $content.'<tr><td valign="top">{LANG_ORIGINAL_FROM}</td><td valign="top">'.$user_details['ORIGINAL_FROM'].'</td></tr>';
-$content = $content.'<tr><td valign="top">{LANG_LANGUAGES}</td><td valign="top">'.$user_details['LANGUAGES'].'</td></tr>';
-$content = $content.'<tr><td valign="top">{LANG_HOBBYS}</td><td valign="top">'.$user_details['HOBBYS'].'</td></tr>';
-$content = $content.'<tr><td colspan="2"><b>{LANG_COMPUTER_OF} '.$user->get_nick($user_id).'</b></td></tr>';
-$content = $content.'<tr><td valign="top">{LANG_COMPUTER}</td><td valign="top">'.$user_details['COMPUTER'].'</td></tr>';
-$content = $content.'<tr><td valign="top">{LANG_COMPUTER_OS}</td><td valign="top">'.$user_details['COMPUTER_OS'].'</td></tr>';
-$content = $content.'<tr><td valign="top">{LANG_GEEKCODE}</td><td valign="top">'.$user_details['GEEKCODE'].'</td></tr>';
-//$content = $content.'<tr><td valign="top">{LANG_PUBLICKEY}</td><td valign="top">'.$user_details['PUBLICKEY'].'</td></tr>';
-$content = $content.'<tr><td colspan="2"><b>{LANG_FAVORITES} '.$user->get_nick($user_id).'</b></td></tr>';
-$content = $content.'<tr><td valign="top">{LANG_FAVORITE_FILM}</td><td valign="top">'.$user_details['FAVORITE_FILM'].'</td></tr>';
-$content = $content.'<tr><td valign="top">{LANG_FAVORITE_SERIES}</td><td valign="top">'.$user_details['FAVORITE_SERIES'].'</td></tr>';
-$content = $content.'<tr><td valign="top">{LANG_FAVORITE_MUSIK}</td><td valign="top">'.$user_details['FAVORITE_MUSIK'].'</td></tr>';
-$content = $content.'<tr><td valign="top">{LANG_FAVORITE_BOOK}</td><td valign="top">'.$user_details['FAVORITE_BOOK'].'</td></tr>';
-$template->replace('FULLPAGE_HEADER','{LANG_USER_PAGE_OF} '.$user->get_nick($user_id));
-$template->replace('FULLPAGE_TEXT',$content);
-$template->translate('en');
-$template->write();
-?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "DTD/xhtml1-transitional.dtd">
+<div xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+    <head>
+        <title>JabberFriends.org :: All Around The World</title>
+            <style type="text/css">
+                body{
+                    text-align: center;
+                    background-color: #4b72b0;
+                    color: #c7e0ff;
+                    font-size: 20pt;
+                    font-family: Verdana, Arial, sans-serif;
+                }
+                a {
+                    color: #c7e0ff;
+                    font-size: 18pt;
+                    font-family: Verdana, Arial, sans-serif;
+                    font-weight: bold;
+                    text-decoration: none;
+                }
+                h1 {
+                    color: #c7e0ff;
+                    font-size: 25pt;
+                    font-family: Verdana, Arial, sans-serif;
+                    font-weight: bold;
+                    text-decoration: none;
+                }
+            </style>
+            <meta name="description" content="{META_DESCRIPTION}" />
+            <meta name="auther" content="{META_AUTHER}" />
+
+            <meta name="keywords" content="{META_KEYWORDS}" />
+    </head>
+    <body>
+        <h1>JabberFriends.org - All Around The World</h1>
+        <img src="gfx/jforg_enter.gif" /><br />
+        <a href="/de/">Deutsch</a><br />
+        <a href="/en/">English</a>
+    </body>
+</html>
