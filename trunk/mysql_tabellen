@@ -66,7 +66,6 @@ CREATE TABLE `user_tags` (
 -- Setze Inhalt
 -- Setze Inhalt fuer 'languages'
 --
-
 INSERT INTO `language` VALUES ('STARTPAGE', 'Startseite', 'Startpage');
 INSERT INTO `language` VALUES ('WIKI', 'Wiki', 'Wiki');
 INSERT INTO `language` VALUES ('PORTAL', 'Portal', 'Portal');
@@ -115,4 +114,10 @@ INSERT INTO `language` VALUES ('LOGOUT', 'Abmelden', 'Logout');
 INSERT INTO `language` VALUES ('OPTIONS', 'Optionen', 'Options');
 INSERT INTO `language` VALUES ('CHANGEPW', 'Passwort ändern', 'Change password');
 INSERT INTO `language` VALUES ('CHANGEDETAILS', 'Benutzer Details ändern', 'Change user details');
-INSERT INTO `language` VALUES ('RMACC', 'Lösche Account', 'Remove account'); 
+INSERT INTO `language` VALUES ('RMACC', 'Lösche Account', 'Remove account');
+INSERT INTO `language` VALUES ('CHANGETAGS', 'Tags bearbeiten', 'Change Tags');
+INSERT INTO `language` VALUES ('CHANGE', 'Ändern', 'Change');
+INSERT INTO `language` VALUES ('YOUR_FAVORITES', 'Deine Lieblingsdinge', 'Your favorites');
+INSERT INTO `language` VALUES ('YOUR_COMPUTER', 'Dein Computer', 'Your Computer');
+INSERT INTO `language` VALUES ('ABOUT_YOU', 'Über dich', 'About you');
+INSERT INTO `language` VALUES ('BACK_TO_OPTIONS', 'Zurück zu den Optionen', 'Back to options');
