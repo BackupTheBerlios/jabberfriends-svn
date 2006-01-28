@@ -9,6 +9,7 @@ RewriteRule ^de/anmelden.htm$ login.php?lang=de
 RewriteRule ^de/abmelden.htm$ logout.php?lang=de
 RewriteRule ^de/optionen.htm$ options.php?lang=de
 RewriteRule ^de/angaben_aendern.htm$ changedetails.php?lang=de
+RewriteRule ^de/tags_aendern.htm$ changetags.php?lang=de
 
 RewriteRule ^en/members/([0-9]+)-([^/\:]+).htm$ user_details.php?lang=en&id=$1
 RewriteRule ^en/publickeys/([0-9]+)-([^/\:]+).htm$ publickey.php?lang=en&id=$1
@@ -19,3 +20,4 @@ RewriteRule ^en/login.htm$ login.php?lang=en
 RewriteRule ^en/logout.htm$ logout.php?lang=en
 RewriteRule ^en/options.htm$ options.php?lang=en
 RewriteRule ^en/change_details.htm$ changedetails.php?lang=en
+RewriteRule ^en/change_tags.htm$ changetags.php?lang=de

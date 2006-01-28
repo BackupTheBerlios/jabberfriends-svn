@@ -10,6 +10,7 @@ if ($language=="de") {
     $template->replace('LINK_LOGOUT','/de/abmelden.htm');
     $template->replace('LINK_OPTIONS','/de/optionen.htm');
     $template->replace('LINK_CHANGEDETAILS','/de/angaben_aendern.htm');
+	$template->replace('LINK_CHANGETAGS','/de/tags_aendern.htm');
 }
 if ($language=="en") {
     $template->replace('LINK_STARTPAGE','/en/');
@@ -21,5 +22,7 @@ if ($language=="en") {
     $template->replace('LINK_REGISTER','/en/register.htm');
     $template->replace('LINK_LOGOUT','/en/logout.htm');
     $template->replace('LINK_OPTIONS','/en/options.htm');
+	$template->replace('LINK_CHANGETAGS','/en/change_tags.htm');
+
 }
 ?> 
