@@ -65,11 +65,25 @@ class jforg_user {
     }
     function set_details($id,$array) {
         $sql = 'UPDATE `user_details` SET
-        REALNAME = '.$array['realname'].'
-        COUNTRY = '.$array['country'].'
-        REALNAME = '.$array['realname'].'
-        ;
-        ';
+        REALNAME = \''.$array['realname'].'\',
+        COUNTRY = \''.$array['country'].'\',
+        CITY = \''.$array['city'].'\',
+        ORIGINAL_FROM = \''.$array['original_from'].'\',
+        LANGUAGES = \''.$array['languages'].'\',
+        HOBBYS = \''.$array['hobbys'].'\',
+        COMPUTER = \''.$array['computer'].'\',
+        COMPUTER_OS = \''.$array['computer_os'].'\',
+        GEEKCODE = \''.$array['geekcode'].'\',
+        PUBLICKEY = \''.$array['publickey'].'\',
+        FAVORITE_FILM = \''.$array['favorite_film'].'\',
+        FAVORITE_SERIES = \''.$array['favorite_series'].'\',
+        FAVORITE_MUSIK = \''.$array['favorite_musik'].'\',
+        FAVORITE_BOOK = \''.$array['favorite_book'].'\'
+        WHERE id = '.$id.';';
+        $query              =   @mysql_query($sql,$this->connection);
+        if (!$query) {
+            die("jforg_user.set_details: Die SQL Abfrage ist fehlgeschlagen - $sql");
+        }
     }
     function get_details($id) {
         $sql                =   "SELECT * FROM `user_details` WHERE `id` = '$id'";
