@@ -18,7 +18,8 @@ if (!$user->login($_SESSION['nick'],$_SESSION['passwd'])) {
     die('You are not logged in');  
 }
 $content = '<a href="{LINK_CHANGEPW}">{LANG_CHANGEPW}</a><br />
-<a href="{LINK_CHANGEDETAILS}">{LANG_CHANGEDETAILS}</a><br /><br />
+<a href="{LINK_CHANGEDETAILS}">{LANG_CHANGEDETAILS}</a><br />
+<a href="{LINK_CHANGETAGS}">{LANG_CHANGETAGS}</a><br /><br />
 <a href="{LINK_RMACC}">{LANG_RMACC}</a>';
 $template->replace('FULLPAGE_TEXT',$content);
 $template->replace('LOGIN','{LANG_LOGOUT}');

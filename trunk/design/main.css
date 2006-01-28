@@ -106,15 +106,6 @@ a {
 a:hover {
     color: #80a7d8;
 }
-input {
-    border: 1px solid #4b72b0;
-    width: 300px;
-}
-input.submit {
-    background-color: #c7e0ff;
-    font-weight: bold;
-    width: auto;
-}
 em {
     color: red;
     font-style: normal;
