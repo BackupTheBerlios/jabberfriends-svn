@@ -39,3 +39,6 @@ textarea {
     border: 1px solid #4b72b0;
     width: 300px;
 }
+select {
+    border: 1px solid #4b72b0;
+}
