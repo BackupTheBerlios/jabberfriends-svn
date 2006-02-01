@@ -26,19 +26,3 @@
 #fullpage td.right {
     width: 400px;
 }
-input {
-    border: 1px solid #4b72b0;
-    width: 300px;
-}
-input.submit {
-    background-color: #c7e0ff;
-    font-weight: bold;
-    width: auto;
-}
-textarea {
-    border: 1px solid #4b72b0;
-    width: 300px;
-}
-select {
-    border: 1px solid #4b72b0;
-}

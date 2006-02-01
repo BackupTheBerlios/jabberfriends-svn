@@ -2,6 +2,7 @@
 include('includes/config.php');
 include('classes/jforg_template.php');
 include('classes/jforg_user.php');
+include('classes/jforg_gettext.php');
 $user = new jforg_user();
 if (in_array($_GET['lang'],$config['languages'])) {
     $language = $_GET['lang'];
@@ -13,6 +14,7 @@ $user = new jforg_user();
 $template->set_path('design');
 $template->set_frame('fullpage','green');
 $template->hover_on('green');
+$text = get_text(1,$language);
 SESSION_START();
 if ($user->login($_SESSION['nick'],$_SESSION['passwd'])) {
     SESSION_DESTROY();
@@ -24,6 +26,7 @@ if ($user->login($_SESSION['nick'],$_SESSION['passwd'])) {
     $template->replace('LINK_ENGLISH','/en/logout.htm');
     $template->replace('META_TITLE','{LANG_LOGOUT}');
     $template->replace('FULLPAGE_HEADER','{LANG_LOGOUT}');
+    $template->replace('FULLPAGE_TEXT',$text);
     $template->translate($language);
     include('includes/links.php');
     $template->write();
