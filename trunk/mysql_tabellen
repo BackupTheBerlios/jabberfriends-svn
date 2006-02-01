@@ -62,6 +62,16 @@ CREATE TABLE `user_tags` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 --
 --
+-- Erzeuge Tabelle 'text'
+--
+CREATE TABLE `text` (
+  `id` int(11) NOT NULL auto_increment,
+  `de` text collate utf8_unicode_ci NOT NULL,
+  `en` text collate utf8_unicode_ci NOT NULL,
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+--
+--
 --
 -- Setze Inhalt
 -- Setze Inhalt fuer 'languages'
@@ -121,3 +131,9 @@ INSERT INTO `language` VALUES ('YOUR_FAVORITES', 'Deine Lieblingsdinge', 'Your f
 INSERT INTO `language` VALUES ('YOUR_COMPUTER', 'Dein Computer', 'Your Computer');
 INSERT INTO `language` VALUES ('ABOUT_YOU', 'Über dich', 'About you');
 INSERT INTO `language` VALUES ('BACK_TO_OPTIONS', 'Zurück zu den Optionen', 'Back to options');
+--
+--
+-- Setze Inhalt fuer text
+--
+INSERT INTO `text` VALUES (1, 'Du bist nun abgemeldet. Besuche uns doch bald wieder.', 'You are now logged out. Visit us again soon.');
+INSERT INTO `text` VALUES (2, 'Benutze die Suche um nach Mitgliedern zu suchen. Wenn du genauere Ergebnisse wünschst, benutze die <a href="/de/mitglieder/erweiterte_suche.htm">Erweiterte Suche</a>.', 'Use the search to look for members. If you want closer results, use the <a href="/en/members/extended_search.htm">extended search</a>.');
