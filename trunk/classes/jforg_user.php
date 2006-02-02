@@ -92,7 +92,8 @@ class jforg_user {
         if (!$query) {
             die("jforg_user.get_details: Die SQL Abfrage ist fehlgeschlagen - $sql");
         }
-        return mysql_fetch_array($query);
+        $result = mysql_fetch_array($query,MYSQL_ASSOC);
+        return $result;
     }
     function get_id($nick) {
         $sql                =   "SELECT id,nick FROM `user_login` WHERE `nick` = '$nick'";
