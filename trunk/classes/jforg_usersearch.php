@@ -57,6 +57,7 @@ OR `FAVORITE_FILM` LIKE '%$string%'
 OR `FAVORITE_BOOK` LIKE '%$string%'
 OR `FAVORITE_MUSIK` LIKE '%$string%'
 OR `FAVORITE_SERIES` LIKE '%$string%'";
+
         $query2 = mysql_query($sql2);
         if (!$query2) {
             die('jforg_usersearch.search_all: Abfrage 2 schlug fehl');
@@ -67,6 +68,22 @@ OR `FAVORITE_SERIES` LIKE '%$string%'";
             $result[]=$row;
         }
         return $result;
+    }
+    function search_array($array) {
+        $sql = "SELECT *
+FROM `user_details`
+WHERE `REALNAME` LIKE '%".$array['REALNAME']."%'
+OR `COUNTRY` LIKE '%".$array['COUNTRY']."%'
+OR `CITY` LIKE '%".$array['CITY']."%'
+OR `ORIGINAL_FROM` LIKE '%".$array['ORIGINAL_FROM']."%'
+OR `LANGUAGES` LIKE '%".$array['LANGUAGES']."%'
+OR `HOBBYS` LIKE '%".$array['HOBBYS']."%'
+OR `COMPUTER` LIKE '%".$array['COMPUTER']."%'
+OR `COMPUTER_OS` LIKE '%".$array['COMPUTR_OS']."%'
+OR `FAVORITE_FILM` LIKE '%".$array['FAVORITE_FILM']."%'
+OR `FAVORITE_BOOK` LIKE '%".$array['FAVORITE_BOOK']."%'
+OR `FAVORITE_MUSIK` LIKE '%".$array['FAVORITE_MUSIK']."%'
+OR `FAVORITE_SERIES` LIKE '%".$array['FAVORITE_SERIES']."%'";
     }
     function get_number_of() {
         return $this->counter;

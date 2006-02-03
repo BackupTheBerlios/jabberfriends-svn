@@ -25,6 +25,9 @@ if ($_POST['submit']!="") {
 $user_details = $user->get_details($user_id);
 $brithvar = $user_details['BIRTHDATE']{8}.$user_details['BIRTHDATE']{9};
 $birthdate_date_select = "";
+if ($birtvar==0) {
+    $birthdate_date_select = "$birthdate_date_select<option value=\"0\" selected>--</option>";
+}
 for($i=01;$i<=31; $i++) {
     if ($i==$brithvar) {
         $birthdate_date_select = "$birthdate_date_select<option value=\"$i\" selected>$i</option>";
@@ -34,6 +37,9 @@ for($i=01;$i<=31; $i++) {
 }
 $yearvar = $user_details['BIRTHDATE']{0}.$user_details['BIRTHDATE']{1}.$user_details['BIRTHDATE']{2}.$user_details['BIRTHDATE']{3};
 $birthdate_year_select = "";
+if ($yearvar==0) {
+    $birthdate_year_select = "$birthdate_year_select<option value=\"0\" selected>----</option>";
+}
 for($i=date('Y')-80;$i<=date('Y'); $i++) {
     if ($i==$yearvar) {
         $birthdate_year_select = "$birthdate_year_select<option value=\"$i\" selected>$i</option>";
@@ -42,6 +48,7 @@ for($i=date('Y')-80;$i<=date('Y'); $i++) {
     }
 }
 $monthvar = $user_details['BIRTHDATE']{5}.$user_details['BIRTHDATE']{6};
+if ($monthvar==0) { $birthdate_month_select = "$birthdate_month_select<option value=\"0\" selected>---</option>"; } else { $birthdate_month_select = "$birthdate_month_select<option value=\"0\">---</option>"; }
 if ($monthvar==1) { $birthdate_month_select = "$birthdate_month_select<option value=\"1\" selected>January</option>"; } else { $birthdate_month_select = "$birthdate_month_select<option value=\"1\">January</option>"; }
 if ($monthvar==2) { $birthdate_month_select = "$birthdate_month_select<option value=\"2\" selected>February</option>"; } else { $birthdate_month_select = "$birthdate_month_select<option value=\"2\">February</option>"; }
 if ($monthvar==3) { $birthdate_month_select = "$birthdate_month_select<option value=\"3\" selected>March</option>"; } else { $birthdate_month_select = "$birthdate_month_select<option value=\"3\">March</option>"; }
