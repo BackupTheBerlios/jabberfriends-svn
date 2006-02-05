@@ -19,6 +19,8 @@ if ($user->login($_SESSION['nick'],$_SESSION['passwd'])) {
     $template->replace('REGISTER','{LANG_REGISTER}');
 }
 $counter = 0;
+$content = $content.'<form action="{FORM_ACTION}" method="post">
+                <table cellpadding="0" cellspacing="2">';
 if ($_POST['submit']!="") {
     if (!preg_match('/[-._+\d\w]{3,}/i',$_POST['nick'])) {
         $nick_comment = '<tr><td>&nbsp;</td><td><em>{LANG_ONLY_LETTERS_3}</em></td></tr>';
@@ -52,7 +54,7 @@ $content = $content.$nick_comment.'<tr><td class="left">{LANG_NICK}</td><td clas
 $content = $content.$jid_comment.'<tr><td>{LANG_JID}</td><td><input value="'.$_POST['jid'].'" type="text" name="jid" /></td></tr>';
 $content = $content.$pw_comment.'<tr><td>{LANG_PW}</td><td><input type="password" name="passwd1" /></td></tr>
 <tr><td>{LANG_PW_AGAIN}</td><td><input type="password" name="passwd2" /></td></tr>
-<tr><td>&nbsp;</td><td><br /><br /><input class="submit" value="{LANG_REGISTER}" name="submit" type="submit" /></td></tr>';
+<tr><td>&nbsp;</td><td><br /><br /><input class="submit" value="{LANG_REGISTER}" name="submit" type="submit" /></td></tr></table></form>';
 if ($counter==3) {
     $user->create_new_user($_POST['jid'],$_POST['nick'],$_POST['passwd1']);
     $template->set_frame('fullpage','green');
@@ -61,7 +63,7 @@ if ($counter==3) {
     $template->replace('FULLPAGE_HEADER','{LANG_SUCCESS_REG}');
     $template->replace('META_TITLE','{LANG_SUCCESS_REG}');
 } else {
-    $template->set_frame('formpage','green');
+    $template->set_frame('fullpage','green');
     $template->replace('FULLPAGE_TEXT',$content);
     $template->replace('FULLPAGE_HEADER','{LANG_REGISTER}');
     $template->replace('META_TITLE','{LANG_REGISTER}');

@@ -15,7 +15,7 @@ if (is_int($_GET['id']+0)) {
 $user = new jforg_user();
 $template = new jforg_template();
 $template->set_path('design');
-$template->set_frame('tablepage','green');
+$template->set_frame('fullpage','green');
 $template->hover_on('green');
 SESSION_START();
 if ($user->login($_SESSION['nick'],$_SESSION['passwd'])) {
@@ -27,6 +27,7 @@ if ($user->login($_SESSION['nick'],$_SESSION['passwd'])) {
     $template->replace('LOGIN','{LANG_LOGIN}');
     $template->replace('REGISTER','{LANG_REGISTER}');
 }
+$content = '<table cellpadding="0" cellspacing="2">';
 $user_details = $user->get_details($user_id);
 $content = $content.'<tr><td valign="top">{LANG_NICK}</td><td valign="top">'.$user->get_nick($user_id).'</td></tr>';
 $content = $content.'<tr><td valign="top">{LANG_JID}</td><td valign="top">'.$user->get_jid($user_id).'</td></tr>';
@@ -53,6 +54,7 @@ $content = $content.'<tr><td valign="top">{LANG_FAVORITE_BOOK}</td><td valign="t
 $content = $content.'<tr><td colspan="2"><br /><b>Tags</b></td></tr>';
 $template->replace('FULLPAGE_HEADER','{LANG_USER_PAGE_OF} '.$user->get_nick($user_id));
 $template->replace('META_TITLE','{LANG_USER_PAGE_OF} '.$user->get_nick($user_id));
+$content = $content.'</table>';
 $template->replace('FULLPAGE_TEXT',$content);
 $template->replace('LINK_GERMAN','/de/mitglieder/'.$user_id.'-'.$user->get_nick($user_id).'.htm');
 $template->replace('LINK_ENGLISH','/en/members/'.$user_id.'-'.$user->get_nick($user_id).'.htm');

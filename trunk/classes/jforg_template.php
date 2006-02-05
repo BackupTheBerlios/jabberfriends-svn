@@ -3,7 +3,7 @@ class jforg_template {
     var $connection;
     var $page;
     var $path;
-    var $frame = array('startpage','fullpage','wikiwindow','tablepage','formpage');
+    var $frame = array('startpage','fullpage','wikiwindow');
     /**
       * Bei der Einrichtung eine Verbindung zur Datenbank aufnehmen
       */

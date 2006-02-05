@@ -11,13 +11,15 @@ if (in_array($_GET['lang'],$config['languages'])) {
 $template = new jforg_template();
 $user = new jforg_user();
 $template->set_path('design');
-$template->set_frame('formpage','green');
+$template->set_frame('fullpage','green');
 $template->hover_on('green');
 SESSION_START();
 $user_id = $user->get_id($_SESSION['nick']);
 if (!$user->login($_SESSION['nick'],$_SESSION['passwd'])) {
     die('You are not logged in');  
 }
+$content = '<form action="{FORM_ACTION}" method="post">
+                <table cellpadding="0" cellspacing="2">';
 if ($_POST['submit']!="") {
     $_POST['birthdate'] = $birthdate_year.'-'.$birthdate_month.'-'.$birthdate_date;
     $user->set_details($user_id,$_POST);
@@ -26,11 +28,11 @@ $user_details = $user->get_details($user_id);
 $brithvar = $user_details['BIRTHDATE']{8}.$user_details['BIRTHDATE']{9};
 $birthdate_date_select = "";
 if ($birtvar==0) {
-    $birthdate_date_select = "$birthdate_date_select<option value=\"0\" selected>--</option>";
+    $birthdate_date_select = "$birthdate_date_select<option value=\"0\" selected=\"selected\">--</option>";
 }
 for($i=01;$i<=31; $i++) {
     if ($i==$brithvar) {
-        $birthdate_date_select = "$birthdate_date_select<option value=\"$i\" selected>$i</option>";
+        $birthdate_date_select = "$birthdate_date_select<option value=\"$i\" selected=\"selected\">$i</option>";
     } else {
         $birthdate_date_select = "$birthdate_date_select<option value=\"$i\" >$i</option>";
     }
@@ -38,29 +40,29 @@ for($i=01;$i<=31; $i++) {
 $yearvar = $user_details['BIRTHDATE']{0}.$user_details['BIRTHDATE']{1}.$user_details['BIRTHDATE']{2}.$user_details['BIRTHDATE']{3};
 $birthdate_year_select = "";
 if ($yearvar==0) {
-    $birthdate_year_select = "$birthdate_year_select<option value=\"0\" selected>----</option>";
+    $birthdate_year_select = "$birthdate_year_select<option value=\"0\" selected=\"selected\">----</option>";
 }
 for($i=date('Y')-80;$i<=date('Y'); $i++) {
     if ($i==$yearvar) {
-        $birthdate_year_select = "$birthdate_year_select<option value=\"$i\" selected>$i</option>";
+        $birthdate_year_select = "$birthdate_year_select<option value=\"$i\" selected=\"selected\">$i</option>";
     } else {
         $birthdate_year_select = "$birthdate_year_select<option value=\"$i\" >$i</option>";
     }
 }
 $monthvar = $user_details['BIRTHDATE']{5}.$user_details['BIRTHDATE']{6};
-if ($monthvar==0) { $birthdate_month_select = "$birthdate_month_select<option value=\"0\" selected>---</option>"; } else { $birthdate_month_select = "$birthdate_month_select<option value=\"0\">---</option>"; }
-if ($monthvar==1) { $birthdate_month_select = "$birthdate_month_select<option value=\"1\" selected>January</option>"; } else { $birthdate_month_select = "$birthdate_month_select<option value=\"1\">January</option>"; }
-if ($monthvar==2) { $birthdate_month_select = "$birthdate_month_select<option value=\"2\" selected>February</option>"; } else { $birthdate_month_select = "$birthdate_month_select<option value=\"2\">February</option>"; }
-if ($monthvar==3) { $birthdate_month_select = "$birthdate_month_select<option value=\"3\" selected>March</option>"; } else { $birthdate_month_select = "$birthdate_month_select<option value=\"3\">March</option>"; }
-if ($monthvar==4) { $birthdate_month_select = "$birthdate_month_select<option value=\"4\" selected>April</option>"; } else { $birthdate_month_select = "$birthdate_month_select<option value=\"4\">April</option>"; }
-if ($monthvar==5) { $birthdate_month_select = "$birthdate_month_select<option value=\"5\" selected>May</option>"; } else { $birthdate_month_select = "$birthdate_month_select<option value=\"5\">May</option>"; }
-if ($monthvar==6) { $birthdate_month_select = "$birthdate_month_select<option value=\"6\" selected>June</option>"; } else { $birthdate_month_select = "$birthdate_month_select<option value=\"6\">June</option>"; }
-if ($monthvar==7) { $birthdate_month_select = "$birthdate_month_select<option value=\"7\" selected>July</option>"; } else { $birthdate_month_select = "$birthdate_month_select<option value=\"7\">July</option>"; }
-if ($monthvar==8) { $birthdate_month_select = "$birthdate_month_select<option value=\"8\" selected>August</option>"; } else { $birthdate_month_select = "$birthdate_month_select<option value=\"8\">August</option>"; }
-if ($monthvar==9) { $birthdate_month_select = "$birthdate_month_select<option value=\"9\" selected>September</option>"; } else { $birthdate_month_select = "$birthdate_month_select<option value=\"9\">September</option>"; }
-if ($monthvar==10) { $birthdate_month_select = "$birthdate_month_select<option value=\"10\" selected>October</option>"; } else { $birthdate_month_select = "$birthdate_month_select<option value=\"10\">October</option>"; }
-if ($monthvar==11) { $birthdate_month_select = "$birthdate_month_select<option value=\"11\" selected>November</option>"; } else { $birthdate_month_select = "$birthdate_month_select<option value=\"11\">November</option>"; }
-if ($monthvar==12) { $birthdate_month_select = "$birthdate_month_select<option value=\"12\" selected>Dezember</option>"; } else { $birthdate_month_select = "$birthdate_month_select<option value=\"12\">Dezember</option>"; }
+if ($monthvar==0) { $birthdate_month_select = "$birthdate_month_select<option value=\"0\" selected=\"selected\">---</option>"; } else { $birthdate_month_select = "$birthdate_month_select<option value=\"0\">---</option>"; }
+if ($monthvar==1) { $birthdate_month_select = "$birthdate_month_select<option value=\"1\" selected=\"selected\">January</option>"; } else { $birthdate_month_select = "$birthdate_month_select<option value=\"1\">January</option>"; }
+if ($monthvar==2) { $birthdate_month_select = "$birthdate_month_select<option value=\"2\" selected=\"selected\">February</option>"; } else { $birthdate_month_select = "$birthdate_month_select<option value=\"2\">February</option>"; }
+if ($monthvar==3) { $birthdate_month_select = "$birthdate_month_select<option value=\"3\" selected=\"selected\">March</option>"; } else { $birthdate_month_select = "$birthdate_month_select<option value=\"3\">March</option>"; }
+if ($monthvar==4) { $birthdate_month_select = "$birthdate_month_select<option value=\"4\" selected=\"selected\">April</option>"; } else { $birthdate_month_select = "$birthdate_month_select<option value=\"4\">April</option>"; }
+if ($monthvar==5) { $birthdate_month_select = "$birthdate_month_select<option value=\"5\" selected=\"selected\">May</option>"; } else { $birthdate_month_select = "$birthdate_month_select<option value=\"5\">May</option>"; }
+if ($monthvar==6) { $birthdate_month_select = "$birthdate_month_select<option value=\"6\" selected=\"selected\">June</option>"; } else { $birthdate_month_select = "$birthdate_month_select<option value=\"6\">June</option>"; }
+if ($monthvar==7) { $birthdate_month_select = "$birthdate_month_select<option value=\"7\" selected=\"selected\">July</option>"; } else { $birthdate_month_select = "$birthdate_month_select<option value=\"7\">July</option>"; }
+if ($monthvar==8) { $birthdate_month_select = "$birthdate_month_select<option value=\"8\" selected=\"selected\">August</option>"; } else { $birthdate_month_select = "$birthdate_month_select<option value=\"8\">August</option>"; }
+if ($monthvar==9) { $birthdate_month_select = "$birthdate_month_select<option value=\"9\" selected=\"selected\">September</option>"; } else { $birthdate_month_select = "$birthdate_month_select<option value=\"9\">September</option>"; }
+if ($monthvar==10) { $birthdate_month_select = "$birthdate_month_select<option value=\"10\" selected=\"selected\">October</option>"; } else { $birthdate_month_select = "$birthdate_month_select<option value=\"10\">October</option>"; }
+if ($monthvar==11) { $birthdate_month_select = "$birthdate_month_select<option value=\"11\" selected=\"selected\">November</option>"; } else { $birthdate_month_select = "$birthdate_month_select<option value=\"11\">November</option>"; }
+if ($monthvar==12) { $birthdate_month_select = "$birthdate_month_select<option value=\"12\" selected=\"selected\">Dezember</option>"; } else { $birthdate_month_select = "$birthdate_month_select<option value=\"12\">Dezember</option>"; }
 $content = $content.'<tr><td colspan="2"><a href="{LINK_OPTIONS}">{LANG_BACK_TO_OPTIONS}</a><br /><br /></td></tr>';
 $content = $content.'<tr><td class="left">{LANG_NICK}</td><td class="right">'.$user->get_nick($user_id).'</td></tr>';
 $content = $content.'<tr><td>{LANG_JID}</td><td>'.$user->get_jid($user_id).'</td></tr>';
@@ -85,7 +87,7 @@ $content = $content.'<tr><td valign="top">{LANG_FAVORITE_FILM}</td><td><input ty
 $content = $content.'<tr><td valign="top">{LANG_FAVORITE_SERIES}</td><td><input type="text" name="favorite_series" value="'.$user_details['FAVORITE_SERIES'].'" /></td></tr>';
 $content = $content.'<tr><td valign="top">{LANG_FAVORITE_MUSIK}</td><td><input type="text" name="favorite_musik" value="'.$user_details['FAVORITE_MUSIK'].'" /></td></tr>';
 $content = $content.'<tr><td valign="top">{LANG_FAVORITE_BOOK}</td><td><input type="text" name="favorite_book" value="'.$user_details['FAVORITE_BOOK'].'" /></td></tr>';
-$content = $content.'<tr><td>&nbsp;</td><td><br /><input class="submit" value="{LANG_CHANGE}" name="submit" type="submit" /></td></tr>';
+$content = $content.'<tr><td>&nbsp;</td><td><br /><input class="submit" value="{LANG_CHANGE}" name="submit" type="submit" /></td></tr></table></form>';
 $template->replace('FULLPAGE_TEXT',$content);
 $template->replace('LOGIN','{LANG_LOGOUT}');
 $template->replace('REGISTER','{LANG_OPTIONS}');

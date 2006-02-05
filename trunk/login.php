@@ -10,7 +10,7 @@ if (in_array($_GET['lang'],$config['languages'])) {
 $template = new jforg_template();
 $user = new jforg_user();
 $template->set_path('design');
-$template->set_frame('formpage','green');
+$template->set_frame('fullpage','green');
 $template->hover_on('green');
 session_start();
 if ($user->login($_SESSION['nick'],$_SESSION['passwd'])) {
@@ -37,12 +37,13 @@ if ($_POST['submit']!="") {
         $pw_coment = "<em>{LANG_PWUSER}</em>";
     }
 }
-$content='<tr><td class="left">{LANG_NICK}</td><td class="right">'.$pw_coment.'<input value="'.$_POST['nick'].'" type="text" name="nick" /></td>
+$content='<form action="{FORM_ACTION}" method="post">
+                <table cellpadding="0" cellspacing="2"><tr><td class="left">{LANG_NICK}</td><td class="right">'.$pw_coment.'<input value="'.$_POST['nick'].'" type="text" name="nick" /></td>
     </tr>
     <tr>
     <td>{LANG_PW}</td><td><input type="password" name="passwd" /></td>
     </tr>
-    <tr><td>&nbsp;</td><td><br /><input class="submit" value="{LANG_LOGIN}" name="submit" type="submit" /></td></tr>';
+    <tr><td>&nbsp;</td><td><br /><input class="submit" value="{LANG_LOGIN}" name="submit" type="submit" /></td></tr></table></form>';
 $template->replace('FULLPAGE_TEXT',$content);
 $template->replace('LOGIN','{LANG_LOGIN}');
 $template->replace('REGISTER','{LANG_REGISTER}');
