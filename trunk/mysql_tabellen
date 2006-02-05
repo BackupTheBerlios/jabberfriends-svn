@@ -131,6 +131,10 @@ INSERT INTO `language` VALUES ('YOUR_FAVORITES', 'Deine Lieblingsdinge', 'Your f
 INSERT INTO `language` VALUES ('YOUR_COMPUTER', 'Dein Computer', 'Your Computer');
 INSERT INTO `language` VALUES ('ABOUT_YOU', 'Über dich', 'About you');
 INSERT INTO `language` VALUES ('BACK_TO_OPTIONS', 'Zurück zu den Optionen', 'Back to options');
+INSERT INTO `language` VALUES ('LAST_MEMBERS', 'Die neusten Mitglieder', 'The lastes members');
+INSERT INTO `language` VALUES ('SEARCH', 'Suche', 'Search');
+INSERT INTO `language` VALUES ('MATCHES_FOR', 'Treffer für', 'Matches for');
+INSERT INTO `language` VALUES ('3CHAR', 'Die Suchanfrage muss länger als drei Zeichen sein', 'The query must be longer than three characters');
 --
 --
 -- Setze Inhalt fuer text

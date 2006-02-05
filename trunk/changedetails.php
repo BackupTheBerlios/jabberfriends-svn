@@ -21,7 +21,7 @@ if (!$user->login($_SESSION['nick'],$_SESSION['passwd'])) {
 $content = '<form action="{FORM_ACTION}" method="post">
                 <table cellpadding="0" cellspacing="2">';
 if ($_POST['submit']!="") {
-    $_POST['birthdate'] = $birthdate_year.'-'.$birthdate_month.'-'.$birthdate_date;
+    $_POST['birthdate'] = $_POST['birthdate_year'].'-'.$_POST['birthdate_month'].'-'.$_POST['birthdate_date'];
     $user->set_details($user_id,$_POST);
 }
 $user_details = $user->get_details($user_id);

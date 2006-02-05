@@ -64,6 +64,7 @@ class jforg_user {
         }
     }
     function set_details($id,$array) {
+        $array = str_replace("'","''",$array);
         $sql = 'UPDATE `user_details` SET
         REALNAME = \''.$array['realname'].'\',
         BIRTHDATE = \''.$array['birthdate'].'\',
