@@ -1,7 +1,7 @@
 <?php
 class jforg_tags{
 	var $connection;
-	var $tag_id;
+	//var $tag_id;
 
  function jforg_tags() {
         include('includes/config.php');
@@ -18,47 +18,44 @@ class jforg_tags{
 
     function get_user_tags($user_id) {
 		$user_tags 	= 	"SELECT * FROM `user_tags` WHERE `user_id` = '$user_id';";
-		$query		=	@mysql_query($user_tags->connection);
-		
-		if ($query) {
+		$query		=	@mysql_query($user_tags,$this->connection);
+		if (!$query) {
             die("jforg_tags.get_user_tags: Die SQL Abfrage ist fehlgeschlagen - $user_tags");
 		}
 		return mysql_fetch_array($query,MYSQL_NUM);		
 	}
   
     function add_tag($tag,$user_id) {
- 		$tag_exists				=	"SELECT * FROM `tags`WHERE `tag` = '$tag';";
-		$query					=	@mysql_query($tag_exists->connection);
+ 		$tag_id					=	"SELECT `id` FROM `tags`WHERE `tag` = '$tag';";
+		$query					=	@mysql_query($tag_exists,$this->connection);
+		$result 				= 	($query);
 
-		if($query){
-			$tag_id				=	"SELECT `id` FROM `tags` WHERE `tag` = '$tag';";
-			$query				=	@mysql_query($tag_id->connection);
-			if (!$query) {
-            	die("jforg_tags.add_tags: Die SQL Abfrage ist fehlgeschlagen - $tag_id");
-			}
-
-			$add_tag_to_user 	= 	"INSERT INTO `user_tags` ( `user_id` , `tag_id` ) VALUES ('$user_id', '$tag_id');";
-			$query				=	@mysql_query($add_tag_to_user->connection);
-			if (!$query) {
-            	die("jforg_tags.add_tags: Die SQL Insert ist fehlgeschlagen - $add_tag_to_user");
+		if($result > 0){
+			//Test if the user has this tag already set
+           	$user_has_tag	=	"SELECT '$user_id' FROM `tags`WHERE `tag` = '$tag';";
+			$query					=	@mysql_query($user_has_tag,$this->connection);
+			$exists = ($query);
+			//If the user hasn't this tag already set, so set it now.
+			if($exists > 0){
+					$add_tag_to_user 	= 	"INSERT INTO `user_tags` ( `user_id` , `tag_id` ) VALUES ('$user_id', '$tag_id');";
+					$query				=	@mysql_query($add_tag_to_user,$this->connection);
+					if (!$query) {
+						die("jforg_tags.add_tags: Der SQL Insert ist fehlgeschlagen - $add_tag_to_user");
+					}
 			}
 		}
 
-		if(!$query){
+		if($result == 0){
 			$add_tag			=	"INSERT INTO `tags` ( `id` , `tag` ) VALUES ('', '$tag');";
-			$query				=	@mysql_query($add_tag->connection);
+			$query				=	@mysql_query($add_tag,$this->connection);
 			if (!$query) {
-            	die("jforg_tags.add_tags: Die SQL Insert ist fehlgeschlagen - $add_tag");
+         	die("jforg_tags.add_tags: Die SQL Insert ist fehlgeschlagen - $add_tag");
 			}		
-	
-			$tag_id				=	"SELECT `id` FROM `tags` WHERE `tag` = '$tag';";
-			$query				=	@mysql_query($tag_id->connection);
-			if (!$query) {
-            	die("jforg_tags.add_tags: Die SQL Abfrage ist fehlgeschlagen - $tag_id");
-			}
 
+			$tag_id				=	mysql_insert_id();
 			$add_tag_to_user 	= 	"INSERT INTO `user_tags` ( `user_id` , `tag_id` ) VALUES ('$user_id', '$tag_id');";
-			$query				=	@mysql_query($add_tag_to_user->connection);
+			$query				=	@mysql_query($add_tag_to_user,$this->connection);
+    		
 			if (!$query) {
             	die("jforg_tags.add_tags: Die SQL Insert ist fehlgeschlagen - $add_tag_to_user");
 			}
@@ -67,9 +64,60 @@ class jforg_tags{
 	}
 
     function remove_tag($tag,$user_id){
-
-    }
+		if(gettype($tag) == "integer"){
+			$remove_tag	= 	"DELETE FROM `user_tags` WHERE `user_id` = '$user_id' AND `tag_id` = '$tag';";
+			$query		=	@mysql_query($remove_tag,$this->connection);
+    		
+			if (!$query) {
+            	die("jforg_tags.remove_tag: Das SQL DELETE ist fehlgeschlagen - $remove_tag");
+			}
+		}
+		if(gettype($tag) == "string"){
+			$get_tag_id			=	"SELECT `id` FROM `tags`WHERE `tag` = '$tag';";
+			$query				=	@mysql_query($get_tag_id,$this->connection);
+			$result				=	@mysql_fetch_array($query);
+			$tag_id				=	$result[0];
+			echo $tag_id;
+			$remove_tag	= 	"DELETE FROM `user_tags` WHERE `user_id` = '$user_id' AND `tag_id` = '$tag_id';";
+			$query		=	@mysql_query($remove_tag,$this->connection);
+    		
+			if (!$query) {
+            	die("jforg_tags.remove_tag: Das SQL DELETE ist fehlgeschlagen - $remove_tag");
+			}
+		}
+	}
+	
     function list_user($tag){
-    }
+		
+		if(is_int($tag)){
+			$find_users	= 	"SELECT `user_id` FROM `user_tags` WHERE `tag_id` = '$tag';";
+			$query		=	@mysql_query($find_users,$this->connection);  		
+			if (!$query) {
+            	die("jforg_tags.list_user: Das SQL SELECT ist fehlgeschlagen - $query");
+			}
+			$test = 1;
+			while ($test != 4){
+			$array = mysql_fetch_array($query, MYSQL_NUM);
+			$test++;
+			print_r($array);}                                                                
+			return $array;
+			//return mysql_fetch_array($query, MYSQL_NUM);
+		}
+/*		if(gettype($tag) == "string"){
+			$get_tag_id		=	@mysql_query("SELECT `id` FROM `tags`WHERE `tag` = '$tag';",$this->connection);
+			$tug_id_result	=	@mysql_fetch_array($get_tag_id);
+			$tag_id			=	(int) $tug_id_result[0];
+			
+			$find_users	= 	"SELECT `user_id` FROM `user_tags` WHERE `tag_id` = '$tag_id';";
+			$query		=	@mysql_query($find_users,$this->connection);
+    		
+			if (!$query) {
+            	die("jforg_tags.remove_tag: Das SQL SELCT ist fehlgeschlagen - $query");
+			}
+			
+			return mysql_fetch_array($query, MYSQL_NUM);
+		}
+		*/
+    }                                                              
 }
 ?>
