@@ -33,6 +33,7 @@ $content = $content.'<br /><br /><b>{LANG_LAST_MEMBERS}</b><ol>';
 $array = $usersearch->search_last(5);
 foreach($array as $row) {
     $details = $user->get_details($row['id']);
+    $details = array_map('htmlentities',$details);
     $details_match = "";
     $details_counter = 1;
     if($details['REALNAME']!="") {

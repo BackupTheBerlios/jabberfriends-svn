@@ -29,6 +29,7 @@ if ($user->login($_SESSION['nick'],$_SESSION['passwd'])) {
 }
 $content = '<table cellpadding="0" cellspacing="2">';
 $user_details = $user->get_details($user_id);
+$user_details = array_map('htmlentities',$user_details);
 $content = $content.'<tr><td valign="top">{LANG_NICK}</td><td valign="top">'.$user->get_nick($user_id).'</td></tr>';
 $content = $content.'<tr><td valign="top">{LANG_JID}</td><td valign="top">'.$user->get_jid($user_id).'</td></tr>';
 $content = $content.'<tr><td colspan="2"><br /><b>{LANG_ABOUT} '.$user->get_nick($user_id).'</b></td></tr>';
