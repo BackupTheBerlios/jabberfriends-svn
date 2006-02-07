@@ -31,36 +31,40 @@ class jforg_tags{
         }
 		return $tagids;		
 	}
-  
+	//This function add a tag to an user.
     function add_tag($tag,$user_id) {
+		//TODO: A method which turn mixed sized letters to small letters, so all tags has only small letters
  		$tag_id					=	"SELECT `id` FROM `tags`WHERE `tag` = '$tag';";
-		$query					=	@mysql_query($tag_exists,$this->connection);
-		$result 				= 	($query);
-
+		$query					=	@mysql_query($tag_id,$this->connection);
+		$result					= 	mysql_num_rows($query);
+		
 		if($result > 0){
 			//Test if the user has this tag already set
-           	$user_has_tag	=	"SELECT '$user_id' FROM `tags`WHERE `tag` = '$tag';";
-			$query					=	@mysql_query($user_has_tag,$this->connection);
-			$exists = ($query);
+           	$tag_id2 = $this->get_tag_id($tag);
+			$user_has_tag	=	"SELECT '$user_id' FROM `user_tags`WHERE `tag_id` = '$tag_id2';";
+			$query2			=	mysql_query($user_has_tag,$this->connection);
+			$exists 		= 	mysql_num_rows($query2);
 			//If the user hasn't this tag already set, so set it now.
-			if($exists > 0){
-					$add_tag_to_user 	= 	"INSERT INTO `user_tags` ( `user_id` , `tag_id` ) VALUES ('$user_id', '$tag_id');";
+			echo $exists;
+			if($exists == 0){
+					echo " drin 1 ";
+					
+					$add_tag_to_user 	= 	"INSERT INTO `user_tags` ( `user_id` , `tag_id` ) VALUES ('$user_id', '$tag_id2');";
 					$query				=	@mysql_query($add_tag_to_user,$this->connection);
 					if (!$query) {
 						die("jforg_tags.add_tags: Der SQL Insert ist fehlgeschlagen - $add_tag_to_user");
 					}
 			}
-		}
-
-		if($result == 0){
+		}else{
+				echo " drin ";
 			$add_tag			=	"INSERT INTO `tags` ( `id` , `tag` ) VALUES ('', '$tag');";
 			$query				=	@mysql_query($add_tag,$this->connection);
 			if (!$query) {
          	die("jforg_tags.add_tags: Die SQL Insert ist fehlgeschlagen - $add_tag");
 			}		
 
-			$tag_id				=	mysql_insert_id();
-			$add_tag_to_user 	= 	"INSERT INTO `user_tags` ( `user_id` , `tag_id` ) VALUES ('$user_id', '$tag_id');";
+			$tagid				=	mysql_insert_id();
+			$add_tag_to_user 	= 	"INSERT INTO `user_tags` ( `user_id` , `tag_id` ) VALUES ('$user_id', '$tagid');";
 			$query				=	@mysql_query($add_tag_to_user,$this->connection);
     		
 			if (!$query) {
@@ -69,7 +73,7 @@ class jforg_tags{
 
 		}	
 	}
-
+	//This function remove a tag from an user.
     function remove_tag($tag,$user_id){
 		if(gettype($tag) == "integer"){
 			$remove_tag	= 	"DELETE FROM `user_tags` WHERE `user_id` = '$user_id' AND `tag_id` = '$tag';";
@@ -93,7 +97,7 @@ class jforg_tags{
 			}
 		}
 	}
-	
+	//This function return an array, where are listed all users, which have the selected tag
     function list_user($tag){
 		
 		if(is_int($tag)){
@@ -125,7 +129,8 @@ class jforg_tags{
 		return $userids;
 	}
 	
-	function get_tag_id($tag_string){
+	// This is a simply function which return the tag_id from a tag, which is a string
+	function get_tag_id($tag_string){                         
 			
 			if(is_string($tag_string)){
 				$get_tag_id		=	@mysql_query("SELECT `id` FROM `tags`WHERE `tag` = '$tag_string';",$this->connection);
