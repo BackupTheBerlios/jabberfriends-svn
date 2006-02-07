@@ -98,7 +98,7 @@ class jforg_tags{
 			//	print_r ($row);
                 $userids[] = $row['user_id']; 
 		}
-		elseif(is_string($tag)){
+		}elseif(is_string($tag)){
             $get_tag_id		=	@mysql_query("SELECT `id` FROM `tags`WHERE `tag` = '$tag';",$this->connection);
 			$tag_id_result	=	@mysql_fetch_array($get_tag_id);
 			$tag_id			=	(int) $tag_id_result[0];
