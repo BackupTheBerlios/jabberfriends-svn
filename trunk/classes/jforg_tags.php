@@ -26,14 +26,13 @@ class jforg_tags{
             die("jforg_tags.get_user_tags: Die SQL Abfrage ist fehlgeschlagen - $user_tags");
 		}
 		while ($row = mysql_fetch_assoc($query)) {
-			//	print_r ($row);
                 $tagids[] = $row['tag_id']; 
         }
 		return $tagids;		
 	}
 	//This function add a tag to an user.
     function add_tag($tag,$user_id) {
-		//TODO: A method which turn mixed sized letters to small letters, so all tags has only small letters
+		$tag					=	strtolower($tag); //Turn all the letters to small letters.
  		$tag_id					=	"SELECT `id` FROM `tags`WHERE `tag` = '$tag';";
 		$query					=	@mysql_query($tag_id,$this->connection);
 		$result					= 	mysql_num_rows($query);
@@ -45,10 +44,7 @@ class jforg_tags{
 			$query2			=	mysql_query($user_has_tag,$this->connection);
 			$exists 		= 	mysql_num_rows($query2);
 			//If the user hasn't this tag already set, so set it now.
-			echo $exists;
 			if($exists == 0){
-					echo " drin 1 ";
-					
 					$add_tag_to_user 	= 	"INSERT INTO `user_tags` ( `user_id` , `tag_id` ) VALUES ('$user_id', '$tag_id2');";
 					$query				=	@mysql_query($add_tag_to_user,$this->connection);
 					if (!$query) {
@@ -56,7 +52,6 @@ class jforg_tags{
 					}
 			}
 		}else{
-				echo " drin ";
 			$add_tag			=	"INSERT INTO `tags` ( `id` , `tag` ) VALUES ('', '$tag');";
 			$query				=	@mysql_query($add_tag,$this->connection);
 			if (!$query) {
@@ -88,9 +83,8 @@ class jforg_tags{
 			$query				=	@mysql_query($get_tag_id,$this->connection);
 			$result				=	@mysql_fetch_array($query);
 			$tag_id				=	$result[0];
-			echo $tag_id;
-			$remove_tag	= 	"DELETE FROM `user_tags` WHERE `user_id` = '$user_id' AND `tag_id` = '$tag_id';";
-			$query		=	@mysql_query($remove_tag,$this->connection);
+			$remove_tag			= 	"DELETE FROM `user_tags` WHERE `user_id` = '$user_id' AND `tag_id` = '$tag_id';";
+			$query				=	@mysql_query($remove_tag,$this->connection);
     		
 			if (!$query) {
             	die("jforg_tags.remove_tag: Das SQL DELETE ist fehlgeschlagen - $remove_tag");
@@ -107,7 +101,6 @@ class jforg_tags{
             	die("jforg_tags.list_user: Das SQL SELECT ist fehlgeschlagen - $query");
 			}
 			while ($row = mysql_fetch_assoc($query)) {
-			//	print_r ($row);
                 $userids[] = $row['user_id']; 
 			}
 		}	elseif(is_string($tag)){
@@ -120,7 +113,6 @@ class jforg_tags{
             	die("jforg_tags.list_user: Das SQL SELCT ist fehlgeschlagen - $query");
 			}
 			while ($row = mysql_fetch_assoc($query)) {
-			//	print_r ($row);
                 $userids[] = $row['user_id']; 
             }
 		} else {
