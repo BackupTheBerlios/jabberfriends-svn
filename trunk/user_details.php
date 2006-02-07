@@ -30,11 +30,17 @@ if ($user->login($_SESSION['nick'],$_SESSION['passwd'])) {
 $content = '<table cellpadding="0" cellspacing="2">';
 $user_details = $user->get_details($user_id);
 $user_details = array_map('htmlentities',$user_details);
+if ($user_details['BIRTHDATE']!=0) {
+    $var = explode('-',$user_details['BIRTHDATE']);
+    $bdate=date('d. F Y', mktime(0, 0, 0, $var[1], $var[2], $var[0]));
+} else {
+    $bdate = "";
+}
 $content = $content.'<tr><td valign="top">{LANG_NICK}</td><td valign="top">'.$user->get_nick($user_id).'</td></tr>';
 $content = $content.'<tr><td valign="top">{LANG_JID}</td><td valign="top">'.$user->get_jid($user_id).'</td></tr>';
 $content = $content.'<tr><td colspan="2"><br /><b>{LANG_ABOUT} '.$user->get_nick($user_id).'</b></td></tr>';
 $content = $content.'<tr><td valign="top" class="left">{LANG_REALNAME}</td><td valign="top" class="right">'.$user_details['REALNAME'].'</td></tr>';
-$content = $content.'<tr><td valign="top">{LANG_BIRTHDATE}</td><td valign="top">'.$user_details['BIRTHDATE'].'</td></tr>';
+$content = $content.'<tr><td valign="top">{LANG_BIRTHDATE}</td><td valign="top">'.$bdate.'</td></tr>';
 $content = $content.'<tr><td valign="top">{LANG_COUNTRY}</td><td valign="top">'.$user_details['COUNTRY'].'</td></tr>';
 $content = $content.'<tr><td valign="top">{LANG_CITY}</td><td valign="top">'.$user_details['CITY'].'</td></tr>';
 $content = $content.'<tr><td valign="top">{LANG_ORIGINAL_FROM}</td><td valign="top">'.$user_details['ORIGINAL_FROM'].'</td></tr>';

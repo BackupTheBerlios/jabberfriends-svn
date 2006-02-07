@@ -95,14 +95,18 @@ class jforg_tags{
 			if (!$query) {
             	die("jforg_tags.list_user: Das SQL SELECT ist fehlgeschlagen - $query");
 			}
-			$test = 1;
-			while ($test != 4){
-			$array = mysql_fetch_array($query, MYSQL_NUM);
-			$test++;
-			print_r($array);}                                                                
-			return $array;
-			//return mysql_fetch_array($query, MYSQL_NUM);
-		}
+			//Hi Bahtijar, das ist der richtige Syntax. mysql_fetch_assoc weis, ob er noch eine zeile hat
+			while ($row = mysql_fetch_assoc($query)) {
+                            //Test nochmal, ich bin mir nicht 100% sicher, ob da $row[1], $row[0] oder $row['user_id'] ist
+                            //Ich muss in ein paar minuten in die Schule...
+                            $userids[] = $row[0]; 
+                        }
+                //Wenn es is_int gibt, gibt es auch is_string ;-)
+		} else(is_string($tag) {
+                    //Hier die String sachen rein
+                } else {
+                    die("$tag is not an int or a string")
+                }
 /*		if(gettype($tag) == "string"){
 			$get_tag_id		=	@mysql_query("SELECT `id` FROM `tags`WHERE `tag` = '$tag';",$this->connection);
 			$tug_id_result	=	@mysql_fetch_array($get_tag_id);
