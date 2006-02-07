@@ -1,27 +1,35 @@
 <?php
 class jforg_tags{
 	var $connection;
-
+	//This is the constructor of this class, it connects to the DB. 
 	function jforg_tags() {
         include('includes/config.php');
-        $this->connection = @mysql_connect($config['mysql_server'],$config['mysql_user'],$config['mysql_password']);
-        if (!$this->connection) {
-            die("jforg_template: Die Verbindung zur Datenbank ist fehlgeschlagen");
+        
+		$this->connection = @mysql_connect($config['mysql_server'],$config['mysql_user'],$config['mysql_password']);
+        
+		if (!$this->connection) {
+            die("jforg_tags: Die Verbindung zur Datenbank ist fehlgeschlagen");
         }
-        $select = @mysql_select_db($config['mysql_table'],$this->connection);
-        if (!$select) {
-            die("jforg_template: Die Auswahl der Tabelle ist fehlgeschlagen");
+        
+		$select = @mysql_select_db($config['mysql_table'],$this->connection);
+        
+		if (!$select) {
+            die("jforg_tags: Die Auswahl der Tabelle ist fehlgeschlagen");
         }
     }
 
-
+	//This function returns an array with the tag_id's of an user
     function get_user_tags($user_id) {
 		$user_tags 	= 	"SELECT * FROM `user_tags` WHERE `user_id` = '$user_id';";
 		$query		=	@mysql_query($user_tags,$this->connection);
 		if (!$query) {
             die("jforg_tags.get_user_tags: Die SQL Abfrage ist fehlgeschlagen - $user_tags");
 		}
-		return mysql_fetch_array($query,MYSQL_NUM);		
+		while ($row = mysql_fetch_assoc($query)) {
+			//	print_r ($row);
+                $tagids[] = $row['tag_id']; 
+        }
+		return $tagids;		
 	}
   
     function add_tag($tag,$user_id) {
@@ -97,11 +105,9 @@ class jforg_tags{
 			while ($row = mysql_fetch_assoc($query)) {
 			//	print_r ($row);
                 $userids[] = $row['user_id']; 
-		}
-		}elseif(is_string($tag)){
-            $get_tag_id		=	@mysql_query("SELECT `id` FROM `tags`WHERE `tag` = '$tag';",$this->connection);
-			$tag_id_result	=	@mysql_fetch_array($get_tag_id);
-			$tag_id			=	(int) $tag_id_result[0];
+			}
+		}	elseif(is_string($tag)){
+            $tag_id = $this->get_tag_id($tag);
 			
 			$find_users	= 	"SELECT `user_id` FROM `user_tags` WHERE `tag_id` = '$tag_id';";
 			$query		=	@mysql_query($find_users,$this->connection);
@@ -118,5 +124,24 @@ class jforg_tags{
         }
 		return $userids;
 	}
+	
+	function get_tag_id($tag_string){
+			
+			if(is_string($tag_string)){
+				$get_tag_id		=	@mysql_query("SELECT `id` FROM `tags`WHERE `tag` = '$tag_string';",$this->connection);
+				$tag_id_result	=	@mysql_fetch_array($get_tag_id);
+				$tag_id			=	(int) $tag_id_result[0];
+				
+				if (!$tag_id_result	) {
+						die("jforg_tags.get_tag_id: Das SQL SELCT ist fehlgeschlagen - $tag_id_result");
+				}
+				
+				return $tag_id;
+			}else{
+				$vartype = gettype($tag_string);
+				die("jforg_tags.get_tag_id: \$tag_string muss ein String sein, es wurde aber ein  $vartype uebrgeben.");
+			}
+	} 
+
 }
 ?>
