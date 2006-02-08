@@ -1,0 +1,33 @@
+-- phpMyAdmin SQL Dump
+-- version 2.7.0-pl2
+-- http://www.phpmyadmin.net
+-- 
+-- Host: localhost
+-- Erstellungszeit: 08. Februar 2006 um 15:04
+-- Server Version: 4.1.12
+-- PHP-Version: 5.1.2
+-- 
+-- Datenbank: `jabberfriends`
+-- 
+
+-- --------------------------------------------------------
+
+-- 
+-- Tabellenstruktur für Tabelle `user_login`
+-- 
+
+CREATE TABLE `user_login` (
+  `id` int(11) NOT NULL auto_increment,
+  `jid` varchar(255) collate utf8_unicode_ci NOT NULL default '',
+  `nick` varchar(20) collate utf8_unicode_ci NOT NULL default '',
+  `passwd` varchar(255) collate utf8_unicode_ci NOT NULL default '',
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=3 ;
+
+-- 
+-- Daten für Tabelle `user_login`
+-- 
+
+INSERT INTO `user_login` VALUES (1, 'test@test.test', 'Test', 'teLk8ZyOSsab2');
+INSERT INTO `user_login` VALUES (2, 'hanf@hanf.de', 'hanf', 'habUW68ZYhLts');
+

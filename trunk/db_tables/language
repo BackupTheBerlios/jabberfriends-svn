@@ -1,81 +1,32 @@
--- In dieser Datei sollen alle Tabellen für die Datenbank verzeichnet werden
---
---
--- Erzeuge Tabellen
---
--- Erzeuge Tabelle 'language'
+-- phpMyAdmin SQL Dump
+-- version 2.7.0-pl2
+-- http://www.phpmyadmin.net
+-- 
+-- Host: localhost
+-- Erstellungszeit: 08. Februar 2006 um 15:08
+-- Server Version: 4.1.12
+-- PHP-Version: 5.1.2
+-- 
+-- Datenbank: `test2`
+-- 
+
+-- --------------------------------------------------------
+
+-- 
+-- Tabellenstruktur fÃ¼r Tabelle `language`
+-- 
+
 CREATE TABLE `language` (
   `name` varchar(255) collate utf8_unicode_ci NOT NULL default '',
   `de` varchar(255) collate utf8_unicode_ci NOT NULL default '',
   `en` varchar(255) collate utf8_unicode_ci NOT NULL default '',
   PRIMARY KEY  (`name`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
---
---
--- Erzeuge Tabelle 'user_login'
---
-CREATE TABLE `user_login` (
-  `id` int(11) NOT NULL auto_increment,
-  `jid` varchar(255) collate utf8_unicode_ci NOT NULL default '',
-  `nick` varchar(20) collate utf8_unicode_ci NOT NULL default '',
-  `passwd` varchar(255) collate utf8_unicode_ci NOT NULL default '',
-  PRIMARY KEY  (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
---
---
--- Erzeuge Tabelle 'user_details'
---
-CREATE TABLE `user_details` (
-  `id` int(11) NOT NULL default '0',
-  `REALNAME` varchar(255) collate utf8_unicode_ci NOT NULL default '',
-  `BIRTHDATE` date NOT NULL default '0000-00-00',
-  `COUNTRY` varchar(255) collate utf8_unicode_ci NOT NULL default '',
-  `CITY` varchar(255) collate utf8_unicode_ci NOT NULL default '',
-  `ORIGINAL_FROM` varchar(255) collate utf8_unicode_ci NOT NULL default '',
-  `LANGUAGES` varchar(255) collate utf8_unicode_ci NOT NULL default '',
-  `HOBBYS` varchar(255) collate utf8_unicode_ci NOT NULL default '',
-  `COMPUTER` varchar(255) collate utf8_unicode_ci NOT NULL default '',
-  `COMPUTER_OS` varchar(255) collate utf8_unicode_ci NOT NULL default '',
-  `GEEKCODE` text collate utf8_unicode_ci NOT NULL,
-  `PUBLICKEY` text collate utf8_unicode_ci NOT NULL,
-  `FAVORITE_FILM` varchar(255) collate utf8_unicode_ci NOT NULL default '',
-  `FAVORITE_BOOK` varchar(255) collate utf8_unicode_ci NOT NULL default '',
-  `FAVORITE_MUSIK` varchar(255) collate utf8_unicode_ci NOT NULL default '',
-  `FAVORITE_SERIES` varchar(255) collate utf8_unicode_ci NOT NULL default ''
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
---
---
--- Erzeuge Tabelle 'tags'
---
-CREATE TABLE `tags` (
-  `id` int(11) NOT NULL auto_increment,
-  `tag` varchar(255) collate utf8_unicode_ci NOT NULL default '',
-  PRIMARY KEY  (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
---
---
--- Erzeuge Tabelle 'user_tags'
---
-CREATE TABLE `user_tags` (
-  `user_id` int(11) NOT NULL default '0',
-  `tag_id` int(11) NOT NULL default '0'
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
---
---
--- Erzeuge Tabelle 'text'
---
-CREATE TABLE `text` (
-  `id` int(11) NOT NULL auto_increment,
-  `de` text collate utf8_unicode_ci NOT NULL,
-  `en` text collate utf8_unicode_ci NOT NULL,
-  PRIMARY KEY  (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
---
---
---
--- Setze Inhalt
--- Setze Inhalt fuer 'languages'
---
+
+-- 
+-- Daten fÃ¼r Tabelle `language`
+-- 
+
 INSERT INTO `language` VALUES ('STARTPAGE', 'Startseite', 'Startpage');
 INSERT INTO `language` VALUES ('WIKI', 'Wiki', 'Wiki');
 INSERT INTO `language` VALUES ('PORTAL', 'Portal', 'Portal');
@@ -102,7 +53,7 @@ INSERT INTO `language` VALUES ('FAVORITE_MUSIK', 'Lieblingsmusik', 'Favorite mus
 INSERT INTO `language` VALUES ('NICK', 'Nick', 'Nickname');
 INSERT INTO `language` VALUES ('JID', 'Jabber ID', 'Jabber ID');
 INSERT INTO `language` VALUES ('FAVORITES', 'Lieblings Dinge von', 'Favorites of');
-INSERT INTO `language` VALUES ('ABOUT', 'Über', 'About');
+INSERT INTO `language` VALUES ('ABOUT', '', 'About');
 INSERT INTO `language` VALUES ('COMPUTER_OF', 'Computer von', 'Computer of');
 INSERT INTO `language` VALUES ('USER_PAGE_OF', 'Benutzerseite von', 'Userpage of');
 INSERT INTO `language` VALUES ('SHOW_PUBLICKEY', 'Zeige Public Key', 'Show Public Key');
@@ -114,30 +65,25 @@ INSERT INTO `language` VALUES ('MEMBERS', 'Mitglieder', 'Members');
 INSERT INTO `language` VALUES ('PW', 'Passwort', 'Password');
 INSERT INTO `language` VALUES ('PW_AGAIN', 'Passwort wiederholen', 'Repeat password');
 INSERT INTO `language` VALUES ('ONLY_LETTERS_3', 'Keine Leer- oder Sonderzeichen und mindestens drei Zeichen', 'No empty or special characters and at least three characters');
-INSERT INTO `language` VALUES ('UNACCEPT_JID', 'Ungültige Jabber ID', 'Illegal Jabber ID');
+INSERT INTO `language` VALUES ('UNACCEPT_JID', 'Ung', 'Illegal Jabber ID');
 INSERT INTO `language` VALUES ('ONLY_LETTERS_6', 'Keine Leer- oder Sonderzeichen und mindestens sechs Zeichen', 'No empty or special characters and at least six characters');
-INSERT INTO `language` VALUES ('PW_NOT_SAME', 'Die Passwörter stimmen nicht überein', 'The passwords are not the same');
+INSERT INTO `language` VALUES ('PW_NOT_SAME', 'Die Passw', 'The passwords are not the same');
 INSERT INTO `language` VALUES ('SUCCESS_REG', 'Erfolgreich registriert', 'Successfully registered');
 INSERT INTO `language` VALUES ('NICK_EXISTS', 'Nick existiert bereits', 'Nickname already exists');
 INSERT INTO `language` VALUES ('JID_EXISTS', 'Jabber ID existiert bereits', 'Jabber ID already exists');
 INSERT INTO `language` VALUES ('LOGOUT', 'Abmelden', 'Logout');
 INSERT INTO `language` VALUES ('OPTIONS', 'Optionen', 'Options');
-INSERT INTO `language` VALUES ('CHANGEPW', 'Passwort ändern', 'Change password');
-INSERT INTO `language` VALUES ('CHANGEDETAILS', 'Benutzer Details ändern', 'Change user details');
-INSERT INTO `language` VALUES ('RMACC', 'Lösche Account', 'Remove account');
+INSERT INTO `language` VALUES ('CHANGEPW', 'Passwort', 'Change password');
+INSERT INTO `language` VALUES ('CHANGEDETAILS', 'Benutzer Details', 'Change user details');
+INSERT INTO `language` VALUES ('RMACC', 'L', 'Remove account');
 INSERT INTO `language` VALUES ('CHANGETAGS', 'Tags bearbeiten', 'Change Tags');
-INSERT INTO `language` VALUES ('CHANGE', 'Ändern', 'Change');
+INSERT INTO `language` VALUES ('CHANGE', '', 'Change');
 INSERT INTO `language` VALUES ('YOUR_FAVORITES', 'Deine Lieblingsdinge', 'Your favorites');
 INSERT INTO `language` VALUES ('YOUR_COMPUTER', 'Dein Computer', 'Your Computer');
-INSERT INTO `language` VALUES ('ABOUT_YOU', 'Über dich', 'About you');
-INSERT INTO `language` VALUES ('BACK_TO_OPTIONS', 'Zurück zu den Optionen', 'Back to options');
+INSERT INTO `language` VALUES ('ABOUT_YOU', '', 'About you');
+INSERT INTO `language` VALUES ('BACK_TO_OPTIONS', 'Zur', 'Back to options');
 INSERT INTO `language` VALUES ('LAST_MEMBERS', 'Die neusten Mitglieder', 'The lastes members');
 INSERT INTO `language` VALUES ('SEARCH', 'Suche', 'Search');
-INSERT INTO `language` VALUES ('MATCHES_FOR', 'Treffer für', 'Matches for');
-INSERT INTO `language` VALUES ('3CHAR', 'Die Suchanfrage muss länger als drei Zeichen sein', 'The query must be longer than three characters');
---
---
--- Setze Inhalt fuer text
---
-INSERT INTO `text` VALUES (1, 'Du bist nun abgemeldet. Besuche uns doch bald wieder.', 'You are now logged out. Visit us again soon.');
-INSERT INTO `text` VALUES (2, 'Benutze die Suche um nach Mitgliedern zu suchen. Wenn du genauere Ergebnisse wünschst, benutze die <a href="/de/mitglieder/erweiterte_suche.htm">Erweiterte Suche</a>.', 'Use the search to look for members. If you want closer results, use the <a href="/en/members/extended_search.htm">extended search</a>.');
+INSERT INTO `language` VALUES ('MATCHES_FOR', 'Treffer f', 'Matches for');
+INSERT INTO `language` VALUES ('3CHAR', 'Die Suchanfrage muss l', 'The query must be longer than three characters');
+
