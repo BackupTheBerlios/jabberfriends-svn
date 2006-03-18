@@ -64,14 +64,88 @@ class jforg_template {
         $this->page = str_replace($name,$content,$this->page);
     }
     /**
-      * Erwartet den Namen des zu ersetzenden Stückes, und den Inhalt
+      * Erwartet den Namen des zu ersetzenden Stückes, und den Inhalt - parst im wiki code
       */
-    function replace_bb($name,$content) {
-        $content = str_replace("\n","<br />",$text);
-        $content = preg_replace('/\[b\]([^\]]*)\[\/b\]/','<b>$1</b>',$content);
-        $content = preg_replace('/\[u\]([^\]]*)\[\/u\]/','<u>$1</u>',$content);
-        $content = preg_replace('/\[i\]([^\]]*)\[\/i\]/','<i>$1</i>',$content);
+    function replace_wiki($name,$content) {
         $name = '{'.$name.'}';
+        $zeilen = explode("\n",$content);
+        $content = '';
+        $last_row_is_apostroph = false;
+        $last_row_is_list = false;
+        $last_row_is_under_list = false;
+        foreach( $zeilen as $zeile ) {
+            $next_br = true;
+            $parse_row = true;
+            //Auf Code checken
+            if ($zeile{0}==" ") {
+                $zeile = substr($zeile, 1);
+                if (!$last_row_is_apostroph) {
+                    $zeile = '<code>'.htmlentities($zeile);
+                }
+                $last_row_is_apostroph = true;
+                $parse_row = false;
+            } else {
+                if ($last_row_is_apostroph) {
+                    $zeile = '</code>'.$zeile;
+                }
+                $last_row_is_apostroph = false;
+            }
+            if ($parse_row) {
+                //Auf Liste checken
+                if (substr($zeile, 0, 2)=="**") {
+                    $zeile = substr($zeile, 2);
+                    if (!$last_row_is_under_list) {
+                        $laenge = strlen($content);
+                        $content = substr($content, 0, $laenge - 5);
+                        $zeile = '<ul><li>'.$zeile.'</li>';
+                    } else {
+                        $zeile = '<li>'.$zeile.'</li>';
+                    }
+                    $last_row_is_under_list = true;
+                    $next_br = false;
+                } elseif ($zeile{0}=="*") {
+                    $zeile = substr($zeile, 1);
+                    $zeile = '<li>'.$zeile.'</li>';
+                    if ($last_row_is_under_list) {
+                        $zeile = '</ul></li>'.$zeile;
+                    }
+                    $last_row_is_under_list = false;
+                    if (!$last_row_is_list) {
+                        $zeile = '<ul>'.$zeile;
+                    }
+                    $next_br = false;
+                    $last_row_is_list = true;
+                } else {
+                    if ($last_row_is_list) {
+                        $zeile = '</ul>'.$zeile;
+                    }
+                    if ($last_row_is_under_list) {
+                        $zeile = '</ul></li>'.$zeile;
+                    }
+                    $last_row_is_list = false;
+                    $last_row_is_under_list = false;
+                }
+                //Dicken text
+                $zeile = preg_replace('/\'\'\'([^\']+)\'\'\'/','<b>$1</b>',$zeile);
+                //schräger text
+                $zeile = preg_replace('/\'\'([^\']+)\'\'/','<i>$1</i>',$zeile);
+                //Normale URLs in Links
+                $zeile = preg_replace('/[^[](ftp|http|https):\/\/([\S]{3,})/',' <a href="$1://$2">$2</a>',$zeile);
+                //Normale, beschriftete Links
+                $zeile = preg_replace('/\[([\S]{4,})[\s](.{4,})\]/','<a href="$1">$2</a>',$zeile);
+            }
+            if ($next_br) {
+                $zeile = $zeile.'<br />';
+            }
+            $content = $content.$zeile;
+        }
+        //Wenn die letzte Zeile Fehlt, mache alles zu
+        if ($last_row_is_under_list) {
+            $content = $content.'</ul></li>';
+        }
+        if ($last_row_is_list) {
+            $content = $content.'</ul>';
+        }
         $this->page = str_replace($name,$content,$this->page);
     }
     /**
