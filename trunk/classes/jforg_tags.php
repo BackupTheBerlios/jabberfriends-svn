@@ -49,7 +49,7 @@ class jforg_tags{
             die("jforg_tags.get_user_tags: Die SQL Abfrage ist fehlgeschlagen - $user_tags");
 		}
 		while ($row = mysql_fetch_assoc($query)) {
-                $tagids[] = $row['tag_id']; 
+                $tagids[] = $this->get_tag_value((int) $row['tag_id']); 
         }
 		return $tagids;		
 	}
@@ -146,9 +146,8 @@ class jforg_tags{
 	
 	// This is a simply function which return the tag_id from a tag, which is a string
 	function get_tag_id($tag_string){                         
-			
 			if(is_string($tag_string)){
-				$get_tag_id		=	@mysql_query("SELECT `id` FROM `tags`WHERE `tag` = '$tag_string';",$this->connection);
+				$get_tag_id		=	@mysql_query("SELECT `id` FROM `tags` WHERE `tag` = '$tag_string';",$this->connection);
 				$tag_id_result	=	@mysql_fetch_array($get_tag_id);
 				$tag_id			=	(int) $tag_id_result[0];
 				
@@ -162,6 +161,24 @@ class jforg_tags{
 				die("jforg_tags.get_tag_id: \$tag_string muss ein String sein, es wurde aber ein  $vartype uebrgeben.");
 			}
 	} 
+	
+	// This is a function which return the tag_value from a tag_id, which is a integer
+	function get_tag_value($tag_id){
+			if(is_int($tag_id)){
+				$get_tag_value		=	@mysql_query("SELECT `tag` FROM `tags` WHERE `id` = '$tag_id';",$this->connection);
+				$tag_value_result	=	@mysql_fetch_array($get_tag_value);
+				$tag_value			=	(string) $tag_value_result[0];
+				if (!$tag_value_result) {
+						die("jforg_tags.get_tag_value: Das SQL SELCT ist fehlgeschlagen - $tag_value_result");
+				}
+			return $tag_value;
+
+			}else{
+				$vartype = gettype($tag_id);
+				die("jforg_tags.get_tag_value: \$tag_id muss ein int sein, es wurde aber ein  $vartype uebrgeben.");
+			}
+			
+	}
 
 }
 ?>
