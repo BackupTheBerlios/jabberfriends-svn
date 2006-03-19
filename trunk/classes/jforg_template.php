@@ -73,6 +73,8 @@ class jforg_template {
         $last_row_is_apostroph = false;
         $last_row_is_list = false;
         $last_row_is_under_list = false;
+        $table_of_content = '<ol>';
+        $table_of_content_counter = 0;
         foreach( $zeilen as $zeile ) {
             $next_br = true;
             $parse_row = true;
@@ -89,6 +91,14 @@ class jforg_template {
                     $zeile = '</code>'.$zeile;
                 }
                 $last_row_is_apostroph = false;
+            }
+            //Auf Ueberschrift checken
+            if (substr($zeile, 0, 2)=="==") {
+                $table_of_content_counter++;
+                $headline = preg_replace('/==([^=]+)==/','$1',$zeile);
+                $zeile = '<a name="'.$table_of_content_counter.'"></a><h2>'.$headline.'</h2>';
+                $table_of_content = $table_of_content.'<li><a href="#'.$table_of_content_counter.'">'.$headline.'</a></li>';
+                $next_br = false;
             }
             if ($parse_row) {
                 //Auf Liste checken
@@ -125,6 +135,8 @@ class jforg_template {
                     $last_row_is_list = false;
                     $last_row_is_under_list = false;
                 }
+                //Bilder einfügen
+                $zeile = preg_replace('/\[image:([.\d\S\w]{4,})\]/','<a href="/upload/images/$1"><img src="/upload/thumbs/$1" alt="" /></a>',$zeile);
                 //Dicken text
                 $zeile = preg_replace('/\'\'\'([^\']+)\'\'\'/','<b>$1</b>',$zeile);
                 //schräger text
@@ -146,6 +158,8 @@ class jforg_template {
         if ($last_row_is_list) {
             $content = $content.'</ul>';
         }
+        $table_of_content = $table_of_content.'</ol>';
+        $content = str_replace("[TABLEOFCONTENT]",$table_of_content,$content);
         $this->page = str_replace($name,$content,$this->page);
     }
     /**

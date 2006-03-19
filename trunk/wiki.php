@@ -39,7 +39,8 @@ if ($language=="de") {
     $options = '
     <a href="">Diese Seite Drucken</a><br />
     <a href="">Diese Seite Bearbeiten</a><br />
-    <a href="">Versionen anzeigen</a><br />';
+    <a href="">Versionen anzeigen</a><br />
+    <a href="">Neue Seite anlegen</a><br />';
     $memberlink = '/de/mitglieder/';
 } elseif ($language=="en") {
     $template->replace('META_TITLE',$content['en_title']);
@@ -47,7 +48,8 @@ if ($language=="de") {
     $options = '
     <a href="">Print this page</a><br />
     <a href="">Edit this page</a><br />
-    <a href="">List versions</a><br />';
+    <a href="">List versions</a><br />
+    <a href="">Create a new page</a><br />';
     $memberlink = '/en/members/';
 }
 $authors = $wiki->get_authors_by_id($id);

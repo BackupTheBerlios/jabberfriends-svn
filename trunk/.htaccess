@@ -16,6 +16,8 @@ RewriteRule ^de/mitglieder/suche.htm$ search.php?lang=de&search=normal
 RewriteRule ^de/mitglieder/erweiterte_suche.htm$ search.php?lang=de&search=extended
 RewriteRule ^de/wiki/$ wiki.php?lang=de&id=1
 RewriteRule ^de/wiki$ wiki.php?lang=de&id=1
+RewriteRule ^de/wiki/([0-9]+)-([^/\:]+).htm$ wiki.php?lang=de&id=$1
+RewriteRule ^de/editor/([0-9]+)-([^/\:]+).htm$ editwiki.php?lang=de&id=$1
 
 RewriteRule ^en/members/([0-9]+)-([^/\:]+).htm$ user_details.php?lang=en&id=$1
 RewriteRule ^en/publickeys/([0-9]+)-([^/\:]+).htm$ publickey.php?lang=en&id=$1
@@ -33,3 +35,5 @@ RewriteRule ^en/members/search.htm$ search.php?lang=en&search=normal
 RewriteRule ^en/members/extended_search.htm$ search.php?lang=en&search=extended
 RewriteRule ^en/wiki/$ wiki.php?lang=en&id=1
 RewriteRule ^en/wiki$ wiki.php?lang=en&id=1
+RewriteRule ^en/wiki/([0-9]+)-([^/\:]+).htm$ wiki.php?lang=en&id=$1
+RewriteRule ^en/editor/([0-9]+)-([^/\:]+).htm$ editwiki.php?lang=en&id=$1
