@@ -26,7 +26,7 @@ RewriteRule ^en/register.htm register.php?lang=en
 RewriteRule ^en/$ index2.php?lang=en
 RewriteRule ^en$ index2.php?lang=en
 RewriteRule ^en/login.htm$ login.php?lang=en
-RewriteRule ^en/developer.htm$ wiki.php?lang=en&id=4&developer=1
+RewriteRule ^en/developer.htm$ wiki.php?lang=en&id=5&developer=1
 RewriteRule ^en/logout.htm$ logout.php?lang=en
 RewriteRule ^en/options.htm$ options.php?lang=en
 RewriteRule ^en/change_details.htm$ changedetails.php?lang=en

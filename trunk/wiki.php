@@ -37,8 +37,13 @@ if (isset($_GET['developer'])) {
     $template->hover_on('red');
 }
 $content = $wiki->get_by_id($id,$language);
-$english_link = $content['en_id']."-".cleanurl($content['en_title']).".htm";
-$german_link = $content['de_id']."-".cleanurl($content['de_title']).".htm";
+if (isset($_GET['developer'])) {
+    $english_link = '/en/developer.htm';
+    $german_link = '/de/entwickler.htm';
+} else {
+    $english_link = '/en/wiki/'.$content['en_id'].'-'.cleanurl($content['en_title']).'.htm';
+    $german_link = '/de/wiki/'.$content['de_id'].'-'.cleanurl($content['de_title']).'.htm';
+}
 if ($language=="de") {
     $template->replace('META_TITLE',$content['de_title']);
     $template->replace('WIKI_HEADER',$content['de_title']);
@@ -71,8 +76,8 @@ $template->replace('INFO_HEADER1','{LANG_OPTIONS}');
 $template->replace('INFO_HEADER2','{LANG_AUTHORS}');
 $template->replace('LOGIN','{LANG_LOGIN}');
 $template->replace('REGISTER','{LANG_REGISTER}');
-$template->replace('LINK_GERMAN',"/de/wiki/$german_link");
-$template->replace('LINK_ENGLISH',"/en/wiki/$english_link");
+$template->replace('LINK_GERMAN',$german_link);
+$template->replace('LINK_ENGLISH',$english_link);
 $template->replace('META_TITLE','JabberFriends.org');
 $template->translate($language);
 include('includes/links.php');

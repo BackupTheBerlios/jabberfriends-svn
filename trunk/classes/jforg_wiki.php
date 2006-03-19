@@ -56,5 +56,13 @@ class jforg_wiki {
         }
         return $result;
     }
+    function update_article($id,$title,$text,$other_language,$author) {
+        $datum = date();
+        $sql = "INSERT INTO `wiki` ( `id` , `wiki_id` , `other_language` , `title` , `text` , `datetime` , `user_id` ) VALUES ('', '$id', '$other_language', '$title', '$text', '$date', '$author')";
+        $query = mysql_query($sql,$this->connection);
+        if (!$query) {
+            die("jforg_wiki.update_article: Die SQL Abfrage ist fehlgeschlagen - $sql");
+        }
+    }
 }
 ?>
