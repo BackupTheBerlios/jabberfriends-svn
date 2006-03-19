@@ -3,6 +3,7 @@ include('includes/config.php');
 include('classes/jforg_template.php');
 include('classes/jforg_user.php');
 include('classes/jforg_wiki.php');
+include('classes/jforg_cleanurl.php');
 $user = new jforg_user();
 $wiki = new jforg_wiki();
 if (in_array($_GET['lang'],$config['languages'])) {
@@ -18,8 +19,6 @@ if (!is_int($id)) {
 $template = new jforg_template();
 $user = new jforg_user();
 $template->set_path('design');
-$template->set_frame('wikiwindow','red');
-$template->hover_on('red');
 SESSION_START();
 if ($user->login($_SESSION['nick'],$_SESSION['passwd'])) {
     $template->replace('LOGIN','{LANG_LOGOUT}');
@@ -30,15 +29,22 @@ if ($user->login($_SESSION['nick'],$_SESSION['passwd'])) {
     $template->replace('LOGIN','{LANG_LOGIN}');
     $template->replace('REGISTER','{LANG_REGISTER}');
 }
+if (isset($_GET['developer'])) {
+    $template->set_frame('wikiwindow','yellow');
+    $template->hover_on('yellow');
+} else {
+    $template->set_frame('wikiwindow','red');
+    $template->hover_on('red');
+}
 $content = $wiki->get_by_id($id,$language);
-$english_link = $id."-".$content['en_title'].".htm";
-$german_link = $id."-".$content['de_title'].".htm";
+$english_link = $content['en_id']."-".cleanurl($content['en_title']).".htm";
+$german_link = $content['de_id']."-".cleanurl($content['de_title']).".htm";
 if ($language=="de") {
     $template->replace('META_TITLE',$content['de_title']);
     $template->replace('WIKI_HEADER',$content['de_title']);
     $options = '
     <a href="">Diese Seite Drucken</a><br />
-    <a href="">Diese Seite Bearbeiten</a><br />
+    <a href="/de/editor/'.$id.'.htm">Diese Seite Bearbeiten</a><br />
     <a href="">Versionen anzeigen</a><br />
     <a href="">Neue Seite anlegen</a><br />';
     $memberlink = '/de/mitglieder/';
@@ -47,7 +53,7 @@ if ($language=="de") {
     $template->replace('WIKI_HEADER',$content['en_title']);
     $options = '
     <a href="">Print this page</a><br />
-    <a href="">Edit this page</a><br />
+    <a href="/en/editor/'.$id.'.htm">Edit this page</a><br />
     <a href="">List versions</a><br />
     <a href="">Create a new page</a><br />';
     $memberlink = '/en/members/';

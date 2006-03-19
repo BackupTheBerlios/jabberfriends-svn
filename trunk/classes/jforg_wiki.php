@@ -16,30 +16,43 @@ class jforg_wiki {
       * Liefert beide Titel und den Inhalt der gewaehlten Sprache an hand der ID
       */
     function get_by_id($id,$language) {
-        $sql = 'SELECT id,de_title,en_title,'.$language.'_id FROM wiki_title WHERE id = '.$id;
+        $sql = 'SELECT * FROM `wiki` WHERE wiki_id = '.$id.' ORDER BY id DESC LIMIT 1';
         $query = mysql_query($sql,$this->connection);
         if (!$query) {
             die("jforg_wiki.get_by_id: Die SQL Abfrage ist fehlgeschlagen - $sql");
         }
         $result = mysql_fetch_assoc($query);
-        $varname = $language."_id";
-        $sql2 = "SELECT text FROM wiki_content WHERE id = ".$result[$varname];
+        //Title der anderen Sprache holen
+        $sql2 = 'SELECT id,title FROM `wiki` WHERE wiki_id = '.$result['other_language'].' ORDER BY id DESC LIMIT 1';
         $query2 = mysql_query($sql2,$this->connection);
         if (!$query2) {
-            die("jforg_wiki.get_by_id: Die SQL Abfrage ist fehlgeschlagen - $sql");
+            die("jforg_wiki.get_by_id: Die SQL Abfrage ist fehlgeschlagen - $sql2");
         }
         $result2 = mysql_fetch_assoc($query2);
-        $result['text'] = $result2['text'];
+        if ($language=='de') {
+            $result['de_title'] = $result['title'];
+            $result['en_title'] = $result2['title'];
+            $result['de_id'] = $id;
+            $result['en_id'] = $result['other_language'];
+        }
+        if ($language=='en') {
+            $result['de_title'] = $result2['title'];
+            $result['en_title'] = $result['title'];
+            $result['de_id'] = $result['other_language'];
+            $result['en_id'] = $id;
+        } 
         return $result;
     }
     function get_authors_by_id($id) {
-        $sql = 'SELECT user_id FROM wiki_authors WHERE wiki_id = '.$id;
+        $sql = 'SELECT user_id FROM wiki WHERE wiki_id = '.$id;
         $query = mysql_query($sql,$this->connection);
         if (!$query) {
             die("jforg_wiki.get_authors_by_id: Die SQL Abfrage ist fehlgeschlagen - $sql");
         }
         while ($row = mysql_fetch_assoc($query)) {
-            $result[]=$row;
+            if (!in_array($row['user_id'],$result)) {
+                $result[]=$row['user_id'];
+            }
         }
         return $result;
     }

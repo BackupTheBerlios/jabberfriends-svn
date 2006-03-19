@@ -6,6 +6,7 @@ RewriteRule ^de/registrieren.htm$ register.php?lang=de
 RewriteRule ^de/$ index2.php?lang=de
 RewriteRule ^de$ index2.php?lang=de
 RewriteRule ^de/anmelden.htm$ login.php?lang=de
+RewriteRule ^de/entwickler.htm$ wiki.php?lang=de&id=4&developer=1
 RewriteRule ^de/abmelden.htm$ logout.php?lang=de
 RewriteRule ^de/optionen.htm$ options.php?lang=de
 RewriteRule ^de/angaben_aendern.htm$ changedetails.php?lang=de
@@ -17,7 +18,7 @@ RewriteRule ^de/mitglieder/erweiterte_suche.htm$ search.php?lang=de&search=exten
 RewriteRule ^de/wiki/$ wiki.php?lang=de&id=1
 RewriteRule ^de/wiki$ wiki.php?lang=de&id=1
 RewriteRule ^de/wiki/([0-9]+)-([^/\:]+).htm$ wiki.php?lang=de&id=$1
-RewriteRule ^de/editor/([0-9]+)-([^/\:]+).htm$ editwiki.php?lang=de&id=$1
+RewriteRule ^de/editor/([0-9]+).htm$ editwiki.php?lang=de&id=$1
 
 RewriteRule ^en/members/([0-9]+)-([^/\:]+).htm$ user_details.php?lang=en&id=$1
 RewriteRule ^en/publickeys/([0-9]+)-([^/\:]+).htm$ publickey.php?lang=en&id=$1
@@ -25,6 +26,7 @@ RewriteRule ^en/register.htm register.php?lang=en
 RewriteRule ^en/$ index2.php?lang=en
 RewriteRule ^en$ index2.php?lang=en
 RewriteRule ^en/login.htm$ login.php?lang=en
+RewriteRule ^en/developer.htm$ wiki.php?lang=en&id=4&developer=1
 RewriteRule ^en/logout.htm$ logout.php?lang=en
 RewriteRule ^en/options.htm$ options.php?lang=en
 RewriteRule ^en/change_details.htm$ changedetails.php?lang=en
@@ -33,7 +35,7 @@ RewriteRule ^en/members/$ members.php?lang=en
 RewriteRule ^en/members$ members.php?lang=en
 RewriteRule ^en/members/search.htm$ search.php?lang=en&search=normal
 RewriteRule ^en/members/extended_search.htm$ search.php?lang=en&search=extended
-RewriteRule ^en/wiki/$ wiki.php?lang=en&id=1
-RewriteRule ^en/wiki$ wiki.php?lang=en&id=1
+RewriteRule ^en/wiki/$ wiki.php?lang=en&id=2
+RewriteRule ^en/wiki$ wiki.php?lang=en&id=2
 RewriteRule ^en/wiki/([0-9]+)-([^/\:]+).htm$ wiki.php?lang=en&id=$1
-RewriteRule ^en/editor/([0-9]+)-([^/\:]+).htm$ editwiki.php?lang=en&id=$1
+RewriteRule ^en/editor/([0-9]+).htm$ editwiki.php?lang=en&id=$1
