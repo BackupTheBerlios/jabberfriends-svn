@@ -53,6 +53,7 @@ class jforg_tags{
         }
 		return $tagids;		
 	}
+    
 	//This function add a tag to an user.
     function add_tag($tag,$user_id) {
 		$tag					=	strtolower($tag); //Turn all the letters to small letters.
@@ -91,6 +92,7 @@ class jforg_tags{
 
 		}	
 	}
+
 	//This function remove a tag from an user.
     function remove_tag($tag,$user_id){
 		if(gettype($tag) == "integer"){
@@ -114,6 +116,7 @@ class jforg_tags{
 			}
 		}
 	}
+    
 	//This function return an array, where are listed all users, which have the selected tag
     function list_user($tag){
 		

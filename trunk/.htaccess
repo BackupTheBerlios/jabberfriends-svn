@@ -11,6 +11,8 @@ RewriteRule ^de/abmelden.htm$ logout.php?lang=de
 RewriteRule ^de/optionen.htm$ options.php?lang=de
 RewriteRule ^de/angaben_aendern.htm$ changedetails.php?lang=de
 RewriteRule ^de/tags_aendern.htm$ changetags.php?lang=de
+RewriteRule ^de/tags_loeschen([0-9]+)-([^/\:]+).htm$ changetags.php?lang=de&tag_id=$1
+
 RewriteRule ^de/mitglieder/$ members.php?lang=de
 RewriteRule ^de/mitglieder$ members.php?lang=de
 RewriteRule ^de/mitglieder/suche.htm$ search.php?lang=de&search=normal
@@ -30,7 +32,8 @@ RewriteRule ^en/developer.htm$ wiki.php?lang=en&id=5&developer=1
 RewriteRule ^en/logout.htm$ logout.php?lang=en
 RewriteRule ^en/options.htm$ options.php?lang=en
 RewriteRule ^en/change_details.htm$ changedetails.php?lang=en
-RewriteRule ^en/change_tags.htm$ changetags.php?lang=de
+RewriteRule ^en/change_tags.htm$ changetags.php?lang=en
+RewriteRule ^en/change_tags.htm$ changetags.php?lang=en&del_tag=id
 RewriteRule ^en/members/$ members.php?lang=en
 RewriteRule ^en/members$ members.php?lang=en
 RewriteRule ^en/members/search.htm$ search.php?lang=en&search=normal

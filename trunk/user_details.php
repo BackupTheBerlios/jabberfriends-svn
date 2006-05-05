@@ -2,6 +2,7 @@
 include('includes/config.php');
 include('classes/jforg_template.php');
 include('classes/jforg_user.php');
+include('classes/jforg_tags.php');
 if (in_array($_GET['lang'],$config['languages'])) {
     $language = $_GET['lang'];
 } else {
@@ -13,6 +14,7 @@ if (is_int($_GET['id']+0)) {
     die('ID is not an int'.$_GET['id']);
 }
 $user = new jforg_user();
+$tags = new jforg_tags();
 $template = new jforg_template();
 $template->set_path('design');
 $template->set_frame('fullpage','green');
@@ -27,7 +29,7 @@ if ($user->login($_SESSION['nick'],$_SESSION['passwd'])) {
     $template->replace('LOGIN','{LANG_LOGIN}');
     $template->replace('REGISTER','{LANG_REGISTER}');
 }
-$content = '<table cellpadding="0" cellspacing="2">';
+$content = '<table cellpadding="0" cellspacing="2" border="0">';
 $user_details = $user->get_details($user_id);
 $user_details = array_map('htmlentities',$user_details);
 if ($user_details['BIRTHDATE']!=0) {
@@ -58,10 +60,15 @@ $content = $content.'<tr><td valign="top">{LANG_FAVORITE_FILM}</td><td valign="t
 $content = $content.'<tr><td valign="top">{LANG_FAVORITE_SERIES}</td><td valign="top">'.$user_details['FAVORITE_SERIES'].'</td></tr>';
 $content = $content.'<tr><td valign="top">{LANG_FAVORITE_MUSIK}</td><td valign="top">'.$user_details['FAVORITE_MUSIK'].'</td></tr>';
 $content = $content.'<tr><td valign="top">{LANG_FAVORITE_BOOK}</td><td valign="top">'.$user_details['FAVORITE_BOOK'].'</td></tr>';
-$content = $content.'<tr><td colspan="2"><br /><b>Tags</b></td></tr>';
+$user_tags 	= $tags->get_user_tags($user_id);
+$content = $content.'<tr border="1"><td><br /><b>Tags:</b></td></tr><tr><td valign="top">';
+foreach ($user_tags as $user_tags_content) {
+	    $content = $content.'<a href="">'.$user_tags_content.'</a><br />';
+}
+$content = $content.'</td></tr>';
+$content = $content.'</table>';
 $template->replace('FULLPAGE_HEADER','{LANG_USER_PAGE_OF} '.$user->get_nick($user_id));
 $template->replace('META_TITLE','{LANG_USER_PAGE_OF} '.$user->get_nick($user_id));
-$content = $content.'</table>';
 $template->replace('FULLPAGE_TEXT',$content);
 $template->replace('LINK_GERMAN','/de/mitglieder/'.$user_id.'-'.$user->get_nick($user_id).'.htm');
 $template->replace('LINK_ENGLISH','/en/members/'.$user_id.'-'.$user->get_nick($user_id).'.htm');
