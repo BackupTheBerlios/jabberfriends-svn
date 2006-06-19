@@ -63,7 +63,7 @@ $content = $content.'<tr><td valign="top">{LANG_FAVORITE_BOOK}</td><td valign="t
 $user_tags 	= $tags->get_user_tags($user_id);
 $content = $content.'<tr border="1"><td><br /><b>Tags:</b></td></tr><tr><td valign="top">';
 foreach ($user_tags as $user_tags_content) {
-	    $content = $content.'<a href="">'.$user_tags_content.'</a><br />';
+	    $content = $content.'<a href="../../'.$language.'/tag/'.$user_tags_content.'.htm">'.$user_tags_content.'</a><br />';
 }
 $content = $content.'</td></tr>';
 $content = $content.'</table>';

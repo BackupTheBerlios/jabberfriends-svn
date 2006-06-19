@@ -1,29 +1,8 @@
 <?php
-/*
-* This php class jforg_tags is a part of the jabberfriends.org project and is 
-* responsible for working with the tags. It can be useful for all sorts of 
-* social software.
-*
-* Copyright (C) 2006  	Bahtiar Gadimov <blase16@blase16.de>
-*                       Daniel Gultsch  <daniel@gultsch.de>
-* 
-* This program is free software; you can redistribute it and/or
-* modify it under the terms of the GNU General Public License
-* as published by the Free Software Foundation; either version 2
-* of the License, or (at your option) any later version.
-* 
-* This program is distributed in the hope that it will be useful,
-* but WITHOUT ANY WARRANTY; without even the implied warranty of
-* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-* GNU General Public License for more details.
-* 
-* You should have received a copy of the GNU General Public License
-* along with this program; if not, write to the Free Software
-* Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA
-*/
 
 class jforg_tags{
 	var $connection;
+
 	//This is the constructor of this class, it connects to the DB. 
 	function jforg_tags() {
         include('includes/config.php');
@@ -54,48 +33,37 @@ class jforg_tags{
 		return $tagids;		
 	}
     
-	//This function add a tag to an user.
-    function add_tag($tag,$user_id) {
-		$tag					=	strtolower($tag); //Turn all the letters to small letters.
- 		$tag_id					=	"SELECT `id` FROM `tags`WHERE `tag` = '$tag';";
-		$query					=	@mysql_query($tag_id,$this->connection);
-		$result					= 	mysql_num_rows($query);
+	//This function add a tag to the user.
+    function add_tag($tag_value, $user_id) {
+        $tag_exist      =   $this->tag_exist($tag_value);
+
+        if($tag_exist == FALSE){
+  		    $add_tag_to_tags 	= 	"INSERT INTO `tags` (`id`, `tag` ) VALUES (NULL, '$tag_value');";
+		    $query				=	mysql_query($add_tag_to_tags,$this->connection);
+            
+            // In case of emergency just print and die
+            if (!$query) {
+			    die("jforg_tags.add_tags: Der SQL Insert ist fehlgeschlagen - $add_tag_to_tags");
+		    }
+        }
+
+        $tag_id         =   $this->get_tag_id($tag_value);       
+        $user_have_tag  =   $this->has_user_tag($tag_id, $user_id);
+
+        if($user_have_tag == FALSE){
+            $add_tag_to_user 	= 	"INSERT INTO `user_tags` ( `user_id` , `tag_id` ) VALUES ('$user_id', '$tag_id');";
+		    $query				=	@mysql_query($add_tag_to_user,$this->connection);
 		
-		if($result > 0){
-			//Test if the user has this tag already set
-           	$tag_id2 = $this->get_tag_id($tag);
-			$user_has_tag	=	"SELECT '$user_id' FROM `user_tags`WHERE `tag_id` = '$tag_id2';";
-			$query2			=	mysql_query($user_has_tag,$this->connection);
-			$exists 		= 	mysql_num_rows($query2);
-			//If the user hasn't this tag already set, so set it now.
-			if($exists == 0){
-					$add_tag_to_user 	= 	"INSERT INTO `user_tags` ( `user_id` , `tag_id` ) VALUES ('$user_id', '$tag_id2');";
-					$query				=	@mysql_query($add_tag_to_user,$this->connection);
-					if (!$query) {
-						die("jforg_tags.add_tags: Der SQL Insert ist fehlgeschlagen - $add_tag_to_user");
-					}
-			}
-		}else{
-			$add_tag			=	"INSERT INTO `tags` ( `id` , `tag` ) VALUES ('', '$tag');";
-			$query				=	@mysql_query($add_tag,$this->connection);
-			if (!$query) {
-         	die("jforg_tags.add_tags: Die SQL Insert ist fehlgeschlagen - $add_tag");
-			}		
-
-			$tagid				=	mysql_insert_id();
-			$add_tag_to_user 	= 	"INSERT INTO `user_tags` ( `user_id` , `tag_id` ) VALUES ('$user_id', '$tagid');";
-			$query				=	@mysql_query($add_tag_to_user,$this->connection);
-    		
-			if (!$query) {
-            	die("jforg_tags.add_tags: Die SQL Insert ist fehlgeschlagen - $add_tag_to_user");
-			}
-
-		}	
-	}
+            // In case of emergency just print and die
+            if (!$query) {
+			    die("jforg_tags.add_tag: Der SQL Insert ist fehlgeschlagen - $add_tag_to_user");
+		    }
+        }
+	}  
 
 	//This function remove a tag from an user.
     function remove_tag($tag,$user_id){
-		if(gettype($tag) == "integer"){
+		if(is_int($tag)){
 			$remove_tag	= 	"DELETE FROM `user_tags` WHERE `user_id` = '$user_id' AND `tag_id` = '$tag';";
 			$query		=	@mysql_query($remove_tag,$this->connection);
     		
@@ -103,7 +71,7 @@ class jforg_tags{
             	die("jforg_tags.remove_tag: Das SQL DELETE ist fehlgeschlagen - $remove_tag");
 			}
 		}
-		if(gettype($tag) == "string"){
+		if(is_string($tag)){
 			$get_tag_id			=	"SELECT `id` FROM `tags`WHERE `tag` = '$tag';";
 			$query				=	@mysql_query($get_tag_id,$this->connection);
 			$result				=	@mysql_fetch_array($query);
@@ -118,7 +86,7 @@ class jforg_tags{
 	}
     
 	//This function return an array, where are listed all users, which have the selected tag
-    function list_user($tag){
+    function list_users($tag){
 		
 		if(is_int($tag)){
 			$find_users	= 	"SELECT `user_id` FROM `user_tags` WHERE `tag_id` = '$tag';";
@@ -154,9 +122,9 @@ class jforg_tags{
 				$tag_id_result	=	@mysql_fetch_array($get_tag_id);
 				$tag_id			=	(int) $tag_id_result[0];
 				
-				if (!$tag_id_result	) {
-						die("jforg_tags.get_tag_id: Das SQL SELCT ist fehlgeschlagen - $tag_id_result");
-				}
+				//if (!$tag_id_result	) {
+			    //		die("jforg_tags.get_tag_id: Das SQL SELCT ist fehlgeschlagen - $tag_id_result");
+				//}
 				
 				return $tag_id;
 			}else{
@@ -181,6 +149,35 @@ class jforg_tags{
 				die("jforg_tags.get_tag_value: \$tag_id muss ein int sein, es wurde aber ein  $vartype uebrgeben.");
 			}
 			
+	}
+	
+    // This function test if the tag exists or not
+	function tag_exist($tag_value){
+	    $get_tag_value		=	@mysql_query("SELECT `id` FROM `tags` WHERE `tag` = '$tag_value';",$this->connection);
+		$tag_value_result	=	@mysql_fetch_array($get_tag_value);
+		$tag_value			=	(string) $tag_value_result[0];
+	    
+	    if (!$tag_value_result){
+	        $exist = FALSE;
+	    }else{
+	        $exist = TRUE;
+	    }
+	    
+	    return $exist;   
+	}
+    
+    // This function test if the user has set the specified tag	
+	function has_user_tag($tag_id, $user_id){
+		$user_has_tag	=	"SELECT `user_id`='$user_id' FROM `user_tags` WHERE `tag_id` = '$tag_id' ;";
+		$query			=	mysql_query($user_has_tag,$this->connection);
+		$exists 		= 	mysql_num_rows($query);
+        
+		//If the user hasn't this tag already set, so set it now.
+		if((string) $exists[0] == "" ){
+			return $he_have_it = FALSE;
+		}else{
+		    return $he_have_it = TRUE;
+		}
 	}
 
 }

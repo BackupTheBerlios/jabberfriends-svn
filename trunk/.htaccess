@@ -11,7 +11,8 @@ RewriteRule ^de/abmelden.htm$ logout.php?lang=de
 RewriteRule ^de/optionen.htm$ options.php?lang=de
 RewriteRule ^de/angaben_aendern.htm$ changedetails.php?lang=de
 RewriteRule ^de/tags_aendern.htm$ changetags.php?lang=de
-RewriteRule ^de/tags_loeschen([0-9]+)-([^/\:]+).htm$ changetags.php?lang=de&tag_id=$1
+RewriteRule ^de/tags_loeschen/([0-9]+).htm$ changetags.php?lang=de&tag_id=$1
+RewriteRule ^de/tag/([^/\:]+).htm$ tag.php?lang=de&tag_value=$1
 
 RewriteRule ^de/mitglieder/$ members.php?lang=de
 RewriteRule ^de/mitglieder$ members.php?lang=de
@@ -42,3 +43,5 @@ RewriteRule ^en/wiki/$ wiki.php?lang=en&id=2
 RewriteRule ^en/wiki$ wiki.php?lang=en&id=2
 RewriteRule ^en/wiki/([0-9]+)-([^/\:]+).htm$ wiki.php?lang=en&id=$1
 RewriteRule ^en/editor/([0-9]+).htm$ editwiki.php?lang=en&id=$1
+RewriteRule ^en/tags_delete/([0-9]+).htm$ changetags.php?lang=en&tag_id=$1
+RewriteRule ^en/tag/([^/\:]+).htm$ tag.php?lang=en&tag_value=$1
