@@ -16,6 +16,8 @@ $id = $id + 0;
 if (!is_int($id)) {
     die("Invalid ID - $id");
 }
+$realid = $_GET['realid'];
+$id = $id + 0;
 $template = new jforg_template();
 $user = new jforg_user();
 $template->set_path('design');
@@ -31,8 +33,13 @@ if ($user->login($_SESSION['nick'],$_SESSION['passwd'])) {
 }
 $template->set_frame('wikiwindow','red');
 $template->hover_on('red');
-$wiki->set_id_language($id,$language);
 
+//Muss eine ältre Version angeziegt werden?
+if ($realid!='') {
+    $wiki->set_id_language($id,$language,$realid);
+} else {
+    $wiki->set_id_language($id,$language);
+}
 $english_link = '/en/wiki/'.$id.'-'.cleanurl($wiki->get_english_link()).'.htm';
 $german_link = '/de/wiki/'.$id.'-'.cleanurl($wiki->get_german_link()).'.htm';
 
@@ -41,14 +48,12 @@ $template->replace('WIKI_HEADER',$wiki->get_title());
 
 if ($language=="de") {
     $options = '
-    <a href="">Diese Seite Drucken</a><br />
     <a href="/de/editor/'.$id.'.htm">Diese Seite Bearbeiten</a><br />
     <a href="/de/wiki/versionen_von_'.$id.'.htm">Versionen anzeigen</a><br />
     <a href="/de/editor/neu.htm">Neue Seite anlegen</a><br />';
     $memberlink = '/de/mitglieder/';
 } elseif ($language=="en") {
     $options = '
-    <a href="">Print this page</a><br />
     <a href="/en/editor/'.$id.'.htm">Edit this page</a><br />
     <a href="/en/wiki/versions_of_'.$id.'.htm">List versions</a><br />
     <a href="/en/editor/new.htm">Create a new page</a><br />';

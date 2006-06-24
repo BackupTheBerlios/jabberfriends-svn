@@ -20,6 +20,7 @@ RewriteRule ^de/mitglieder/erweiterte_suche.htm$ search.php?lang=de&search=exten
 RewriteRule ^de/wiki/$ wiki.php?lang=de&id=1
 RewriteRule ^de/wiki$ wiki.php?lang=de&id=1
 RewriteRule ^de/wiki/([0-9]+)-([^/\:]+).htm$ wiki.php?lang=de&id=$1
+RewriteRule ^de/wiki/version_([0-9]+)_([0-9]+).htm$ wiki.php?lang=de&id=$1&realid=$2
 RewriteRule ^de/wiki/versionen_von_([0-9]+).htm$ wiki_version.php?lang=de&id=$1
 RewriteRule ^de/editor/([0-9]+).htm$ editwiki.php?lang=de&id=$1
 RewriteRule ^de/editor/neu.htm$ editwiki.php?lang=de&id=0
@@ -43,6 +44,7 @@ RewriteRule ^en/members/extended_search.htm$ search.php?lang=en&search=extended
 RewriteRule ^en/wiki/$ wiki.php?lang=en&id=1
 RewriteRule ^en/wiki$ wiki.php?lang=en&id=1
 RewriteRule ^en/wiki/([0-9]+)-([^/\:]+).htm$ wiki.php?lang=en&id=$1
+RewriteRule ^en/wiki/version_([0-9]+)_([0-9]+).htm$ wiki.php?lang=de&id=$1&realid=$2
 RewriteRule ^en/wiki/versions_of_([0-9]+).htm$ wiki_version.php?lang=en&id=$1
 RewriteRule ^en/editor/([0-9]+).htm$ editwiki.php?lang=en&id=$1
 RewriteRule ^en/editor/new.htm$ editwiki.php?lang=en&id=0

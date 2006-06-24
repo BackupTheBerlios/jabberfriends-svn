@@ -15,10 +15,14 @@ class jforg_wiki {
             die("jforg_template: Die Auswahl der Tabelle ist fehlgeschlagen");
         }
     }
-    function set_id_language($id,$language) {
+    function set_id_language($id,$language,$realid=0) {
         $this->content_language = $language;
         $this->wiki_id = $id;
-        $sql = 'SELECT id,wiki_id,language,title,text FROM `wiki` WHERE wiki_id = '.$this->wiki_id.' AND `language` = \''.$this->content_language.'\' ORDER BY id DESC LIMIT 1';
+        if ($realid==0) {
+            $sql = 'SELECT id,wiki_id,language,title,text FROM `wiki` WHERE wiki_id = '.$this->wiki_id.' AND `language` = \''.$this->content_language.'\' ORDER BY id DESC LIMIT 1';
+        } else {
+            $sql = 'SELECT id,wiki_id,language,title,text FROM `wiki` WHERE id = '.$realid;
+        }
         $query = mysql_query($sql,$this->connection);
         if (!$query) {
             die("jforg_wiki.get_by_id: Die SQL Abfrage ist fehlgeschlagen - $sql");
