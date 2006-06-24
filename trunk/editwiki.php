@@ -3,6 +3,7 @@ include('includes/config.php');
 include('classes/jforg_template.php');
 include('classes/jforg_user.php');
 include('classes/jforg_wiki.php');
+include('classes/jforg_cleanurl.php');
 $wiki = new jforg_wiki();
 $user = new jforg_user();
 if (in_array($_GET['lang'],$config['languages'])) {
@@ -26,11 +27,35 @@ if ($user->login($_SESSION['nick'],$_SESSION['passwd'])) {
     $template->replace('REGISTER','{LANG_OPTIONS}');
     $template->replace('LINK_LOGIN','{LINK_LOGOUT}');
     $template->replace('LINK_REGISTER','{LINK_OPTIONS}');
-    $wiki_content = $wiki->get_by_id($id,$language);
-    $content = '<form method="post">
-              <input style="width: 90%;" type="text" name="title" value="'.$wiki_content['de_title'].'" /><br /><br />
-              <textarea rows="25" style="width: 90%;">'.$wiki_content['text'].'</textarea><br /><br />
-              <input class="submit" type="submit" value="{LANG_PREVIEW}" /> <input class="submit" type="submit" value="{LANG_SAFE}" />
+    if ($id!=0) {
+        $wiki->set_id_language($id,$language);
+        $w_title = $wiki->get_title();
+        $w_text = $wiki->get_text();
+    }
+    if (!empty($_POST['preview'])) {
+        $pre_content = $_POST['text'].'<br /><br />{FULLPAGE_TEXT}';
+        $template->replace_wiki('FULLPAGE_TEXT',$pre_content);
+        $w_text = $_POST['text'];
+        $w_title = $_POST['title'];
+    }
+    if (!empty($_POST['safe'])) {
+        if ($id==0) {
+            $link_id = $wiki->create_article($_POST['title'],$_POST['text'],$language,$user->get_id($_SESSION['nick']));
+        } else {
+            $wiki->update_article($id,$_POST['title'],$_POST['text'],$language,$user->get_id($_SESSION['nick']));
+            $link_id = $id;
+        }
+        $wiki->update_article($id,$_POST['title'],$_POST['text'],$language,$user->get_id($_SESSION['nick']));
+        $url = '/'.$language.'/wiki/'.$link_id.'-'.cleanurl($_POST['title']).'.htm';
+        header("Location: $url");
+    }
+    $content = '<form method="post" action="">
+              <input style="width: 90%;" type="text" name="title" value="'.$w_title.'" />
+              <input type="hidden" name="id" value="'.$id.'">
+              <br /><br />
+              <textarea name="text" rows="25" style="width: 90%;">'.$w_text.'</textarea><br /><br />
+              <br />
+              <input class="submit" name="preview" type="submit" value="{LANG_PREVIEW}" /> <input name="safe" class="submit" type="submit" value="{LANG_SAFE}" />
             </form>';
 } else {
     $template->replace('LOGIN','{LANG_LOGIN}');
@@ -40,8 +65,8 @@ if ($user->login($_SESSION['nick'],$_SESSION['passwd'])) {
 
 $template->replace('LOGIN','{LANG_LOGIN}');
 $template->replace('REGISTER','{LANG_REGISTER}');
-$template->replace('LINK_GERMAN','/de/');
-$template->replace('LINK_ENGLISH','/en/');
+$template->replace('LINK_GERMAN','/de/editor/'.$id.'.htm');
+$template->replace('LINK_ENGLISH','/en/editor/'.$id.'.htm');
 $template->replace('META_TITLE','Editor');
 $template->replace('FULLPAGE_HEADER','Editor');
 $template->replace('FULLPAGE_TEXT',$content);

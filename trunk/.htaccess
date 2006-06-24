@@ -13,7 +13,6 @@ RewriteRule ^de/angaben_aendern.htm$ changedetails.php?lang=de
 RewriteRule ^de/tags_aendern.htm$ changetags.php?lang=de
 RewriteRule ^de/tags_loeschen/([0-9]+).htm$ changetags.php?lang=de&tag_id=$1
 RewriteRule ^de/tag/([^/\:]+).htm$ tag.php?lang=de&tag_value=$1
-
 RewriteRule ^de/mitglieder/$ members.php?lang=de
 RewriteRule ^de/mitglieder$ members.php?lang=de
 RewriteRule ^de/mitglieder/suche.htm$ search.php?lang=de&search=normal
@@ -21,7 +20,9 @@ RewriteRule ^de/mitglieder/erweiterte_suche.htm$ search.php?lang=de&search=exten
 RewriteRule ^de/wiki/$ wiki.php?lang=de&id=1
 RewriteRule ^de/wiki$ wiki.php?lang=de&id=1
 RewriteRule ^de/wiki/([0-9]+)-([^/\:]+).htm$ wiki.php?lang=de&id=$1
+RewriteRule ^de/wiki/versionen_von_([0-9]+).htm$ wiki_version.php?lang=de&id=$1
 RewriteRule ^de/editor/([0-9]+).htm$ editwiki.php?lang=de&id=$1
+RewriteRule ^de/editor/neu.htm$ editwiki.php?lang=de&id=0
 
 RewriteRule ^en/members/([0-9]+)-([^/\:]+).htm$ user_details.php?lang=en&id=$1
 RewriteRule ^en/publickeys/([0-9]+)-([^/\:]+).htm$ publickey.php?lang=en&id=$1
@@ -39,9 +40,10 @@ RewriteRule ^en/members/$ members.php?lang=en
 RewriteRule ^en/members$ members.php?lang=en
 RewriteRule ^en/members/search.htm$ search.php?lang=en&search=normal
 RewriteRule ^en/members/extended_search.htm$ search.php?lang=en&search=extended
-RewriteRule ^en/wiki/$ wiki.php?lang=en&id=2
-RewriteRule ^en/wiki$ wiki.php?lang=en&id=2
+RewriteRule ^en/wiki/$ wiki.php?lang=en&id=1
+RewriteRule ^en/wiki$ wiki.php?lang=en&id=1
 RewriteRule ^en/wiki/([0-9]+)-([^/\:]+).htm$ wiki.php?lang=en&id=$1
 RewriteRule ^en/editor/([0-9]+).htm$ editwiki.php?lang=en&id=$1
+RewriteRule ^en/editor/new.htm$ editwiki.php?lang=en&id=0
 RewriteRule ^en/tags_delete/([0-9]+).htm$ changetags.php?lang=en&tag_id=$1
 RewriteRule ^en/tag/([^/\:]+).htm$ tag.php?lang=en&tag_value=$1

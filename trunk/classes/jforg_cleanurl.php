@@ -10,4 +10,4 @@ function cleanurl($url) {
     $url = str_replace('&szlig;','ss',$url);
     return $url;
 }
-?> 
+?>

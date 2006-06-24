@@ -159,7 +159,7 @@ class jforg_template {
             $content = $content.'</ul>';
         }
         $table_of_content = $table_of_content.'</ol>';
-        $content = str_replace("[TABLEOFCONTENT]",$table_of_content,$content);
+        $content = str_replace('[TABLEOFCONTENT]',$table_of_content,$content);
         $this->page = str_replace($name,$content,$this->page);
     }
     /**
