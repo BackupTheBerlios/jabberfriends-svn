@@ -45,7 +45,7 @@ if ($user->login($_SESSION['nick'],$_SESSION['passwd'])) {
             $wiki->update_article($id,$_POST['title'],$_POST['text'],$language,$user->get_id($_SESSION['nick']));
             $link_id = $id;
         }
-        $wiki->update_article($id,$_POST['title'],$_POST['text'],$language,$user->get_id($_SESSION['nick']));
+        //$wiki->update_article($id,$_POST['title'],$_POST['text'],$language,$user->get_id($_SESSION['nick']));
         $url = '/'.$language.'/wiki/'.$link_id.'-'.cleanurl($_POST['title']).'.htm';
         header("Location: $url");
     }

@@ -1,21 +1,3 @@
--- phpMyAdmin SQL Dump
--- version 2.7.0-pl2
--- http://www.phpmyadmin.net
--- 
--- Host: localhost
--- Erstellungszeit: 08. Februar 2006 um 15:08
--- Server Version: 4.1.12
--- PHP-Version: 5.1.2
--- 
--- Datenbank: `test2`
--- 
-
--- --------------------------------------------------------
-
--- 
--- Tabellenstruktur fÃ¼r Tabelle `language`
--- 
-
 CREATE TABLE `language` (
   `name` varchar(255) collate utf8_unicode_ci NOT NULL default '',
   `de` varchar(255) collate utf8_unicode_ci NOT NULL default '',
@@ -24,7 +6,7 @@ CREATE TABLE `language` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- 
--- Daten fÃ¼r Tabelle `language`
+-- Daten für Tabelle `language`
 -- 
 
 INSERT INTO `language` VALUES ('STARTPAGE', 'Startseite', 'Startpage');
@@ -53,7 +35,7 @@ INSERT INTO `language` VALUES ('FAVORITE_MUSIK', 'Lieblingsmusik', 'Favorite mus
 INSERT INTO `language` VALUES ('NICK', 'Nick', 'Nickname');
 INSERT INTO `language` VALUES ('JID', 'Jabber ID', 'Jabber ID');
 INSERT INTO `language` VALUES ('FAVORITES', 'Lieblings Dinge von', 'Favorites of');
-INSERT INTO `language` VALUES ('ABOUT', '', 'About');
+INSERT INTO `language` VALUES ('ABOUT', 'Über', 'About');
 INSERT INTO `language` VALUES ('COMPUTER_OF', 'Computer von', 'Computer of');
 INSERT INTO `language` VALUES ('USER_PAGE_OF', 'Benutzerseite von', 'Userpage of');
 INSERT INTO `language` VALUES ('SHOW_PUBLICKEY', 'Zeige Public Key', 'Show Public Key');
@@ -65,25 +47,40 @@ INSERT INTO `language` VALUES ('MEMBERS', 'Mitglieder', 'Members');
 INSERT INTO `language` VALUES ('PW', 'Passwort', 'Password');
 INSERT INTO `language` VALUES ('PW_AGAIN', 'Passwort wiederholen', 'Repeat password');
 INSERT INTO `language` VALUES ('ONLY_LETTERS_3', 'Keine Leer- oder Sonderzeichen und mindestens drei Zeichen', 'No empty or special characters and at least three characters');
-INSERT INTO `language` VALUES ('UNACCEPT_JID', 'Ung', 'Illegal Jabber ID');
+INSERT INTO `language` VALUES ('UNACCEPT_JID', 'Ungültige Jabber ID', 'Illegal Jabber ID');
 INSERT INTO `language` VALUES ('ONLY_LETTERS_6', 'Keine Leer- oder Sonderzeichen und mindestens sechs Zeichen', 'No empty or special characters and at least six characters');
-INSERT INTO `language` VALUES ('PW_NOT_SAME', 'Die Passw', 'The passwords are not the same');
+INSERT INTO `language` VALUES ('PW_NOT_SAME', 'Die Passwörter stimmen nicht überein', 'The passwords are not the same');
 INSERT INTO `language` VALUES ('SUCCESS_REG', 'Erfolgreich registriert', 'Successfully registered');
 INSERT INTO `language` VALUES ('NICK_EXISTS', 'Nick existiert bereits', 'Nickname already exists');
 INSERT INTO `language` VALUES ('JID_EXISTS', 'Jabber ID existiert bereits', 'Jabber ID already exists');
 INSERT INTO `language` VALUES ('LOGOUT', 'Abmelden', 'Logout');
 INSERT INTO `language` VALUES ('OPTIONS', 'Optionen', 'Options');
-INSERT INTO `language` VALUES ('CHANGEPW', 'Passwort', 'Change password');
-INSERT INTO `language` VALUES ('CHANGEDETAILS', 'Benutzer Details', 'Change user details');
-INSERT INTO `language` VALUES ('RMACC', 'L', 'Remove account');
+INSERT INTO `language` VALUES ('CHANGEPW', 'Passwort ändern', 'Change password');
+INSERT INTO `language` VALUES ('CHANGEDETAILS', 'Benutzer Details ändern', 'Change user details');
+INSERT INTO `language` VALUES ('RMACC', 'Lösche Account', 'Remove account');
 INSERT INTO `language` VALUES ('CHANGETAGS', 'Tags bearbeiten', 'Change Tags');
-INSERT INTO `language` VALUES ('CHANGE', '', 'Change');
+INSERT INTO `language` VALUES ('CHANGE', 'Ändern', 'Change');
 INSERT INTO `language` VALUES ('YOUR_FAVORITES', 'Deine Lieblingsdinge', 'Your favorites');
 INSERT INTO `language` VALUES ('YOUR_COMPUTER', 'Dein Computer', 'Your Computer');
-INSERT INTO `language` VALUES ('ABOUT_YOU', '', 'About you');
-INSERT INTO `language` VALUES ('BACK_TO_OPTIONS', 'Zur', 'Back to options');
+INSERT INTO `language` VALUES ('ABOUT_YOU', 'Über dich', 'About you');
+INSERT INTO `language` VALUES ('BACK_TO_OPTIONS', 'Zurück zu den Optionen', 'Back to options');
 INSERT INTO `language` VALUES ('LAST_MEMBERS', 'Die neusten Mitglieder', 'The lastes members');
 INSERT INTO `language` VALUES ('SEARCH', 'Suche', 'Search');
-INSERT INTO `language` VALUES ('MATCHES_FOR', 'Treffer f', 'Matches for');
-INSERT INTO `language` VALUES ('3CHAR', 'Die Suchanfrage muss l', 'The query must be longer than three characters');
-
+INSERT INTO `language` VALUES ('MATCHES_FOR', 'Treffer für', 'Matches for');
+INSERT INTO `language` VALUES ('3CHAR', 'Die Suchanfrage muss länger als drei Zeichen sein', 'The query must be longer than three characters');
+INSERT INTO `language` VALUES ('AUTHORS', 'Autoren', 'Authors');
+INSERT INTO `language` VALUES ('PREVIEW', 'Vorschau', 'Preview');
+INSERT INTO `language` VALUES ('SAFE', 'Seite speichern', 'Safe page');
+INSERT INTO `language` VALUES ('SHOULDLOGGEDIN', 'Du musst angemeldet sein', 'You should logged in');
+INSERT INTO `language` VALUES ('PWUSER', 'Unbekannte Nick-Passwort Kombination', 'Unknown nickname-password combination');
+INSERT INTO `language` VALUES ('GERMAN', 'Deutsch', 'German');
+INSERT INTO `language` VALUES ('ENGLISH', 'Englisch', 'English');
+INSERT INTO `language` VALUES ('LANGOFPAGE', 'Sprache der Wiki-Seite', 'Language of wiki page');
+INSERT INTO `language` VALUES ('VERSIONS', 'Versionen von', 'Versions of');
+INSERT INTO `language` VALUES ('EDIT', 'Bearbeiten', 'Edit');
+INSERT INTO `language` VALUES ('VIEW', 'Ansicht', 'View');
+INSERT INTO `language` VALUES ('ADD_TAGS', 'Tag hinzufügen', 'Add Tag');
+INSERT INTO `language` VALUES ('DEL_TAGS', 'tags_loeschen', 'tags_delete');
+INSERT INTO `language` VALUES ('ADD_TAGS_TEXT', 'Hier  neuen Tag eingeben:', 'Enter the new tag:');
+INSERT INTO `language` VALUES ('AKTUAL_TAGS', 'Deine Tags:', 'Yout tags:');
+INSERT INTO `language` VALUES ('DEL_TAG', 'Entfernen', 'Delete');
