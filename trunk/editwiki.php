@@ -63,6 +63,8 @@ if ($user->login($_SESSION['nick'],$_SESSION['passwd'])) {
                 $template->replace_wiki('FULLPAGE_TEXT',$pre_content);
             }
         } else {
+            $wiki->set_id_language($id,$language);
+            $w_text = $wiki->get_text();
             if (($_POST['text']!=$w_text)) {
                 $wiki->update_article($id,$_POST['text'],$language,$user->get_id($_SESSION['nick']));
             }

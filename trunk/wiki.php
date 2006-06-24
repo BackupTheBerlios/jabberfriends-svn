@@ -47,15 +47,23 @@ $template->replace('META_TITLE',$wiki->get_title());
 $template->replace('WIKI_HEADER',$wiki->get_title());
 
 if ($language=="de") {
-    $options = '
-    <a href="/de/editor/'.$id.'.htm">Diese Seite Bearbeiten</a><br />
-    <a href="/de/wiki/versionen_von_'.$id.'.htm">Versionen anzeigen</a><br />
+    if ($realid!='') {
+        $options = '<a href="/de/editor/'.$id.'_'.$realid.'.htm">Diese Seite Bearbeiten</a><br />';
+    } else {
+        $options = '<a href="/de/editor/'.$id.'.htm">Diese Seite Bearbeiten</a><br />';
+    }
+    $options = $options.'
+    <a href="/de/wiki/versionen_von_'.$id.'.htm">Versionen anzeigen</a><br /><br />
     <a href="/de/editor/neu.htm">Neue Seite anlegen</a><br />';
     $memberlink = '/de/mitglieder/';
 } elseif ($language=="en") {
-    $options = '
-    <a href="/en/editor/'.$id.'.htm">Edit this page</a><br />
-    <a href="/en/wiki/versions_of_'.$id.'.htm">List versions</a><br />
+    if ($realid!='') {
+        $options = '<a href="/en/editor/'.$id.'_'.$realid.'.htm">Edit this page</a><br />';
+    } else {
+        $options = '<a href="/en/editor/'.$id.'.htm">Edit this page</a><br />';
+    }
+    $options = $options.'
+    <a href="/en/wiki/versions_of_'.$id.'.htm">List versions</a><br /><br />
     <a href="/en/editor/new.htm">Create a new page</a><br />';
     $memberlink = '/en/members/';
 }
