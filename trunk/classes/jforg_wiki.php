@@ -21,14 +21,34 @@ class jforg_wiki {
         if ($realid==0) {
             $sql = 'SELECT id,wiki_id,language,title,text FROM `wiki` WHERE wiki_id = '.$this->wiki_id.' AND `language` = \''.$this->content_language.'\' ORDER BY id DESC LIMIT 1';
         } else {
-            $sql = 'SELECT id,wiki_id,language,title,text FROM `wiki` WHERE id = '.$realid;
+            $sql = 'SELECT id,wiki_id,language,title,text FROM `wiki` WHERE id = '.$realid.' AND wiki_id = '.$this->wiki_id.' AND `language` = \''.$this->content_language.'\'';
         }
         $query = mysql_query($sql,$this->connection);
         if (!$query) {
             die("jforg_wiki.get_by_id: Die SQL Abfrage ist fehlgeschlagen - $sql");
         }
         $this->content = mysql_fetch_assoc($query);
-        
+        $anzahl = mysql_num_rows($query);
+        //Fehler, entscheide welchen
+        if ($anzahl!=1) {
+            if ($realid!=0) {
+                die('Error: Invaild version'.$sql);
+            } else {
+                //Prüfen ob die ID grundsätzlich da ist - wenn nicht 404 error
+                $sql = 'SELECT wiki_id FROM `wiki` WHERE wiki_id = '.$this->wiki_id.' LIMIT 1';
+                $query = mysql_query($sql,$this->connection);
+                if (!$query) {
+                    die("jforg_wiki.get_by_id: Die SQL Abfrage ist fehlgeschlagen - $sql");
+                }
+                $anzahl = mysql_num_rows($query);
+                if ($anzahl==1) {
+                    $error['title'] = '{LANG_NOTRANSLATION}';
+                } else {
+                    $error['title'] = '{LANG_NOTFOUND}';
+                }
+            }
+            $this->content = $error;
+        }
     }
     function get_versions() {
         $sql = 'SELECT id,wiki_id,language,UNIX_TIMESTAMP(datetime) AS datetime,user_id,ip_addr FROM `wiki` WHERE wiki_id = '.$this->wiki_id.' AND `language` = \''.$this->content_language.'\' ORDER BY id DESC';
@@ -87,8 +107,8 @@ class jforg_wiki {
         $result = mysql_fetch_assoc($query);
         return $result['title'];
     }
-    function update_article($id,$title,$text,$language,$author) {
-        $title = str_replace("'","''",$title);
+    function update_article($id,$text,$language,$author) {
+        $title = str_replace("'","''",$this->get_title());
         $text = str_replace("'","''",$text);
         $ip_addr = $_SERVER['REMOTE_ADDR'];
         $datum = date('Y-m-d H:i:s');
