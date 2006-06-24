@@ -38,7 +38,7 @@ class jforg_tags{
         $tag_exist      =   $this->tag_exist($tag_value);
 
         if($tag_exist == FALSE){
-  		    $add_tag_to_tags 	= 	"INSERT INTO `tags` (`id`, `tag` ) VALUES (NULL, '$tag_value');";
+  		    $add_tag_to_tags 	= 	"INSERT INTO `tags` (`id`, `tag`, `counter` ) VALUES (NULL, '$tag_value', +1);";
 		    $query				=	mysql_query($add_tag_to_tags,$this->connection);
             
             // In case of emergency just print and die
@@ -52,12 +52,19 @@ class jforg_tags{
 
         if($user_have_tag == FALSE){
             $add_tag_to_user 	= 	"INSERT INTO `user_tags` ( `user_id` , `tag_id` ) VALUES ('$user_id', '$tag_id');";
-		    $query				=	@mysql_query($add_tag_to_user,$this->connection);
-		
-            // In case of emergency just print and die
+		    $query				=	mysql_query($add_tag_to_user,$this->connection);
+         // In case of emergency just print and die
             if (!$query) {
 			    die("jforg_tags.add_tag: Der SQL Insert ist fehlgeschlagen - $add_tag_to_user");
 		    }
+            
+		    $count_up           =  "UPDATE `tags` SET `counter` = counter +1 WHERE `id` ='$tag_id' LIMIT 1 ;"; 
+            $query2             =   mysql_query($count_up, $this->connection);
+            if (!$query2) {
+			    die("jforg_tags.add_tag: Der SQL Insert ist fehlgeschlagen - $count_up");
+		    }
+
+   
         }
 	}  
 
@@ -70,7 +77,14 @@ class jforg_tags{
 			if (!$query) {
             	die("jforg_tags.remove_tag: Das SQL DELETE ist fehlgeschlagen - $remove_tag");
 			}
+
+		    $count_down         =  "UPDATE `tags` SET `counter` = counter -1 WHERE `id` ='$tag' LIMIT 1 ;"; 
+            $query2             =   mysql_query($count_down, $this->connection);
+            if (!$query2) {
+			    die("jforg_tags.add_tag: Der SQL Insert ist fehlgeschlagen - $count_down");
+		    }
 		}
+
 		if(is_string($tag)){
 			$get_tag_id			=	"SELECT `id` FROM `tags`WHERE `tag` = '$tag';";
 			$query				=	@mysql_query($get_tag_id,$this->connection);
@@ -82,6 +96,14 @@ class jforg_tags{
 			if (!$query) {
             	die("jforg_tags.remove_tag: Das SQL DELETE ist fehlgeschlagen - $remove_tag");
 			}
+            
+		    $count_down           =  "UPDATE `tags` SET `counter` = counter -1 WHERE `id` ='$tag_id' LIMIT 1 ;"; 
+            $query2             =   mysql_query($count_down, $this->connection);
+            if (!$query2) {
+			    die("jforg_tags.add_tag: Der SQL Insert ist fehlgeschlagen - $count_down");
+		    }
+
+
 		}
 	}
     
@@ -168,17 +190,18 @@ class jforg_tags{
     
     // This function test if the user has set the specified tag	
 	function has_user_tag($tag_id, $user_id){
-		$user_has_tag	=	"SELECT `user_id`='$user_id' FROM `user_tags` WHERE `tag_id` = '$tag_id' ;";
+		$user_has_tag	=	"SELECT `user_id` FROM `user_tags` WHERE`tag_id` = '$tag_id' AND `user_id` = '$user_id';";
 		$query			=	mysql_query($user_has_tag,$this->connection);
 		$exists 		= 	mysql_num_rows($query);
-        
+        //die("dafjadlfhjajdfhl".$exists);
 		//If the user hasn't this tag already set, so set it now.
-		if((string) $exists[0] == "" ){
-			return $he_have_it = FALSE;
+		if ($exists==0) {
+		return  FALSE;
 		}else{
-		    return $he_have_it = TRUE;
+		    return TRUE;
 		}
 	}
 
 }
+
 ?>
