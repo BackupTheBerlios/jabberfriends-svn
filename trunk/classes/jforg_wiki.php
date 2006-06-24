@@ -27,12 +27,12 @@ class jforg_wiki {
         
     }
     function get_versions() {
-        $sql = 'SELECT id,wiki_id,language,datetime,user_id,ip_addr FROM `wiki` WHERE wiki_id = '.$this->wiki_id.' AND `language` = \''.$this->content_language.'\' ORDER BY id DESC';
+        $sql = 'SELECT id,wiki_id,language,UNIX_TIMESTAMP(datetime) AS datetime,user_id,ip_addr FROM `wiki` WHERE wiki_id = '.$this->wiki_id.' AND `language` = \''.$this->content_language.'\' ORDER BY id DESC';
         $query = mysql_query($sql,$this->connection);
         if (!$query) {
             die("jforg_wiki.get_by_id: Die SQL Abfrage ist fehlgeschlagen - $sql");
         }
-        while ($row = mysql_fetch_array($query)) {
+        while ($row = mysql_fetch_assoc($query)) {
             $result[]=$row;
         }
         return $result;

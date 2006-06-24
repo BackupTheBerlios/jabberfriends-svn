@@ -43,14 +43,14 @@ if ($language=="de") {
     $options = '
     <a href="">Diese Seite Drucken</a><br />
     <a href="/de/editor/'.$id.'.htm">Diese Seite Bearbeiten</a><br />
-    <a href="">Versionen anzeigen</a><br />
+    <a href="/de/wiki/versionen_von_'.$id.'.htm">Versionen anzeigen</a><br />
     <a href="/de/editor/neu.htm">Neue Seite anlegen</a><br />';
     $memberlink = '/de/mitglieder/';
 } elseif ($language=="en") {
     $options = '
     <a href="">Print this page</a><br />
     <a href="/en/editor/'.$id.'.htm">Edit this page</a><br />
-    <a href="">List versions</a><br />
+    <a href="/en/wiki/versions_of_'.$id.'.htm">List versions</a><br />
     <a href="/en/editor/new.htm">Create a new page</a><br />';
     $memberlink = '/en/members/';
 }

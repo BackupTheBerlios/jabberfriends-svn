@@ -43,6 +43,7 @@ RewriteRule ^en/members/extended_search.htm$ search.php?lang=en&search=extended
 RewriteRule ^en/wiki/$ wiki.php?lang=en&id=1
 RewriteRule ^en/wiki$ wiki.php?lang=en&id=1
 RewriteRule ^en/wiki/([0-9]+)-([^/\:]+).htm$ wiki.php?lang=en&id=$1
+RewriteRule ^en/wiki/versions_of_([0-9]+).htm$ wiki_version.php?lang=en&id=$1
 RewriteRule ^en/editor/([0-9]+).htm$ editwiki.php?lang=en&id=$1
 RewriteRule ^en/editor/new.htm$ editwiki.php?lang=en&id=0
 RewriteRule ^en/tags_delete/([0-9]+).htm$ changetags.php?lang=en&tag_id=$1
