@@ -162,6 +162,30 @@ class jforg_template {
         $content = str_replace('[TABLEOFCONTENT]',$table_of_content,$content);
         $this->page = str_replace($name,$content,$this->page);
     }
+    function highlight_cite($zitat) {
+        $colors = array('b04b4b','4bb072','4b72b0','b0ae4b','864bb0');
+        $zeilen = explode("\n",$zitat);
+        $nicks = array();
+        foreach($zeilen as $zeile) {
+            $woerter = explode(' ',$zeile);
+            if (preg_match('/[<][\S]+[>]/',$woerter[0])) {
+                if (!in_array($woerter[0],$nicks)) {
+                    echo $woerter[0];
+                    $nicks[] = $woerter[0];
+                }
+            }
+        }
+        $zitat = str_replace("\n",'<br />',$zitat);
+        $i = 0;
+        foreach($nicks as $nick) {
+            if ($i == count($colors)) {
+                $i = 0;
+            }
+            $zitat = str_replace($nick,'<span style="color: #'.$colors[$i].'"><b>'.htmlentities($nick).'</b></span>',$zitat);
+            ++$i;
+        }
+        return $zitat;
+    }
     /**
       * Wählt welche Farbe in der Navigation markiert sein soll
       */
@@ -169,7 +193,7 @@ class jforg_template {
         if ($color=="tuerkis") {
             $this->page = str_replace('<a class="tuerkis"','<a style="background-color: #4ba7b0;" class="tuerkis"',$this->page);
         } elseif ($color=="green") {
-            $this->page = str_replace('<a class="green"','<a style="background-color: #4bb072;" class="green"',$this->page);
+            $this->page = str_replace('<a class="green"','<a style="background-color: #44bb072;" class="green"',$this->page);
         } elseif ($color=="lila") {
             $this->page = str_replace('<a class="lila"','<a style="background-color: #864bb0;" class="lila"',$this->page);
         } elseif ($color=="red") {

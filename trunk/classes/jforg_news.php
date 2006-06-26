@@ -14,7 +14,8 @@ class jforg_news  {
     }
     function get_latest($anzahl = 1)
     {
-        $sql = 'SELECT id,title,text,UNIX_TIMESTAMP(datetime) AS datetime FROM news ORDER BY datetime desc LIMIT '.$anzahl;      $query = mysql_query($sql,$this->connection);
+        $sql = 'SELECT id,title,text,UNIX_TIMESTAMP(datetime) AS datetime FROM news ORDER BY datetime desc LIMIT '.$anzahl;
+        $query = mysql_query($sql,$this->connection);
         if (!$query)
         {
             die('jforg_news: Abfrage schlug fehl '.$sql);    
