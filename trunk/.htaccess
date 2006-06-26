@@ -25,6 +25,9 @@ RewriteRule ^de/wiki/versionen_von_([0-9]+).htm$ wiki_version.php?lang=de&id=$1
 RewriteRule ^de/editor/([0-9]+).htm$ editwiki.php?lang=de&id=$1
 RewriteRule ^de/editor/([0-9]+)_([0-9]+).htm$ editwiki.php?lang=de&id=$1&realid=$2
 RewriteRule ^de/editor/neu.htm$ editwiki.php?lang=de&id=0
+RewriteRule ^de/neuigkeiten/$ news.php?lang=de
+RewriteRule ^de/neuigkeiten$ news.php?lang=de
+RewriteRule ^de/neuigkeiten/([0-9]+)-([^/\:]+).htm$ singlenews.php?lang=de&id=$1
 
 RewriteRule ^en/members/([0-9]+)-([^/\:]+).htm$ user_details.php?lang=en&id=$1
 RewriteRule ^en/publickeys/([0-9]+)-([^/\:]+).htm$ publickey.php?lang=en&id=$1
@@ -52,3 +55,5 @@ RewriteRule ^en/editor/new.htm$ editwiki.php?lang=en&id=0
 RewriteRule ^en/editor/([0-9]+)_([0-9]+).htm$ editwiki.php?lang=en&id=$1&realid=$2
 RewriteRule ^en/tags_delete/([0-9]+).htm$ changetags.php?lang=en&tag_id=$1
 RewriteRule ^en/tag/([^/\:]+).htm$ tag.php?lang=en&tag_value=$1
+RewriteRule ^en/news/$ news.php?lang=en
+RewriteRule ^en/news$ news.php?lang=en

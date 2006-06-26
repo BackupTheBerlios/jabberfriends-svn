@@ -5,6 +5,7 @@ include('classes/jforg_user.php');
 include('classes/jforg_news.php');
 include('classes/jforg_cleanurl.php');
 $user = new jforg_user();
+$news = new jforg_news();
 if (in_array($_GET['lang'],$config['languages'])) {
     $language = $_GET['lang'];
 } else {
@@ -12,9 +13,8 @@ if (in_array($_GET['lang'],$config['languages'])) {
 }
 $template = new jforg_template();
 $user = new jforg_user();
-$news = new jforg_news();
 $template->set_path('design');
-$template->set_frame('startpage');
+$template->set_frame('fullpage','tuerkis');
 $template->hover_on('tuerkis');
 SESSION_START();
 if ($user->login($_SESSION['nick'],$_SESSION['passwd'])) {
@@ -31,17 +31,16 @@ if ($language=='de') {
 } else {
     $news_link = 'news';
 }
-$lastnews = $news->get_latest($language);
-$template->replace('NEWSHEAD',htmlentities($lastnews['title']));
-$template->replace('NEWSDATE',date('d.m.Y H:i',$lastnews['datetime']));
-$news_absatz = explode("\n",$lastnews['text']);
-$template->replace('NEWSTEXT',htmlentities($news_absatz[0]));
-$template->replace('LINK_GERMAN','/de/');
-$template->replace('LINK_ENGLISH','/en/');
-$template->replace('META_TITLE','JabberFriends.org');
-$template->replace('LINK_NEWS','/'.$language.'/'.$news_link.'/'.$lastnews['id'].'-'.cleanurl($lastnews['title']).'.htm');
-$template->replace('LINK_ALLNEWS','/'.$language.'/'.$news_link.'/');
-$template->replace('RSS_NEWS','/'.$language.'/rss/'.$news_link.'.xml');
+$lastnews = $news->get_latest($language,15);
+foreach($lastnews as $news) {
+    $news_absatz = explode("\n",$news['text']);
+    $content .= '<h2>'.htmlentities($news['title']).'</h2><i>'.date('d.m.Y H:i',$news['datetime']).'</i> '.htmlentities($news_absatz[0]).' <a href="/'.$language.'/'.$news_link.'/'.$news['id'].'-'.cleanurl($news['title']).'.htm">{LANG_READMORE}</a>';
+}
+$template->replace('FULLPAGE_TEXT',$content);
+$template->replace('FULLPAGE_HEADER','{LANG_NEWS}');
+$template->replace('LINK_GERMAN','/de/neuigkeiten/');
+$template->replace('LINK_ENGLISH','/en/news/');
+$template->replace('META_TITLE','{LANG_NEWS}');
 $template->translate($language);
 include('includes/links.php');
 $template->write();
