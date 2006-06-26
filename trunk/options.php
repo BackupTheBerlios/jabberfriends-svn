@@ -23,7 +23,7 @@ $content = '<h2>{LANG_SETTING}</h2><a href="{LINK_CHANGEPW}">{LANG_CHANGEPW}</a>
 <a href="{LINK_RMACC}">{LANG_RMACC}</a>';
 if ($user->is_admin($_SESSION['nick'],$_SESSION['passwd'])) {
     $content .= '<h2>{LANG_ADMIN}</h2>
-    <a href="{LINK_WRITENEWS}">{LANG_WRITENEWS}</a>';
+    <a href="/'.$language.'/news_editor/neu.htm">{LANG_WRITENEWS}</a>';
 }
 $template->replace('FULLPAGE_TEXT',$content);
 $template->replace('LOGIN','{LANG_LOGOUT}');

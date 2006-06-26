@@ -19,8 +19,8 @@ $template = new jforg_template();
 $user = new jforg_user();
 $news = new jforg_news();
 $template->set_path('design');
-$template->set_frame('fullpage','green');
-$template->hover_on('green');
+$template->set_frame('fullpage','tuerkis');
+$template->hover_on('tuerkis');
 SESSION_START();
 if ($user->is_admin($_SESSION['nick'],$_SESSION['passwd'])) {
     if (!empty($_POST['safe'])) {
