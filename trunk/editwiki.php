@@ -17,7 +17,6 @@ if (!is_int($id)) {
     die("Invalid ID - $id");
 }
 $realid = $_GET['realid'];
-$id = $id + 0;
 $template = new jforg_template();
 $user = new jforg_user();
 $template->set_path('design');

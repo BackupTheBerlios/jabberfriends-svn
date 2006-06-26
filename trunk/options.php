@@ -17,10 +17,14 @@ SESSION_START();
 if (!$user->login($_SESSION['nick'],$_SESSION['passwd'])) {
     die('You are not logged in');  
 }
-$content = '<a href="{LINK_CHANGEPW}">{LANG_CHANGEPW}</a><br />
+$content = '<h2>{LANG_SETTING}</h2><a href="{LINK_CHANGEPW}">{LANG_CHANGEPW}</a><br />
 <a href="{LINK_CHANGEDETAILS}">{LANG_CHANGEDETAILS}</a><br />
 <a href="{LINK_CHANGETAGS}">{LANG_CHANGETAGS}</a><br /><br />
 <a href="{LINK_RMACC}">{LANG_RMACC}</a>';
+if ($user->is_admin($_SESSION['nick'],$_SESSION['passwd'])) {
+    $content .= '<h2>{LANG_ADMIN}</h2>
+    <a href="{LINK_WRITENEWS}">{LANG_WRITENEWS}</a>';
+}
 $template->replace('FULLPAGE_TEXT',$content);
 $template->replace('LOGIN','{LANG_LOGOUT}');
 $template->replace('REGISTER','{LANG_OPTIONS}');

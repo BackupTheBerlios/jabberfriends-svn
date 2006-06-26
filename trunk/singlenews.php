@@ -30,7 +30,7 @@ if ($user->login($_SESSION['nick'],$_SESSION['passwd'])) {
     $template->replace('LOGIN','{LANG_LOGIN}');
     $template->replace('REGISTER','{LANG_REGISTER}');
 }
-$news = $news->get_by_id($language,$id);
+$news = $news->get_by_id($id);
 $template->replace('FULLPAGE_HEADER',htmlentities($news['title']));
 $template->replace('FULLPAGE_TEXT','<i>'.date('d.m.Y H:i',$news['datetime']).'</i> '.htmlentities($news['text']));
 $template->replace('LINK_GERMAN','/de/neuigkeiten/');

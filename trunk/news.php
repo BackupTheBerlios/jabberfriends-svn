@@ -31,7 +31,7 @@ if ($language=='de') {
 } else {
     $news_link = 'news';
 }
-$lastnews = $news->get_latest($language,15);
+$lastnews = $news->get_latest(15);
 foreach($lastnews as $news) {
     $news_absatz = explode("\n",$news['text']);
     $content .= '<h2>'.htmlentities($news['title']).'</h2><i>'.date('d.m.Y H:i',$news['datetime']).'</i> '.htmlentities($news_absatz[0]).' <a href="/'.$language.'/'.$news_link.'/'.$news['id'].'-'.cleanurl($news['title']).'.htm">{LANG_READMORE}</a>';

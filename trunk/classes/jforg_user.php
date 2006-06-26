@@ -39,6 +39,19 @@ class jforg_user {
             return false;
         }
     }
+    function is_admin($nick,$passwd) {
+        $passwd             =   crypt($nick,$passwd);
+        $sql                =   "SELECT nick,passwd FROM `user_login` WHERE `nick` = '$nick' AND `passwd` = '$passwd' AND status = 5";
+        $query              =   @mysql_query($sql,$this->connection);
+        if (!$query) {
+            die("jforg_user.is_admin: Die SQL Abfrage ist fehlgeschlagen - $sql");
+        }
+        if (mysql_num_rows($query) == 1) {
+            return true;
+        } else {
+            return false;
+        }
+    }
     function jid_exists($jid) {
         $sql                =   "SELECT nick,passwd FROM `user_login` WHERE `jid` = '$jid'";
         $query              =   @mysql_query($sql,$this->connection);

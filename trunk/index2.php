@@ -31,7 +31,7 @@ if ($language=='de') {
 } else {
     $news_link = 'news';
 }
-$lastnews = $news->get_latest($language);
+$lastnews = $news->get_latest();
 $template->replace('NEWSHEAD',htmlentities($lastnews['title']));
 $template->replace('NEWSDATE',date('d.m.Y H:i',$lastnews['datetime']));
 $news_absatz = explode("\n",$lastnews['text']);

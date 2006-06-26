@@ -12,10 +12,9 @@ class jforg_news  {
             die("jforg_news: Die Auswahl der Tabelle ist fehlgeschlagen");
         }
     }
-    function get_latest($language,$anzahl = 1)
+    function get_latest($anzahl = 1)
     {
-        $sql = 'SELECT id,'.$language.'_title AS title,'.$language.'_text AS text, UNIX_TIMESTAMP(datetime) AS datetime FROM news ORDER BY datetime desc LIMIT '.$anzahl;
-        $query = mysql_query($sql,$this->connection);
+        $sql = 'SELECT id,title,text,UNIX_TIMESTAMP(datetime) AS datetime FROM news ORDER BY datetime desc LIMIT '.$anzahl;      $query = mysql_query($sql,$this->connection);
         if (!$query)
         {
             die('jforg_news: Abfrage schlug fehl '.$sql);    
@@ -32,8 +31,8 @@ class jforg_news  {
         }
         return $result;
     }
-    function get_by_id($language,$id) {
-        $sql = 'SELECT '.$language.'_title AS title,'.$language.'_text AS text, UNIX_TIMESTAMP(datetime) AS datetime FROM news WHERE id = '.$id;
+    function get_by_id($id) {
+        $sql = 'SELECT title, text, UNIX_TIMESTAMP(datetime) AS datetime FROM news WHERE id = '.$id;
         $query = mysql_query($sql,$this->connection);
         if (!$query)
         {
@@ -41,16 +40,22 @@ class jforg_news  {
         }
         return  mysql_fetch_assoc($query);
     }
-    function write($de_title,$en_title,$de_text,$en_text) {
-        $sql = 'INSERT INTO `news` ( `id` , `datetime` , `de_title` , `en_title` , `de_text` , `en_text` ) VALUES (\'\', \''.date('Y-m-d H:i:s').'\', \''.mysql_real_escape_string($de_title).'\', \''.mysql_real_escape_string($en_title).'\', \''.mysql_real_escape_string($de_text).'\', \''.mysql_real_escape_string($en_text).'\');';
+    function write($title,$text) {
+        $sql = 'INSERT INTO `news` ( `id` , `datetime` , `title` , `text` ) VALUES (\'\', \''.date('Y-m-d H:i:s').'\', \''.mysql_real_escape_string($title).'\', \''.mysql_real_escape_string($text).'\');';
         $query = mysql_query($sql,$this->connection);
         if (!$query)
         {
             die('jforg_news: Abfrage schlug fehl '.$sql);    
         }
+        return mysql_insert_id($this->connection);
     }
-    function update($id,$de_title,$en_title,$de_text,$en_text) {
-        
+    function update($id,$title,$text) {
+        $sql = 'UPDATE `news` SET `title` = \''.mysql_real_escape_string($title).'\',`text` = \''.mysql_real_escape_string($text).'\' WHERE `id` ='.$id;
+        $query = mysql_query($sql,$this->connection);
+        if (!$query)
+        {
+            die('jforg_news: Abfrage schlug fehl '.$sql);    
+        }
     }
 }
 ?>
