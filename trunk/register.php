@@ -25,7 +25,7 @@ if ($_POST['submit']!="") {
     if (!preg_match('/[-._+\d\w]{3,}/i',$_POST['nick'])) {
         $nick_comment = '<tr><td>&nbsp;</td><td><em>{LANG_ONLY_LETTERS_3}</em></td></tr>';
     } else {
-        if ($user->nick_exists($nick)) {
+        if ($user->nick_exists($_POST['nick'])) {
             $nick_comment = '<tr><td>&nbsp;</td><td><em>{LANG_NICK_EXISTS}</em></td></tr>';
         } else {
             $counter++;
@@ -34,7 +34,7 @@ if ($_POST['submit']!="") {
     if (!preg_match('/.+[@].{4,}/i',$_POST['jid'])) {
         $jid_comment = '<tr><td>&nbsp;</td><td><em>{LANG_UNACCEPT_JID}</em></td></tr>';
     } else {
-        if ($user->jid_exists($jid)) {
+        if ($user->jid_exists($_POST['jid'])) {
             $jid_comment = '<tr><td>&nbsp;</td><td><em>{LANG_JID_EXISTS}</em></td></tr>';
         } else {
             $counter++;
