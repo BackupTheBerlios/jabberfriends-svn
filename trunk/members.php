@@ -26,9 +26,8 @@ if ($user->login($_SESSION['nick'],$_SESSION['passwd'])) {
     $template->replace('REGISTER','{LANG_REGISTER}');
 }
 $max_per_search = 5;
-$text = get_text(2,$language);
 $usersearch = new jforg_usersearch();
-$content = $text.'<br /><br /><form action="{LINK_SEARCH}" method="post"><input name="search" type="text" />&nbsp;<input class="submit" name="submit" type="submit" value="{LANG_SEARCH}" /></form>';
+$content = '<br /><form action="{LINK_SEARCH}" method="post"><input name="search" type="text" />&nbsp;<input class="submit" name="submit" type="submit" value="{LANG_SEARCH}" /></form>';
 $content = $content.'<br /><br /><b>{LANG_LAST_MEMBERS}</b><ol>';
 $array = $usersearch->search_last(5);
 foreach($array as $row) {

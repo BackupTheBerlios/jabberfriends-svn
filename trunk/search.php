@@ -26,25 +26,7 @@ if ($user->login($_SESSION['nick'],$_SESSION['passwd'])) {
     $template->replace('REGISTER','{LANG_REGISTER}');
 }
 $usersearch = new jforg_usersearch();
-$text = get_text(2,$language);
-if ($_GET['search']=='normal') {
-    $content = $text.'<br /><br /><form action="{LINK_SEARCH}" method="post"><input value="'.$_POST['search'].'" name="search" type="text" />&nbsp;<input class="submit" name="submit" type="submit" value="{LANG_SEARCH}" /></form>';
-}
-if ($_GET['search']=='extended') {
-    $content = '<form action="{LINK_SEARCH}" method="post">
-    <table cellpadding="0" cellspacing="2">
-    <tr>
-    <td class="normal">{LANG_NICK}<br /><input class="normal" value="'.$_POST['nick'].'" name="nick" type="text" /></td><td>{LANG_JID}<br /><input class="normal" value="'.$_POST['jid'].'" name="jid" type="text" /></td>
-    </tr>
-    <tr>
-    <td class="normal">{LANG_REALNAME}<br /><input class="normal" value="'.$_POST['realname'].'" name="realname" type="text" /></td><td>{LANG_BIRTHDAY}<br /><input class="normal" value="'.$_POST['jid'].'" name="jid" type="text" /></td>
-    </tr>
-    <tr>
-    <td class="normal">{LANG_COUNTRY}<br /><input class="normal" value="'.$_POST['country'].'" name="country" type="text" /></td><td>{LANG_CITY}<br /><input class="normal" value="'.$_POST['city'].'" name="city" type="text" /></td>
-    </tr>
-    </table>
-    </form>';
-}
+$content = '<br /><form action="{LINK_SEARCH}" method="post"><input value="'.$_POST['search'].'" name="search" type="text" />&nbsp;<input class="submit" name="submit" type="submit" value="{LANG_SEARCH}" /></form>';
 $max_per_search = 5;
 if (isset($_POST['search'])) {
     if (preg_match('/.{3,}/',$_POST['search'])) {

@@ -22,6 +22,11 @@ $template->set_path('design');
 $template->set_frame('fullpage','tuerkis');
 $template->hover_on('tuerkis');
 SESSION_START();
+if ($language=='de') {
+    $news_link = 'neuigkeiten';
+} else {
+    $news_link = 'news';
+}
 if ($user->is_admin($_SESSION['nick'],$_SESSION['passwd'])) {
     if (!empty($_POST['safe'])) {
         if ($id==0) {
@@ -36,7 +41,7 @@ if ($user->is_admin($_SESSION['nick'],$_SESSION['passwd'])) {
         } else {
             if(!empty($_POST['title'])) {
                 $news->update($_POST['id'],$_POST['title'],$_POST['text']);
-                $url = '/'.$language.'/neuigkeiten/'.$_POST['id'].'-'.cleanurl($_POST['title']).'.htm';
+                $url = '/'.$language.'/'.$news_link.'/'.$_POST['id'].'-'.cleanurl($_POST['title']).'.htm';
                 header("Location: $url");
             } else {
                 $pre_content = '<em>{LANG_FILLIN}</em><br /><br />{FULLPAGE_TEXT}';
@@ -70,8 +75,8 @@ if ($user->is_admin($_SESSION['nick'],$_SESSION['passwd'])) {
 $template->replace('FULLPAGE_TEXT',$content);
 $template->replace('LOGIN','{LANG_LOGIN}');
 $template->replace('REGISTER','{LANG_REGISTER}');
-$template->replace('LINK_GERMAN','/de/');
-$template->replace('LINK_ENGLISH','/en/');
+$template->replace('LINK_GERMAN','/de/news_editor/'.$id.'.htm');
+$template->replace('LINK_ENGLISH','/en/news_editor/'.$id.'.htm');
 $template->replace('META_TITLE','JabberFriends.org');
 $template->translate($language);
 include('includes/links.php');

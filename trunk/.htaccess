@@ -15,8 +15,7 @@ RewriteRule ^de/tags_loeschen/([0-9]+).htm$ changetags.php?lang=de&tag_id=$1
 RewriteRule ^de/tag/([^/\:]+).htm$ tag.php?lang=de&tag_value=$1
 RewriteRule ^de/mitglieder/$ members.php?lang=de
 RewriteRule ^de/mitglieder$ members.php?lang=de
-RewriteRule ^de/mitglieder/suche.htm$ search.php?lang=de&search=normal
-RewriteRule ^de/mitglieder/erweiterte_suche.htm$ search.php?lang=de&search=extended
+RewriteRule ^de/mitglieder/suche.htm$ search.php?lang=de
 RewriteRule ^de/wiki/$ wiki.php?lang=de&id=1
 RewriteRule ^de/wiki$ wiki.php?lang=de&id=1
 RewriteRule ^de/wiki/([0-9]+)-([^/\:]+).htm$ wiki.php?lang=de&id=$1
@@ -51,8 +50,7 @@ RewriteRule ^en/change_tags.htm$ changetags.php?lang=en
 RewriteRule ^en/change_tags.htm$ changetags.php?lang=en&del_tag=id
 RewriteRule ^en/members/$ members.php?lang=en
 RewriteRule ^en/members$ members.php?lang=en
-RewriteRule ^en/members/search.htm$ search.php?lang=en&search=normal
-RewriteRule ^en/members/extended_search.htm$ search.php?lang=en&search=extended
+RewriteRule ^en/members/search.htm$ search.php?lang=en
 RewriteRule ^en/wiki/$ wiki.php?lang=en&id=1
 RewriteRule ^en/wiki$ wiki.php?lang=en&id=1
 RewriteRule ^en/wiki/([0-9]+)-([^/\:]+).htm$ wiki.php?lang=en&id=$1
@@ -65,6 +63,7 @@ RewriteRule ^en/tags_delete/([0-9]+).htm$ changetags.php?lang=en&tag_id=$1
 RewriteRule ^en/tag/([^/\:]+).htm$ tag.php?lang=en&tag_value=$1
 RewriteRule ^en/news/$ news.php?lang=en
 RewriteRule ^en/news$ news.php?lang=en
+RewriteRule ^en/news/([0-9]+)-([^/\:]+).htm$ singlenews.php?lang=en&id=$1
 RewriteRule ^en/news_editor/([0-9]+).htm$ writenews.php?lang=en&id=$1
 RewriteRule ^en/news_editor/neu.htm$ writenews.php?lang=en&id=0
 RewriteRule ^en/portal/$ portal.php?lang=en
