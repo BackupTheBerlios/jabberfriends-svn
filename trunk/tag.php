@@ -19,7 +19,6 @@ $template->hover_on('green');
 SESSION_START();
 $user_id = $user->get_id($_SESSION['nick']);
 if (!$user->login($_SESSION['nick'],$_SESSION['passwd'])) {
-    die('You are not logged in');  
 }
 $content = '<form action="{FORM_ACTION}" method="post">
                 <table cellpadding="0" cellspacing="2" border="0">';
