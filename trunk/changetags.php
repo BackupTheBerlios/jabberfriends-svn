@@ -32,7 +32,7 @@ $content = '<form action="{FORM_ACTION}" method="post">
                 <table cellpadding="0" cellspacing="2" border="0">';
 // add tag to a user
 if (!empty($_POST['submit'])) {
-    $_POST['tags'] = $_POST['tags_add'];
+    $_POST['tags'] = strip_tags( $_POST['tags_add']);
     $tags->add_tag($_POST['tags'], $user_id);
 }
 
