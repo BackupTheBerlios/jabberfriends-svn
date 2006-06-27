@@ -101,3 +101,8 @@ INSERT INTO `language` VALUES ('ADDEDBY', 'Hinzugefügt von', 'Added by');
 INSERT INTO `language` VALUES ('ON', 'am', 'on');
 INSERT INTO `language` VALUES ('CITE', 'Zitat', 'Cite');
 INSERT INTO `language` VALUES ('ADDCITE', 'Zitat hinzufügen', 'Add cite');
+INSERT INTO `language` VALUES ('OLD_PW', 'Altes Passwort', 'Old Password');
+INSERT INTO `language` VALUES ('NEW_PW', 'Neues Passwort', 'New password');
+INSERT INTO `language` VALUES ('CHANGE_PW', 'Passwort andern', 'Change password');
+INSERT INTO `language` VALUES ('CHANGEPW_SUCCES', 'Passwortwechsel erffolgreich', 'Changing password successful');
+
