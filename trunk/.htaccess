@@ -35,6 +35,7 @@ RewriteRule ^de/portal/$ portal.php?lang=de
 RewriteRule ^de/portal$ portal.php?lang=de
 RewriteRule ^de/portal/zitat-([0-9]+).htm$ zitate.php?lang=de&id=$1
 RewriteRule ^de/portal/zitat-hinzufuegen.htm$ add_zitat.php?lang=de&id=$1
+RewriteRule ^de/passwortaendern.htm changepw.php?lang=de
 
 RewriteRule ^en/members/([0-9]+)-([^/\:]+).htm$ user_details.php?lang=en&id=$1
 RewriteRule ^en/publickeys/([0-9]+)-([^/\:]+).htm$ publickey.php?lang=en&id=$1
@@ -70,3 +71,4 @@ RewriteRule ^en/portal/$ portal.php?lang=en
 RewriteRule ^en/portal$ portal.php?lang=en
 RewriteRule ^en/portal/cite-([0-9]+).htm$ zitate.php?lang=en&id=$1
 RewriteRule ^en/portal/add-cite.htm$ add_zitat.php?lang=en&id=$1
+RewriteRule ^en/changepassword.htm changepw.php?lang=en

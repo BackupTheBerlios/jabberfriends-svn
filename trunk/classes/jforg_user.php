@@ -26,6 +26,20 @@ class jforg_user {
             die("jforg_user.create_new_user: Die SQL Abfrage ist fehlgeschlagen - $sql_user_details");
         }
     }
+    
+    // This function change the user password
+    function change_password($nick, $passwd){
+        $passwd             =   crypt($nick,$passwd);
+        $sql_user_login     =   "UPDATE `user_login` SET `passwd` = '$passwd' WHERE `nick`='$nick';";
+        $query              =   @mysql_query($sql_user_login,$this->connection);
+        if ($query) {
+             return true; 
+        }else{
+            die("jforg_user.create_new_user: Die SQL Abfrage ist fehlgeschlagen - $sql_user_login");
+        }
+
+    }
+        
     function login($nick,$passwd) {
         $passwd             =   crypt($nick,$passwd);
         $sql                =   "SELECT nick,passwd FROM `user_login` WHERE `nick` = '$nick' AND `passwd` = '$passwd'";
@@ -33,9 +47,9 @@ class jforg_user {
         if (!$query) {
             die("jforg_user.if_login: Die SQL Abfrage ist fehlgeschlagen - $sql");
         }
-        if (mysql_num_rows($query) == 1) {
+       if (mysql_num_rows($query) == 1) { 
             return true;
-        } else {
+        }else{
             return false;
         }
     }

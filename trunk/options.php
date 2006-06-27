@@ -19,8 +19,7 @@ if (!$user->login($_SESSION['nick'],$_SESSION['passwd'])) {
 }
 $content = '<h2>{LANG_SETTING}</h2><a href="{LINK_CHANGEPW}">{LANG_CHANGEPW}</a><br />
 <a href="{LINK_CHANGEDETAILS}">{LANG_CHANGEDETAILS}</a><br />
-<a href="{LINK_CHANGETAGS}">{LANG_CHANGETAGS}</a><br /><br />
-<a href="{LINK_RMACC}">{LANG_RMACC}</a>';
+<a href="{LINK_CHANGETAGS}">{LANG_CHANGETAGS}</a><br /><br />';
 if ($user->is_admin($_SESSION['nick'],$_SESSION['passwd'])) {
     $content .= '<h2>{LANG_ADMIN}</h2>
     <a href="/'.$language.'/news_editor/neu.htm">{LANG_WRITENEWS}</a>';
