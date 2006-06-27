@@ -1,51 +1,154 @@
 -- phpMyAdmin SQL Dump
-
 -- version 2.7.0-pl2
-
 -- http://www.phpmyadmin.net
-
 -- 
-
 -- Host: localhost
-
--- Erstellungszeit: 24. Juni 2006 um 22:34
-
+-- Erstellungszeit: 27. Juni 2006 um 02:29
 -- Server Version: 4.1.12
-
 -- PHP-Version: 5.1.2
-
 -- 
-
 -- Datenbank: `jabberfriends`
-
 -- 
-
-
 
 -- --------------------------------------------------------
 
-
-
 -- 
-
--- Tabellenstruktur fur Tabelle `tags`
-
+-- Tabellenstruktur für Tabelle `tags`
 -- 
-
-
 
 CREATE TABLE `tags` (
-
   `id` int(11) NOT NULL auto_increment,
-
   `tag` varchar(255) collate utf8_unicode_ci NOT NULL default '',
-
   `counter` int(11) default '0',
-
   PRIMARY KEY  (`id`),
-
   KEY `counter` (`counter`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=150 ;
 
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=27 ;
+-- 
+-- Daten für Tabelle `tags`
+-- 
 
-          
+INSERT INTO `tags` VALUES (37, 'apfel', 46);
+INSERT INTO `tags` VALUES (36, 'mac', 64);
+INSERT INTO `tags` VALUES (35, 'tux', 74);
+INSERT INTO `tags` VALUES (34, 'paras', 53);
+INSERT INTO `tags` VALUES (33, 'sexy', 23);
+INSERT INTO `tags` VALUES (32, 'hase', 21);
+INSERT INTO `tags` VALUES (31, 'bär', 100);
+INSERT INTO `tags` VALUES (30, 'linux', 64);
+INSERT INTO `tags` VALUES (29, 'female', 21);
+INSERT INTO `tags` VALUES (28, 'male', 43);
+INSERT INTO `tags` VALUES (27, 'jforg-dev', 1);
+INSERT INTO `tags` VALUES (26, 'hanf', 0);
+INSERT INTO `tags` VALUES (38, 'ifswl', 19);
+INSERT INTO `tags` VALUES (39, 'wsrs', 69);
+INSERT INTO `tags` VALUES (40, 'fjlzvlce', 109);
+INSERT INTO `tags` VALUES (41, 'xfntp', 125);
+INSERT INTO `tags` VALUES (42, 'htfppy', 185);
+INSERT INTO `tags` VALUES (43, 'jxpvys', 59);
+INSERT INTO `tags` VALUES (44, 'iuosck', 89);
+INSERT INTO `tags` VALUES (45, 'qjccw', 45);
+INSERT INTO `tags` VALUES (46, 'cirtpd', 69);
+INSERT INTO `tags` VALUES (47, 'eaoip', 192);
+INSERT INTO `tags` VALUES (48, 'jlnshp', 106);
+INSERT INTO `tags` VALUES (49, 'jcmreuoe', 11);
+INSERT INTO `tags` VALUES (50, 'tekxffb', 74);
+INSERT INTO `tags` VALUES (51, 'untkd', 130);
+INSERT INTO `tags` VALUES (52, 'lkdtfgb', 58);
+INSERT INTO `tags` VALUES (53, 'ponx', 118);
+INSERT INTO `tags` VALUES (54, 'cxqns', 54);
+INSERT INTO `tags` VALUES (55, 'dzmbx', 41);
+INSERT INTO `tags` VALUES (56, 'cijyyw', 14);
+INSERT INTO `tags` VALUES (57, 'wuhxsd', 180);
+INSERT INTO `tags` VALUES (58, 'mws', 111);
+INSERT INTO `tags` VALUES (59, 'wupusc', 68);
+INSERT INTO `tags` VALUES (60, 'setum', 37);
+INSERT INTO `tags` VALUES (61, 'cgjtgg', 37);
+INSERT INTO `tags` VALUES (62, 'lfrkw', 11);
+INSERT INTO `tags` VALUES (63, 'zfrodl', 108);
+INSERT INTO `tags` VALUES (64, 'xcd', 124);
+INSERT INTO `tags` VALUES (65, 'kqbo', 151);
+INSERT INTO `tags` VALUES (66, 'gndf', 118);
+INSERT INTO `tags` VALUES (67, 'ijx', 152);
+INSERT INTO `tags` VALUES (68, 'zmepeu', 94);
+INSERT INTO `tags` VALUES (69, 'dnui', 111);
+INSERT INTO `tags` VALUES (70, 'mwzw', 170);
+INSERT INTO `tags` VALUES (71, 'wkunaodm', 104);
+INSERT INTO `tags` VALUES (72, 'srdvcmp', 186);
+INSERT INTO `tags` VALUES (73, 'yqamf', 42);
+INSERT INTO `tags` VALUES (74, 'enet', 31);
+INSERT INTO `tags` VALUES (75, 'sqnatm', 118);
+INSERT INTO `tags` VALUES (76, 'wzatwyjc', 140);
+INSERT INTO `tags` VALUES (77, 'wiwmoyl', 156);
+INSERT INTO `tags` VALUES (78, 'toqi', 155);
+INSERT INTO `tags` VALUES (79, 'qeboc', 92);
+INSERT INTO `tags` VALUES (80, 'itqdy', 26);
+INSERT INTO `tags` VALUES (81, 'rmpjfkd', 16);
+INSERT INTO `tags` VALUES (82, 'hulbddd', 102);
+INSERT INTO `tags` VALUES (83, 'fqoyo', 106);
+INSERT INTO `tags` VALUES (84, 'zrhtki', 138);
+INSERT INTO `tags` VALUES (85, 'ubxjmi', 79);
+INSERT INTO `tags` VALUES (86, 'cmrujxby', 117);
+INSERT INTO `tags` VALUES (87, 'zvilrpf', 93);
+INSERT INTO `tags` VALUES (88, 'pzyaqx', 1);
+INSERT INTO `tags` VALUES (89, 'wihyuzj', 170);
+INSERT INTO `tags` VALUES (90, 'mksaej', 91);
+INSERT INTO `tags` VALUES (91, 'nzwyctm', 16);
+INSERT INTO `tags` VALUES (92, 'llwnt', 13);
+INSERT INTO `tags` VALUES (93, 'etlwr', 125);
+INSERT INTO `tags` VALUES (94, 'wzcduy', 51);
+INSERT INTO `tags` VALUES (95, 'svpue', 12);
+INSERT INTO `tags` VALUES (96, 'yql', 71);
+INSERT INTO `tags` VALUES (97, 'igtp', 1);
+INSERT INTO `tags` VALUES (98, 'awjmrg', 59);
+INSERT INTO `tags` VALUES (99, 'kpmydjx', 179);
+INSERT INTO `tags` VALUES (100, 'zxciq', 148);
+INSERT INTO `tags` VALUES (101, 'exejde', 128);
+INSERT INTO `tags` VALUES (102, 'ukukw', 47);
+INSERT INTO `tags` VALUES (103, 'nkvx', 156);
+INSERT INTO `tags` VALUES (104, 'itbehg', 200);
+INSERT INTO `tags` VALUES (105, 'rjeeey', 82);
+INSERT INTO `tags` VALUES (106, 'rbnwx', 101);
+INSERT INTO `tags` VALUES (107, 'rugjncs', 24);
+INSERT INTO `tags` VALUES (108, 'wekwwu', 79);
+INSERT INTO `tags` VALUES (109, 'ydkgcl', 87);
+INSERT INTO `tags` VALUES (110, 'itcaxk', 6);
+INSERT INTO `tags` VALUES (111, 'dodob', 141);
+INSERT INTO `tags` VALUES (112, 'qmxep', 61);
+INSERT INTO `tags` VALUES (113, 'rihqah', 153);
+INSERT INTO `tags` VALUES (114, 'xdbydwg', 54);
+INSERT INTO `tags` VALUES (115, 'zukpsc', 144);
+INSERT INTO `tags` VALUES (116, 'kxksz', 74);
+INSERT INTO `tags` VALUES (117, 'izuanycb', 152);
+INSERT INTO `tags` VALUES (118, 'ygosr', 7);
+INSERT INTO `tags` VALUES (119, 'tyjyg', 193);
+INSERT INTO `tags` VALUES (120, 'rygn', 148);
+INSERT INTO `tags` VALUES (121, 'pgzqe', 173);
+INSERT INTO `tags` VALUES (122, 'wnyxnth', 13);
+INSERT INTO `tags` VALUES (123, 'ebztnd', 54);
+INSERT INTO `tags` VALUES (124, 'arjjq', 107);
+INSERT INTO `tags` VALUES (125, 'upvgj', 151);
+INSERT INTO `tags` VALUES (126, 'xozfc', 3);
+INSERT INTO `tags` VALUES (127, 'kheuup', 52);
+INSERT INTO `tags` VALUES (128, 'nyzpjma', 93);
+INSERT INTO `tags` VALUES (129, 'fjlzw', 171);
+INSERT INTO `tags` VALUES (130, 'oyydi', 171);
+INSERT INTO `tags` VALUES (131, 'ckmgbd', 80);
+INSERT INTO `tags` VALUES (132, 'lqowydt', 122);
+INSERT INTO `tags` VALUES (133, 'oixnwmm', 65);
+INSERT INTO `tags` VALUES (134, 'jqudtno', 114);
+INSERT INTO `tags` VALUES (135, 'nyiefa', 149);
+INSERT INTO `tags` VALUES (136, 'ekqzyv', 15);
+INSERT INTO `tags` VALUES (137, 'lpxhhk', 81);
+INSERT INTO `tags` VALUES (138, 'vyjgcg', 84);
+INSERT INTO `tags` VALUES (139, 'pztk', 94);
+INSERT INTO `tags` VALUES (140, 'yblg', 38);
+INSERT INTO `tags` VALUES (141, 'bgrqgz', 49);
+INSERT INTO `tags` VALUES (142, 'clcq', 181);
+INSERT INTO `tags` VALUES (143, 'kqgfg', 96);
+INSERT INTO `tags` VALUES (144, 'dpewrv', 83);
+INSERT INTO `tags` VALUES (145, 'xlmhfs', 182);
+INSERT INTO `tags` VALUES (146, 'bjnuem', 199);
+INSERT INTO `tags` VALUES (147, 'kfh', 25);
+INSERT INTO `tags` VALUES (148, 'pzjdaw', 45);
+INSERT INTO `tags` VALUES (149, 'yaab', 120);

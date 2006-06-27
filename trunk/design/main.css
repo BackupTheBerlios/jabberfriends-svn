@@ -103,6 +103,31 @@ a {
     color: #4b72b0;
     font-size: 10pt;
 }
+#tags a.class1{
+    font-size: 6pt;
+    text-decoration: none;
+}
+#tags a.class2{
+    font-size: 8pt;
+    text-decoration: none;
+}
+#tags a.class3{
+    font-size: 11pt;
+    text-decoration: none;
+}
+#tags a.class4{
+    font-size: 14pt;
+    text-decoration: none;
+}
+#tags a.class5{
+    font-size: 17pt;
+    text-decoration: none;
+}
+#tags a.class6{
+    font-size: 20pt;
+    font-weight: bold;
+    text-decoration: none;
+}
 a:hover {
     color: #80a7d8;
 }

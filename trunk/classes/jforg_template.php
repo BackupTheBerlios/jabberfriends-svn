@@ -1,5 +1,6 @@
 <?php
 class jforg_template {
+    
     var $connection;
     var $page;
     var $path;
@@ -224,6 +225,31 @@ class jforg_template {
       */
     function write() {
         echo $this->page;
+    }
+    
+    /**
+     * Generate a tag cloud
+     */
+    function generate_cloud($language){
+        include('classes/jforg_tags.php');     
+        $result .= '<div id="tags">';
+        $tags = new jforg_tags();
+        $cloud = $tags->tag_cloud();
+        foreach($cloud as $tag){
+            $result2 = '';
+             $result2 .= "<a href=\"../".$language;
+             $result2 .="tag/";
+             $result2 .= $tag['tag_value'].".htm\""; 
+             $result2 .= "class=\"class".$tag['class']."\" >";
+             $result2 .= $tag['tag_value']."</a> ";
+             $unsorted[$tag['tag_value']] = $result2;
+        }
+        ksort($unsorted);
+        foreach($unsorted as $sorted){
+            $result .= $sorted;
+        }
+        $result .= '</div>';
+        return $result; 
     }
 }
 ?>

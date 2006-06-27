@@ -147,6 +147,7 @@ foreach($array as $row) {
     $content = $content.'<li><b><a href="'.$row['id'].'-'.$row['nick'].'.htm">'.$row['nick'].'</a></b><br />'.$details_match.'</li>';
 }
 $content = $content.'</ol>';
+$content .= $template->generate_cloud($language);
 $template->replace('LOGIN','{LANG_LOGIN}');
 $template->replace('REGISTER','{LANG_REGISTER}');
 $template->replace('LINK_GERMAN','/de/mitglieder/');
