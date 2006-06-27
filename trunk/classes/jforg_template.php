@@ -176,13 +176,14 @@ class jforg_template {
                 }
             }
         }
+        $zitat = htmlentities($zitat);
         $zitat = str_replace("\n",'<br />',$zitat);
         $i = 0;
         foreach($nicks as $nick) {
             if ($i == count($colors)) {
                 $i = 0;
             }
-            $zitat = str_replace($nick,'<span style="color: #'.$colors[$i].'"><b>'.htmlentities($nick).'</b></span>',$zitat);
+            $zitat = str_replace(htmlentities($nick),'<span style="color: #'.$colors[$i].'"><b>'.htmlentities($nick).'</b></span>',$zitat);
             ++$i;
         }
         return $zitat;

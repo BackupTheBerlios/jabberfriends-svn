@@ -10,11 +10,6 @@ if (in_array($_GET['lang'],$config['languages'])) {
 } else {
     die('Language ist nicht bekannt');
 }
-$id = $_GET['id'];
-$id = $id + 0;
-if (!is_int($id)) {
-    die("Invalid ID - $id");
-}
 $template = new jforg_template();
 $user = new jforg_user();
 $cite = new jforg_cite();
@@ -31,13 +26,20 @@ if ($user->login($_SESSION['nick'],$_SESSION['passwd'])) {
     $template->replace('LOGIN','{LANG_LOGIN}');
     $template->replace('REGISTER','{LANG_REGISTER}');
 }
-$template->replace('LINK_GERMAN','/de/');
-$template->replace('LINK_ENGLISH','/en/');
-$template->replace('META_TITLE','{LANG_CITE}');
-$template->replace('FULLPAGE_HEADER','{LANG_CITE}');
-$zitat = $cite->get_by_id($id);
-$content = $template->highlight_cite($zitat['zitat']).'<br /><br />{LANG_ADDEDBY} <a href="/'.$language.'/'.$member_link.'/'.$zitat['user'].'-'.cleanurl($user->get_nick($zitat['user'])).'.htm">'.$user->get_nick($zitat['user']).'</a> {LANG_ON} '.date('d.m.Y',$zitat['datetime']);
-print_r($zitat);
+$template->replace('LINK_GERMAN','/de/portal/');
+$template->replace('LINK_ENGLISH','/en/portal/');
+$template->replace('META_TITLE','Portal');
+$template->replace('FULLPAGE_HEADER','Portal');
+if ($language=='de') {
+    $member_link = 'mitglieder';
+    $cite_link = 'zitat';
+} else {
+    $member_link = 'members';
+    $cite_link = 'cite';
+}
+$content = '<a href="">{LANG_ADDCITE}</a>';
+$random_zitat = $cite->get_random();
+$content .= '<h2>{LANG_RANDOMECITE}</h2>'.$template->highlight_cite($random_zitat['zitat']).'<br /><br />{LANG_ADDEDBY} <a href="/'.$language.'/'.$member_link.'/'.$random_zitat['user'].'-'.cleanurl($user->get_nick($random_zitat['user'])).'.htm">'.$user->get_nick($random_zitat['user']).'</a> {LANG_ON} '.date('d.m.Y',$random_zitat['datetime']).' <a href="/'.$language.'/portal/'.$cite_link.'-'.$random_zitat['id'].'.htm">Zitat URL</a>';
 $template->replace('FULLPAGE_TEXT',$content);
 $template->highlight_cite($random_zitat);
 $template->translate($language);
