@@ -104,5 +104,7 @@ INSERT INTO `language` VALUES ('ADDCITE', 'Zitat hinzufügen', 'Add cite');
 INSERT INTO `language` VALUES ('OLD_PW', 'Altes Passwort', 'Old Password');
 INSERT INTO `language` VALUES ('NEW_PW', 'Neues Passwort', 'New password');
 INSERT INTO `language` VALUES ('CHANGE_PW', 'Passwort andern', 'Change password');
-INSERT INTO `language` VALUES ('CHANGEPW_SUCCES', 'Passwortwechsel erffolgreich', 'Changing password successful');
+INSERT INTO `language` VALUES ('CHANGEPW_SUCCES', 'Passwortwechsel erfolgreich', 'Changing password successful');
 INSERT INTO `language` (`name`, `de`, `en`) VALUES ('URL_LANG', 'de/', 'en/');
+INSERT INTO `language` VALUES ('DELETE_NEWS', 'Diese Neuigkeit löschen', 'Delete this news');
+INSERT INTO `language` VALUES ('NEWS_DELETED', 'Die Neuigkeit wurde gelöscht', 'The news was deleted');

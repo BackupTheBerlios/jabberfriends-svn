@@ -30,6 +30,7 @@ if ($language=='de') {
 if ($user->is_admin($_SESSION['nick'],$_SESSION['passwd'])) {
     if (!empty($_POST['safe'])) {
         if ($id==0) {
+            
             if(!empty($_POST['title'])) {
                 $link_id = $news->write($_POST['title'],$_POST['text']);
                 $url = '/'.$language.'/neuigkeiten/'.$link_id.'-'.cleanurl($_POST['title']).'.htm';
@@ -49,6 +50,14 @@ if ($user->is_admin($_SESSION['nick'],$_SESSION['passwd'])) {
             }
         }
     }
+    if( !empty( $_POST['delete'] ) )
+    {
+       if ( $id !== 0 )
+       {
+            $news->delete($id);
+            $deleted = true;
+       }
+    }
     $template->replace('LOGIN','{LANG_LOGOUT}');
     $template->replace('REGISTER','{LANG_OPTIONS}');
     $template->replace('LINK_LOGIN','{LINK_LOGOUT}');
@@ -64,11 +73,16 @@ if ($user->is_admin($_SESSION['nick'],$_SESSION['passwd'])) {
         $template->replace('META_TITLE','{LANG_EDIT}: '.$title);
         $template->replace('FULLPAGE_HEADER','{LANG_EDIT}: '.$title);
     }
-    $content = '<form method="post" action="">
-                <input style="width: 90%;" type="text" name="title" value="'.$title.'" /><br /><br />
+    $content = '<form method="post" action="">';
+    if ( $deleted === true )
+    {
+        $content .='{LANG_NEWS_DELETED}<br/>';
+    }
+    $content .='<input style="width: 90%;" type="text" name="title" value="'.$title.'" /><br /><br />
                 <input type="hidden" name="id" value="'.$id.'">
                 <textarea name="text" rows="25" style="width: 90%;">'.$text.'</textarea><br /><br />
-                <input name="safe" class="submit" type="submit" value="{LANG_SAFE}" />';
+                <input name="safe" class="submit" type="submit" value="{LANG_SAFE}" />
+                <input name="delete" class="submit" type="submit" value="{LANG_DELETE_NEWS}" />';
 } else {
     die('You are not admin');
 }

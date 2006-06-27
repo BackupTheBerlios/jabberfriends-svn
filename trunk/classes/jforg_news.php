@@ -58,5 +58,14 @@ class jforg_news  {
             die('jforg_news: Abfrage schlug fehl '.$sql);    
         }
     }
+    function delete( $id )
+    {
+        $sql = 'DELETE FROM `news` WHERE `id` = '.$id.' LIMIT 1';
+        $query = mysql_query( $sql, $this->connection );
+        if ( !$query )
+        {
+            die( 'jforg_news: Abfrage schlug fehl '.$sql );    
+        }
+    }
 }
 ?>
