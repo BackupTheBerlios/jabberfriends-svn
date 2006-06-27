@@ -38,7 +38,7 @@ class jforg_tags{
         $tag_exist      =   $this->tag_exist($tag_value);
 
         if($tag_exist == FALSE){
-  		    $add_tag_to_tags 	= 	"INSERT INTO `tags` (`id`, `tag`, `counter` ) VALUES (NULL, '$tag_value', +1);";
+  		    $add_tag_to_tags 	= 	'INSERT INTO `tags` (`id`, `tag`, `counter` ) VALUES (NULL, \''.mysql_real_escape_string($tag_value).'\', +1);';
 		    $query				=	mysql_query($add_tag_to_tags,$this->connection);
             
             // In case of emergency just print and die
@@ -140,7 +140,7 @@ class jforg_tags{
 	// This is a simply function which return the tag_id from a tag, which is a string
 	function get_tag_id($tag_string){                         
 			if(is_string($tag_string)){
-				$get_tag_id		=	@mysql_query("SELECT `id` FROM `tags` WHERE `tag` = '$tag_string';",$this->connection);
+				$get_tag_id		=	@mysql_query("SELECT `id` FROM `tags` WHERE `tag` = '".mysql_real_escape_string($tag_string)."';",$this->connection);
 				$tag_id_result	=	@mysql_fetch_array($get_tag_id);
 				$tag_id			=	(int) $tag_id_result[0];
 				
@@ -175,7 +175,7 @@ class jforg_tags{
 	
     // This function test if the tag exists or not
 	function tag_exist($tag_value){
-	    $get_tag_value		=	@mysql_query("SELECT `id` FROM `tags` WHERE `tag` = '$tag_value';",$this->connection);
+	    $get_tag_value		=	@mysql_query("SELECT `id` FROM `tags` WHERE `tag` = '".mysql_real_escape_string($tag_string)."';",$this->connection);
 		$tag_value_result	=	@mysql_fetch_array($get_tag_value);
 		$tag_value			=	(string) $tag_value_result[0];
 	    
