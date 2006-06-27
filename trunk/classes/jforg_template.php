@@ -238,8 +238,8 @@ class jforg_template {
         $cloud = $tags->tag_cloud();
         foreach($cloud as $tag){
             $result2 = '';
-             $result2 .= "<a href=\"../".$language;
-             $result2 .="tag/";
+             $result2 .= "<a href=\"/".$language;
+             $result2 .="/tag/";
              $result2 .= $tag['tag_value'].".htm\""; 
              $result2 .= "class=\"class".$tag['class']."\" >";
              $result2 .= $tag['tag_value']."</a> ";
