@@ -42,8 +42,14 @@ class jforg_cite {
     function remove($id) {
         
     }
-    function create($zitat,$user) {
-        
+    function write($zitat,$user,$language) {
+        $sql = 'INSERT INTO `zitate` ( `id` , `zitat` , `language` , `user` , `datetime` , `ip_addr` )  VALUES  (\'\', \''.mysql_real_escape_string($zitat).'\', \''.$language.'\', \''.$user.'\', \''.date('Y-m-d H:i:s').'\', \''.$_SERVER['REMOTE_ADDR'].'\');';
+        $query = mysql_query($sql,$this->connection);
+        if (!$query)
+        {
+            die('jforg_news: Abfrage schlug fehl '.$sql);    
+        }
+        return mysql_insert_id($this->connection);
     }
     function update($id,$zitat) {
         
