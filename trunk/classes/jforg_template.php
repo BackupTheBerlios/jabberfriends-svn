@@ -188,6 +188,128 @@ class jforg_template {
         }
         return $zitat;
     }
+    function format_userdetails($array, $suchwort = '') {
+        if ($suchwort=='') {
+            $bol = TRUE;
+            $suche == 'test';
+        } else {
+            $bol = FALSE;
+            $suche = $suchwort;
+        }
+        $max_per_search = 5;
+        $array = array_map('htmlentities',$array);
+        $details_match = "";
+        $details_counter = 1;
+        if (($array['REALNAME']!="") && (stristr($array['REALNAME'],$suche) !== $bol)) {
+            if ($details_counter<=$max_per_search) {
+            if ($details_match!="") {
+                    $details_match = $details_match.", ";
+                }
+                $details_match = $details_match.'{LANG_REALNAME}: '.$array['REALNAME'];
+                $details_counter++;
+            }
+        }
+        if (($array['COUNTRY']!="") && (stristr($array['COUNTRY'],$suche) !== $bol)) {
+            if ($details_counter<=$max_per_search) {
+            if ($details_match!="") {
+                    $details_match = $details_match.", ";
+                }
+                $details_match = $details_match.'{LANG_COUNTRY}: '.$array['COUNTRY'];
+                $details_counter++;
+            }
+        }
+        if (($array['CITY']!="") && (stristr($array['CITY'],$suche) !== $bol)) {
+            if ($details_counter<=$max_per_search) {
+            if ($details_match!="") {
+                    $details_match = $details_match.", ";
+                }
+                $details_match = $details_match.'{LANG_CITY}: '.$array['CITY'];
+                $details_counter++;
+            }
+        }
+        if (($array['ORIGINAL_FROM']!="") && (stristr($array['ORIGINAL_FROM'],$suche) !== $bol)) {
+            if ($details_counter<=$max_per_search) {
+            if ($details_match!="") {
+                    $details_match = $details_match.", ";
+                }
+                $details_match = $details_match.'{LANG_ORIGINAL_FROM}: '.$array['ORIGINAL_FROM'];
+                $details_counter++;
+            }
+        }
+        if (($array['LANGUAGES']!="") && (stristr($array['LANGUAGES'],$suche) !== $bol)) {
+            if ($details_counter<=$max_per_search) {
+            if ($details_match!="") {
+                    $details_match = $details_match.", ";
+                }
+                $details_match = $details_match.'{LANG_LANGUAGES}: '.$array['LANGUAGES'];
+                $details_counter++;
+            }
+        }
+        if (($array['HOBBYS']!="") && (stristr($array['HOBBYS'],$suche) !== $bol)) {
+            if ($details_counter<=$max_per_search) {
+            if ($details_match!="") {
+                    $details_match = $details_match.", ";
+                }
+                $details_match = $details_match.'{LANG_HOBBYS}: '.$array['HOBBYS'];
+                $details_counter++;
+            }
+        }
+        if (($array['COMPUTER']!="") && (stristr($array['COMPUTER'],$suche) !== $bol)) {
+            if ($details_counter<=$max_per_search) {
+            if ($details_match!="") {
+                    $details_match = $details_match.", ";
+                }
+                $details_match = $details_match.'{LANG_COMPUTER}: '.$array['COMPUTER'];
+                $details_counter++;
+            }
+        }
+        if (($array['COMPUTER_OS']!="") && (stristr($array['COMPUTER_OS'],$suche) !== $bol)) {
+            if ($details_counter<=$max_per_search) {
+            if ($details_match!="") {
+                    $details_match = $details_match.", ";
+                }
+                $details_match = $details_match.'{LANG_COMPUTER_OS}: '.$array['COMPUTER_OS'];
+                $details_counter++;
+            }
+        }
+        if (($array['FAVORITE_FILM']!="") && (stristr($array['FAVORITE_FILM'],$suche) !== $bol)) {
+            if ($details_counter<=$max_per_search) {
+            if ($details_match!="") {
+                    $details_match = $details_match.", ";
+                }
+                $details_match = $details_match.'{LANG_FAVORITE_FILM}: '.$array['FAVORITE_FILM'];
+                $details_counter++;
+            }
+        }
+        if (($array['FAVORITE_BOOK']!="") && (stristr($array['FAVORITE_BOOK'],$suche) !== $bol)) {
+            if ($details_counter<=$max_per_search) {
+            if ($details_match!="") {
+                    $details_match = $details_match.", ";
+                }
+                $details_match = $details_match.'{LANG_FAVORITE_BOOK}: '.$array['FAVORITE_BOOK'];
+                $details_counter++;
+            }
+        }
+        if (($array['FAVORITE_MUSIK']!="") && (stristr($array['FAVORITE_MUSIK'],$suche) !== $bol)) {
+            if ($details_counter<=$max_per_search) {
+            if ($details_match!="") {
+                    $details_match = $details_match.", ";
+                }
+                $details_match = $details_match.'{LANG_FAVORITE_MUSIK}: '.$array['FAVORITE_MUSIK'];
+                $details_counter++;
+            }
+        }
+        if (($array['FAVORITE_SERIES']!="") && (stristr($array['FAVORITE_SERIES'],$suche) !== $bol)) {
+            if ($details_counter<=$max_per_search) {
+            if ($details_match!="") {
+                    $details_match = $details_match.", ";
+                }
+                $details_match = $details_match.'{LANG_FAVORITE_SERIES}: '.$array['FAVORITE_SERIES'];
+                $details_counter++;
+            }
+        }
+        return $details_match;
+    }
     /**
       * Wählt welche Farbe in der Navigation markiert sein soll
       */

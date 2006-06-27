@@ -35,120 +35,10 @@ if (isset($_POST['search'])) {
         $number = $usersearch->get_number_of();
         $content = $content."<br /><br /><b>$number {LANG_MATCHES_FOR} ".$_POST['search']."</b><ol>";
         foreach($array as $row) {
-            $details_match = "";
-            $details_counter = 1;
             $id = $row['id'];
             $nick = $user->get_nick($id);
-            $content = $content."<li><b><a href=\"$id-$nick.htm\">$nick</a></b><br />";
-            if(stristr($row['REALNAME'],$_POST['search']) !== FALSE) {
-                if ($details_counter<=$max_per_search) {
-                    if ($details_match!="") {
-                        $details_match = $details_match.", ";
-                    }
-                    $details_match = $details_match.'{LANG_REALNAME}: '.$row['REALNAME'];
-                    $details_counter++;
-                }
-            }
-            if(stristr($row['COUNTRY'],$_POST['search']) !== FALSE) {
-                if ($details_counter<=$max_per_search) {
-                    if ($details_match!="") {
-                        $details_match = $details_match.", ";
-                    }
-                    $details_match = $details_match.'{LANG_COUNTRY}: '.$row['COUNTRY'];
-                    $details_counter++;
-                }
-            }
-            if(stristr($row['CITY'],$_POST['search']) !== FALSE) {
-                if ($details_counter<=$max_per_search) {
-                    if ($details_match!="") {
-                        $details_match = $details_match.", ";
-                    }
-                    $details_match = $details_match.'{LANG_CITY}: '.$row['CITY'];
-                    $details_counter++;
-                }
-            }
-            if(stristr($row['ORIGINAL_FROM'],$_POST['search']) !== FALSE) {
-                if ($details_counter<=$max_per_search) {
-                    if ($details_match!="") {
-                        $details_match = $details_match.", ";
-                    }
-                    $details_match = $details_match.'{LANG_ORIGINAL_FROM}: '.$row['ORIGINAL_FROM'];
-                    $details_counter++;
-                }
-            }
-            if(stristr($row['LANGUAGES'],$_POST['search']) !== FALSE) {
-                if ($details_counter<=$max_per_search) {
-                    if ($details_match!="") {
-                        $details_match = $details_match.", ";
-                    }
-                    $details_match = $details_match.'{LANG_LANGUAGES}: '.$row['LANGUAGES'];
-                    $details_counter++;
-                }
-            }
-            if(stristr($row['HOBBYS'],$_POST['search']) !== FALSE) {
-                if ($details_counter<=$max_per_search) {
-                    if ($details_match!="") {
-                        $details_match = $details_match.", ";
-                    }
-                    $details_match = $details_match.'{LANG_HOBBYS}: '.$row['HOBBYS'];
-                    $details_counter++;
-                }
-            }
-            if(stristr($row['COMPUTER'],$_POST['search']) !== FALSE) {
-                if ($details_counter<=$max_per_search) {
-                    if ($details_match!="") {
-                        $details_match = $details_match.", ";
-                    }
-                    $details_match = $details_match.'{LANG_COMPUTER}: '.$row['COMPUTER'];
-                    $details_counter++;
-                }
-            }
-            if(stristr($row['COMPUTER_OS'],$_POST['search']) !== FALSE) {
-                if ($details_counter<=$max_per_search) {
-                    if ($details_match!="") {
-                        $details_match = $details_match.", ";
-                    }
-                    $details_match = $details_match.'{LANG_COMPUTER_OS}: '.$row['COMPUTER_OS'];
-                    $details_counter++;
-                }
-            }
-            if(stristr($row['FAVORITE_FILM'],$_POST['search']) !== FALSE) {
-                if ($details_counter<=$max_per_search) {
-                    if ($details_match!="") {
-                        $details_match = $details_match.", ";
-                    }
-                    $details_match = $details_match.'{LANG_FAVORITE_FILM}: '.$row['FAVORITE_FILM'];
-                    $details_counter++;
-                }
-            }
-            if(stristr($row['FAVORITE_BOOK'],$_POST['search']) !== FALSE) {
-                if ($details_counter<=$max_per_search) {
-                    if ($details_match!="") {
-                        $details_match = $details_match.", ";
-                    }
-                    $details_match = $details_match.'{LANG_FAVORITE_BOOK}: '.$row['FAVORITE_BOOK'];
-                    $details_counter++;
-                }
-            }
-            if(stristr($row['FAVORITE_MUSIK'],$_POST['search']) !== FALSE) {
-                if ($details_counter<=$max_per_search) {
-                    if ($details_match!="") {
-                        $details_match = $details_match.", ";
-                    }
-                    $details_match = $details_match.'{LANG_FAVORITE_MUSIK}: '.$row['FAVORITE_MUSIK'];
-                    $details_counter++;
-                }
-            }
-            if(stristr($row['FAVORITE_SERIES'],$_POST['search']) !== FALSE) {
-                if ($details_counter<=$max_per_search) {
-                    if ($details_match!="") {
-                        $details_match = $details_match.", ";
-                    }
-                    $details_match = $details_match.'{LANG_FAVORITE_SERIES}: '.$row['FAVORITE_SERIES'];
-                    $details_counter++;
-                }
-            } 
-            $content = $content.$details_match."</li>";
+            $details_match = $template->format_userdetails($row,$_POST['search']);
+            $content = $content."<li><b><a href=\"$id-$nick.htm\">$nick</a></b><br />$details_match";
         }
     } else {
         $content = $content."<br /><br /><b><em>{LANG_3CHAR}</em></b><br /><br />";
@@ -157,14 +47,8 @@ if (isset($_POST['search'])) {
 $content = $content."</ol>";
 $template->replace('LOGIN','{LANG_LOGIN}');
 $template->replace('REGISTER','{LANG_REGISTER}');
-if ($_GET['search']=='normal') {
-    $template->replace('LINK_GERMAN','/de/mitglieder/suche.htm');
-    $template->replace('LINK_ENGLISH','/en/members/search.htm');
-}
-if ($_GET['search']=='extended') {
-    $template->replace('LINK_GERMAN','/de/mitglieder/erweiterte_suche.htm');
-    $template->replace('LINK_ENGLISH','/en/members/extended_search.htm');
-}
+$template->replace('LINK_GERMAN','/de/mitglieder/suche.htm');
+$template->replace('LINK_ENGLISH','/en/members/search.htm');
 $template->replace('META_TITLE','{LANG_SEARCH}');
 $template->replace('FULLPAGE_HEADER','{LANG_SEARCH}');
 $template->replace('FULLPAGE_TEXT',$content);
