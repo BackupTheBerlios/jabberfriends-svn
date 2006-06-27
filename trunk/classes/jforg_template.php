@@ -195,7 +195,7 @@ class jforg_template {
         if ($color=="tuerkis") {
             $this->page = str_replace('<a class="tuerkis"','<a style="background-color: #4ba7b0;" class="tuerkis"',$this->page);
         } elseif ($color=="green") {
-            $this->page = str_replace('<a class="green"','<a style="background-color: #44bb072;" class="green"',$this->page);
+            $this->page = str_replace('<a class="green"','<a style="background-color: #4bb072;" class="green"',$this->page);
         } elseif ($color=="lila") {
             $this->page = str_replace('<a class="lila"','<a style="background-color: #864bb0;" class="lila"',$this->page);
         } elseif ($color=="red") {
