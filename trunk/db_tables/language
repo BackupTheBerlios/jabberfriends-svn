@@ -92,6 +92,9 @@ INSERT INTO `language` VALUES ('ALLNEWS', 'Zeige alle Neuigkeiten', 'Show all ne
 INSERT INTO `language` VALUES ('READMORE', 'weiter lesen', 'read more');
 INSERT INTO `language` VALUES ('SETTING', 'Persönliche Einstellungen', 'Personal settings');
 INSERT INTO `language` VALUES ('ADMIN', 'JForg Verwaltung', 'JForg Administration');
+INSERT INTO `language` VALUES ('ALL_WHO_HAVE_TAG', 'Mitglieder mit diesem Tag', 'Users who have this tag');
+INSERT INTO `language` VALUES ('TAG', 'Tag:', 'Tag:');
+INSERT INTO `language` VALUES ('SEARCH_WHO_HAVE_TAG', 'Mitglieder mit folgendem Tag suchen:', 'Search users who have the tag:');
 INSERT INTO `language` VALUES ('WRITENEWS', 'Neuigkeit schreiben', 'Write news');
 INSERT INTO `language` VALUES ('RANDOMECITE', 'Zufallszitat', 'Randome cite');
 INSERT INTO `language` VALUES ('ADDEDBY', 'Hinzugefügt von', 'Added by');
