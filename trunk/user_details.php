@@ -38,35 +38,37 @@ if ($user_details['BIRTHDATE']!=0) {
 } else {
     $bdate = "";
 }
-$content = $content.'<tr><td valign="top">{LANG_NICK}</td><td valign="top">'.$user->get_nick($user_id).'</td></tr>';
-$content = $content.'<tr><td valign="top">{LANG_JID}</td><td valign="top">'.$user->get_jid($user_id).'</td></tr>';
-$content = $content.'<tr><td colspan="2"><br /><h2>{LANG_ABOUT} '.$user->get_nick($user_id).'</h2></td></tr>';
-$content = $content.'<tr><td valign="top" class="left">{LANG_REALNAME}</td><td valign="top" class="right">'.$user_details['REALNAME'].'</td></tr>';
-$content = $content.'<tr><td valign="top">{LANG_BIRTHDATE}</td><td valign="top">'.$bdate.'</td></tr>';
-$content = $content.'<tr><td valign="top">{LANG_COUNTRY}</td><td valign="top">'.$user_details['COUNTRY'].'</td></tr>';
-$content = $content.'<tr><td valign="top">{LANG_CITY}</td><td valign="top">'.$user_details['CITY'].'</td></tr>';
-$content = $content.'<tr><td valign="top">{LANG_ORIGINAL_FROM}</td><td valign="top">'.$user_details['ORIGINAL_FROM'].'</td></tr>';
-$content = $content.'<tr><td valign="top">{LANG_LANGUAGES}</td><td valign="top">'.$user_details['LANGUAGES'].'</td></tr>';
-$content = $content.'<tr><td valign="top">{LANG_HOBBYS}</td><td valign="top">'.$user_details['HOBBYS'].'</td></tr>';
-$content = $content.'<tr><td colspan="2"><br /><h2>{LANG_COMPUTER_OF} '.$user->get_nick($user_id).'</h2></td></tr>';
-$content = $content.'<tr><td valign="top">{LANG_COMPUTER}</td><td valign="top">'.$user_details['COMPUTER'].'</td></tr>';
-$content = $content.'<tr><td valign="top">{LANG_COMPUTER_OS}</td><td valign="top">'.$user_details['COMPUTER_OS'].'</td></tr>';
-$content = $content.'<tr><td valign="top">{LANG_GEEKCODE}</td><td valign="top">'.$user_details['GEEKCODE'].'</td></tr>';
-$content = $content.'<tr><td valign="top">{LANG_PUBLICKEY}</td><td valign="top">';
-if ($user_details['PUBLICKEY']!="") { $content = $content.'<a href="/'.$language.'/publickeys/'.$user_id.'-'.$user->get_nick($user_id).'.htm">{LANG_SHOW_PUBLICKEY}</a>'; }
-$content = $content.'</td></tr>';
-$content = $content.'<tr><td colspan="2"><br /><h2>{LANG_FAVORITES} '.$user->get_nick($user_id).'</h2></td></tr>';
-$content = $content.'<tr><td valign="top">{LANG_FAVORITE_FILM}</td><td valign="top">'.$user_details['FAVORITE_FILM'].'</td></tr>';
-$content = $content.'<tr><td valign="top">{LANG_FAVORITE_SERIES}</td><td valign="top">'.$user_details['FAVORITE_SERIES'].'</td></tr>';
-$content = $content.'<tr><td valign="top">{LANG_FAVORITE_MUSIK}</td><td valign="top">'.$user_details['FAVORITE_MUSIK'].'</td></tr>';
-$content = $content.'<tr><td valign="top">{LANG_FAVORITE_BOOK}</td><td valign="top">'.$user_details['FAVORITE_BOOK'].'</td></tr>';
+$content .= '<tr><td valign="top">{LANG_NICK}</td><td valign="top">'.$user->get_nick($user_id).'</td></tr>';
+$content .= '<tr><td valign="top">{LANG_JID}</td><td valign="top">'.$user->get_jid($user_id).'</td></tr>';
+$content .= '<tr><td colspan="2"><br /><h2>{LANG_ABOUT} '.$user->get_nick($user_id).'</h2></td></tr>';
+$content .= '<tr><td valign="top" class="left">{LANG_REALNAME}</td><td valign="top" class="right">'.$user_details['REALNAME'].'</td></tr>';
+$content .= '<tr><td valign="top">{LANG_SEX}</td><td valign="top">'.$user_details['SEX'].'</td></tr>';
+$content .= '<tr><td valign="top">{LANG_BIRTHDATE}</td><td valign="top">'.$bdate.'</td></tr>';
+$content .= '<tr><td valign="top">{LANG_COUNTRY}</td><td valign="top">'.$user_details['COUNTRY'].'</td></tr>';
+$content .= '<tr><td valign="top">{LANG_CITY}</td><td valign="top">'.$user_details['CITY'].'</td></tr>';
+$content .= '<tr><td valign="top">{LANG_ORIGINAL_FROM}</td><td valign="top">'.$user_details['ORIGINAL_FROM'].'</td></tr>';
+$content .= '<tr><td valign="top">{LANG_LANGUAGES}</td><td valign="top">'.$user_details['LANGUAGES'].'</td></tr>';
+$content .= '<tr><td valign="top">{LANG_HOBBYS}</td><td valign="top">'.$user_details['HOBBYS'].'</td></tr>';
+$content .= '<tr><td colspan="2"><br /><h2>{LANG_COMPUTER_OF} '.$user->get_nick($user_id).'</h2></td></tr>';
+$content .= '<tr><td valign="top">{LANG_WEBSITE}</td><td valign="top"><a href="http://'.str_replace('http://','',$user_details['WEBSITE']).'">'.str_replace('http://','',$user_details['WEBSITE']).'</a></td></tr>';
+$content .= '<tr><td valign="top">{LANG_COMPUTER}</td><td valign="top">'.$user_details['COMPUTER'].'</td></tr>';
+$content .= '<tr><td valign="top">{LANG_COMPUTER_OS}</td><td valign="top">'.$user_details['COMPUTER_OS'].'</td></tr>';
+$content .= '<tr><td valign="top">{LANG_GEEKCODE}</td><td valign="top">'.str_replace("\n","<br />",$user_details['GEEKCODE']).'</td></tr>';
+$content .= '<tr><td valign="top">{LANG_PUBLICKEY}</td><td valign="top">';
+if ($user_details['PUBLICKEY']!="") { $content .= '<a href="/'.$language.'/publickeys/'.$user_id.'-'.$user->get_nick($user_id).'.htm">{LANG_SHOW_PUBLICKEY}</a>'; }
+$content .= '</td></tr>';
+$content .= '<tr><td colspan="2"><br /><h2>{LANG_FAVORITES} '.$user->get_nick($user_id).'</h2></td></tr>';
+$content .= '<tr><td valign="top">{LANG_FAVORITE_FILM}</td><td valign="top">'.$user_details['FAVORITE_FILM'].'</td></tr>';
+$content .= '<tr><td valign="top">{LANG_FAVORITE_SERIES}</td><td valign="top">'.$user_details['FAVORITE_SERIES'].'</td></tr>';
+$content .= '<tr><td valign="top">{LANG_FAVORITE_MUSIK}</td><td valign="top">'.$user_details['FAVORITE_MUSIK'].'</td></tr>';
+$content .= '<tr><td valign="top">{LANG_FAVORITE_BOOK}</td><td valign="top">'.$user_details['FAVORITE_BOOK'].'</td></tr>';
 $user_tags 	= $tags->get_user_tags($user_id);
-$content = $content.'<tr><td><br /><h2>Tags:</h2></td></tr><tr><td valign="top">';
+$content .= '<tr><td><br /><h2>Tags:</h2></td></tr><tr><td valign="top">';
 foreach ($user_tags as $user_tags_content) {
-	    $content = $content.'<a href="../../'.$language.'/tag/'.$user_tags_content.'.htm">'.$user_tags_content.'</a><br />';
+	    $content .= '<a href="../../'.$language.'/tag/'.$user_tags_content.'.htm">'.$user_tags_content.'</a><br />';
 }
-$content = $content.'</td></tr>';
-$content = $content.'</table>';
+$content .= '</td></tr>';
+$content .= '</table>';
 $template->replace('FULLPAGE_HEADER','{LANG_USER_PAGE_OF} '.$user->get_nick($user_id));
 $template->replace('META_TITLE','{LANG_USER_PAGE_OF} '.$user->get_nick($user_id));
 $template->replace('FULLPAGE_TEXT',$content);

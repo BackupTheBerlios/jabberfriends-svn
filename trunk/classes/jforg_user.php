@@ -94,12 +94,14 @@ class jforg_user {
         $array = str_replace("'","''",$array);
         $sql = 'UPDATE `user_details` SET
         REALNAME = \''.$array['realname'].'\',
+        SEX = \''.$array['sex'].'\',
         BIRTHDATE = \''.$array['birthdate'].'\',
         COUNTRY = \''.$array['country'].'\',
         CITY = \''.$array['city'].'\',
         ORIGINAL_FROM = \''.$array['original_from'].'\',
         LANGUAGES = \''.$array['languages'].'\',
         HOBBYS = \''.$array['hobbys'].'\',
+        WEBSITE = \''.$array['website'].'\',
         COMPUTER = \''.$array['computer'].'\',
         COMPUTER_OS = \''.$array['computer_os'].'\',
         GEEKCODE = \''.$array['geekcode'].'\',
