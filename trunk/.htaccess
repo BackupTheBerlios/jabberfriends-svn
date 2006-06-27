@@ -30,7 +30,7 @@ RewriteRule ^de/neuigkeiten$ news.php?lang=de
 RewriteRule ^de/neuigkeiten/([0-9]+)-([^/\:]+).htm$ singlenews.php?lang=de&id=$1
 RewriteRule ^de/news_editor/([0-9]+).htm$ writenews.php?lang=de&id=$1
 RewriteRule ^de/news_editor/neu.htm$ writenews.php?lang=de&id=0
-RewriteRule ^de/rss/neuigkeiten.xml$ rss.php
+RewriteRule ^de/rss/neuigkeiten.xml$ rss.php?lang=de
 RewriteRule ^de/portal/$ portal.php?lang=de
 RewriteRule ^de/portal$ portal.php?lang=de
 RewriteRule ^de/portal/zitat-([0-9]+).htm$ zitate.php?lang=de&id=$1
