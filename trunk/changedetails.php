@@ -41,6 +41,8 @@ $yearvar = $user_details['BIRTHDATE']{0}.$user_details['BIRTHDATE']{1}.$user_det
 $birthdate_year_select = "";
 if ($yearvar==0) {
     $birthdate_year_select = "$birthdate_year_select<option value=\"0\" selected=\"selected\">----</option>";
+} else {
+    $birthdate_year_select = "$birthdate_year_select<option value=\"0\">----</option>";
 }
 for($i=date('Y')-80;$i<=date('Y'); $i++) {
     if ($i==$yearvar) {
