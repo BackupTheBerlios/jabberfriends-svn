@@ -1,0 +1,328 @@
+-- phpMyAdmin SQL Dump
+-- version 2.6.4-rc1
+-- http://www.phpmyadmin.net
+-- 
+-- Host: localhost
+-- Erstellungszeit: 27. Juni 2006 um 15:58
+-- Server Version: 4.1.11
+-- PHP-Version: 5.0.5-Debian-0.8~sarge1
+-- 
+-- Datenbank: `jabberfriends`
+-- 
+
+-- --------------------------------------------------------
+
+-- 
+-- Tabellenstruktur für Tabelle `language`
+-- 
+
+CREATE TABLE `language` (
+  `name` varchar(255) collate utf8_unicode_ci NOT NULL default '',
+  `de` varchar(255) collate utf8_unicode_ci NOT NULL default '',
+  `en` varchar(255) collate utf8_unicode_ci NOT NULL default '',
+  PRIMARY KEY  (`name`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-- 
+-- Daten für Tabelle `language`
+-- 
+
+INSERT INTO `language` VALUES ('STARTPAGE', 'Startseite', 'Startpage');
+INSERT INTO `language` VALUES ('WIKI', 'Wiki', 'Wiki');
+INSERT INTO `language` VALUES ('PORTAL', 'Portal', 'Portal');
+INSERT INTO `language` VALUES ('LOGIN', 'Anmelden', 'Login');
+INSERT INTO `language` VALUES ('DEVELOPERS', 'Entwickler', 'Developers');
+INSERT INTO `language` VALUES ('NEWS', 'Neuigkeiten', 'News');
+INSERT INTO `language` VALUES ('GAME_OF_MONTH', 'Spiel des Monats', 'Game of month');
+INSERT INTO `language` VALUES ('MEMBER_SEARCH', 'Mitgliedersuche', 'Membersearch');
+INSERT INTO `language` VALUES ('REALNAME', 'Richtiger Name', 'Realname');
+INSERT INTO `language` VALUES ('BIRTHDATE', 'Geburtstag', 'Date of Birth');
+INSERT INTO `language` VALUES ('COUNTRY', 'Land', 'Country');
+INSERT INTO `language` VALUES ('CITY', 'Stadt', 'City');
+INSERT INTO `language` VALUES ('ORIGINAL_FROM', 'Herkunftsland', 'Country of origin');
+INSERT INTO `language` VALUES ('LANGUAGES', 'Sprachen', 'Spoken Languages');
+INSERT INTO `language` VALUES ('HOBBYS', 'Hobbys', 'Hobbys');
+INSERT INTO `language` VALUES ('COMPUTER', 'Hardware', 'Hardware');
+INSERT INTO `language` VALUES ('COMPUTER_OS', 'Betriebssystem', 'Operating System');
+INSERT INTO `language` VALUES ('GEEKCODE', 'Geekcode', 'Geekcode');
+INSERT INTO `language` VALUES ('PUBLICKEY', 'GnuPG Public Key', 'GnuPG Public Key');
+INSERT INTO `language` VALUES ('FAVORITE_FILM', 'Lieblingsfilm', 'Favorite film');
+INSERT INTO `language` VALUES ('FAVORITE_SERIES', 'Lieblingsserie', 'Favorite series');
+INSERT INTO `language` VALUES ('FAVORITE_BOOK', 'Lieblingsbuch', 'Favorite book');
+INSERT INTO `language` VALUES ('FAVORITE_MUSIK', 'Lieblingsmusik', 'Favorite musik');
+INSERT INTO `language` VALUES ('NICK', 'Nick', 'Nickname');
+INSERT INTO `language` VALUES ('JID', 'Jabber ID', 'Jabber ID');
+INSERT INTO `language` VALUES ('FAVORITES', 'Lieblings Dinge von', 'Favorites of');
+INSERT INTO `language` VALUES ('ABOUT', 'Über', 'About');
+INSERT INTO `language` VALUES ('COMPUTER_OF', 'Computer von', 'Computer of');
+INSERT INTO `language` VALUES ('USER_PAGE_OF', 'Benutzerseite von', 'Userpage of');
+INSERT INTO `language` VALUES ('SHOW_PUBLICKEY', 'Zeige Public Key', 'Show Public Key');
+INSERT INTO `language` VALUES ('PUBLICKEY_OF', 'Public Key von', 'Public Key of');
+INSERT INTO `language` VALUES ('SHOW_USER_PAGE_OF', 'Zeige Benutzerseite von', 'Show Userpage of');
+INSERT INTO `language` VALUES ('REGISTER', 'Registrieren', 'Register');
+INSERT INTO `language` VALUES ('USERS', 'Benutzer', 'Users');
+INSERT INTO `language` VALUES ('MEMBERS', 'Mitglieder', 'Members');
+INSERT INTO `language` VALUES ('PW', 'Passwort', 'Password');
+INSERT INTO `language` VALUES ('PW_AGAIN', 'Passwort wiederholen', 'Repeat password');
+INSERT INTO `language` VALUES ('ONLY_LETTERS_3', 'Keine Leer- oder Sonderzeichen und mindestens drei Zeichen', 'No empty or special characters and at least three characters');
+INSERT INTO `language` VALUES ('UNACCEPT_JID', 'Ungültige Jabber ID', 'Illegal Jabber ID');
+INSERT INTO `language` VALUES ('ONLY_LETTERS_6', 'Keine Leer- oder Sonderzeichen und mindestens sechs Zeichen', 'No empty or special characters and at least six characters');
+INSERT INTO `language` VALUES ('PW_NOT_SAME', 'Die Passwörter stimmen nicht überein', 'The passwords are not the same');
+INSERT INTO `language` VALUES ('SUCCESS_REG', 'Erfolgreich registriert', 'Successfully registered');
+INSERT INTO `language` VALUES ('NICK_EXISTS', 'Nick existiert bereits', 'Nickname already exists');
+INSERT INTO `language` VALUES ('JID_EXISTS', 'Jabber ID existiert bereits', 'Jabber ID already exists');
+INSERT INTO `language` VALUES ('LOGOUT', 'Abmelden', 'Logout');
+INSERT INTO `language` VALUES ('OPTIONS', 'Optionen', 'Options');
+INSERT INTO `language` VALUES ('CHANGEPW', 'Passwort ändern', 'Change password');
+INSERT INTO `language` VALUES ('CHANGEDETAILS', 'Benutzer Details ändern', 'Change user details');
+INSERT INTO `language` VALUES ('RMACC', 'Lösche Account', 'Remove account');
+INSERT INTO `language` VALUES ('CHANGETAGS', 'Tags bearbeiten', 'Change Tags');
+INSERT INTO `language` VALUES ('CHANGE', 'Ändern', 'Change');
+INSERT INTO `language` VALUES ('YOUR_FAVORITES', 'Deine Lieblingsdinge', 'Your favorites');
+INSERT INTO `language` VALUES ('YOUR_COMPUTER', 'Dein Computer', 'Your Computer');
+INSERT INTO `language` VALUES ('ABOUT_YOU', 'Über dich', 'About you');
+INSERT INTO `language` VALUES ('BACK_TO_OPTIONS', 'Zurück zu den Optionen', 'Back to options');
+INSERT INTO `language` VALUES ('LAST_MEMBERS', 'Die neusten Mitglieder', 'The lastes members');
+INSERT INTO `language` VALUES ('SEARCH', 'Suche', 'Search');
+INSERT INTO `language` VALUES ('MATCHES_FOR', 'Treffer für', 'Matches for');
+INSERT INTO `language` VALUES ('3CHAR', 'Die Suchanfrage muss länger als drei Zeichen sein', 'The query must be longer than three characters');
+INSERT INTO `language` VALUES ('AUTHORS', 'Autoren', 'Authors');
+INSERT INTO `language` VALUES ('PREVIEW', 'Vorschau', 'Preview');
+INSERT INTO `language` VALUES ('SAFE', 'Seite speichern', 'Safe page');
+INSERT INTO `language` VALUES ('SHOULDLOGGEDIN', 'Du musst angemeldet sein', 'You should logged in');
+INSERT INTO `language` VALUES ('PWUSER', 'Unbekannte Nick-Passwort Kombination', 'Unknown nickname-password combination');
+INSERT INTO `language` VALUES ('GERMAN', 'Deutsch', 'German');
+INSERT INTO `language` VALUES ('ENGLISH', 'Englisch', 'English');
+INSERT INTO `language` VALUES ('LANGOFPAGE', 'Sprache der Wiki-Seite', 'Language of wiki page');
+INSERT INTO `language` VALUES ('VERSIONS', 'Versionen von', 'Versions of');
+INSERT INTO `language` VALUES ('EDIT', 'Bearbeiten', 'Edit');
+INSERT INTO `language` VALUES ('VIEW', 'Ansicht', 'View');
+INSERT INTO `language` VALUES ('ADD_TAGS', 'Tag hinzufügen', 'Add Tag');
+INSERT INTO `language` VALUES ('DEL_TAGS', 'tags_loeschen', 'tags_delete');
+INSERT INTO `language` VALUES ('ADD_TAGS_TEXT', 'Hier  neuen Tag eingeben:', 'Enter the new tag:');
+INSERT INTO `language` VALUES ('AKTUAL_TAGS', 'Deine Tags:', 'Yout tags:');
+INSERT INTO `language` VALUES ('DEL_TAG', 'Entfernen', 'Delete');
+INSERT INTO `language` VALUES ('NOTFOUND', 'Seite nicht gefunden', 'Page not found');
+INSERT INTO `language` VALUES ('NOTRANSLATION', 'Keine Übersetzung gefunden', 'No translation found');
+INSERT INTO `language` VALUES ('CREATE_NEW', 'Neue Seite anlegen', 'Create a new page');
+INSERT INTO `language` VALUES ('FILLIN', 'Bitte Titel angeben', 'Please fill in title');
+INSERT INTO `language` VALUES ('ALLNEWS', 'Zeige alle Neuigkeiten', 'Show all news');
+INSERT INTO `language` VALUES ('READMORE', 'weiter lesen', 'read more');
+INSERT INTO `language` VALUES ('SETTING', 'Persönliche Einstellungen', 'Personal settings');
+INSERT INTO `language` VALUES ('ADMIN', 'JForg Verwaltung', 'JForg Administration');
+INSERT INTO `language` VALUES ('WRITENEWS', 'Neuigkeit schreiben', 'Write news');
+INSERT INTO `language` VALUES ('RANDOMECITE', 'Zufallszitat', 'Randome cite');
+INSERT INTO `language` VALUES ('ADDEDBY', 'Hinzugefügt von', 'Added by');
+INSERT INTO `language` VALUES ('ON', 'am', 'on');
+INSERT INTO `language` VALUES ('CITE', 'Zitat', 'Cite');
+INSERT INTO `language` VALUES ('ADDCITE', 'Zitat hinzufügen', 'Add cite');
+INSERT INTO `language` VALUES ('ALL_WHO_HAVE_TAG', 'Mitglieder mit diesem Tag', 'Users who have this tag');
+INSERT INTO `language` VALUES ('TAG', 'Tag:', 'Tag:');
+INSERT INTO `language` VALUES ('SEARCH_WHO_HAVE_TAG', 'Mitglieder mit folgendem Tag suchen:', 'Search users who have the tag:');
+INSERT INTO `language` VALUES ('WEBSITE', 'Webseite oder Blog', 'Homepage or Blog');
+INSERT INTO `language` VALUES ('SEX', 'Geschlecht', 'Sex');
+INSERT INTO `language` VALUES ('OLD_PW', 'Altes Passwort', 'Old password');
+INSERT INTO `language` VALUES ('NEW_PW', 'Neues Passwort', 'New password');
+INSERT INTO `language` VALUES ('PWWRONG', 'Flasches Passwort', 'Wrong Password');
+INSERT INTO `language` VALUES ('CHANGEPW_SUCCES', 'Passwort erfolgreich geändert', 'Password successfully changed');
+INSERT INTO `language` VALUES ('CHANGE_PW', 'Passwort ändern', 'Change password');
+
+-- --------------------------------------------------------
+
+-- 
+-- Tabellenstruktur für Tabelle `news`
+-- 
+
+CREATE TABLE `news` (
+  `id` int(11) NOT NULL auto_increment,
+  `datetime` datetime NOT NULL default '0000-00-00 00:00:00',
+  `title` varchar(255) collate utf8_unicode_ci NOT NULL default '',
+  `text` text collate utf8_unicode_ci NOT NULL,
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=13 ;
+
+-- 
+-- Daten für Tabelle `news`
+-- 
+
+INSERT INTO `news` VALUES (12, '2006-06-27 05:52:46', 'Codename Hasso Sigbjörnson', 'Nach über einem halben Jahr Entwicklungszeit, sind wir stolz eine erste Alpha Version von JabberFriends zu präsentieren. Wir hoffen, dass diese Version eine guten Ausblick auf das bald folgende Release 0.1 mit dem Codenamen "Hasso Sigbjörnson" gibt.\r\nIn den nächsten Tagen werden wir nach und nach die letzten Fehler beheben. Trotz kleiner Fehler sollte diese Version schon soweit Public-Fähig sein, dass das ohne weiteres Accounts angelegt werden können und Wiki-Einträge geschrieben werden können.\r\nDabei sind wir auf eure Mithilfe angewiesen, da wir ein so großes Netzwerk unmöglich alleine beleben können. Sobald ihr angemeldet seit, könne ihr nach belieben Wiki-Einträge verfassen und Zitate veröffentlichen.');
+
+-- --------------------------------------------------------
+
+-- 
+-- Tabellenstruktur für Tabelle `tags`
+-- 
+
+CREATE TABLE `tags` (
+  `id` int(11) NOT NULL auto_increment,
+  `tag` varchar(255) collate utf8_unicode_ci NOT NULL default '',
+  `counter` int(11) default '0',
+  PRIMARY KEY  (`id`),
+  KEY `counter` (`counter`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=161 ;
+
+-- 
+-- Daten für Tabelle `tags`
+-- 
+
+INSERT INTO `tags` VALUES (160, 'kölner', 2);
+INSERT INTO `tags` VALUES (155, 'debian', 2);
+INSERT INTO `tags` VALUES (154, 'php', 2);
+INSERT INTO `tags` VALUES (153, 'linuxuser', 2);
+INSERT INTO `tags` VALUES (152, 'admin', 2);
+
+-- --------------------------------------------------------
+
+-- 
+-- Tabellenstruktur für Tabelle `text`
+-- 
+
+CREATE TABLE `text` (
+  `id` int(11) NOT NULL auto_increment,
+  `de` text collate utf8_unicode_ci NOT NULL,
+  `en` text collate utf8_unicode_ci NOT NULL,
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=3 ;
+
+-- 
+-- Daten für Tabelle `text`
+-- 
+
+INSERT INTO `text` VALUES (1, 'Du bist nun abgemeldet. Besuche uns doch bald wieder.', 'You are now logged out. Visit us again soon.');
+INSERT INTO `text` VALUES (2, 'Benutze die Suche um nach Mitgliedern zu suchen. Wenn du genauere Ergebnisse wünschst, benutze die <a href="/de/mitglieder/erweiterte_suche.htm">Erweiterte Suche</a>.', 'Use the search to look for members. If you want closer results, use the <a href="/en/members/extended_search.htm">extended search</a>.');
+
+-- --------------------------------------------------------
+
+-- 
+-- Tabellenstruktur für Tabelle `user_details`
+-- 
+
+CREATE TABLE `user_details` (
+  `id` int(11) NOT NULL default '0',
+  `REALNAME` varchar(255) collate utf8_unicode_ci NOT NULL default '',
+  `SEX` varchar(10) collate utf8_unicode_ci NOT NULL default '',
+  `BIRTHDATE` date NOT NULL default '0000-00-00',
+  `COUNTRY` varchar(255) collate utf8_unicode_ci NOT NULL default '',
+  `CITY` varchar(255) collate utf8_unicode_ci NOT NULL default '',
+  `ORIGINAL_FROM` varchar(255) collate utf8_unicode_ci NOT NULL default '',
+  `LANGUAGES` varchar(255) collate utf8_unicode_ci NOT NULL default '',
+  `HOBBYS` varchar(255) collate utf8_unicode_ci NOT NULL default '',
+  `WEBSITE` varchar(255) collate utf8_unicode_ci NOT NULL default '',
+  `COMPUTER` varchar(255) collate utf8_unicode_ci NOT NULL default '',
+  `COMPUTER_OS` varchar(255) collate utf8_unicode_ci NOT NULL default '',
+  `GEEKCODE` text collate utf8_unicode_ci NOT NULL,
+  `PUBLICKEY` text collate utf8_unicode_ci NOT NULL,
+  `FAVORITE_FILM` varchar(255) collate utf8_unicode_ci NOT NULL default '',
+  `FAVORITE_BOOK` varchar(255) collate utf8_unicode_ci NOT NULL default '',
+  `FAVORITE_MUSIK` varchar(255) collate utf8_unicode_ci NOT NULL default '',
+  `FAVORITE_SERIES` varchar(255) collate utf8_unicode_ci NOT NULL default ''
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-- 
+-- Daten für Tabelle `user_details`
+-- 
+
+INSERT INTO `user_details` VALUES (1, 'Daniel Gultsch', 'male', '0000-00-00', 'Germany', 'Cologne', 'Germany', 'German, English and a bit French', 'Programming', 'http://blog.gultsch.de', 'AMD Athlon XP 3200+, 1024MB RAM, 160 GB S-ATA, GeForce 6600 GT', 'Debian GNU/Linux Sarge', '', '-----BEGIN PGP PUBLIC KEY BLOCK-----\r\nVersion: GnuPG v1.4.1 (GNU/Linux)\r\n\r\n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\r\n=xFBe\r\n-----END PGP PUBLIC KEY BLOCK-----', 'Hitchhiker''s Guide to the Galaxy', '', 'Changes from day to day', 'Star Trek, X-Files');
+INSERT INTO `user_details` VALUES (7, 'Karsten Scheunert', '', '1991-08-25', 'Germany', 'Cologne', '', 'German, English, Java, Html :D, Q-Basic', '', '', 'Athlon XP 2800, 1GB Ram, HDD 80GB + 160GB', 'Windows XP , Ubuntu', '', '', 'The Hitchhiker''s Guide to the Galaxy', '-', '-', '-');
+INSERT INTO `user_details` VALUES (3, 'Oguz Han Asnaz', '', '1992-06-04', 'Germany', 'Cologne', 'Germany', 'German, English, Turkish, a little bit Latin, Esperanto(in progress), Java(-script), PHP, C++, QBasic, Brainfuck', 'Computer', '', 'Intel Pentium IV 3.4Ghz, ATI Radeon 9800 Pro, 512MB Ram', 'Debian Sarge mit KDE', '', '', 'Hitchhiker''s Guide to the Galaxy', 'Dan Browns books', 'I just hate Hip-Hop ^^', '');
+INSERT INTO `user_details` VALUES (4, '', '', '0000-00-00', '', '', '', '', '', '', '', '', '', '', '', '', '', '');
+INSERT INTO `user_details` VALUES (5, '', '', '0000-00-00', '', '', '', '', '', '', '', '', '', '', '', '', '', '');
+INSERT INTO `user_details` VALUES (6, 'Falco Vennedey', '', '1989-01-11', 'Germany', 'Berlin', 'Germany', 'German, English and a bit Spanish', '', '', '', 'GNU/Linux Debian Etch', '', '-----BEGIN PGP PUBLIC KEY BLOCK-----\r\nVersion: GnuPG v1.4.3 (GNU/Linux)\r\n\r\nmQGiBERnYrwRBAC3zNcw2w4Df0bvtazy5oVIoW1SjRZelh+zvsfaTOFyzSFeiPV5\r\n8O7vRSEITGTkgn5GpyB+RmtU7QMynOwtldCUeZE9qUyGD5LFtgF2RWc6OvHopzqE\r\nqwW2BwCWX5/EYOEDZuvSYFsTTIJ4kJvsPAzs6r9xgMGk1KA6hdQS/liiRwCg4SFW\r\nlqRH0JBc0qxvsm+brTXu4WcEAIbwaVYRXfRNjYZ9OFpulANiBZWyjmDtmyJVA0P+\r\nf9DZqHRIn2S3Ihvwt1uBCoRPrZNvulnfR581wot4qSNJ5seanenh8yknDqXb7Y+8\r\nMdAwMGP7dsN2iiZNx299kO3jGsUGhlBzBNmdXRbwhNdsp9ERowSgXjVFwNyZ2QAB\r\n3r/DBACgar65nUBxqC5VSPUlfvzXLK0KOl+TA3UuS6ZcCbF2Vqdj8Ldmv0xh+FGw\r\nNJ1B5M25LRtJ/UQIhh1ABmtVP3KgLXhmfqONq4HgU3S+XH2M3ouRUjK95yvdvec3\r\nStTT0C2jD5B8ziohu3npjFlXj++hZDS/PYHW03/+9nvlMfwS97QrRmFsY28gVmVu\r\nbmVkZXkgPG1hc3Rlcmdub21lQGdvb2dsZW1haWwuY29tPohgBBMRAgAgBQJEZ2K8\r\nAhsDBgsJCAcDAgQVAggDBBYCAwECHgECF4AACgkQPnKv6Cf+e6BEsQCfaPivypRL\r\n6kX+3XWJwSoa9AHsN50An3Cp4JqPobTp7Jd+6RMGa8UpGfWRuQQNBERnY3oQEADl\r\nWb3sTUkuAMsvjiY5upXjXInTjLHdfHjzP/r2in3WT0aAn3DegCQIlOJfZ76ZVxhB\r\nyG07PP125dP13ks3RiqgNzri+cJanJKTXv2WC+Xc0mkmYrFMRZvucAruYwIZbrRm\r\nL1tWQ9nayumvh+MA0ndHbAoYWu2rav9VkzoIvYSTgDEK1vxzOySBDZU/0ZavWEYp\r\nsZHoaclwxS0ihFW89++T3TwHlOPIv+oOLh/ijxbV9wM90pdvfy1q5P/QM1xNkPmH\r\nixyx0AKysBsHgS3Gai910RDI6LKy0IbSmdd+irFr4XZQG/1m7rK4YAlbISEy7o4V\r\nsrrqIhtKqd6GeJC6g90MiDGCzsBLH3J9BVaAukoxvZNrsLWzW502/YBNfmfmygjN\r\nRYeRfPPjeORfs5RNEb1UhfrlMoxegwUK04Bg7yUOXHVI1ZjyGHM1Zu7UgkzhWTQ3\r\njCRqNBiIpHXD9ypxwyqBdF/5Ed7OenPmWRKQGR3KsSYNY3ehZmDGBjZLkHf4ArLf\r\nV1i5FWCWrAVvS+YigMEkZP7bnR3eNN+xPypmMiRPKrOrDbLGzuiAcwLDgjsG5Hp4\r\nfZCv009XCcKdy86GdBXIDhyMR/XiZA/J8rz74Vo5AORf59S2P9aFxmjjTnprASJz\r\nR1rUqC36D5ZNzVF34rn8F9tGoJkZuyldcu38uejs3wAFEQ//WrDTydwzTvPaJgK3\r\nT2s8XHlbmr5IiXqCXA415VvFj4mcrgL07UwwVbsZT0AiPPYktYmYwaykKQBFbcEN\r\nECGfRo4yQZRcKe8C4JJy/MuIgO3KLDtGHRU1eA7EPXeF87PTB42mV8O6q6lF+AVm\r\ndjyzxjm5e/1CNMs9kXM1y7hgTLwR4RGQjgKBnBSgmO9NMRkMf3lTSRJzzTkElhYT\r\nXowRXQCxaFvp2LsLqChNW6S0gAdS+O7ueNSdBSYR2fXmvRWwYLOZIgpco7fC8Cex\r\nT61dd8wsKsdv+BPNjnjvv/clRJAF/a0zRwsqD5cOcpeCBBwJwlAJSSTPNRaCceYj\r\nEN7w/bDbm0vin+7HD0930buT5UUN0RyRq4mqo1W23yLaC3WZEAwVrK37U9A1FNXx\r\nkwMo7RS6LDbN73LVdehKvF4cbhtyOk+473mdVnO80WBcOt7ui8Wgn94g2YRhM13V\r\n8yXwKiLaRorlVLMyd6oFEa1B11c7C7LTApEpUMmBo6A7vS2+MqWzIU8YKtNTy0HJ\r\nogA8bCqxgynWIjMBZbAQna23OZ3bne779Rit3UtGiRSSpWGM1iCYBMnjqRaGAiF6\r\nl9Uw4XJSy6WV8lNu8t0pJfvU8OBXAXXf83vY2qwRsFuymontdWNgIb9/reu0DA5g\r\nAnsazsRGizwm3yQ9biBKtgJL87eISQQYEQIACQUCRGdjegIbDAAKCRA+cq/oJ/57\r\noAX4AKDCqQwIS1hUygPRDa+lIvITvnxh4gCfUlLMvBJJ14cRetgIQI3QRAsoYc8=\r\n=4042\r\n-----END PGP PUBLIC KEY BLOCK-----', '', '', '', '');
+INSERT INTO `user_details` VALUES (2, 'Bahtiar Gadimov', '', '1987-04-19', 'Germany', 'Cologne', 'Azerbaidshan', 'German, Russian, English', '', '', 'PowerBook', 'Mac Os X', '-----BEGIN GEEK CODE BLOCK-----\r\nVersion: 3.1\r\nGCS/CM/IT d-()? s: a--- C++>$ UBL++ P+ L++ E--- W+++ N+ o K w--- !O M+ V? PS+ PE\r\n Y? PGP++ t- 5- X R* tv--(-) b+ DI D++ G+ e*>+++ h! r(+) y?\r\n------END GEEK CODE BLOCK------\r\n', '-----BEGIN PGP PUBLIC KEY BLOCK-----\r\nVersion: PGP Key Server 0.9.6\r\n\r\n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\r\nZgGABgsJCAcDAgMVAgMDFgIBAh4BAheAAAoJEMOAIa+eTExe7KoAn1WdajAJ1/GQ\r\nTEzBlvDctCUvtmS+AKCUpliFUm8GvtfigKPchhm//cTacYhuBBMRAgAuBQJEW53Z\r\nJxpodHRwOi8vd3d3Lmthcm90dGUub3JnL3BncC1wb2xpY3kuaHRtbAAKCRAbYDT0\r\ndrefIJxOAJ9bSQe0dj6V27QOUJFzHX+543nZ7QCfRfUrztFX5Cr/CoU1nQ1KrubZ\r\n8WeIegQTEQIAOgUCRF42jzMaaHR0cDovL3d3dy5zYy1kZWxwaGluLWVzY2h3ZWls\r\nZXIuZGUvcGdwL2luZGV4Lmh0bWwACgkQlI/WoOEPUC6ZAACg0onsjlC3+EV2lT/5\r\npVl9gZuWPfgAoM3561ycldhM0k506pLYGIVdNAK4iHoEExECADoFAkReNpMzGmh0\r\ndHA6Ly93d3cuc2MtZGVscGhpbi1lc2Nod2VpbGVyLmRlL3BncC9pbmRleC5odG1s\r\nAAoJELR14ge6tYIpchwAnRpLOm0tH6LJSIrsIcxM6mOQ42RZAKDbivGOUhkt0St6\r\nLiLZhQEy5rspM7QtQmFodGlhciBHYWRpbW92IChCbGFzZTE2KSA8YmFjaHRpYXJA\r\nYXJjb3IuZGU+iJwEEAECAAYFAkRdtfEACgkQspbT7SjY4lENugP/ejbGKk2rK14m\r\neeYWD/RhZ7EfyJrcjzmjc1ZhmeYca/rYpo7yMb/aMIjzLv+f9IT/157y9qGGqzZu\r\ns5WBZy2oTeBrLfh4MqN79RAmkjyHXQRb0HPyYvI8mbqZQ0WD0eRj5F1fJc9xbYsa\r\nynDyoM5ondENeqJCLIABNwrEHrguHFmInAQQAQIABgUCRF3loAAKCRDolR6PtpRU\r\n/TpUA/42Ijz2CEk8hdua2NpdD4TagpE0wGRiVVjV+yxVvj0O4J+vg2o3A0MXnOiV\r\ngRxHezMJvMwCqmjkzklHtbuRBPGGGGh9PayWDlWBPQ2vRo1tII3RExQpcIZLVhOe\r\nfsmnprkxltjUTsvloJOxVVRDWAcNH0xrhKu3CJoPNmk4TXaF7ohGBBARAgAGBQJD\r\nodwiAAoJEFNBB9o4Y+yWCa4AnjdM3888ngGY1Jxlmi4+ZAbpbe+oAJ9VpqfL1DKQ\r\n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\r\nAkReASoFgwipfZQACgkQRcAhR2mr3VSt4ACfYqC9oZrOn5HTdiE9Z4gc6E480pQA\r\nn0dAqPDACq7DPmbhk8d1bwFZtflTiGQEExECACQFAkOhjBwCGwMFCQlmAYAGCwkI\r\nBwMCAxUCAwMWAgECHgECF4AACgkQw4Ahr55MTF4X1gCgkXHy9hsidBqmIUdZgpVn\r\n1k1ar1kAoIfeiPlxdq7aPYGhDRw/C2kxPEWoiG4EExECAC4FAkRbndknGmh0dHA6\r\nLy93d3cua2Fyb3R0ZS5vcmcvcGdwLXBvbGljeS5odG1sAAoJEBtgNPR2t58gcxEA\r\nn29FvzR3c9CsDuAmN1I2AOqFM8y9AJ4tRnwOb59EqodOz3N8SglbICEpnYh6BBMR\r\nAgA6BQJEXjaPMxpodHRwOi8vd3d3LnNjLWRlbHBoaW4tZXNjaHdlaWxlci5kZS9w\r\nZ3AvaW5kZXguaHRtbAAKCRCUj9ag4Q9QLv/8AJ9IsRoa3DMg1ypwy5VW5B2g/r/P\r\noACg7sqiit/fRM9E5Wmqv6fTPhNME06IegQTEQIAOgUCRF42kzMaaHR0cDovL3d3\r\ndy5zYy1kZWxwaGluLWVzY2h3ZWlsZXIuZGUvcGdwL2luZGV4Lmh0bWwACgkQtHXi\r\nB7q1gimQ/wCeKeXepkNeeur+7NDgfzWTZRb+Q4kAoJvYsuz/BNcydtICeSKIZLwU\r\nkthVtC5CYWh0aWFyIEdhZGltb3YgKEJsYXNlMTYpIDxibGFzZTE2QGJsYXNlMTYu\r\nZGU+iJwEEAECAAYFAkRdte0ACgkQspbT7SjY4lFwmQQAoFa8dHKQ5kkCdvTu2Hm+\r\ndhxdaEKdFy6/b++rCo7S9wS+qlFAShNbKlMiL4HvSdMcIs9gKmUBlU4Q/Hg/mM5f\r\nn6/f99L4/mVyVrrLv+jvtJZ8q7dcdUb1FVi+IQVDsyvo+3Qr1XBV9Eex8c7KRxVg\r\nuJ6kmH+Yf0a940Vu+OaW7/SInAQQAQIABgUCRF3lmQAKCRDolR6PtpRU/fVoA/9T\r\nyr2ubm+/qFO5CR4sCjQ8T4UA/4XSLYqJBi6l0KIFT1sUGMT4eQZIS09STrKvi5vE\r\nWLJf8UjynZN8gCxgx9T4aNGb+AFcI/cxjRJR54ZXM18cQ6156UxgZvpdm7xrUP9B\r\nwE/X7j7QYICMR18lUUO6fYnkbgscAxSqONARJpNfqIhGBBARAgAGBQJDodwiAAoJ\r\nEFNBB9o4Y+yWl0IAoInvHRHM5JlovPM8Yd2KQcfyLjEwAJ4ySknDsa6+p7X0dD9R\r\nBGWpAVCqqohGBBARAgAGBQJDofZVAAoJEGUx+FhCtlSr4XAAnjmp91olpiwQiMbE\r\nTWVYQ01vtt5qAJ4h+Qpe1Si6+879eNnvJrTeJXhVCohGBBARAgAGBQJEW2zcAAoJ\r\nEA8YK02ogx4HPnYAn0zi7iwMI9pg39Lh46s9FzY7XxexAJ9LHSpN/LnkOE5wir8n\r\nESJJxiDyhohGBBARAgAGBQJEW6yRAAoJECYYS28nb1IBqVQAoKihoriTkWl6LD3/\r\nVaiYXuQiMIM5AJwKCEeHfrM8wuWogQg1WSwR0MOzbohGBBARAgAGBQJEW7PNAAoJ\r\nEOKIVJ38iyL885EAn0vJFRGcDEbzQhktK/iNjJG9pfq+AJ423ViNu9O2r9oloIZo\r\n+tVcDDrYYIhGBBARAgAGBQJEW7uzAAoJEPU1eXle5u8mvocAoIG0C5rUbfC26jI0\r\n0TKy4gmo1PVgAJ0cpoyNCHjJ/oBTd+OgdUt2gsJg0ohGBBARAgAGBQJEW8CUAAoJ\r\nEN+zYqrjDSpOutEAni4PlWJMj7q95k5Xl8rG5L8lGhg7AJ9pnYZNrnMiNeYNTBdS\r\n0pQgiECUOYhGBBARAgAGBQJEW8jKAAoJEH7ehzXcQmQpgCoAniZIBmbu37pFP0f8\r\nHZQSmT0alrzVAJ9ZWZozFVXvGwFkyhDH2xo6/btH1YhGBBARAgAGBQJEXKAZAAoJ\r\nENkl/1Tj0sianNUAoKwqCGKr3Uo/QsqWDQoRcBVMhvSWAKC9lSpCljqYPJNMMgJa\r\nxDkzOPIQhohGBBARAgAGBQJEXM2gAAoJENnUh6yq4eYxYLAAn01NkcQlUwq3H6qy\r\nKg7R6vTB08+/AJ0ZFEtyDGvNz7a6dVdKx79U60ndSohGBBARAgAGBQJEXSF4AAoJ\r\nEPhZkLAkiutz+pwAnRcNS5vUkkwGVDzQ/e3f45Afum4lAJ4vIWvkO7d5WdiyxGFY\r\nwZCRgqxpwohGBBARAgAGBQJEXcBZAAoJEI2OPuD3c7zgVc8An2fWhcreUlkEwnk+\r\nq6ebkaX0a5kFAJ90rMmMIpg4gWFYvY1c0OTSdXc6IohGBBARAgAGBQJEXeWmAAoJ\r\nEIhlNpbdr2RUK6EAn1qTvd7wTahxQxoCh0lXRUJf/W6AAJ4sRYdQiXjO2+xMNCum\r\ncvXWl07Ai4hGBBARAgAGBQJEXfuDAAoJENNbvJm8fQIK5v0AoM69VZkJOvoEDNbp\r\nZlNcS6eUplyIAJ906BBVWkXfj7vvJKP10TsIDL60T4hGBBARAgAGBQJEXjOKAAoJ\r\nEDtohlrYag0ZNpUAnRDobveca85Ebm3SxsO1I8IZDcBHAJ93rN6eRg5OTSOX75F/\r\nYbBpLAr8t4hGBBARAgAGBQJEXjpHAAoJELkN18ntYZU9ExQAn1lCm2YqjR0qiUFF\r\naeewEd6VEj9NAJ4pRFNFNXCjI1cC4Da5XCinELD/wohGBBARAgAGBQJEXkUaAAoJ\r\nEAAJHpCQSNMiG9AAoOkvGTsB78ZfCW9nHioIkB7q7CUYAKDMPalZHdkxqiMpgi5s\r\n1S+zE08mA4hGBBARAgAGBQJEXk1qAAoJEMSk5Byd5ei5S8kAni/+4TQVh8voFRW/\r\nKDxg8IoJ/GFzAKC1KhV52ePf88r6+FMANRG1ys72y4hGBBARAgAGBQJEXk4AAAoJ\r\nEFykiT5pufxOWC8An2ZBy6a0pVIJSlM1KlyQtn39zAxjAJ4pXdXVIF5ZK9Pe8U3a\r\ndlNwFbTzg4hGBBARAgAGBQJEXlbtAAoJEEk++45dZPhwWAYAoKwR6d0F82vsBp+4\r\nz5JQX9vuiGpKAKCnF1jLXhUvq7WndQSDGp6fynjJjYhGBBARAgAGBQJEXnAtAAoJ\r\nEGF2JaAszrkXV90AnjgQZz9nxIrXZrStN4bDItAdA9zdAJ9VGdt6r9DL33Ibe9mD\r\nSaOgBHrug4hGBBARAgAGBQJEX8xuAAoJEI4eog56VlAdu28AoNoWKPQFk5bjl8s7\r\ngZOEdgPBWU+DAKCTBDOOl85ubje0ZN8WvrxxEJkdU4hGBBARAgAGBQJEYMuKAAoJ\r\nENjsdAoJ2eZibdoAn0KDId3tThrW7XckzdX/VQl0UIjOAKC9flOgkSjkw8tN6RUO\r\nUOO1KW/FIYhGBBARAgAGBQJEYO3WAAoJEDZD2lCKqa7EikoAnju8oiTHtuF4LLgD\r\nIDFuRkNdprQdAJ9+qInWHS0RiTDEw+AyTGKu9r9fb4hMBBARAgAMBQJDov4HBYMJ\r\nZIC3AAoJEJO/lAj1u/owgA4An3E2HkLABMwls6MGxkSB0Tnu9OP4AKClGlHS1M+O\r\ntxSDTS1bIz3py19UlohMBBARAgAMBQJEW6LhBYMIq9vdAAoJEMEP+aFwFn+hss4A\r\nn3wDx2n+i9lGFcGLVDWn04Ivv9o1AJ9h8xtTNgzWDx/B52kzXRTrJVrVuIhMBBAR\r\nAgAMBQJEXDlqBYMIq0VUAAoJEC+VFQiq5gIup3wAnjpEMedDVhWj/8tDt3Ei9S2F\r\naG8KAJ47Wa79aapG1EePdgr+6CdnuCIjJ4hMBBARAgAMBQJEXNjgBYMIqqXeAAoJ\r\nEL/r08ZBzwMiqxEAoJ6FCq9ElRANOcMz+i2XmJqr+2H1AKCfRKPNE86dbN3jsdK0\r\nUO5FacgJXohMBBARAgAMBQJEXnz8BYMIqQHCAAoJEKq402pyjZvQf/AAoJBW7Yme\r\naz4crm8qcXC5JtQa7cbAAKCG1yc3RYf5lM3m+FW/thJVjc4CcIhMBBARAgAMBQJE\r\nXx4LBYMIqGCzAAoJENQ8swWV/so0wd4AoNH1n7gooMGpyyX76nzAWkEQvHjdAKDB\r\nP6wHxyBWTOdzEhiV1f0TrYmao4hMBBARAgAMBQJEYNJnBYMIpqxXAAoJEGCtHS4h\r\nbRFb37sAoJ3MNdzfdkfDnY9kuHhZFk7Q/pd0AJ4l20fEeg/8GzALWMLDseH78OwN\r\nTYhGBBIRAgAGBQJEXh82AAoJEDu/z3e9iwUNv6UAnjtc+vBOWxul1XFKxbonSYLX\r\niEFdAJ4+MO/dHZ9yhf6uuPKyrAs7uaCGr4h0BBIRAgA0BQJEXfvgLRpodHRwOi8v\r\nd3d3LmEyeC5jaC9kZS9rb250YWt0L3BncC1wb2xpY3kuaHRtbAAKCRBxbUQTPYwi\r\nLYHdAJ9i9RSZCuVqiTj3dNovzKx5Z80FGACgkpRQS2nukRczMxn94W3ujYkIh3GI\r\ndAQSEQIANAUCRF378S0aaHR0cDovL3d3dy5hMnguY2gvZGUva29udGFrdC9wZ3At\r\ncG9saWN5Lmh0bWwACgkQVtUpPsl6BlSkOACcC3cjY448CgFEfBbvebZ5NXiPIHAA\r\noOI+fkfnku8n62mV7uNvSUGbCgziiEYEExECAAYFAkRbp8oACgkQu8cU0ZxnzZYi\r\nBgCcC3A8vXwLZ3em03iH7neEM/QJYwoAnAwA2E9nES6AwXNWgSE/HaC3Jw43iEYE\r\nExECAAYFAkRbxesACgkQVC6uhWNcHbmfMQCgh0ALpJBAyM3RJ+UZtrDIpJTdvt0A\r\nnR2cJSqc2U48Tp7nJpvf3K6Rs05jiEYEExECAAYFAkRduKcACgkQiqNir+lyMs05\r\nDACfS8cMO3knA5ZRFJPCPvRqhTSeX2oAmwc2SbLC4nt5ZhONL92xaAujM+TAiEYE\r\nExECAAYFAkRduKsACgkQp99YcnDUTCNtwwCeJ/Hj018UTDKyedaEik0R8OPU5UgA\r\nn1iulIYrS8E1yACCTTawyFvvVhXuiEwEExECAAwFAkReASoFgwipfZQACgkQRcAh\r\nR2mr3VQMPQCeKMmAyQZ8GlZUbuKAt+3rWgDSa00AnRKmqEM+y6ZGKXiikhACWPdY\r\n/TmaiGQEExECACQFAkOhfT4CGwMFCQlmAYAGCwkIBwMCAxUCAwMWAgECHgECF4AA\r\nCgkQw4Ahr55MTF7+BQCgqR1GPuKMYOdIDBcQ6WjvUMU+0jQAoIsLEI/+51pRdYL1\r\nea89zFaQtOlyiGcEExECACcCGwMFCQlmAYAGCwkIBwMCAxUCAwMWAgECHgECF4AF\r\nAkOh92sCGQEACgkQw4Ahr55MTF6aYwCgoiGUXaTcnWaWAxOSCi52qUPq27YAoJdU\r\nsnaShrNwgaba+yo1c2wK0tRwiG4EExECAC4FAkRbndknGmh0dHA6Ly93d3cua2Fy\r\nb3R0ZS5vcmcvcGdwLXBvbGljeS5odG1sAAoJEBtgNPR2t58gblQAn3xSGTbGJU0J\r\nWF4lgr02AA/CyXHrAJ4ob71RmrFWMzh27Mg/G669OZJ3M4h6BBMRAgA6BQJEXjaP\r\nMxpodHRwOi8vd3d3LnNjLWRlbHBoaW4tZXNjaHdlaWxlci5kZS9wZ3AvaW5kZXgu\r\naHRtbAAKCRCUj9ag4Q9QLo1kAKCmp5L8rWmG0bjgXC7vZ6aSRVY8rwCgs8gcryH1\r\njWmDcyk/Gw3mHgIP5VuIegQTEQIAOgUCRF42kzMaaHR0cDovL3d3dy5zYy1kZWxw\r\naGluLWVzY2h3ZWlsZXIuZGUvcGdwL2luZGV4Lmh0bWwACgkQtHXiB7q1gillDACd\r\nEIh9U4yssiY00EEcUy9x74u+TdUAn1pphav3o8agwjcLF9+/I4dP5Z0JuQQNBEOh\r\ngPQQEAD75Z+c6ktjlNZ/CHZvfqeTAzI/kV8hB7Fm26MVseWbUh11r4nI/eOYXWen\r\nxRRIzLgprk2fdxf5ami1fId7izpxJMCh44lxASQwg1VvmHMxq1zU2IslAt8jLXS/\r\nVLPmIvwSY5BkI02xIv0wUR3fAUPilC78yaaqDI7afxH3Vz6/OVgf6Laa38VJwC+U\r\nr05HyWcm5Sdio8vSFigBt3rer/qdt34gleqBmCLwAR5qjRWp2cYsj/3W1J01BaSf\r\n+yAwVep6lteELHcP84Gq3YRpi/ReTaBn7yofnuSELjUXmqIF3vUdnb+JMbUQaKef\r\nmgOJVg7N1OK/dbMxLPQmjdBta4kXC6rX+QGiKLBWE5MQ2YSRxJ5t6m1z82MFwlDR\r\nwmkzyIrcra7K3S9hIP37gQgAf6e/dBCdbcJC8unsdG1pnHmy8nOG+FpUMvwf9BkP\r\n896X9PgKXxO4ITFx6diiDiAxXoPQrzDOVpvc/XT4NODvD0ig6Zq+Hkyxhz+VdEC2\r\nDVO5UiDqZvy8iROilru2Qz3Wa8rWOtmiamWI21BL8+9bc5cAc3+VNBn+vXp5nMSY\r\n99wEdRxaddBNTgJZU/r1e0h3UFeQolfLd0yRzICnKeapRIQHlzmPMpi3MzizCrhj\r\npyLWkG7Q+i4ehTX5p9SyBtuHWsTDgmJ4JnvdUWOl+W0/qXPtDwADBRAAs60swnFy\r\nmkCKRcb0mrzZxtyyFKAOmwIbh3UbiGgAeDVWR3KwUCCBus9XSS8vVKQrWIql/92E\r\ncPC4DVPH8JUE606Ar4VogxZRxXQ1uL/zEgA1bdOnY/IW0SFeUqWhQQBDl/nxVkfU\r\nVgI4SZqvtH88DWjaQjgZUIEbLJweAeqKWfuSgY+s0pUD0vitbCgaC8ZlpJhBkRoC\r\n8BGCgDbnsbkiTadWwf4B0C8LD+PdNFFsmn/XVB3tCtYbx5L2nOxp0zyHgS+Js9jX\r\nLr1esG2ccdHhZ0uQzD5fOaWxPySllC6c7JQ0hFtWdQG03W3OaGq5FWJwjXhWrpwi\r\nCshGdQMPeQ9l+p3R9AinLuLb+JtT8klmPwPf6kyBeCmfJ5LSRQKj5BDPQRQxxTuB\r\ndb7uS9rXCZVWwLMMPdjgSegKtJMLWZDJARQ0nzepjr+uaDskFchHNoco/YQu/k+4\r\nYAZXwcZWDM2N3ylMDDhpdpVsAaZYslMp+aLK5eJ5D4gkpTO/6c3phoCtE5SFZIin\r\nIWzS54df0Co2ZXxkNqdM0kR7oz2Ry/PO3wyP5HB9+PR0UPjT5BsqqUTuEGtrO5X5\r\nppWCCxTBOtebHzj2DA9HPOew4LYazUvTG/jj24+RS5pzVqqOeRgGCMydBWfk2top\r\nOpKwtsousQ5H+n/6785zCp/rjXyClbRavk2ITwQYEQIADwUCQ6GA9AIbDAUJCWYB\r\ngAAKCRDDgCGvnkxMXqDkAJwJGHrCZPE5kPwhB2QjobJmIKmxSQCgp7bc7KyAW4XY\r\nVp4eInByBY8RaWw=\r\n=sthq\r\n-----END PGP PUBLIC KEY BLOCK-----', '', '', '', '');
+INSERT INTO `user_details` VALUES (8, 'Maximilian "Maxx" Gaß', '', '1989-01-18', 'Deutschland', '', '', 'Deutsch, Englisch', 'Der ganze Technikkrams ^^', '', '', 'Gentoo', '', '', 'Matrix', 'Stephen King - Der dunkle Turm', 'Die Toten Hosen', 'Lost');
+
+-- --------------------------------------------------------
+
+-- 
+-- Tabellenstruktur für Tabelle `user_login`
+-- 
+
+CREATE TABLE `user_login` (
+  `id` int(11) NOT NULL auto_increment,
+  `jid` varchar(255) collate utf8_unicode_ci NOT NULL default '',
+  `nick` varchar(20) collate utf8_unicode_ci NOT NULL default '',
+  `passwd` varchar(255) collate utf8_unicode_ci NOT NULL default '',
+  `status` int(11) NOT NULL default '0',
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=9 ;
+
+-- 
+-- Daten für Tabelle `user_login`
+-- 
+
+INSERT INTO `user_login` VALUES (1, 'inputmice@jabber.ccc.de', 'iNPUTmice', 'JD5tXionaaedM', 5);
+INSERT INTO `user_login` VALUES (7, 'symbi0se@jabber.ccc.de', 'symbi0se', 'armlX2NzSuiv2', 0);
+INSERT INTO `user_login` VALUES (3, 'Aschenbash0r@jabber.ccc.de', 'Aschenbash0r', 'lo147ghLTcXLw', 0);
+INSERT INTO `user_login` VALUES (5, 'chris-b@jabber.ccc.de', 'chris-b', 'hi3zQiehYmaNo', 0);
+INSERT INTO `user_login` VALUES (6, 'mastergnome@jabber.ccc.de', 'mastergnome', '12Ha2YxglNhRE', 0);
+INSERT INTO `user_login` VALUES (2, 'blase16@jabber.ccc.de', 'blase16', 'noTOK.cALLPZQ', 5);
+INSERT INTO `user_login` VALUES (8, 'crashmakermx@kdetalk.net', 'crashmakerMX', 'AW7wMNNsPJ/Qc', 0);
+
+-- --------------------------------------------------------
+
+-- 
+-- Tabellenstruktur für Tabelle `user_tags`
+-- 
+
+CREATE TABLE `user_tags` (
+  `user_id` int(11) NOT NULL default '0',
+  `tag_id` int(11) NOT NULL default '0'
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-- 
+-- Daten für Tabelle `user_tags`
+-- 
+
+INSERT INTO `user_tags` VALUES (1, 154);
+INSERT INTO `user_tags` VALUES (1, 153);
+INSERT INTO `user_tags` VALUES (1, 152);
+INSERT INTO `user_tags` VALUES (1, 155);
+INSERT INTO `user_tags` VALUES (1, 160);
+
+-- --------------------------------------------------------
+
+-- 
+-- Tabellenstruktur für Tabelle `wiki`
+-- 
+
+CREATE TABLE `wiki` (
+  `id` int(11) NOT NULL auto_increment,
+  `wiki_id` int(11) NOT NULL default '0',
+  `language` varchar(2) collate utf8_unicode_ci NOT NULL default '',
+  `title` varchar(255) collate utf8_unicode_ci NOT NULL default '',
+  `text` text collate utf8_unicode_ci NOT NULL,
+  `datetime` datetime NOT NULL default '0000-00-00 00:00:00',
+  `user_id` int(11) NOT NULL default '0',
+  `ip_addr` varchar(255) collate utf8_unicode_ci NOT NULL default '',
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=85 ;
+
+-- 
+-- Daten für Tabelle `wiki`
+-- 
+
+INSERT INTO `wiki` VALUES (83, 1, 'en', 'Wiki Documantion', 'While I am programming the wikiengine, I write a little how-to-use.\r\n==Headlines==\r\nHeadlines ar yery simple. You create them while writing two = on start an end.\r\n ==Headline==\r\n\r\n==Die Sache mit dem Code==\r\nEinen Codeblock erstellt man ganz einfach, indem man ein Leerzeichen vor die Zeile stellt. Jeder Wiki-Code, der in einem Codeblock steht wird ignoriert.\r\n Das ist ein Codeblock\r\n\r\n==Dick und Dünn==\r\nFett schreiben tut man, in dem man drei '' vor und hinter das Wort setzt.\r\n ''''''Dieser Text ist Fett''''''\r\n''''''Dieser Text ist Fett''''''\r\n\r\nKursiv schreibt man, indem man zwei '' vor und hinter das Wort setzt.\r\n ''''Dieser Text ist kursiv''''\r\n''''Dieser Text ist kursiv''''\r\n\r\nMan kann auch ''''''Fett'''''' und ''''Kursiv'''' kombinieren.\r\n ''''''''''Dieser Text ist Fett und Kursiv''''''''''\r\n''''''''''Dieser Text ist Fett und Kursiv''''''''''\r\n\r\n==Die Listen==\r\nListen sind auch ganz einfach. Am besten einfach mal ein Beispiel.\r\n * Punkt 1\r\n * Punkt 2\r\n * Punkt 3\r\n ** Punkt 3.1\r\n ** Punkt 3.2\r\n ** Punkt 3.3\r\n * Punkt 4\r\n\r\n* Punkt 1\r\n* Punkt 2\r\n* Punkt 3\r\n** Punkt 3.1\r\n** Punkt 3.2\r\n** Punkt 3.3\r\n* Punkt 4\r\n\r\n==Links und Dinks==\r\nLinks kann man ganz einfach machen, in dem man die komplette URL schreibt.\r\n http://blog.gultsch.de\r\nwird zu http://blog.gultsch.de\r\n\r\nMöchte man Links beschriften, oder innerhalb der Seite verlinken mach man das so:\r\n [/de/members/4-inputmice.htm Benutzer Seite von INPUTmice]\r\n[/de/members/4-inputmice.htm Benutzer Seite von INPUTmice]\r\n\r\n==Bilder==\r\nBilder werden beim einbinden automatisch verlinkt. Man muss keine Pfade angeben, nur die eindeutige Zufallskennzahl und die Datei Endung.\r\n [image:544gfd356gds.jpg]\r\n[image:544gfd356gds.jpg]', '2006-06-25 00:15:36', 4, '127.0.0.1');
+INSERT INTO `wiki` VALUES (84, 1, 'de', 'Wiki Dokumetation', 'Wärend ich die Wikiengine schreibe, erstelle ich gleichzeitig mal ein kurzes how-to-use.\r\n[TABLEOFCONTENT]\r\n==Überschriften==\r\nÜberschriften fügt man ganz leicht ein, in dem man zwei = davor und dahinter setzt\r\n ==Überschrift==\r\n\r\n==Die Sache mit dem Code==\r\nEinen Codeblock erstellt man ganz einfach, indem man ein Leerzeichen vor die Zeile stellt. Jeder Wiki-Code, der in einem Codeblock steht wird ignoriert.\r\n Das ist ein Codeblock\r\n\r\n==Dick und Dünn==\r\nFett schreiben tut man, in dem man drei '' vor und hinter das Wort setzt.\r\n ''''''Dieser Text ist Fett''''''\r\n''''''Dieser Text ist Fett''''''\r\n\r\nKursiv schreibt man, indem man zwei '' vor und hinter das Wort setzt.\r\n ''''Dieser Text ist kursiv''''\r\n''''Dieser Text ist kursiv''''\r\n\r\nMan kann auch ''''''Fett'''''' und ''''Kursiv'''' kombinieren.\r\n ''''''''''Dieser Text ist Fett und Kursiv''''''''''\r\n''''''''''Dieser Text ist Fett und Kursiv''''''''''\r\n\r\n==Die Listen==\r\nListen sind auch ganz einfach. Am besten einfach mal ein Beispiel.\r\n * Punkt 1\r\n * Punkt 2\r\n * Punkt 3\r\n ** Punkt 3.1\r\n ** Punkt 3.2\r\n ** Punkt 3.3\r\n * Punkt 4\r\n\r\n* Punkt 1\r\n* Punkt 2\r\n* Punkt 3\r\n** Punkt 3.1\r\n** Punkt 3.2\r\n** Punkt 3.3\r\n* Punkt 4\r\n\r\n==Links und Dinks==\r\nLinks kann man ganz einfach machen, in dem man die komplette URL schreibt.\r\n http://blog.gultsch.de\r\nwird zu http://blog.gultsch.de\r\n\r\nMöchte man Links beschriften, oder innerhalb der Seite verlinken mach man das so:\r\n [/de/members/4-inputmice.htm Benutzer Seite von INPUTmice]\r\n[/de/members/4-inputmice.htm Benutzer Seite von INPUTmice]\r\n\r\n==Bilder==\r\nBilder werden beim einbinden automatisch verlinkt. Man muss keine Pfade angeben, nur die eindeutige Zufallskennzahl und die Datei Endung.\r\n [image:544gfd356gds.jpg]\r\n[image:544gfd356gds.jpg]', '2006-06-25 00:31:28', 4, '127.0.0.1');
+
+-- --------------------------------------------------------
+
+-- 
+-- Tabellenstruktur für Tabelle `zitate`
+-- 
+
+CREATE TABLE `zitate` (
+  `id` int(11) NOT NULL auto_increment,
+  `zitat` text collate utf8_unicode_ci NOT NULL,
+  `language` varchar(2) collate utf8_unicode_ci NOT NULL default '',
+  `user` int(11) NOT NULL default '0',
+  `datetime` datetime NOT NULL default '0000-00-00 00:00:00',
+  `ip_addr` varchar(255) collate utf8_unicode_ci NOT NULL default '',
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=19 ;
+
+-- 
+-- Daten für Tabelle `zitate`
+-- 
+
+INSERT INTO `zitate` VALUES (18, '<inputmice> Neulich im Zoo: Ein kleines Mädchen zu ihrem Vater: Guck mal Linuxe und zeigt auf die Pinguine', 'de', 1, '2006-06-27 05:34:52', '127.0.0.1');
+ 
