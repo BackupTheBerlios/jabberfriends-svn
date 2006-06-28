@@ -174,7 +174,7 @@ class jforg_tags{
 	
     // This function test if the tag exists or not
 	function tag_exist($tag_value){
-        $sql                =  "SELECT * FROM `tags` WHERE `tag` = '".$tag_value."';";
+        $sql                =  "SELECT * FROM `tags` WHERE `tag` = '".mysql_real_escape_string($tag_value)."';";
 	    $get_tag_value		=	mysql_query($sql,$this->connection);
 	    $tag_value_result	=	mysql_num_rows($get_tag_value);
 	    if ($tag_value_result == 0 ){
