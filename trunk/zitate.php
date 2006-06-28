@@ -37,7 +37,6 @@ $template->replace('META_TITLE','{LANG_CITE}');
 $template->replace('FULLPAGE_HEADER','{LANG_CITE}');
 $zitat = $cite->get_by_id($id);
 $content = $template->highlight_cite($zitat['zitat']).'<br /><br />{LANG_ADDEDBY} <a href="/'.$language.'/'.$member_link.'/'.$zitat['user'].'-'.cleanurl($user->get_nick($zitat['user'])).'.htm">'.$user->get_nick($zitat['user']).'</a> {LANG_ON} '.date('d.m.Y',$zitat['datetime']);
-print_r($zitat);
 $template->replace('FULLPAGE_TEXT',$content);
 $template->highlight_cite($random_zitat);
 $template->translate($language);
