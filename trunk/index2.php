@@ -3,7 +3,9 @@ include('includes/config.php');
 include('classes/jforg_template.php');
 include('classes/jforg_user.php');
 include('classes/jforg_news.php');
+include('classes/jforg_usersearch.php');
 include('classes/jforg_cleanurl.php');
+include('classes/jforg_gettext.php');
 $user = new jforg_user();
 if (in_array($_GET['lang'],$config['languages'])) {
     $language = $_GET['lang'];
@@ -31,6 +33,15 @@ if ($language=='de') {
 } else {
     $news_link = 'news';
 }
+$usersearch = new jforg_usersearch();
+$row = $usersearch->get_random();
+print_r($array);
+$details_match = '<b><a href="{LINK_MEMBERS}'.$row['id'].'-'.$row['nick'].'.htm">'.$row['nick'].'</a>:</b> ';
+$details_match .= $template->format_userdetails($user->get_details($row['id']),10);
+$search = '<form action="{LINK_SEARCH}" method="post"><input name="search" type="text" /><br /><br /><input class="submit" name="submit" type="submit" value="{LANG_SEARCH}" /></form>';
+$template->replace('RANDOMMEMBER',$details_match);
+$template->replace('MEMBERSEARCH',$search);
+$template->replace('DEVELOPER',get_text(3,$language));
 $lastnews = $news->get_latest();
 $template->replace('NEWSHEAD',htmlentities($lastnews['title']));
 $template->replace('NEWSDATE',date('d.m.Y H:i',$lastnews['datetime']));

@@ -188,7 +188,7 @@ class jforg_template {
         }
         return $zitat;
     }
-    function format_userdetails($array, $suchwort = '') {
+    function format_userdetails( $array, $max_per_search = 5, $suchwort = '' ) {
         if ($suchwort=='') {
             $bol = TRUE;
             $suche == 'test';
@@ -196,7 +196,6 @@ class jforg_template {
             $bol = FALSE;
             $suche = $suchwort;
         }
-        $max_per_search = 5;
         $array = array_map('htmlentities',$array);
         $details_match = "";
         $details_counter = 1;

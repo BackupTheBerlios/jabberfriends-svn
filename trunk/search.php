@@ -26,7 +26,7 @@ if ($user->login($_SESSION['nick'],$_SESSION['passwd'])) {
     $template->replace('REGISTER','{LANG_REGISTER}');
 }
 $usersearch = new jforg_usersearch();
-$content = '<br /><form action="{LINK_SEARCH}" method="post"><input value="'.$_POST['search'].'" name="search" type="text" />&nbsp;<input class="submit" name="submit" type="submit" value="{LANG_SEARCH}" /></form>';
+$content = '<form action="{LINK_SEARCH}" method="post"><input value="'.$_POST['search'].'" name="search" type="text" />&nbsp;<input class="submit" name="submit" type="submit" value="{LANG_SEARCH}" /></form>';
 $max_per_search = 5;
 if (isset($_POST['search'])) {
     if (preg_match('/.{3,}/',$_POST['search'])) {
@@ -37,7 +37,7 @@ if (isset($_POST['search'])) {
         foreach($array as $row) {
             $id = $row['id'];
             $nick = $user->get_nick($id);
-            $details_match = $template->format_userdetails($row,$_POST['search']);
+            $details_match = $template->format_userdetails($row,5,$_POST['search']);
             $content = $content."<li><b><a href=\"$id-$nick.htm\">$nick</a></b><br />$details_match";
         }
     } else {

@@ -13,6 +13,14 @@ class jforg_usersearch {
             die("jforg_usersearch: Die Auswahl der Tabelle ist fehlgeschlagen");
         }
     }
+    function get_random() {
+        $sql = 'SELECT id,nick,jid FROM `user_login` ORDER BY RAND() LIMIT 1';
+        $query = mysql_query($sql);
+        if (!$query) {
+            die('jforg_usersearch.search_last: Abfrage schlug fehl');
+        }
+        return mysql_fetch_assoc($query);
+    }
     function search_last($count) {
         $sql = "SELECT id,nick,jid FROM `user_login` ORDER BY `id` DESC LIMIT $count";
         $query = mysql_query($sql);

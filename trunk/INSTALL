@@ -1,0 +1,12 @@
+Kopiere diese Dateien auf deinen Webserver. Achtung, zur zeit muss es noch das root-dir einer Domain sein. Zum Bespiel www.jabberfriends.org Unterverzeichnisse wie www.jabberfriends.org/ordner/ funktionieren nicht. (Wir arbeiten daran.)
+Passe die Datei includes/config.php an. (Datenbank, Passwörter usw)
+Führe das komplette SQL-Statement aus der Datei MYSQL_DUMP in deiner Datenbank aus. Achtung phpMyAdmin User: Die Import Funktion hat manchmal Zeichensatz Probleme. Die "SQL" Funktion klappt aber.
+Das wars schon. Zum Webserever: mod_rewrite muss geladen sein und in der PHP.ini muss magic_quotes und register_globals auf off sein. Es wird PHP 5 empfohlen. Es sollte aber auch noch auf PHP 4 laufen.
+
+Enjoy.
+
+Entwickler Seite: http://developer.berlios.de/projects/jabberfriends
+
+Bugreport hier hin: http://developer.berlios.de/bugs/?group_id=5892
+
+Hauptseite: http://www.jabberfriends.org
