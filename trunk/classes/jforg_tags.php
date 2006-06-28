@@ -205,7 +205,7 @@ class jforg_tags{
     function tag_cloud(){
         define('GRADATION', 7);
         // Fetch 100 tags which are orderd by the frequency. 
-        $query      = mysql_query("SELECT tag, counter  FROM tags ORDER BY counter LIMIT 60;");
+        $query      = mysql_query("SELECT tag, counter FROM tags WHERE counter > 0 ORDER BY counter LIMIT 60;");
         $count = 0; 
 
 	    while ($row = mysql_fetch_assoc($query)) {
