@@ -171,7 +171,6 @@ class jforg_template {
             $woerter = explode(' ',$zeile);
             if (preg_match('/[<][\S]+[>]/',$woerter[0])) {
                 if (!in_array($woerter[0],$nicks)) {
-                    echo $woerter[0];
                     $nicks[] = $woerter[0];
                 }
             }
