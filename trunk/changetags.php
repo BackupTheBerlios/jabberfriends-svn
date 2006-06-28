@@ -70,6 +70,11 @@ $template->replace('LINK_LOGIN','{LINK_LOGOUT}');
 $template->replace('LINK_REGISTER','{LINK_OPTIONS}');
 $template->replace('LOGIN','{LANG_LOGIN}');
 $template->replace('REGISTER','{LANG_REGISTER}');
+if ($language=='de') {
+    $template->replace('FORM_ACTION','/de/tags_aendern.htm');
+} else {
+    $template->replace('FORM_ACTION','/en/change_tags.htm');
+}
 $template->replace('FORM_ACTION','');
 $template->replace('LINK_GERMAN','/de/tags_aendern.htm');
 $template->replace('LINK_ENGLISH','/en/change_tags.htm');
