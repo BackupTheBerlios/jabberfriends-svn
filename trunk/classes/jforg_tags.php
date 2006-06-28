@@ -37,7 +37,7 @@ class jforg_tags{
     function add_tag($tag_value, $user_id) {
         $tag_exist      =   $this->tag_exist($tag_value);
 
-        if($tag_exist == FALSE){
+        if($tag_exist === FALSE ){
   		    $add_tag_to_tags 	= 	'INSERT INTO `tags` (`id`, `tag`, `counter` ) VALUES (NULL, \''.mysql_real_escape_string($tag_value).'\', 0);';
 		    $query				=	mysql_query($add_tag_to_tags,$this->connection);
             
@@ -174,12 +174,11 @@ class jforg_tags{
 	
     // This function test if the tag exists or not
 	function tag_exist($tag_value){
-	    $get_tag_value		=	@mysql_query("SELECT `id` FROM `tags` WHERE `tag` = '".mysql_real_escape_string($tag_string)."';",$this->connection);
-		$tag_value_result	=	@mysql_fetch_array($get_tag_value);
-		$tag_value			=	(string) $tag_value_result[0];
-	    
-	    if ($tag_value_result === null){
-	        $exist = FALSE;
+        $sql                =  "SELECT * FROM `tags` WHERE `tag` = '".$tag_value."';";
+	    $get_tag_value		=	mysql_query($sql,$this->connection);
+	    $tag_value_result	=	mysql_num_rows($get_tag_value);
+	    if ($tag_value_result == 0 ){
+	        $exist = FALSE; 
 	    }else{
 	        $exist = TRUE;
 	    }
@@ -192,7 +191,6 @@ class jforg_tags{
 		$user_has_tag	=	"SELECT `user_id` FROM `user_tags` WHERE`tag_id` = '$tag_id' AND `user_id` = '$user_id';";
 		$query			=	mysql_query($user_has_tag,$this->connection);
 		$exists 		= 	mysql_num_rows($query);
-        //die("dafjadlfhjajdfhl".$exists);
 		//If the user hasn't this tag already set, so set it now.
 		if ($exists==0) {
 		return  FALSE;

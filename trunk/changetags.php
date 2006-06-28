@@ -54,7 +54,7 @@ $content .= '<table cellpadding="0" cellspacing="2" border="0">';
 // purint the tags
 foreach ($user_tags as $user_tags_content) {
         $tag_id  = $tags->get_tag_id($user_tags_content);
-		$content .= '<tr><td>'.$user_tags_content.'</td><td><a href="../../'.$language.'/{LANG_DEL_TAGS}/'.$tag_id.'.htm">{LANG_DEL_TAG}</a>, <br /></tr>';
+		$content .= '<tr><td>'.$user_tags_content.'</td><td><a href="../../'.$language.'/{LANG_DEL_TAGS}/'.$tag_id.'.htm">{LANG_DEL_TAG}</a> <br /></tr>';
 }
 
 $content .= '</table>';
@@ -71,9 +71,9 @@ $template->replace('LINK_REGISTER','{LINK_OPTIONS}');
 $template->replace('LOGIN','{LANG_LOGIN}');
 $template->replace('REGISTER','{LANG_REGISTER}');
 if ($language=='de') {
-    $template->replace('FORM_ACTION','/de/tags_aendern.htm');
+  $template->replace('FORM_ACTION','/de/tags_aendern.htm');
 } else {
-    $template->replace('FORM_ACTION','/en/change_tags.htm');
+  $template->replace('FORM_ACTION','/en/change_tags.htm');
 }
 $template->replace('FORM_ACTION','');
 $template->replace('LINK_GERMAN','/de/tags_aendern.htm');
