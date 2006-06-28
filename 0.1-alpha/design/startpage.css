@@ -1,0 +1,64 @@
+#newsleft {
+    position: absolute;
+    left: 160px;
+    width: 295px;
+    top: 130px;
+}
+#newsleft p {
+    padding: 2px;
+    font-family: Verdana, Arial, sans-serif;
+    color: #000000;
+    font-size: 10pt;
+    background-color: #c7e0ff;
+    margin-top: 0px;
+}
+#newsleft form {
+    padding: 2px;
+    font-family: Verdana, Arial, sans-serif;
+    color: #000000;
+    font-size: 10pt;
+    background-color: #c7e0ff;
+    margin-top: 0px;
+}
+#newsleft h1 {
+    padding: 4px;
+    font-family: Verdana, Arial, sans-serif;
+    color: #c7e0ff;
+    font-size: 10pt;
+    background-color: #4b72b0;
+    margin: 0px;
+}
+#newsright {
+    position: absolute;
+    left: 465px;
+    width: 295px;
+    top: 130px;
+}
+#newsright p {
+    padding: 2px;
+    font-family: Verdana, Arial, sans-serif;
+    color: #000000;
+    font-size: 10pt;
+    background-color: #c7e0ff;
+    margin-top: 0px;
+}
+#newsright h1 {
+    padding: 4px;
+    font-family: Verdana, Arial, sans-serif;
+    color: #c7e0ff;
+    font-size: 10pt;
+    background-color: #4b72b0;
+    margin: 0px;
+}
+input {
+    border: 1px solid #4b72b0;
+    width: 90%;
+}
+input.submit {
+    background-color: #c7e0ff;
+    font-weight: bold;
+    width: auto;
+}
+input.normal {
+    width: 98%;
+}
