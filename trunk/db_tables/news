@@ -1,8 +1,0 @@
-CREATE TABLE `news` (
-  `id` int(11) NOT NULL auto_increment,
-  `datetime` datetime NOT NULL default '0000-00-00 00:00:00',
-  `title` varchar(255) collate utf8_unicode_ci NOT NULL default '',
-  `text` text collate utf8_unicode_ci NOT NULL,
-  PRIMARY KEY  (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=11 ;
-INSERT INTO `news` VALUES (10, '2006-06-26 19:43:57', 'News-Klasse', 'Die News-Klasse ist so gut wie fertig. Sowohl der Editor als auch die Ausgabe auf der Webseite ist fertig. Nur der RSS-Feed fehlt noch, wird aber in Kürze folgen.\r\nEin paar Interessante Notizen: Die News werden zuerst nur einsprachig verfügbar sein, da nur die Entwickler News schreiben können (zusätzliche Funktion im Optionen-Menu) und diese keine Zeit/Lust haben eine übersetzung zu machen.\r\nSollte JForg in Zukunft so international sein, dass 25% der Besucher aus dem nicht deutschsprachigen Raum kommen, kann die mehrsprachigkeit bei den News immer noch hinzugefügt werden.'); 
