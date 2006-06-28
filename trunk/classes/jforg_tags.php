@@ -38,7 +38,7 @@ class jforg_tags{
         $tag_exist      =   $this->tag_exist($tag_value);
 
         if($tag_exist == FALSE){
-  		    $add_tag_to_tags 	= 	'INSERT INTO `tags` (`id`, `tag`, `counter` ) VALUES (NULL, \''.mysql_real_escape_string($tag_value).'\', +1);';
+  		    $add_tag_to_tags 	= 	'INSERT INTO `tags` (`id`, `tag`, `counter` ) VALUES (NULL, \''.mysql_real_escape_string($tag_value).'\', 0);';
 		    $query				=	mysql_query($add_tag_to_tags,$this->connection);
             
             // In case of emergency just print and die
@@ -157,20 +157,19 @@ class jforg_tags{
 	
 	// This is a function which return the tag_value from a tag_id, which is a integer
 	function get_tag_value($tag_id){
-			if(is_int($tag_id)){
+			if(is_int($tag_id)) {
 				$get_tag_value		=	@mysql_query("SELECT `tag` FROM `tags` WHERE `id` = '$tag_id';",$this->connection);
 				$tag_value_result	=	@mysql_fetch_array($get_tag_value);
 				$tag_value			=	(string) $tag_value_result[0];
 				if (!$tag_value_result) {
 						die("jforg_tags.get_tag_value: Das SQL SELCT ist fehlgeschlagen - $tag_value_result");
 				}
-			return $tag_value;
+			    return $tag_value;
 
 			}else{
 				$vartype = gettype($tag_id);
 				die("jforg_tags.get_tag_value: \$tag_id muss ein int sein, es wurde aber ein  $vartype uebrgeben.");
 			}
-			
 	}
 	
     // This function test if the tag exists or not
@@ -179,7 +178,7 @@ class jforg_tags{
 		$tag_value_result	=	@mysql_fetch_array($get_tag_value);
 		$tag_value			=	(string) $tag_value_result[0];
 	    
-	    if (!$tag_value_result){
+	    if ($tag_value_result === null){
 	        $exist = FALSE;
 	    }else{
 	        $exist = TRUE;
@@ -208,7 +207,7 @@ class jforg_tags{
     function tag_cloud(){
         define('GRADATION', 7);
         // Fetch 100 tags which are orderd by the frequency. 
-        $query      = mysql_query("SELECT tag, counter  FROM tags ORDER BY counter DESC LIMIT 60;");
+        $query      = mysql_query("SELECT tag, counter  FROM tags ORDER BY counter LIMIT 60;");
         $count = 0; 
 
 	    while ($row = mysql_fetch_assoc($query)) {

@@ -38,8 +38,8 @@ if (!empty($_POST['submit'])) {
 
 // remove the given tag_id from the user
 if (is_int(intval(ereg_replace('[^0-9]','',$_GET['id'])))) {
-    $tags_del = $_GET['tag_id'];
-    $tags->remove_tag((int) $tags_del, $user_id);
+    $tags_del = ( int ) $_GET['tag_id'];
+    $tags->remove_tag($tags_del, $user_id);
 } else {
     die('ID is not an int'.$_GET['tag_id']);
 }
