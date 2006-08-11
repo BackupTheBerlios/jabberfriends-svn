@@ -171,5 +171,32 @@ class jforg_user {
         }
         return $realname;
     }
+    //This function deletes the user, user details and tags
+    function delete_user($nick){
+        include('classes/jforg_tags.php');
+        $jforg_tags = new jforg_tags();
+        $id = $this->get_id($nick);
+        $user_tags = $jforg_tags->get_user_tags($id);
+        print_r($id);
+        print_r($user_tags);
+        if($user_tags != null){
+            foreach($user_tags as $tag){
+                print "DRIN\n";
+                $jforg_tags->remove_tag($tag, $id);
+            }
+        }
+        $sql                =   "DELETE FROM `user_details` WHERE `id` = '$id'";
+        $query              =   @mysql_query($sql,$this->connection);
+        if (!$query) {
+            die("jforg_user.delete_user: Die SQL Abfrage ist fehlgeschlagen - $sql");
+        }
+        
+        $sql                =   "DELETE FROM `user_login` WHERE `id` = '$id'";
+        $query              =   @mysql_query($sql,$this->connection);
+        if (!$query) {
+            die("jforg_user.delete_user: Die SQL Abfrage ist fehlgeschlagen - $sql");
+        }
+
+    }
 }
 ?>

@@ -1,5 +1,4 @@
 <?php
-
 class jforg_tags{
 	var $connection;
 
@@ -248,5 +247,4 @@ class jforg_tags{
     }     
 
 }
-
 ?>
