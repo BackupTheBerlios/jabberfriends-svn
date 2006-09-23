@@ -82,6 +82,7 @@ class jforg_wiki {
         if (!$query) {
             die("jforg_wiki.get_authors_by_id: Die SQL Abfrage ist fehlgeschlagen - $sql");
         }
+        $result = array();
         while ($row = mysql_fetch_assoc($query)) {
             if (!in_array($row['user_id'],$result)) {
                 $result[]=$row['user_id'];

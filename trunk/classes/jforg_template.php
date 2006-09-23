@@ -175,7 +175,7 @@ class jforg_template {
                 }
             }
         }
-        $zitat = htmlentities($zitat);
+        $zitat = htmlentities($zitat.'');
         $zitat = str_replace("\n",'<br />',$zitat);
         $i = 0;
         foreach($nicks as $nick) {

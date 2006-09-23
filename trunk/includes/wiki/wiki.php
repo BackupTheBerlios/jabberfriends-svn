@@ -47,8 +47,8 @@ if ($language=="de") {
 $authors = $wiki->get_authors();
 $info_text = '';
 foreach($authors as $author) {
-    $nickname = $user->get_nick($author['user_id']);
-    $info_text = $info_text.'<a href="'.$memberlink.$author['user_id'].'-'.$nickname.'.htm">'.$nickname.'</a><br />';
+    $nickname = $user->get_nick($author);
+    $info_text = $info_text.'<a href="'.$memberlink.$author.'-'.$nickname.'.htm">'.$nickname.'</a><br />';
 }
 $template->replace_wiki('WIKI_TEXT',$wiki->get_text());
 $template->replace('INFO_TEXT1',$options);
