@@ -1,23 +1,4 @@
 <?php
-include('includes/config.php');
-include('classes/jforg_template.php');
-include('classes/jforg_user.php');
-if (in_array($_GET['lang'],$config['languages'])) {
-    $language = $_GET['lang'];
-} else {
-    die('Language ist nicht bekannt');
-}
-$user = new jforg_user();
-$template = new jforg_template();
-$template->set_path('design');
-$template->hover_on('green');
-SESSION_START();
-if ($user->login($_SESSION['nick'],$_SESSION['passwd'])) {
-    die("You are already logged in, you cannot register a new account");
-} else {
-    $template->replace('LOGIN','{LANG_LOGIN}');
-    $template->replace('REGISTER','{LANG_REGISTER}');
-}
 $counter = 0;
 $content = $content.'<form action="{FORM_ACTION}" method="post">
                 <table cellpadding="0" cellspacing="2">';
@@ -71,6 +52,4 @@ if ($counter==3) {
 $template->replace('FORM_ACTION','');
 $template->replace('LINK_GERMAN','/de/registrieren.htm');
 $template->replace('LINK_ENGLISH','/en/register.htm');
-$template->translate($language);
-include('includes/links.php');
-$template->write();
+?>

@@ -1,27 +1,13 @@
 <?php
-include('includes/config.php');
-include('classes/jforg_template.php');
-include('classes/jforg_user.php');
 include('classes/jforg_news.php');
-include('classes/jforg_cleanurl.php');
-$user = new jforg_user();
-if (in_array($_GET['lang'],$config['languages'])) {
-    $language = $_GET['lang'];
-} else {
-    die('Language ist nicht bekannt');
-}
+include('functions/jforg_cleanurl.php');
 $id = $_GET['id'];
 $id = $id + 0;
 if (!is_int($id)) {
     die("Invalid ID - $id");
 }
-$template = new jforg_template();
-$user = new jforg_user();
 $news = new jforg_news();
-$template->set_path('design');
 $template->set_frame('fullpage','tuerkis');
-$template->hover_on('tuerkis');
-SESSION_START();
 if ($language=='de') {
     $news_link = 'neuigkeiten';
 } else {
@@ -92,7 +78,4 @@ $template->replace('REGISTER','{LANG_REGISTER}');
 $template->replace('LINK_GERMAN','/de/news_editor/'.$id.'.htm');
 $template->replace('LINK_ENGLISH','/en/news_editor/'.$id.'.htm');
 $template->replace('META_TITLE','JabberFriends.org');
-$template->translate($language);
-include('includes/links.php');
-$template->write();
 ?>

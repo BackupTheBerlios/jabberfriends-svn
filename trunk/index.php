@@ -1,7 +1,7 @@
 <?php
     $lang_variable = $_SERVER['HTTP_ACCEPT_LANGUAGE'];
     $lang_code = $lang_variable{0}.$lang_variable{1};
-    include('includes/config.php');
+    include('config.php');
     if (!in_array($lang_code,$config['languages'])) {
         $lang_code = 'en';
     }

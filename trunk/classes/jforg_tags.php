@@ -4,7 +4,7 @@ class jforg_tags{
 
 	//This is the constructor of this class, it connects to the DB. 
 	function jforg_tags() {
-        include('includes/config.php');
+        include('config.php');
         
 		$this->connection = @mysql_connect($config['mysql_server'],$config['mysql_user'],$config['mysql_password']);
         

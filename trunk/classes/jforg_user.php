@@ -2,7 +2,7 @@
 class jforg_user {
     var $connection;
     function jforg_user() {
-        include('includes/config.php');
+        include('config.php');
         $this->connection   =   @mysql_connect($config['mysql_server'],$config['mysql_user'],$config['mysql_password']);
         if (!$this->connection) {
             die("jforg_template: Die Verbindung zur Datenbank ist fehlgeschlagen");

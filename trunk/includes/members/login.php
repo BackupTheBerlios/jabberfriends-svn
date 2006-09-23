@@ -1,23 +1,8 @@
 <?php
-include('includes/config.php');
-include('classes/jforg_template.php');
-include('classes/jforg_user.php');
-if (in_array($_GET['lang'],$config['languages'])) {
-    $language = $_GET['lang'];
-} else {
-    die('Language ist nicht bekannt');
-}
-$template = new jforg_template();
-$user = new jforg_user();
-$template->set_path('design');
 $template->set_frame('fullpage','green');
-$template->hover_on('green');
 session_start();
 if ($user->login($_SESSION['nick'],$_SESSION['passwd'])) {
     die('You are already logged in');
-} else {
-    $template->replace('LOGIN','{LANG_LOGIN}');
-    $template->replace('REGISTER','{LANG_REGISTER}');
 }
 if ($_POST['submit']!="") {
     if ((preg_match('/[-._+\d\w]{3,}/i',$_POST['nick']))&&(preg_match('/[-._+\d\w]{6,}/i',$_POST['passwd']))) {
@@ -52,7 +37,4 @@ $template->replace('META_TITLE','{LANG_LOGIN}');
 $template->replace('FORM_ACTION','');
 $template->replace('LINK_GERMAN','/de/anmelden.htm');
 $template->replace('LINK_ENGLISH','/en/login.htm');
-$template->translate($language);
-include('includes/links.php');
-$template->write();
 ?>

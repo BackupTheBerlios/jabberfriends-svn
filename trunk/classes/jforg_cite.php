@@ -2,7 +2,7 @@
 class jforg_cite {
     var $connection;
     function jforg_cite() {
-        include('includes/config.php');
+        include('config.php');
         $this->connection = @mysql_connect($config['mysql_server'],$config['mysql_user'],$config['mysql_password']);
         if (!$this->connection) {
             die("jforg_news: Die Verbindung zur Datenbank ist fehlgeschlagen");

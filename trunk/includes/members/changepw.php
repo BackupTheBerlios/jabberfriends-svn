@@ -1,28 +1,8 @@
 <?php
-include('includes/config.php');
-include('classes/jforg_template.php');
-include('classes/jforg_user.php');
-$template = new jforg_template();
-$user = new jforg_user();
-$template->set_path('design');
 $template->set_frame('fullpage','green');
-$template->hover_on('green');
-if (in_array($_GET['lang'],$config['languages'])) {
-    $language = $_GET['lang'];
-} else {
-    die('Language ist nicht bekannt');
-}
-$user = new jforg_user();
 $user_id = $user->get_id($_SESSION['nick']);
-SESSION_START();
-if ($user->login($_SESSION['nick'],$_SESSION['passwd'])) {
-    $template->replace('LOGIN','{LANG_LOGOUT}');
-    $template->replace('REGISTER','{LANG_OPTIONS}');
-    $template->replace('LINK_LOGIN','{LINK_LOGOUT}');
-    $template->replace('LINK_REGISTER','{LINK_OPTIONS}');
-} else {
-    $template->replace('LOGIN','{LANG_LOGIN}');
-    $template->replace('REGISTER','{LANG_REGISTER}');
+if (!$user->login($_SESSION['nick'],$_SESSION['passwd'])) {
+    die('You are not logged in');
 }
 $content .= '<form action="{FORM_ACTION}" method="post">
                 <table cellpadding="0" cellspacing="2" border="0">';
@@ -69,7 +49,4 @@ $template->replace('LINK_GERMAN','/de/passwortaendern.htm');
 $template->replace('LINK_ENGLISH','/en/changepassword.htm');
 $template->replace('FULLPAGE_HEADER','{LANG_CHANGEPW}');
 $template->replace('META_TITLE','{LANG_CHANGEPW}');
-$template->translate($language);
-include('includes/links.php');
-$template->write();
 ?>

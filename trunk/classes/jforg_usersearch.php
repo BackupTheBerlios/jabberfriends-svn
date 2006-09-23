@@ -3,7 +3,7 @@ class jforg_usersearch {
     var $connection;
     var $counter = 0;
     function jforg_usersearch() {
-        include('includes/config.php');
+        include('config.php');
         $this->connection   =   @mysql_connect($config['mysql_server'],$config['mysql_user'],$config['mysql_password']);
         if (!$this->connection) {
             die("jforg_usersearch: Die Verbindung zur Datenbank ist fehlgeschlagen");

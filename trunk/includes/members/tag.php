@@ -1,25 +1,7 @@
 <?php
-include('includes/config.php');
-include('classes/jforg_template.php');
-include('classes/jforg_user.php');
 include('classes/jforg_tags.php');
-//include('classes/jforg_gettext.php');
-$user = new jforg_user();
-if (in_array($_GET['lang'],$config['languages'])) {
-    $language = $_GET['lang'];
-} else {
-    die('Language ist nicht bekannt');
-}
-$template = new jforg_template();
-$user = new jforg_user();
 $tags = new jforg_tags();
-$template->set_path('design');
 $template->set_frame('fullpage','green');
-$template->hover_on('green');
-SESSION_START();
-$user_id = $user->get_id($_SESSION['nick']);
-if (!$user->login($_SESSION['nick'],$_SESSION['passwd'])) {
-}
 $content = '<form action="{FORM_ACTION}" method="post">
                 <table cellpadding="0" cellspacing="2" border="0">';
 
@@ -54,7 +36,4 @@ $template->replace('LINK_GERMAN','/de/tag/'.$tag_value.'.htm');
 $template->replace('LINK_ENGLISH','/en/tag/'.$tag_value.'.htm');
 $template->replace('META_TITLE','{LANG_ALL_WHO_HAVE_TAG}');
 $template->replace('FULLPAGE_HEADER','{LANG_ALL_WHO_HAVE_TAG}');
-$template->translate($language);
-include('includes/links.php');
-$template->write();
 ?>

@@ -28,4 +28,4 @@ if ($language=="en") {
     $template->replace('LINK_SEARCH','/en/members/search.htm');
     $template->replace('LINK_CHANGEPW', '/en/changepassword.htm');
 }
-?> 
+?>  

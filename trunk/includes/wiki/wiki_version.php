@@ -1,36 +1,13 @@
 <?php
-include('includes/config.php');
-include('classes/jforg_template.php');
-include('classes/jforg_user.php');
 include('classes/jforg_wiki.php');
-include('classes/jforg_cleanurl.php');
-$user = new jforg_user();
+include('functions/jforg_cleanurl.php');
 $wiki = new jforg_wiki();
-if (in_array($_GET['lang'],$config['languages'])) {
-    $language = $_GET['lang'];
-} else {
-    die('Language ist nicht bekannt');
-}
 $id = $_GET['id'];
 $id = $id + 0;
 if (!is_int($id)) {
     die("Invalid ID - $id");
 }
-$template = new jforg_template();
-$user = new jforg_user();
-$template->set_path('design');
 $template->set_frame('fullpage','red');
-$template->hover_on('red');
-SESSION_START();
-if ($user->login($_SESSION['nick'],$_SESSION['passwd'])) {
-    $template->replace('LOGIN','{LANG_LOGOUT}');
-    $template->replace('REGISTER','{LANG_OPTIONS}');
-    $template->replace('LINK_LOGIN','{LINK_LOGOUT}');
-    $template->replace('LINK_REGISTER','{LINK_OPTIONS}');
-} else {
-    $template->replace('LOGIN','{LANG_LOGIN}');
-    $template->replace('REGISTER','{LANG_REGISTER}');
-}
 $wiki->set_id_language($id,$language);
 $template->replace('LOGIN','{LANG_LOGIN}');
 $template->replace('REGISTER','{LANG_REGISTER}');
@@ -47,7 +24,4 @@ $german_link = '/de/wiki/versionen_von_'.$id.'.htm';
 $template->replace('LINK_GERMAN',$german_link);
 $template->replace('LINK_ENGLISH',$english_link);
 $template->replace('FULLPAGE_TEXT',$content);
-$template->translate($language);
-include('includes/links.php');
-$template->write();
 ?>

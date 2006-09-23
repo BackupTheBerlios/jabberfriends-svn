@@ -1,28 +1,9 @@
 <?php
-include('includes/config.php');
-include('classes/jforg_template.php');
-include('classes/jforg_user.php');
 include('classes/jforg_cite.php');
-include('classes/jforg_cleanurl.php');
-$user = new jforg_user();
-if (in_array($_GET['lang'],$config['languages'])) {
-    $language = $_GET['lang'];
-} else {
-    die('Language ist nicht bekannt');
-}
-$template = new jforg_template();
-$user = new jforg_user();
+include('functions/jforg_cleanurl.php');
 $cite = new jforg_cite();
-$template->set_path('design');
 $template->set_frame('fullpage','lila');
-$template->hover_on('lila');
-SESSION_START();
-if ($user->login($_SESSION['nick'],$_SESSION['passwd'])) {
-    $template->replace('LOGIN','{LANG_LOGOUT}');
-    $template->replace('REGISTER','{LANG_OPTIONS}');
-    $template->replace('LINK_LOGIN','{LINK_LOGOUT}');
-    $template->replace('LINK_REGISTER','{LINK_OPTIONS}');
-} else {
+if (!$user->login($_SESSION['nick'],$_SESSION['passwd'])) {
     die('You are not logged in');
 }
 if (!empty($_POST['preview'])) {
@@ -53,7 +34,4 @@ $template->replace('LINK_ENGLISH','/en/portal/add-cite.htm');
 $template->replace('META_TITLE','{LANG_ADDCITE}');
 $template->replace('FULLPAGE_HEADER','{LANG_ADDCITE}');
 $template->replace('FULLPAGE_TEXT',$content);
-$template->translate($language);
-include('includes/links.php');
-$template->write();
 ?>

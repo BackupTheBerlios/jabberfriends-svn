@@ -1,8 +1,8 @@
 <?php
-include('includes/config.php');
+include('config.php');
 include('lib/atom.class.inc');
 include('classes/jforg_news.php');
-include('classes/jforg_cleanurl.php');
+include('functions/jforg_cleanurl.php');
 if (in_array($_GET['lang'],$config['languages'])) {
     $language = $_GET['lang'];
 } else {

@@ -5,7 +5,7 @@ class jforg_wiki {
     var $content_language;
     var $content;
     function jforg_wiki() {
-        include('includes/config.php');
+        include('config.php');
         $this->connection = @mysql_connect($config['mysql_server'],$config['mysql_user'],$config['mysql_password']);
         if (!$this->connection) {
             die("jforg_template: Die Verbindung zur Datenbank ist fehlgeschlagen");

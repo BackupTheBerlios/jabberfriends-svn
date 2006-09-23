@@ -1,6 +1,6 @@
 <?php
 function get_text($id,$language) {
-    include('includes/config.php');
+    include('config.php');
     $connection = @mysql_connect($config['mysql_server'],$config['mysql_user'],$config['mysql_password']);
     if (!$connection) {
         die('get_text: Die Verbindung zur Datenbank ist fehlgeschlagen');
