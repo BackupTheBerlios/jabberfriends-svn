@@ -3,7 +3,7 @@ include('classes/jforg_tags.php');
 $tags = new jforg_tags();
 $template->set_frame('fullpage','green');
 $content = '<form action="{FORM_ACTION}" method="post">
-                <table cellpadding="0" cellspacing="2" border="1">';
+                <table cellpadding="0" cellspacing="2" border="0">';
 
 $tag_value = $_GET['tag_value'];
 $users 	= $tags->list_users($tag_value);
