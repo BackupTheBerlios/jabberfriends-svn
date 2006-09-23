@@ -3,7 +3,7 @@ include('classes/jforg_tags.php');
 $tags = new jforg_tags();
 $template->set_frame('fullpage','green');
 $content = '<form action="{FORM_ACTION}" method="post">
-                <table cellpadding="0" cellspacing="2" border="0">';
+                <table cellpadding="0" cellspacing="2" border="1">';
 
 $tag_value = $_GET['tag_value'];
 $users 	= $tags->list_users($tag_value);
@@ -16,7 +16,7 @@ if (!empty($_POST['submit'])) {
 }
     $content .= '<tr><td class="left">{LANG_TAG}</td><td class="right">'.$tag_value.'</td></tr><tr><td>{LANG_USERS}:</td>';
     foreach ($users as $tagged_users) {
-	    	$content .= '<td><a href="{LINK_MEMBERS}'.$tagged_users.'-'.$user->get_nick($tagged_users).'htm">'.$user->get_nick($tagged_users).'</a></td></tr><br /><tr><td></td>';
+	    	$content .= '<td><a href="{LINK_MEMBERS}'.$tagged_users.'-'.$user->get_nick($tagged_users).'htm">'.$user->get_nick($tagged_users).'</a></td></tr><tr><td></td>';
     }
 
 $content .= '<td></td></tr>';
