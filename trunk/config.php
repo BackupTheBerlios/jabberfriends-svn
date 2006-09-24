@@ -26,6 +26,7 @@ $config['method']=array('index',
                         'portal',
                         'cite',
                         'add_cite',
-                        'changepw');
+                        'changepw',
+                        'citedb');
 $config['url']='http://www.jabberfriends.local/';
 ?>
