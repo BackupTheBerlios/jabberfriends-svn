@@ -8,6 +8,9 @@ function cleanurl($url) {
     $url = str_replace('&uuml;','ue',$url);
     $url = str_replace('&ouml;','oe',$url);
     $url = str_replace('&szlig;','ss',$url);
+    $url = str_replace('?','',$url);
+    $url = str_replace('!','',$url);
+    $url = str_replace('+','',$url);
     return $url;
 }
 ?>

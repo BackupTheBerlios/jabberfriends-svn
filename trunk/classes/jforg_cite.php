@@ -12,18 +12,16 @@ class jforg_cite {
             die("jforg_cite: Die Auswahl der Tabelle ist fehlgeschlagen");
         }
     }
-    function get_random($language = '') {
-        if ($language=='') {
-            $sql = 'SELECT id,zitat,user,UNIX_TIMESTAMP(datetime) AS datetime FROM zitate ORDER BY RAND() LIMIT 1';
-        } else {
-            $sql = 'SELECT zitat FROM zitate WHERE language = \''.$language.'\' ORDER BY RAND( ) LIMIT 1';
-        }
+    function get_random($anzahl = 1, $language = '') {
+        $sql = 'SELECT id,zitat,user,UNIX_TIMESTAMP(datetime) AS datetime FROM zitate ORDER BY RAND() LIMIT '.$anzahl;
         $query = mysql_query($sql,$this->connection);
         if (!$query)
         {
             die('jforg_cite: Abfrage schlug fehl '.$sql);    
         }
-        $result = mysql_fetch_assoc($query);
+        while ($row = mysql_fetch_assoc($query)) {
+            $result[]=$row;
+        }
         return $result;
     }
     function get_last($anzahl = 1, $language = '') {
