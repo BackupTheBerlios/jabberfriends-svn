@@ -145,7 +145,7 @@ class jforg_template {
                 //Normale URLs in Links
                 $zeile = preg_replace('/[^[](ftp|http|https):\/\/([\S]{3,})/',' <a href="$1://$2">$2</a>',$zeile);
                 //Normale, beschriftete Links
-                $zeile = preg_replace('/\[([\S]{4,})[\s]([^]]{4,})\]/','<a href="$1">$2</a>',$zeile);
+                $zeile = preg_replace('/\[([\S]{4,})[\s]([^]]{3,})\]/','<a href="$1">$2</a>',$zeile);
             }
             if ($next_br) {
                 $zeile = $zeile.'<br />';

@@ -90,6 +90,25 @@ class jforg_wiki {
         }
         return $result;
     }
+    function is_translation() {
+        if ($this->content_language=='de') {
+            $trans_lang = 'en';
+        } elseif ($this->content_language=='en') {
+            $trans_lang = 'en';
+        } else {
+            die('error');
+        }
+        $sql = 'SELECT id FROM `wiki` WHERE wiki_id = '.$this->wiki_id.' AND `language` = \''.$trans_lang.'\'';
+        $query = mysql_query($sql);
+        if (!$query) {
+            die("jforg_wiki.is_translation: Die SQL Abfrage ist fehlgeschlagen - $sql");
+        }
+        if (mysql_num_rows() >= 1) {
+            return true;
+        } else {
+            return false;
+        }
+    }
     function get_german_link() {
         $sql = 'SELECT id,wiki_id,title,text FROM `wiki` WHERE wiki_id = '.$this->wiki_id.' AND `language` = \'de\' ORDER BY id DESC LIMIT 1';
         $query = mysql_query($sql,$this->connection);
