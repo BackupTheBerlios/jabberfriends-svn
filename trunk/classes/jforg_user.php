@@ -33,13 +33,13 @@ class jforg_user {
         $sql_user_login     =   "UPDATE `user_login` SET `passwd` = '$passwd' WHERE `nick`='$nick';";
         $query              =   @mysql_query($sql_user_login,$this->connection);
         if ($query) {
-             return true; 
+            return true;
         }else{
             die("jforg_user.create_new_user: Die SQL Abfrage ist fehlgeschlagen - $sql_user_login");
         }
 
     }
-        
+    
     function login($nick,$passwd) {
         $passwd             =   crypt($nick,$passwd);
         $sql                =   "SELECT nick,passwd FROM `user_login` WHERE `nick` = '$nick' AND `passwd` = '$passwd'";
@@ -47,7 +47,7 @@ class jforg_user {
         if (!$query) {
             die("jforg_user.if_login: Die SQL Abfrage ist fehlgeschlagen - $sql");
         }
-       if (mysql_num_rows($query) == 1) { 
+        if (mysql_num_rows($query) == 1) {
             return true;
         }else{
             return false;
@@ -160,7 +160,7 @@ class jforg_user {
         }
         $row = mysql_fetch_array($query);
         $realname = $row['realname'];
-            if ($realname=="") {
+        if ($realname=="") {
             $sql                =   "SELECT id,nick FROM `user_login` WHERE `id` = '$id'";
             $query              =   @mysql_query($sql,$this->connection);
             if (!$query) {
@@ -177,11 +177,8 @@ class jforg_user {
         $jforg_tags = new jforg_tags();
         $id = $this->get_id($nick);
         $user_tags = $jforg_tags->get_user_tags($id);
-        print_r($id);
-        print_r($user_tags);
         if($user_tags != null){
             foreach($user_tags as $tag){
-                print "DRIN\n";
                 $jforg_tags->remove_tag($tag, $id);
             }
         }
