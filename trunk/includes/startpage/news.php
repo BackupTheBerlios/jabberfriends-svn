@@ -11,9 +11,11 @@ if ($language=='de') {
 $lastnews = $news->get_latest(15);
 foreach($lastnews as $news) {
     $news_absatz = explode("\n",$news['text']);
-    $content .= '<h2>'.htmlentities($news['title']).'</h2><i>'.date('d.m.Y H:i',$news['datetime']).'</i> '.htmlentities($news_absatz[0]).' <a href="/'.$language.'/'.$news_link.'/'.$news['id'].'-'.cleanurl($news['title']).'.htm">{LANG_READMORE}</a>';
-}
+    $content .= '<h2>'.htmlentities($news['title']).'</h2><i>'.date('d.m.Y H:i',$news['datetime']).'</i> {NEWS_ABSATZ} <a href="/'.$language.'/'.$news_link.'/'.$news['id'].'-'.cleanurl($news['title']).'.htm">{LANG_READMORE}</a>{FULLPAGE_TEXT}';
 $template->replace('FULLPAGE_TEXT',$content);
+$template->replace_wiki('NEWS_ABSATZ', $news_absatz[0]);
+}
+$template->replace('FULLPAGE_TEXT','');
 $template->replace('FULLPAGE_HEADER','{LANG_NEWS}');
 $template->replace('LINK_GERMAN','/de/neuigkeiten/');
 $template->replace('LINK_ENGLISH','/en/news/');

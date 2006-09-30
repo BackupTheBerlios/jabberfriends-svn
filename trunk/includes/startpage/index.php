@@ -23,7 +23,7 @@ $lastnews = $news->get_latest();
 $template->replace('NEWSHEAD',htmlentities($lastnews['title']));
 $template->replace('NEWSDATE',date('d.m.Y H:i',$lastnews['datetime']));
 $news_absatz = explode("\n",$lastnews['text']);
-$template->replace('NEWSTEXT',htmlentities($news_absatz[0]));
+$template->replace_wiki('NEWSTEXT',htmlentities($news_absatz[0]));
 $template->replace('LINK_GERMAN','/de/');
 $template->replace('LINK_ENGLISH','/en/');
 $template->replace('META_TITLE','JabberFriends.org');
