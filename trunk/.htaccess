@@ -40,6 +40,8 @@ RewriteRule ^de/portal/citedb/zitat-([0-9]+).htmp$  load.php?class=portal&method
 RewriteRule ^de/portal/citedb/zitat-([0-9]+).htmpp$ load.php?class=portal&method=cite&language=de&id=$1&rating=2
 RewriteRule ^de/portal/citedb/zitat-hinzufuegen.htm$ load.php?class=portal&method=add_cite&language=de
 RewriteRule ^de/passwortaendern.htm$                load.php?class=members&method=changepw&language=de
+RewriteRule ^de/benutzerbild_hochladen.htm$         load.php?class=members&method=upload_userpic&language=de
+RewriteRule ^de/loesche_account.htm$                load.php?class=members&method=rmacc&language=de
 
 RewriteRule ^en/members/([0-9]+)-([^/\:]+).htm$     load.php?class=members&method=user_details&language=en&id=$1
 RewriteRule ^en/publickeys/([0-9]+)-([^/\:]+).htm$  load.php?class=members&method=publickey&language=en&id=$1
@@ -79,4 +81,6 @@ RewriteRule ^en/portal/citedb/cite-([0-9]+).htmm$   load.php?class=portal&method
 RewriteRule ^en/portal/citedb/cite-([0-9]+).htmp$   load.php?class=portal&method=cite&language=en&id=$1&rating=1
 RewriteRule ^en/portal/citedb/cite-([0-9]+).htmpp$  load.php?class=portal&method=cite&language=en&id=$1&rating=2
 RewriteRule ^en/portal/citedb/add-cite.htm$         load.php?class=portal&method=add_cite&language=en
-RewriteRule ^en/changepassword.htm$                  load.php?class=members&method=changepw&language=en
+RewriteRule ^en/changepassword.htm$                 load.php?class=members&method=changepw&language=en
+RewriteRule ^en/upload_userpic.htm$                 load.php?class=members&method=upload_userpic&language=en
+RewriteRule ^en/remove_account.htm$                 load.php?class=members&method=rmacc&language=en

@@ -27,6 +27,8 @@ $config['method']=array('index',
                         'cite',
                         'add_cite',
                         'changepw',
-                        'citedb');
+                        'citedb',
+                        'upload_userpic',
+                        'rmacc');
 $config['url']='http://www.jabberfriends.local/';
 ?>

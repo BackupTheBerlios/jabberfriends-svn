@@ -3,8 +3,11 @@ $template->set_frame('fullpage','green');
 if (!$user->login($_SESSION['nick'],$_SESSION['passwd'])) {
     die('You are not logged in');  
 }
-$content = '<h2>{LANG_SETTING}</h2><a href="{LINK_CHANGEPW}">{LANG_CHANGEPW}</a><br />
+$content = '<h2>{LANG_SETTING}</h2>
+<a href="{LINK_CHANGEPW}">{LANG_CHANGEPW}</a><br />
+<a href="{LINK_RMACC}">{LANG_RMACC}</a><br /><br />
 <a href="{LINK_CHANGEDETAILS}">{LANG_CHANGEDETAILS}</a><br />
+<a href="{LINK_UPLOADUSERPIC}">{LANG_UPLOADUSERPIC}</a><br /><br />
 <a href="{LINK_CHANGETAGS}">{LANG_CHANGETAGS}</a><br /><br />';
 if ($user->is_admin($_SESSION['nick'],$_SESSION['passwd'])) {
     $content .= '<h2>{LANG_ADMIN}</h2>

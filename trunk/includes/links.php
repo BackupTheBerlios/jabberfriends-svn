@@ -13,6 +13,8 @@ if ($language=="de") {
     $template->replace('LINK_CHANGETAGS','/de/tags_aendern.htm');
     $template->replace('LINK_SEARCH','/de/mitglieder/suche.htm');
     $template->replace('LINK_CHANGEPW', '/de/passwortaendern.htm');
+    $template->replace('LINK_RMACC', '/de/loesche_account.htm');
+    $template->replace('LINK_UPLOADUSERPIC', '/de/benutzerbild_hochladen.htm');
 }
 if ($language=="en") {
     $template->replace('LINK_STARTPAGE','/en/');
@@ -27,5 +29,7 @@ if ($language=="en") {
     $template->replace('LINK_CHANGETAGS','/en/change_tags.htm');
     $template->replace('LINK_SEARCH','/en/members/search.htm');
     $template->replace('LINK_CHANGEPW', '/en/changepassword.htm');
+    $template->replace('LINK_RMACC', '/en/remove_account.htm');
+    $template->replace('LINK_UPLOADUSERPIC', '/en/upload_userpic.htm');
 }
 ?>  
