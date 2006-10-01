@@ -33,26 +33,27 @@ class jforg_usersearch {
         return $result;
     }
     function search_all($string) {
-        $sql = "SELECT *
-FROM `user_details`
-WHERE `REALNAME` LIKE '%$string%'
-OR `COUNTRY` LIKE '%$string%'
-OR `CITY` LIKE '%$string%'
-OR `ORIGINAL_FROM` LIKE '%$string%'
-OR `LANGUAGES` LIKE '%$string%'
-OR `HOBBYS` LIKE '%$string%'
-OR `COMPUTER` LIKE '%$string%'
-OR `COMPUTER_OS` LIKE '%$string%'
-OR `FAVORITE_FILM` LIKE '%$string%'
-OR `FAVORITE_BOOK` LIKE '%$string%'
-OR `FAVORITE_MUSIK` LIKE '%$string%'
-OR `FAVORITE_SERIES` LIKE '%$string%'";
+        $sql = " SELECT * FROM user_login AS a LEFT JOIN user_details as b ON a.id = b.id 
+        WHERE `REALNAME` LIKE '%$string%'
+        OR `COUNTRY` LIKE '%$string%'
+        OR `CITY` LIKE '%$string%'
+        OR `ORIGINAL_FROM` LIKE '%$string%'
+        OR `LANGUAGES` LIKE '%$string%'
+        OR `HOBBYS` LIKE '%$string%'
+        OR `COMPUTER` LIKE '%$string%'
+        OR `COMPUTER_OS` LIKE '%$string%'
+        OR `FAVORITE_FILM` LIKE '%$string%'
+        OR `FAVORITE_BOOK` LIKE '%$string%'
+        OR `FAVORITE_MUSIK` LIKE '%$string%'
+        OR `nick` LIKE '%$string%'
+        OR `jid` LIKE '%$string%'
+        OR `FAVORITE_SERIES` LIKE '%$string%'";
         $query = mysql_query($sql);
         if (!$query) {
             die('jforg_usersearch.search_all: Abfrage 1 schlug fehl');
         }
         $sql2 = "SELECT COUNT(*) AS counter
-FROM `user_details`
+FROM user_login AS a LEFT JOIN user_details as b ON a.id = b.id 
 WHERE `REALNAME` LIKE '%$string%'
 OR `COUNTRY` LIKE '%$string%'
 OR `CITY` LIKE '%$string%'
@@ -64,6 +65,8 @@ OR `COMPUTER_OS` LIKE '%$string%'
 OR `FAVORITE_FILM` LIKE '%$string%'
 OR `FAVORITE_BOOK` LIKE '%$string%'
 OR `FAVORITE_MUSIK` LIKE '%$string%'
+OR `nick` LIKE '%$string%'
+OR `jid` LIKE '%$string%'
 OR `FAVORITE_SERIES` LIKE '%$string%'";
 
         $query2 = mysql_query($sql2);
