@@ -201,10 +201,14 @@ class jforg_tags{
     // This function is used for generating a tag cloud.
     // It returns an aray filled with arrays :) which contains 
     // the tagname and the size of the font.
-    function tag_cloud(){
+    function tag_cloud($user_id = 0){
         define('GRADATION', 7);
         // Fetch 100 tags which are orderd by the frequency. 
-        $query      = mysql_query("SELECT tag, counter FROM tags WHERE counter > 0 ORDER BY counter LIMIT 60;");
+        if ($user_id == 0) {
+            $query      = mysql_query("SELECT tag, counter FROM tags WHERE counter > 0 ORDER BY counter LIMIT 60;");
+        } else {
+            $query      = mysql_query("SELECT tag,counter FROM tags LEFT JOIN user_tags ON tags.id = user_tags.tag_id WHERE counter > 0 AND user_id = $user_id ORDER BY counter");
+        }
         $count = 0; 
 
 	    while ($row = mysql_fetch_assoc($query)) {
@@ -242,7 +246,6 @@ class jforg_tags{
             $tag_cloud['class'] = $class;
             $cloud[] = $tag_cloud;
         }
-        
         return $cloud;
     }     
 

@@ -67,8 +67,7 @@ class jforg_template {
     /**
       * Erwartet den Namen des zu ersetzenden Stückes, und den Inhalt - parst im wiki code
       */
-    function replace_wiki($name,$content) {
-        $name = '{'.$name.'}';
+    function parse_wiki($content) {
         $zeilen = explode("\n",$content);
         $content = '';
         $last_row_is_apostroph = false;
@@ -161,7 +160,11 @@ class jforg_template {
         }
         $table_of_content = $table_of_content.'</ol>';
         $content = str_replace('[TABLEOFCONTENT]',$table_of_content,$content);
-        $this->page = str_replace($name,$content,$this->page);
+        return $content;
+    }
+    function replace_wiki($name,$content) {
+        $wiki = $this->parse_wiki($content);
+        $this->replace($name,$wiki);
     }
     function highlight_cite($zitat) {
         $colors = array('b04b4b','4bb072','4b72b0','b0ae4b','864bb0');
@@ -198,6 +201,15 @@ class jforg_template {
         $array = array_map('htmlentities',$array);
         $details_match = "";
         $details_counter = 1;
+        if (($array['jid']!="") && (stristr($array['jid'],$suche) !== $bol)) {
+            if ($details_counter<=$max_per_search) {
+            if ($details_match!="") {
+                    $details_match = $details_match.", ";
+                }
+                $details_match = $details_match.'{LANG_JID}: '.$array['jid'];
+                $details_counter++;
+            }
+        }
         if (($array['REALNAME']!="") && (stristr($array['REALNAME'],$suche) !== $bol)) {
             if ($details_counter<=$max_per_search) {
             if ($details_match!="") {
@@ -351,11 +363,11 @@ class jforg_template {
     /**
      * Generate a tag cloud
      */
-    function generate_cloud($language){
+    function generate_cloud($language,$user_id = 0){
         include('classes/jforg_tags.php');     
         $result .= '<div id="tags">';
         $tags = new jforg_tags();
-        $cloud = $tags->tag_cloud();
+        $cloud = $tags->tag_cloud($user_id);
         foreach($cloud as $tag){
             $result2 = '';
              $result2 .= "<a href=\"/".$language;

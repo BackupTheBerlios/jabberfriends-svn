@@ -1,11 +1,9 @@
 <?php
-include('classes/jforg_tags.php');
 if (is_int($_GET['id']+0)) {
     $user_id = $_GET['id'];
 } else {
     die('ID is not an int'.$_GET['id']);
 }
-$tags = new jforg_tags();
 $template->set_frame('fullpage','green');
 $content = '<table cellpadding="0" cellspacing="2" border="0">';
 $user_details = $user->get_details($user_id);
@@ -46,12 +44,9 @@ $content .= '<tr><td valign="top">{LANG_FAVORITE_FILM}</td><td valign="top" cols
 $content .= '<tr><td valign="top">{LANG_FAVORITE_SERIES}</td><td valign="top" colspan="2">'.$user_details['FAVORITE_SERIES'].'</td></tr>';
 $content .= '<tr><td valign="top">{LANG_FAVORITE_MUSIK}</td><td valign="top" colspan="2">'.$user_details['FAVORITE_MUSIK'].'</td></tr>';
 $content .= '<tr><td valign="top">{LANG_FAVORITE_BOOK}</td><td valign="top" colspan="2">'.$user_details['FAVORITE_BOOK'].'</td></tr>';
-$user_tags 	= $tags->get_user_tags($user_id);
 $content .= '<tr><td colspan="3"><br /><h2>Tags:</h2></td></tr>
 <tr><td colspan="3">';
-foreach ($user_tags as $user_tags_content) {
-	    $content .= '<a href="../../'.$language.'/tag/'.$user_tags_content.'.htm">'.$user_tags_content.'</a>, ';
-}
+$content .= $template->generate_cloud($language,$user_id);
 $content .= '</td></tr>';
 $content .= '</table>';
 $template->replace('FULLPAGE_HEADER','{LANG_USER_PAGE_OF} '.$user->get_nick($user_id));
