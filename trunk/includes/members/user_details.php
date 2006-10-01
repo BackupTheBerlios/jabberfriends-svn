@@ -45,7 +45,7 @@ $content .= '<tr><td valign="top">{LANG_FAVORITE_SERIES}</td><td valign="top" co
 $content .= '<tr><td valign="top">{LANG_FAVORITE_MUSIK}</td><td valign="top" colspan="2">'.$user_details['FAVORITE_MUSIK'].'</td></tr>';
 $content .= '<tr><td valign="top">{LANG_FAVORITE_BOOK}</td><td valign="top" colspan="2">'.$user_details['FAVORITE_BOOK'].'</td></tr>';
 $content .= '<tr><td colspan="3"><br /><h2>Tags:</h2></td></tr>
-<tr><td colspan="3">';
+<tr><td></td><td colspan="2">';
 $content .= $template->generate_cloud($language,$user_id);
 $content .= '</td></tr>';
 $content .= '</table>';

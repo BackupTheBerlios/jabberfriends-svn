@@ -10,7 +10,7 @@ foreach($array as $row) {
     $details_match = $template->format_userdetails($user->get_details($row['id']));
     $content = $content.'<li><b><a href="'.$row['id'].'-'.$row['nick'].'.htm">'.$row['nick'].'</a></b><br />'.$details_match.'</li>';
 }
-$content = $content.'</ol>';
+$content = $content.'</ol><b>{LANG_POP_TAGS}</b><br /><br />';
 $content .= $template->generate_cloud($language);
 $template->replace('LOGIN','{LANG_LOGIN}');
 $template->replace('REGISTER','{LANG_REGISTER}');
