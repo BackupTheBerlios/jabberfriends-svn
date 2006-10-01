@@ -35,7 +35,7 @@
             }
         </style>
         <meta name="description" content="{META_DESCRIPTION}" />
-        <meta name="auther" content="Daniel Gultsch, Bahtijar Gadimov" />
+        <meta name="auther" content="Daniel Gultsch, Bahtiar Gadimov" />
         <meta name="keywords" content="{META_KEYWORDS}" />
     </head>
     <body>
