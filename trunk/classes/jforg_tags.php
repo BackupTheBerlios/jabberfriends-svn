@@ -210,7 +210,7 @@ class jforg_tags{
             $query      = mysql_query("SELECT tag,counter FROM tags LEFT JOIN user_tags ON tags.id = user_tags.tag_id WHERE counter > 0 AND user_id = $user_id ORDER BY counter");
         }
         $count = 0; 
-
+            $tag_counter = array();
 	    while ($row = mysql_fetch_assoc($query)) {
             $count++;    
             $tag_id[$count] = $row['tag'];

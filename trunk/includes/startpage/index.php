@@ -11,7 +11,6 @@ if ($language=='de') {
 $usersearch = new jforg_usersearch();
 $news = new jforg_news();
 $row = $usersearch->get_random();
-print_r($array);
 $template->set_frame('startpage');
 $details_match = '<b><a href="{LINK_MEMBERS}'.$row['id'].'-'.$row['nick'].'.htm">'.$row['nick'].'</a>:</b> ';
 $details_match .= $template->format_userdetails($user->get_details($row['id']),10);
