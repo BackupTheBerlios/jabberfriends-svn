@@ -368,6 +368,7 @@ class jforg_template {
         $result .= '<div id="tags">';
         $tags = new jforg_tags();
         $cloud = $tags->tag_cloud($user_id);
+        $unsorted = array();
         foreach($cloud as $tag){
             $result2 = '';
              $result2 .= "<a href=\"/".$language;

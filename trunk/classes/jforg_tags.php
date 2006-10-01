@@ -223,9 +223,10 @@ class jforg_tags{
             $tag_counter[$tag] = round($count = 100 * log($count + 2));
 
         }
-
-        $max     = max($tag_counter);
-        $min     = min($tag_counter);
+        if (count($tag_counter)!=0) {
+            $max     = max($tag_counter);
+            $min     = min($tag_counter);
+        }
         $diff    = $max - $min;
         $delta   = $diff / GRADATION;
         for ($i = 1; $i <= GRADATION; ++$i) {
@@ -233,6 +234,7 @@ class jforg_tags{
         }
         
         $count2 = 0;
+        $cloud = array();
         foreach ($tag_counter as $tag => $tagcount) {
             $class = 1;
 
