@@ -1,9 +1,10 @@
 <?php
-if (!$user->nick_exists($_GET['id'])) {
-    die('404: Nick doesnt exists');
-}
-$user_id = $user->get_id($_GET['id']);
 $template->set_frame('fullpage','green');
+if (!$user->nick_exists($_GET['id'])) {
+    $content = 'Such username doesn\'t exists';
+    $template->replace('FULLPAGE_HEADER','There is no '.$_GET['id']);
+}else{
+$user_id = $user->get_id($_GET['id']);
 $content = '<table cellpadding="0" cellspacing="2" border="0">';
 $user_details = $user->get_details($user_id);
 $user_details = array_map('htmlentities',$user_details);
@@ -49,6 +50,7 @@ $content .= $template->generate_cloud($language,$user_id);
 $content .= '</td></tr>';
 $content .= '</table>';
 $template->replace('FULLPAGE_HEADER','{LANG_USER_PAGE_OF} '.$user->get_nick($user_id));
+}
 $template->replace('META_TITLE','{LANG_USER_PAGE_OF} '.$user->get_nick($user_id));
 $template->replace('FULLPAGE_TEXT',$content);
 $template->replace('LINK_GERMAN','/de/mitglieder/'.$user->get_nick($user_id).'.htm');
