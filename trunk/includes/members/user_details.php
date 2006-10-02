@@ -1,4 +1,7 @@
 <?php
+if (!$user->nick_exists($_GET['id'])) {
+    die('404: Nick doesnt exists');
+}
 $user_id = $user->get_id($_GET['id']);
 $template->set_frame('fullpage','green');
 $content = '<table cellpadding="0" cellspacing="2" border="0">';
