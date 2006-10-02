@@ -12,7 +12,7 @@ $usersearch = new jforg_usersearch();
 $news = new jforg_news();
 $row = $usersearch->get_random();
 $template->set_frame('startpage');
-$details_match = '<b><a href="{LINK_MEMBERS}'.$row['id'].'-'.$row['nick'].'.htm">'.$row['nick'].'</a>:</b> ';
+$details_match = '<b><a href="{LINK_MEMBERS}'.$row['nick'].'.htm">'.$row['nick'].'</a>:</b> ';
 $details_match .= $template->format_userdetails($user->get_details($row['id']),10);
 $search = '<form action="{LINK_SEARCH}" method="post"><input name="search" type="text" /><br /><br /><input class="submit" name="submit" type="submit" value="{LANG_SEARCH}" /></form>';
 $template->replace('RANDOMMEMBER',$details_match);

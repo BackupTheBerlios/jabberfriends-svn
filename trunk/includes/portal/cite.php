@@ -33,7 +33,7 @@ if ($language=='de') {
 $template->replace('LINK_GERMAN','/de/portal/citedb/zitat-'.$id.'.htm');
 $template->replace('LINK_ENGLISH','/en/portal/citedb/cite-'.$id.'.htm');
 $this_cite_url = $language.'/portal/citedb/'.$cite_link.'-'.$zitat['id'];
-$content .= $template->highlight_cite($zitat['zitat']).'<br /><br />{LANG_ADDEDBY} <a href="/'.$language.'/'.$member_link.'/'.$zitat['user'].'-'.cleanurl($user->get_nick($zitat['user'])).'.htm">'.$user->get_nick($zitat['user']).'</a> {LANG_ON} '.date('d.m.Y H:i',$zitat['datetime']).' - <b>{LANG_RATE}: <a href="/'.$this_cite_url.'.htmmm">--</a> <a href="/'.$this_cite_url.'.htmm">-</a> <a href="/'.$this_cite_url.'.htmp">+</a> <a href="/'.$this_cite_url.'.htmpp">++</a></b>';
+$content .= $template->highlight_cite($zitat['zitat']).'<br /><br />{LANG_ADDEDBY} <a href="/'.$language.'/'.$member_link.'/'.cleanurl($user->get_nick($zitat['user'])).'.htm">'.$user->get_nick($zitat['user']).'</a> {LANG_ON} '.date('d.m.Y H:i',$zitat['datetime']).' - <b>{LANG_RATE}: <a href="/'.$this_cite_url.'.htmmm">--</a> <a href="/'.$this_cite_url.'.htmm">-</a> <a href="/'.$this_cite_url.'.htmp">+</a> <a href="/'.$this_cite_url.'.htmpp">++</a></b>';
 $template->replace('FULLPAGE_TEXT',$content);
 $template->highlight_cite($random_zitat);
 ?>
