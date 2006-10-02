@@ -37,7 +37,7 @@ $content .= '<tr><td class="left" valign="top">{LANG_COMPUTER}</td><td class="ri
 $content .= '<tr><td valign="top">{LANG_COMPUTER_OS}</td><td valign="top" colspan="2">'.$user_details['COMPUTER_OS'].'</td></tr>';
 $content .= '<tr><td valign="top">{LANG_GEEKCODE}</td><td valign="top" colspan="2">'.str_replace("\n","<br />",$user_details['GEEKCODE']).'</td></tr>';
 $content .= '<tr><td valign="top">{LANG_PUBLICKEY}</td><td valign="top" colspan="2">';
-if ($user_details['PUBLICKEY']!="") { $content .= '<a href="/'.$language.'/publickeys/'.$user_id.'-'.$user->get_nick($user_id).'.htm">{LANG_SHOW_PUBLICKEY}</a>'; }
+if ($user_details['PUBLICKEY']!="") { $content .= '<a href="/'.$language.'/publickeys/'.$user->get_nick($user_id).'">{LANG_SHOW_PUBLICKEY}</a>'; }
 $content .= '</td></tr>';
 $content .= '<tr><td colspan="3"><br /><h2>{LANG_FAVORITES} '.$user->get_nick($user_id).'</h2></td></tr>';
 $content .= '<tr><td valign="top">{LANG_FAVORITE_FILM}</td><td valign="top" colspan="2">'.$user_details['FAVORITE_FILM'].'</td></tr>';
