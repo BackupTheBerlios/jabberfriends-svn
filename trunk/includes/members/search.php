@@ -14,7 +14,7 @@ if (isset($_POST['search'])) {
             $id = $row['id'];
             $nick = $user->get_nick($id);
             $details_match = $template->format_userdetails($row,5,$_POST['search']);
-            $content = $content."<li><b><a href=\"$id-$nick.htm\">$nick</a></b><br />$details_match";
+            $content = $content."<li><b><a href=\"../$nick.htm\">$nick</a></b><br />$details_match";
         }
     } else {
         $content = $content."<br /><br /><b><em>{LANG_3CHAR}</em></b><br /><br />";
@@ -23,8 +23,8 @@ if (isset($_POST['search'])) {
 $content = $content."</ol>";
 $template->replace('LOGIN','{LANG_LOGIN}');
 $template->replace('REGISTER','{LANG_REGISTER}');
-$template->replace('LINK_GERMAN','/de/mitglieder/suche.htm');
-$template->replace('LINK_ENGLISH','/en/members/search.htm');
+$template->replace('LINK_GERMAN','/de/mitglieder/suche/');
+$template->replace('LINK_ENGLISH','/en/members/search/');
 $template->replace('META_TITLE','{LANG_SEARCH}');
 $template->replace('FULLPAGE_HEADER','{LANG_SEARCH}');
 $template->replace('FULLPAGE_TEXT',$content);

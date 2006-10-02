@@ -1,6 +1,7 @@
 RewriteEngine on
 RewriteBase /
-RewriteRule ^de/mitglieder/([0-9]+)-([^/\:]+).htm$  load.php?class=members&method=user_details&language=de&id=$1
+RewriteRule ^de/mitglieder/([^/\:]+).htm$  load.php?class=members&method=user_details&language=de&id=$1
+RewriteRule ^de/publickeys/([0-9]+)-([^/\:]+).htm$  load.php?class=members&method=publickey&language=de&id=$1
 RewriteRule ^de/publickeys/([0-9]+)-([^/\:]+).htm$  load.php?class=members&method=publickey&language=de&id=$1
 RewriteRule ^de/registrieren.htm$                   load.php?class=members&method=register&language=de&id=$1
 RewriteRule ^de/$                                   load.php?class=startpage&method=index&language=de
@@ -14,7 +15,7 @@ RewriteRule ^de/tags_loeschen/([0-9]+).htm$         load.php?class=members&metho
 RewriteRule ^de/tag/([^/\:]+).htm$                  load.php?class=members&method=tag&language=de&tag_value=$1
 RewriteRule ^de/mitglieder/$                        load.php?class=members&method=members&language=de
 RewriteRule ^de/mitglieder$                         load.php?class=members&method=members&language=de
-RewriteRule ^de/mitglieder/suche.htm$               load.php?class=members&method=search&language=de
+RewriteRule ^de/mitglieder/suche/                   load.php?class=members&method=search&language=de
 RewriteRule ^de/wiki/$                              load.php?class=wiki&method=wiki&language=de&id=1
 RewriteRule ^de/wiki$                               load.php?class=wiki&method=wiki&language=de&id=1
 RewriteRule ^de/wiki/([0-9]+)-([^/\:]+).htm$        load.php?class=wiki&method=wiki&language=de&id=$1
@@ -43,7 +44,7 @@ RewriteRule ^de/passwortaendern.htm$                load.php?class=members&metho
 RewriteRule ^de/benutzerbild_hochladen.htm$         load.php?class=members&method=upload_userpic&language=de
 RewriteRule ^de/loesche_account.htm$                load.php?class=members&method=rmacc&language=de
 
-RewriteRule ^en/members/([0-9]+)-([^/\:]+).htm$     load.php?class=members&method=user_details&language=en&id=$1
+RewriteRule ^en/members/([^/\:]+).htm$              load.php?class=members&method=user_details&language=en&id=$1
 RewriteRule ^en/publickeys/([0-9]+)-([^/\:]+).htm$  load.php?class=members&method=publickey&language=en&id=$1
 RewriteRule ^en/register.htm$                       load.php?class=members&method=register&language=en&id=$1
 RewriteRule ^en/$                                   load.php?class=startpage&method=index&language=en
@@ -55,7 +56,7 @@ RewriteRule ^en/change_details.htm$                 load.php?class=members&metho
 RewriteRule ^en/change_tags.htm$                    load.php?class=members&method=changetags&language=en   
 RewriteRule ^en/members/$                           load.php?class=members&method=members&language=en
 RewriteRule ^en/members$                            load.php?class=members&method=members&language=en
-RewriteRule ^en/members/search.htm$                 load.php?class=members&method=search&language=en
+RewriteRule ^en/members/search                      load.php?class=members&method=search&language=en
 RewriteRule ^en/wiki/$                              load.php?class=wiki&method=wiki&language=en&id=1
 RewriteRule ^en/wiki$                               load.php?class=wiki&method=wiki&language=en&id=1
 RewriteRule ^en/wiki/([0-9]+)-([^/\:]+).htm$        load.php?class=wiki&method=wiki&language=en&id=$1

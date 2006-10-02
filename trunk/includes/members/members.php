@@ -8,7 +8,7 @@ $content = $content.'<br /><br /><b>{LANG_LAST_MEMBERS}</b><ol>';
 $array = $usersearch->search_last(5);
 foreach($array as $row) {
     $details_match = $template->format_userdetails($user->get_details($row['id']));
-    $content = $content.'<li><b><a href="'.$row['id'].'-'.$row['nick'].'.htm">'.$row['nick'].'</a></b><br />'.$details_match.'</li>';
+    $content = $content.'<li><b><a href="'.$user->get_nick($row['id']).'.htm">'.$row['nick'].'</a></b><br />'.$details_match.'</li>';
 }
 $content = $content.'</ol><b>{LANG_POP_TAGS}</b><br /><br />';
 $content .= $template->generate_cloud($language);

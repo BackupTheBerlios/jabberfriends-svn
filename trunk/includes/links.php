@@ -11,7 +11,7 @@ if ($language=="de") {
     $template->replace('LINK_OPTIONS','/de/optionen.htm');
     $template->replace('LINK_CHANGEDETAILS','/de/angaben_aendern.htm');
     $template->replace('LINK_CHANGETAGS','/de/tags_aendern.htm');
-    $template->replace('LINK_SEARCH','/de/mitglieder/suche.htm');
+    $template->replace('LINK_SEARCH','/de/mitglieder/suche/');
     $template->replace('LINK_CHANGEPW', '/de/passwortaendern.htm');
     $template->replace('LINK_RMACC', '/de/loesche_account.htm');
     $template->replace('LINK_UPLOADUSERPIC', '/de/benutzerbild_hochladen.htm');
@@ -28,7 +28,7 @@ if ($language=="en") {
     $template->replace('LINK_LOGOUT','/en/logout.htm');
     $template->replace('LINK_OPTIONS','/en/options.htm');
     $template->replace('LINK_CHANGETAGS','/en/change_tags.htm');
-    $template->replace('LINK_SEARCH','/en/members/search.htm');
+    $template->replace('LINK_SEARCH','/en/members/search/');
     $template->replace('LINK_CHANGEDETAILS','/en/change_details.htm');
     $template->replace('LINK_CHANGEPW', '/en/changepassword.htm');
     $template->replace('LINK_RMACC', '/en/remove_account.htm');

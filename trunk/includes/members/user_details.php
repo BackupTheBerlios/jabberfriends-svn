@@ -1,9 +1,5 @@
 <?php
-if (is_int($_GET['id']+0)) {
-    $user_id = $_GET['id'];
-} else {
-    die('ID is not an int'.$_GET['id']);
-}
+$user_id = $user->get_id($_GET['id']);
 $template->set_frame('fullpage','green');
 $content = '<table cellpadding="0" cellspacing="2" border="0">';
 $user_details = $user->get_details($user_id);
@@ -52,6 +48,6 @@ $content .= '</table>';
 $template->replace('FULLPAGE_HEADER','{LANG_USER_PAGE_OF} '.$user->get_nick($user_id));
 $template->replace('META_TITLE','{LANG_USER_PAGE_OF} '.$user->get_nick($user_id));
 $template->replace('FULLPAGE_TEXT',$content);
-$template->replace('LINK_GERMAN','/de/mitglieder/'.$user_id.'-'.$user->get_nick($user_id).'.htm');
-$template->replace('LINK_ENGLISH','/en/members/'.$user_id.'-'.$user->get_nick($user_id).'.htm');
+$template->replace('LINK_GERMAN','/de/mitglieder/'.$user->get_nick($user_id).'.htm');
+$template->replace('LINK_ENGLISH','/en/members/'.$user->get_nick($user_id).'.htm');
 ?>

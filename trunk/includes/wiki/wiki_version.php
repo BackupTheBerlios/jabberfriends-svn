@@ -17,7 +17,7 @@ $versionen = $wiki->get_versions();
 foreach($versionen as $version) {
     $nick = $user->get_nick($version['user_id']);
     $datum=date('d.m.Y H:i', $version['datetime']);
-    $content .= '[<a href="/'.$language.'/wiki/version_'.$id.'_'.$version['id'].'.htm">{LANG_VIEW}</a>] [<a href="/'.$language.'/editor/'.$id.'_'.$version['id'].'.htm">{LANG_EDIT}</a>] - Geschrieben von <a href="/'.$language.'/mitglieder/'.$version['user_id'].'-'.cleanurl($nick).'.htm">'.$nick.'</a> am '.$datum.'<br />';
+    $content .= '[<a href="/'.$language.'/wiki/version_'.$id.'_'.$version['id'].'.htm">{LANG_VIEW}</a>] [<a href="/'.$language.'/editor/'.$id.'_'.$version['id'].'.htm">{LANG_EDIT}</a>] - Geschrieben von <a href="/'.$language.'/mitglieder/'.cleanurl($nick).'.htm">'.$nick.'</a> am '.$datum.'<br />';
 }
 $english_link = '/en/wiki/versions_of_'.$id.'.htm';
 $german_link = '/de/wiki/versionen_von_'.$id.'.htm';

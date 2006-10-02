@@ -69,7 +69,7 @@ $authors = $wiki->get_authors();
 $info_text = '';
 foreach($authors as $author) {
     $nickname = $user->get_nick($author);
-    $info_text = $info_text.'<a href="'.$memberlink.$author.'-'.$nickname.'.htm">'.$nickname.'</a><br />';
+    $info_text = $info_text.'<a href="'.$memberlink.$nickname.'.htm">'.$nickname.'</a><br />';
 }
 $template->replace_wiki('WIKI_TEXT',$wiki_text);
 $template->replace('INFO_TEXT1',$options);

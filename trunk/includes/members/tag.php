@@ -16,7 +16,7 @@ if (!empty($_POST['submit'])) {
 }
     $content .= '<tr><td class="left">{LANG_TAG}</td><td class="right">'.$tag_value.'</td></tr><tr><td>{LANG_USERS}:</td>';
     foreach ($users as $tagged_users) {
-	    	$content .= '<td><a href="{LINK_MEMBERS}'.$tagged_users.'-'.$user->get_nick($tagged_users).'htm">'.$user->get_nick($tagged_users).'</a></td></tr><tr><td></td>';
+	    	$content .= '<td><a href="{LINK_MEMBERS}'.$user->get_nick($tagged_users).'.htm">'.$user->get_nick($tagged_users).'</a></td></tr><tr><td></td>';
     }
 
 $content .= '<td></td></tr>';
