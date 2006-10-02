@@ -60,7 +60,10 @@ RewriteRule ^en/change_details.htm$                 load.php?class=members&metho
 RewriteRule ^en/change_tags.htm$                    load.php?class=members&method=changetags&language=en   
 RewriteRule ^en/members/$                           load.php?class=members&method=members&language=en
 RewriteRule ^en/members$                            load.php?class=members&method=members&language=en
-RewriteRule ^en/members/search                      load.php?class=members&method=search&language=en
+RewriteRule ^en/members/search/$                    load.php?class=members&method=search&language=en
+RewriteRule ^en/members/search$                     load.php?class=members&method=search&language=en
+RewriteRule ^en/members/search/([^/\:]+)$           load.php?class=members&method=search&language=en&search=$1
+RewriteRule ^en/members/search/([^/\:]+)/$          load.php?class=members&method=search&language=en&search=$1
 RewriteRule ^en/wiki/$                              load.php?class=wiki&method=wiki&language=en&id=1
 RewriteRule ^en/wiki$                               load.php?class=wiki&method=wiki&language=en&id=1
 RewriteRule ^en/wiki/([0-9]+)-([^/\:]+).htm$        load.php?class=wiki&method=wiki&language=en&id=$1
