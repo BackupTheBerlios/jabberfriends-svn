@@ -15,7 +15,11 @@ RewriteRule ^de/tags_loeschen/([0-9]+).htm$         load.php?class=members&metho
 RewriteRule ^de/tag/([^/\:]+).htm$                  load.php?class=members&method=tag&language=de&tag_value=$1
 RewriteRule ^de/mitglieder/$                        load.php?class=members&method=members&language=de
 RewriteRule ^de/mitglieder$                         load.php?class=members&method=members&language=de
-RewriteRule ^de/mitglieder/suche/                   load.php?class=members&method=search&language=de
+RewriteRule ^de/mitglieder/suche/$                  load.php?class=members&method=search&language=de
+RewriteRule ^de/mitglieder/suche$                  load.php?class=members&method=search&language=de
+RewriteRule ^de/mitglieder/suche/([^/\:]+)$        load.php?class=members&method=search&language=de&search=$1
+RewriteRule ^de/mitglieder/suche/([^/\:]+)/$        load.php?class=members&method=search&language=de&search=$1
+RewriteRule ^de/wiki/$                              load.php?class=wiki&method=wiki&language=de&id=1
 RewriteRule ^de/wiki/$                              load.php?class=wiki&method=wiki&language=de&id=1
 RewriteRule ^de/wiki$                               load.php?class=wiki&method=wiki&language=de&id=1
 RewriteRule ^de/wiki/([0-9]+)-([^/\:]+).htm$        load.php?class=wiki&method=wiki&language=de&id=$1

@@ -2,8 +2,26 @@
 include('classes/jforg_usersearch.php');
 $template->set_frame('fullpage','green');
 $usersearch = new jforg_usersearch();
-$content = '<form action="{LINK_SEARCH}" method="post"><input value="'.$_POST['search'].'" name="search" type="text" />&nbsp;<input class="submit" name="submit" type="submit" value="{LANG_SEARCH}" /></form>';
+$searched_nick = ($_GET['search'] == '') ? $_POST['search'] : $_GET['search'];
+$content = '<form action="{LINK_SEARCH}" method="post"><input value="'.$searched_nick.'" name="search" type="text" />&nbsp;<input class="submit" name="submit" type="submit" value="{LANG_SEARCH}" /></form>';
 $max_per_search = 5;
+if( isset($_GET['search']) AND !isset( $_POST['search'] ) )
+{
+    if ( preg_match( '/.{3,}/', $_GET['search'] ) ) 
+    {
+        $array = $usersearch->search_all( $_GET[ 'search' ] );
+        $result_counter = 0;
+        $number = $usersearch->get_number_of();
+        $content = $content."<br /><br /><b>$number {LANG_MATCHES_FOR} ".$_GET['search']."</b><ol>";   
+        }
+        foreach( $array as $row ) 
+        {
+            $id = $row['id'];
+            $nick = $user->get_nick( $id );
+            $details_match = $template->format_userdetails( $row, 5, $_GET['search'] );
+            $content = $content."<li><b><a href=\"../$nick.htm\">$nick</a></b><br />$details_match";
+        }
+}
 if (isset($_POST['search'])) {
     if (preg_match('/.{3,}/',$_POST['search'])) {
         $array = $usersearch->search_all($_POST['search']);
