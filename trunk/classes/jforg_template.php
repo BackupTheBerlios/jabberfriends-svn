@@ -180,7 +180,8 @@ class jforg_template {
         }
         $zitat = htmlentities($zitat.'');
         $zitat = str_replace("\n",'<br />',$zitat);
-        $i = 0;
+        srand((double)microtime() * 1000000);
+        $i = rand(0, count($colors) - 1);
         foreach($nicks as $nick) {
             if ($i == count($colors)) {
                 $i = 0;
