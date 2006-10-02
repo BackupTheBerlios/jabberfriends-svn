@@ -32,19 +32,13 @@ class jforg_wiki {
         //Fehler, entscheide welchen
         if ($anzahl!=1) {
             if ($realid!=0) {
-                die('Error: Invaild version'.$sql);
+                die('Error: Invaild version');
             } else {
                 //Prüfen ob die ID grundsätzlich da ist - wenn nicht 404 error
                 $sql = 'SELECT wiki_id FROM `wiki` WHERE wiki_id = '.$this->wiki_id.' LIMIT 1';
                 $query = mysql_query($sql,$this->connection);
                 if (!$query) {
                     die("jforg_wiki.get_by_id: Die SQL Abfrage ist fehlgeschlagen - $sql");
-                }
-                $anzahl = mysql_num_rows($query);
-                if ($anzahl==1) {
-                    $error['title'] = '{LANG_NOTRANSLATION}';
-                } else {
-                    $error['title'] = '{LANG_NOTFOUND}';
                 }
             }
             $this->content = $error;
@@ -62,6 +56,7 @@ class jforg_wiki {
         return $result;
     }
     function get_title() {
+    
         if ($this->wiki_id==0) {
             die('jforg_wiki.get_titel: Keine ID angegeben');
         }
@@ -90,11 +85,11 @@ class jforg_wiki {
         }
         return $result;
     }
-    function is_translation() {
+    function exists_translation() {
         if ($this->content_language=='de') {
             $trans_lang = 'en';
         } elseif ($this->content_language=='en') {
-            $trans_lang = 'en';
+            $trans_lang = 'de';
         } else {
             die('error');
         }
@@ -103,7 +98,20 @@ class jforg_wiki {
         if (!$query) {
             die("jforg_wiki.is_translation: Die SQL Abfrage ist fehlgeschlagen - $sql");
         }
-        if (mysql_num_rows() >= 1) {
+        //die('Test: '.mysql_num_rows($query).$sql);
+        if (mysql_num_rows($query) >= 1) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+    function exists() {
+        $sql = 'SELECT id FROM `wiki` WHERE wiki_id = '.$this->wiki_id.' AND `language` = \''.$this->content_language.'\'';
+        $query = mysql_query($sql);
+        if (!$query) {
+            die("jforg_wiki.exists: Die SQL Abfrage ist fehlgeschlagen - $sql");
+        }
+        if (mysql_num_rows($query) >= 1) {
             return true;
         } else {
             return false;
@@ -116,6 +124,9 @@ class jforg_wiki {
             die("jforg_wiki.get_german_link: Die SQL Abfrage ist fehlgeschlagen - $sql");
         }
         $result = mysql_fetch_assoc($query);
+        if ($result['title']=='') {
+            $result['title'] = '404';
+        }
         return $result['title'];
     }
     function get_english_link() {
@@ -125,7 +136,21 @@ class jforg_wiki {
             die("jforg_wiki.get_english_link: Die SQL Abfrage ist fehlgeschlagen - $sql");
         }
         $result = mysql_fetch_assoc($query);
+        if ($result['title']=='') {
+            $result['title'] = '404';
+        }
         return $result['title'];
+    }
+    function translate_article($id,$title,$text,$language,$author) {
+        $title = str_replace("'","''",$title);
+        $text = str_replace("'","''",$text);
+        $ip_addr = $_SERVER['REMOTE_ADDR'];
+        $datum = date('Y-m-d H:i:s');
+        $sql = "INSERT INTO `wiki` ( `id` , `wiki_id` , `language` , `title` , `text` , `datetime` , `user_id` , `ip_addr`) VALUES ('', '$id', '$language', '$title', '$text', '$datum', '$author', '$ip_addr')";
+        $query = mysql_query($sql,$this->connection);
+        if (!$query) {
+            die("jforg_wiki.translate_article: Die SQL Abfrage ist fehlgeschlagen - $sql");
+        }
     }
     function update_article($id,$text,$language,$author) {
         $title = str_replace("'","''",$this->get_title());
