@@ -9,6 +9,7 @@ if( isset($_GET['search']) AND !isset( $_POST['search'] ) )
 {
     $_POST['search'] = $_GET['search'];
 }
+$link_word = '';
 if (isset($_POST['search'])) {
     if (preg_match('/.{3,}/',$_POST['search'])) {
         $array = $usersearch->search_all($_POST['search']);
@@ -21,6 +22,7 @@ if (isset($_POST['search'])) {
             $details_match = $template->format_userdetails($row,5,$_POST['search']);
             $content = $content."<li><b><a href=\"../$nick.htm\">$nick</a></b><br />$details_match";
         }
+	$link_word = $_POST['search'];
     } else {
         $content = $content."<br /><br /><b><em>{LANG_3CHAR}</em></b><br /><br />";
     }
@@ -28,8 +30,8 @@ if (isset($_POST['search'])) {
 $content = $content."</ol>";
 $template->replace('LOGIN','{LANG_LOGIN}');
 $template->replace('REGISTER','{LANG_REGISTER}');
-$template->replace('LINK_GERMAN','/de/mitglieder/suche/');
-$template->replace('LINK_ENGLISH','/en/members/search/');
+$template->replace('LINK_GERMAN','/de/mitglieder/suche/'.$link_word);
+$template->replace('LINK_ENGLISH','/en/members/search/'.$link_word);
 $template->replace('META_TITLE','{LANG_SEARCH}');
 $template->replace('FULLPAGE_HEADER','{LANG_SEARCH}');
 $template->replace('FULLPAGE_TEXT',$content);
