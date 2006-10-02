@@ -126,7 +126,7 @@ class jforg_user {
         return $result;
     }
     function get_id($nick) {
-        $sql                =   "SELECT id,nick FROM `user_login` WHERE `nick` = '$nick'";
+        $sql                =   "SELECT id,nick FROM `user_login` WHERE `nick` = '".mysql_real_escape_string($nick)."'";
         $query              =   @mysql_query($sql,$this->connection);
         if (!$query) {
             die("jforg_user.get_id: Die SQL Abfrage ist fehlgeschlagen - $sql");
