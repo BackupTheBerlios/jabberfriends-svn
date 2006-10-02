@@ -33,6 +33,7 @@ class jforg_usersearch {
         return $result;
     }
     function search_all($string) {
+    	$string = mysql_real_escape_string($string);
         $sql = " SELECT * FROM user_login AS a LEFT JOIN user_details as b ON a.id = b.id 
         WHERE `REALNAME` LIKE '%$string%'
         OR `COUNTRY` LIKE '%$string%'
