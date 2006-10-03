@@ -25,6 +25,8 @@ RewriteRule ^de/wiki$                               load.php?class=wiki&method=w
 RewriteRule ^de/wiki/([0-9]+)-([^/\:]+).htm$        load.php?class=wiki&method=wiki&language=de&id=$1
 RewriteRule ^de/wiki/version_([0-9]+)_([0-9]+).htm$ load.php?class=wiki&method=wiki&language=de&id=$1&realid=$2
 RewriteRule ^de/wiki/versionen_von_([0-9]+).htm$    load.php?class=wiki&method=wiki_version&language=de&id=$1
+RewriteRule ^de/wiki/suche/$                        load.php?class=wiki&method=wikisearch&language=de&id=1
+RewriteRule ^de/wiki/suche/([^/\:]+)$               load.php?class=wiki&method=wikisearch&language=de&searchword=$1
 RewriteRule ^de/editor/([0-9]+).htm$                load.php?class=wiki&method=editwiki&language=de&id=$1
 RewriteRule ^de/editor/([0-9]+)_([0-9]+).htm$       load.php?class=wiki&method=editwiki&language=de&id=$1&realid=$2
 RewriteRule ^de/editor/neu.htm$                     load.php?class=wiki&method=editwiki&language=de&id=0
@@ -80,6 +82,8 @@ RewriteRule ^en/news$                               load.php?class=startpage&met
 RewriteRule ^en/news/([0-9]+)-([^/\:]+).htm$        load.php?class=startpage&method=singlenews&language=en&id=$1
 RewriteRule ^en/news_editor/([0-9]+).htm$           load.php?class=startpage&method=writenews&language=en&id=$1
 RewriteRule ^en/news_editor/new.htm$                load.php?class=startpage&method=writenews&language=en&id=$1
+RewriteRule ^en/wiki/search/$                       load.php?class=wiki&method=wikisearch&language=en&id=1
+RewriteRule ^en/wiki/search/([^/\:]+)$              load.php?class=wiki&method=wikisearch&language=en&searchword=$1
 RewriteRule ^en/portal/$                            load.php?class=portal&method=portal&language=en
 RewriteRule ^en/portal$                             load.php?class=portal&method=portal&language=en
 RewriteRule ^en/portal/citedb/$                     load.php?class=portal&method=citedb&language=en

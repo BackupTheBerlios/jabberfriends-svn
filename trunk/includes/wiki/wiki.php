@@ -49,7 +49,7 @@ if ($language=="de") {
     if ($show_version_option) {
         $options .= '<a href="/de/wiki/versionen_von_'.$id.'.htm">Versionen anzeigen</a><br /><br />';
     }
-    $options .= '<a href="/de/editor/neu.htm">Neue Seite anlegen</a><br />';
+    $options .= '<a href="/de/editor/neu.htm">Neue Seite anlegen</a><br /><br /><a href="/de/wiki/suche/">Wiki Suche</a>';
     $memberlink = '/de/mitglieder/';
 } elseif ($language=="en") {
     if ($show_edit_option) {
@@ -62,7 +62,7 @@ if ($language=="de") {
     if ($show_version_option) {
         $options .= '<a href="/en/wiki/versions_of_'.$id.'.htm">List versions</a><br /><br />';
     }
-    $options .= '<a href="/en/editor/new.htm">Create a new page</a><br />';
+    $options .= '<a href="/en/editor/new.htm">Create a new page</a><br /><br /><a href="/en/wiki/search/">Wiki Search</a>';
     $memberlink = '/en/members/';
 }
 $authors = $wiki->get_authors();

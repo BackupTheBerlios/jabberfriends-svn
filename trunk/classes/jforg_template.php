@@ -141,6 +141,8 @@ class jforg_template {
                 $zeile = preg_replace('/\'\'\'([^\']+)\'\'\'/','<b>$1</b>',$zeile);
                 //schräger text
                 $zeile = preg_replace('/\'\'([^\']+)\'\'/','<i>$1</i>',$zeile);
+                //Interne Links
+                $zeile = preg_replace('/\[\[([^]]{3,})\]\]/','<a href="/de/wiki/suche/$1">$1</a>',$zeile);
                 //Normale URLs in Links
                 $zeile = preg_replace('/[^[](ftp|http|https):\/\/([\S]{3,})/',' <a href="$1://$2">$2</a>',$zeile);
                 //Normale, beschriftete Links

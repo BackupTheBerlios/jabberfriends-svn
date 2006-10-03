@@ -15,7 +15,8 @@ if ($language=="de") {
     $template->replace('LINK_CHANGEPW', '/de/passwortaendern.htm');
     $template->replace('LINK_RMACC', '/de/loesche_account.htm');
     $template->replace('LINK_UPLOADUSERPIC', '/de/benutzerbild_hochladen.htm');
-    $template->replace('LINK_ABOUT','/de/wiki/7-About.htm');
+    $template->replace('LINK_ABOUT','/de/wiki/7-about.htm');
+    $template->replace('LINK_WIKISEARCH','/de/wiki/suche/');
 }
 if ($language=="en") {
     $template->replace('LINK_STARTPAGE','/en/');
@@ -33,6 +34,7 @@ if ($language=="en") {
     $template->replace('LINK_CHANGEPW', '/en/changepassword.htm');
     $template->replace('LINK_RMACC', '/en/remove_account.htm');
     $template->replace('LINK_UPLOADUSERPIC', '/en/upload_userpic.htm');
-    $template->replace('LINK_ABOUT','/en/wiki/7-About.htm');
+    $template->replace('LINK_ABOUT','/en/wiki/7-about.htm');
+    $template->replace('LINK_WIKISEARCH','/en/wiki/search/');
 }
 ?>  

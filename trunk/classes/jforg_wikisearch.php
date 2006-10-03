@@ -40,5 +40,34 @@ class jforg_wikisearch {
             return 0;
         }
     }
+    function get_results() {
+        $sw = mysql_real_escape_string($this->searchword);
+        $language = $this->language;
+        $sql_title = "SELECT wiki_id,title  FROM `wiki` WHERE `language` = '$language' AND `title` LIKE '%$sw%'";
+        $query_title = mysql_query($sql_title);
+        if (!$query_title) {
+            die('jforg_wikisearch.get_results: sql schlug fehl');
+        }
+        $result = array();
+        $tmp_ids = array();
+        while ($row = mysql_fetch_assoc($query_title)) {
+            if (!in_array($row['wiki_id'],$tmp_ids)) {
+                $tmp_ids[]=$row['wiki_id'];
+                $result[] = $row;
+            }
+        }
+        $sql_text = "SELECT wiki_id,title  FROM `wiki` WHERE `language` = '$language' AND `text` LIKE '%$sw%'";
+        $query_text = mysql_query($sql_text);
+        if (!$query_text) {
+            die('jforg_wikisearch.get_results: sql schlug fehl');
+        }
+        while ($row = mysql_fetch_assoc($query_text)) {
+            if (!in_array($row['wiki_id'],$tmp_ids)) {
+                $tmp_ids[]=$row['wiki_id'];
+                $result []= $row;
+            }
+        }
+        return $result;
+    }
 }
-?> 
+?>
