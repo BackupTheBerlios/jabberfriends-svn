@@ -173,10 +173,9 @@ class jforg_template {
         $zeilen = explode("\n",$zitat);
         $nicks = array();
         foreach($zeilen as $zeile) {
-            $woerter = explode(' ',$zeile);
-            if (preg_match('/[<][\S]+[>]/',$woerter[0])) {
-                if (!in_array($woerter[0],$nicks)) {
-                    $nicks[] = $woerter[0];
+            if (preg_match('/<(.*?)>/', $zeile, $treffer)) {
+                if (!in_array($zeile,$nicks)) {
+                    $nicks[] = $treffer[0];
                 }
             }
         }
