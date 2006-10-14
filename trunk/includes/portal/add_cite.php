@@ -9,7 +9,7 @@ if (!$user->login($_SESSION['nick'],$_SESSION['passwd'])) {
 if (!empty($_POST['preview'])) {
     $zitat = $_POST['text'];
     $pre_content = $template->highlight_cite($_POST['text']).'<br /><br />{FULLPAGE_TEXT}';
-    $template->replace_wiki('FULLPAGE_TEXT',$pre_content);
+    $template->replace('FULLPAGE_TEXT',$pre_content);
 }
 if (!empty($_POST['safe'])) {
     if ($language=='de') {
@@ -23,7 +23,7 @@ if (!empty($_POST['safe'])) {
         header("Location: $url");
     } else {
         $pre_content = '<em>{LANG_FILLIN}</em><br /><br />{FULLPAGE_TEXT}';
-        $template->replace_wiki('FULLPAGE_TEXT',$pre_content);
+        $template->replace('FULLPAGE_TEXT',$pre_content);
     }
 }
 $content = '<form method="post" action=""><textarea name="text" rows="15" style="width: 90%;">'.$zitat.'</textarea><br /><br /><input class="submit" name="preview" type="submit" value="{LANG_PREVIEW}" /> <input name="safe" class="submit" type="submit" value="{LANG_ADDCITE}" /></form>';
