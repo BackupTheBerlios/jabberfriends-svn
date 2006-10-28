@@ -19,9 +19,8 @@ RewriteRule ^de/mitglieder/suche/$                  load.php?class=members&metho
 RewriteRule ^de/mitglieder/suche$                  load.php?class=members&method=search&language=de
 RewriteRule ^de/mitglieder/suche/([^/\:]+)$        load.php?class=members&method=search&language=de&search=$1
 RewriteRule ^de/mitglieder/suche/([^/\:]+)/$        load.php?class=members&method=search&language=de&search=$1
-RewriteRule ^de/wiki/$                              load.php?class=wiki&method=wiki&language=de&id=1
-RewriteRule ^de/wiki/$                              load.php?class=wiki&method=wiki&language=de&id=1
-RewriteRule ^de/wiki$                               load.php?class=wiki&method=wiki&language=de&id=1
+RewriteRule ^de/wiki/$                              load.php?class=wiki&method=wiki&language=de&id=9
+RewriteRule ^de/wiki$                               load.php?class=wiki&method=wiki&language=de&id=9
 RewriteRule ^de/wiki/([0-9]+)-([^/\:]+).htm$        load.php?class=wiki&method=wiki&language=de&id=$1
 RewriteRule ^de/wiki/version_([0-9]+)_([0-9]+).htm$ load.php?class=wiki&method=wiki&language=de&id=$1&realid=$2
 RewriteRule ^de/wiki/versionen_von_([0-9]+).htm$    load.php?class=wiki&method=wiki_version&language=de&id=$1
@@ -67,8 +66,8 @@ RewriteRule ^en/members/search/$                    load.php?class=members&metho
 RewriteRule ^en/members/search$                     load.php?class=members&method=search&language=en
 RewriteRule ^en/members/search/([^/\:]+)$           load.php?class=members&method=search&language=en&search=$1
 RewriteRule ^en/members/search/([^/\:]+)/$          load.php?class=members&method=search&language=en&search=$1
-RewriteRule ^en/wiki/$                              load.php?class=wiki&method=wiki&language=en&id=1
-RewriteRule ^en/wiki$                               load.php?class=wiki&method=wiki&language=en&id=1
+RewriteRule ^en/wiki/$                              load.php?class=wiki&method=wiki&language=en&id=9
+RewriteRule ^en/wiki$                               load.php?class=wiki&method=wiki&language=en&id=9
 RewriteRule ^en/wiki/([0-9]+)-([^/\:]+).htm$        load.php?class=wiki&method=wiki&language=en&id=$1
 RewriteRule ^en/wiki/version_([0-9]+)_([0-9]+).htm$ load.php?class=wiki&method=wiki&language=en&id=$1&realid=$2
 RewriteRule ^en/wiki/versions_of_([0-9]+).htm$      load.php?class=wiki&method=wiki_version&language=en&id=$1
