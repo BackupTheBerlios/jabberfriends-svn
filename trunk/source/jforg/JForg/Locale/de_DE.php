@@ -9,5 +9,7 @@ return array(
     'TEXT_LOGIN' => 'Anmelden',
     'TEXT_PAGE' => 'Seite',
     'TEXT_REGISTER' => 'Registrieren',
+    'TEXT_LATEST_WIKI_ARTICLE' => 'Neuster Wiki Artikel',
+    'TEXT_MEMBER_SEARCH' => 'Mitglieder Suche',
 );
 ?>
