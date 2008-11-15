@@ -8,6 +8,15 @@
     <copyright>Autor des Feeds</copyright>
     <pubDate>Erstellungsdatum("Tue, 8 Jul 2008 2:43:19")</pubDate>
     
+    <?php
+    foreach($this->news as $record) {
+        echo '<item>';
+        echo '<title>'.$record->title.'</title>';
+        echo '<link>http://localhost'.$this->action('news/view/'.$record->id).'</link>';
+        echo '<guid>'.$record->id.'</guid>';
+        echo '</item>';
+    }
+    ?>
     <item>
       <title>Titel des Eintrags</title>
       <description>Kurze Zusammenfassung des Eintrags</description>

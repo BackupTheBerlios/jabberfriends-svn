@@ -11,5 +11,7 @@ return array(
     'TEXT_REGISTER' => 'Registrieren',
     'TEXT_LATEST_WIKI_ARTICLE' => 'Neuster Wiki Artikel',
     'TEXT_MEMBER_SEARCH' => 'Mitglieder Suche',
+    'TEXT_BACK' => 'zurück',
+    'TEXT_FORWARD' => 'weiter'
 );
 ?>
