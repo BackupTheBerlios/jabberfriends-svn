@@ -15,5 +15,9 @@ $config['Solar']['registry_set']['sql'] = array(
         'name'      => 'jforg'
     )
 );
+$config['JForg_View_Helper_Intro'] = array(
+    'minchars' => 150,
+    'imprecision' => 20,
+);
 return $config;
 ?>

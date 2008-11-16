@@ -8,6 +8,7 @@ class JForg_App_News extends JForg_App_Base {
     public $news = null;
     public $page = null;
     public $max_page = null;
+    public $content = null;
     
     public function _preRun() {
         parent::_preRun();
@@ -52,6 +53,9 @@ class JForg_App_News extends JForg_App_Base {
     
     public function actionView($id = null) {
         $model_news = new JForg_Model_News();
+        $record = $model_news->fetchOneById($id);
+        $this->title = $record->title;
+        $this->content = $record->content;
     }
     
     public function actionEdit($id = null) {

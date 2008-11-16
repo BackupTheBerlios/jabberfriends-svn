@@ -6,7 +6,7 @@
                 foreach($this->news as $record) {
                     $display_error = false;
                     echo '<h2>'.$record->title.'</h2>';
-                    echo '<p><i>'.$record->date.':</i> '.$this->intro($record->content,100);
+                    echo '<p><i>'.$record->date.':</i> '.$this->intro($record->content);
                     echo ' '.$this->action('news/view/'.$record->id,'TEXT_CONTINUE_READING');
                     echo '</p>';
                 }
