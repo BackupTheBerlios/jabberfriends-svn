@@ -16,6 +16,7 @@ class JForg_App_News extends JForg_App_Base {
     
     public function actionOverview($page = 1) {
         $model_news = new JForg_Model_News();
+        $locale = Solar_Registry::get('locale');
         if ($this->_format!=null) {
             //requesting an newsfeed (rss,rss2 or atom)
             //disable all pageing stuff
@@ -26,23 +27,23 @@ class JForg_App_News extends JForg_App_Base {
             //requesting an usual (xhtml) webpage.
             //do this pageing stuff
             $page = (int) $page;
-            if ($page == 0) {
-                $page = 1;
-            }
             $items_per_page = 5;
             $pagecount = $model_news->countPages(array(
-                'where' => 'language = \'de_DE\'',
+                'where' => 'language = \''.$locale->getCode().'\'',
                 'paging' => $items_per_page,
                 'page' => $page
             ));
             if ($page > $pagecount['pages']) {
                 $page = $pagecount['pages'];
             }
+            if ($page == 0) {
+                $page = 1;
+            }
             $this->title = $this->locale('TEXT_NEWS').' - '.$this->locale('TEXT_PAGE').': '.$page;
             $this->page = $page;
             $this->max_page = $pagecount['pages'];
         }
-        $collection = $model_news->fetchAllByLanguage('de_DE',array(
+        $collection = $model_news->fetchAllByLanguage($locale->getCode(),array(
             'page' => $page,
             'paging' => $items_per_page
         ));
@@ -50,7 +51,7 @@ class JForg_App_News extends JForg_App_Base {
     }
     
     public function actionView($id = null) {
-        
+        $model_news = new JForg_Model_News();
     }
     
     public function actionEdit($id = null) {

@@ -24,6 +24,7 @@ class JForg_Model_News extends Solar_Sql_Model {
                 'type' => 'clob'
             )
         );
+        $this->_order = 'date DESC';
     }
 }
 ?>

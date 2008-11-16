@@ -266,3 +266,8 @@ input.submit {
 input.normal {
     width: 98%;
 }
+#forandback {
+    text-align: center;
+    font-weight: bold;
+    width: 100%;
+}
