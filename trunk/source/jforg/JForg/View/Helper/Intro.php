@@ -19,7 +19,7 @@
  *      //break between char# 100 and 120
  *      $this->intro($longtext,100,20);
  * @author Daniel Gultsch <daniel@gultsch.de>
- * @version 0.1
+ * @version 0.1.1
  * @license http://opensource.org/licenses/bsd-license.php BSD
  */
 class JForg_View_Helper_Intro extends Solar_View_Helper {
@@ -29,13 +29,13 @@ class JForg_View_Helper_Intro extends Solar_View_Helper {
         'imprecision' => 0.05, // 5%
         'min_imprecision' => 8,
         'split_chars' => array( //all chars to use to split the text
-            '.' => -1,
-            '?' => -1,
-            '!' => -1,
-            ':' => -1,
-            ';' => -1,
-            ',' => -1,
-            ' ' => -1
+            '.' => false,
+            '?' => false,
+            '!' => false,
+            ':' => false,
+            ';' => false,
+            ',' => false,
+            ' ' => false
         ),
         'remove' => ';:,' //if one of this is on the last position of the text it will be removed
     );
@@ -43,7 +43,7 @@ class JForg_View_Helper_Intro extends Solar_View_Helper {
     public function intro($fulltext,$minchars = null,$imprecision = null) {
         
         //if no minimal character count is give just set it to a default value
-        if ($minchars==null) {
+        if ($minchars === null) {
             $minchars = (int) $this->_config['minchars'];
         }
         
@@ -53,7 +53,7 @@ class JForg_View_Helper_Intro extends Solar_View_Helper {
             return $fulltext;
         }
         
-        if ($imprecision==null) {
+        if ($imprecision === null) {
             $imprecision = round($minchars * $this->_config['imprecision']);
             if ($imprecision < $this->_config['min_imprecision']) {
                 $imprecision = $this->_config['min_imprecision'];
@@ -63,17 +63,12 @@ class JForg_View_Helper_Intro extends Solar_View_Helper {
         //into an char array
         $range = str_split(substr($fulltext,$minchars,$imprecision));
         
-        //initialize an array with characters on which we want to split the text
-        //if the first char appears in the text we use it if not we try the second and
-        //then the third and so on
-        //value has to be -1 because later on we will store the position of the char
-        //in the range in it.
         $split_chars = $this->_config['split_chars'];
         
         //go through the range and store the first position of each char in $split_chars
         for($i = 0; $i < count($range); ++$i) {
             if (array_key_exists($range[$i],$split_chars)) {
-                if ($split_chars[$range[$i]] == -1) {
+                if ($split_chars[$range[$i]] === false) {
                     $split_chars[$range[$i]] = $i;
                 }
             }
@@ -84,7 +79,7 @@ class JForg_View_Helper_Intro extends Solar_View_Helper {
         //if the last char is an ; , or and : remove it because it looks ugly on the end
         //an intro
         foreach($split_chars as $char => $position) {
-            if ($position >= 0) {
+            if ($position !== false) {
                 $intro = substr($fulltext,0,$minchars + $position + 1);
                 return rtrim($intro,$this->_config['remove']);  
             }
