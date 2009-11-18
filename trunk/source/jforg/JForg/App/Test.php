@@ -17,7 +17,9 @@ class JForg_App_Test extends Solar_Controller_Page {
 			
 			$redoc = $document->find($id);
 			
-			echo $redoc->getFoo(); // bar
+			if ($redoc->permissionsToRead('daniel',array('movies','audio','admin'))) {
+                echo $redoc->getFoo(); // bar
+			}
 			
 		} catch (Solar_Exception $e) {
 			print_r($e);
