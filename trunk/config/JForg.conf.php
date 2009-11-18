@@ -1,6 +1,6 @@
 <?php
 $config = array();
-$config['Solar_Uri_Action']['path'] = '/';
+$config['Solar_Uri_Action']['path'] = '/index.php';
 $config['Solar_Controller_Front']['classes'] = array(
     'JForg_App'
 );
@@ -8,11 +8,20 @@ $config['Solar_Controller_Front']['default'] = 'startpage';
 $config['Solar']['registry_set']['sql'] = array(
     'Solar_Sql',
     array(
-        'adapter'   => 'Solar_Sql_Adapter_Mysql',
+        'adapter'   => 'Solar_Sql_Adapter_Mysqli',
         'host'      => 'localhost',
         'user'      => 'root',
         'pass'      => '',
         'name'      => 'jforg'
+    )
+);
+$config['Solar']['registry_set']['dodb'] = array(
+    'JForg_Dodb',
+    array(
+        'adapter'   => 'JForg_Dodb_Adapter_CouchDb',
+        'host'      => 'localhost',
+        'name'      => 'gday',
+        
     )
 );
 $config['JForg_View_Helper_Intro'] = array(
