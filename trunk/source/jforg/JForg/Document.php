@@ -34,23 +34,21 @@ class JForg_Document extends Solar_Base {
 	}
 	
 	protected function _generateClassnameFromType($type) {
-		$className = $this->_config['basedocument'].'_'.str_replace(' ','_',ucwords(str_replace('-',' ',$type)));
+		$className = $type;
 		//TODO: this seems a little bit like a dirty hack
 		try {
 			if (class_exists($className)) {
 	            return $className;
 	        } else {
-	            return $this->_config['basedocument'];
+	            return get_class($this);
 	        }
 		} catch (Solar_Exception_FileNotReadable $e) {
-			return $this->_config['basedocument'];
+			return get_class($this);
 		}
 	}
 	
 	protected function _generateTypeFromClassname($classname) {
-		$classPostfix = substr($classname,strlen($this->_config['basedocument'])+1);
-		$type = str_replace('_','-',strtolower($classPostfix));
-		return $type;
+		return $classname;
 	}
 	
 	protected function _injectDefaultValues(&$values , $valueNames = array()) {
@@ -140,8 +138,8 @@ class JForg_Document extends Solar_Base {
 		throw new JForg_Document_Exception();
 	}
 	
-	public final function setType($type) {
-		$this->_type = $type;
+	public final function setType() {
+		throw new JForg_Document_Exception(array('message' => 'You cannot set the Type manually'));
 	}
 	
 	public function __toString() {
