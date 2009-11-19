@@ -4,25 +4,24 @@ class JForg_Dodb_Adapter_CouchDb extends JForg_Dodb_Adapter {
 	protected $_JForg_Dodb_Adapter_CouchDb = array(
 	   'host' => 'localhost',
 	   'port' => '5984',
+	   'encrypted' => false
 	);
 	
 	protected $_httpClient = null;
 	
+    public function __construct($config = array()) {
+    	parent::__construct($config);
+    	$this->_httpClient = Solar::factory('Solar_Http_Request');
+    }
+	
+	
     public function save($id = null, $revision = null, $values) {
-    	$httpClient = $this->_getHttpClient();
-    	
-    	if ($id != null) {
+        if ($id != null) {
     		$values['_rev'] = $revision;
-    		$httpClient->setUri('http://localhost:5984/gday/'.$id)
-    		           ->setMethod('PUT')
-    		           ->setContent(json_encode($values));
+    		$result = $this->_query($values,'PUT',$id);
     	} else {
-	        $httpClient->setUri('http://localhost:5984/gday/')
-	                   ->setMethod('POST')
-	                   ->setContent(json_encode($values));
+    		$result = $this->_query($values,'POST');
     	}
-        $result = $httpClient->fetch();
-        $result = json_decode($result->content,true);
         if ((isset($result['ok'])) AND ($result['ok'] == 1)) {
         	return array($result['id'],$result['rev']);
         } else {
@@ -36,12 +35,7 @@ class JForg_Dodb_Adapter_CouchDb extends JForg_Dodb_Adapter {
     }
     
     public function find($id) {
-        $httpClient = $this->_getHttpClient();
-        $res = json_decode($httpClient->setUri('http://localhost:5984/gday/'.$id)
-                          ->setMethod('GET')
-                          ->setContent('')
-                          ->fetch()
-                          ->content,true);
+        $res = $this->_query('','GET',$id);
         $res['id'] = $res['_id'];
         unset($res['_id']);
         $res['revision'] = $res['_rev'];
@@ -49,11 +43,38 @@ class JForg_Dodb_Adapter_CouchDb extends JForg_Dodb_Adapter {
         return $res;
     }
     
-    protected function _getHttpClient() {
-    	if ($this->_httpClient == null) {
-    		$this->_httpClient = Solar::factory('Solar_Http_Request');
+    protected function _query($content = null, $method = 'GET', $pathApendix = null) {
+    	$uri = $this->_generateBaseUri();
+    	if ($pathApendix != null) {
+    		$uri->path[] = $pathApendix;
     	}
-    	return $this->_httpClient;
+    	if ($content != null) {
+    		$content = json_encode($content);
+    	} else {
+    		$content = '';
+    	}
+    	$this->_httpClient->setContent($content);
+    	$this->_httpClient->setUri($uri->get(true));
+    	$this->_httpClient->setMethod($method);
+    	$json = $this->_httpClient->fetch()->content;
+    	return json_decode($json,true);
+    }
+    
+    protected function _generateBaseUri() {
+    	$uri = new Solar_Uri();
+    	$uri->setPath($this->_config['dbname']);
+    	$uri->host = $this->_config['host'];
+    	$uri->port = $this->_config['port'];
+    	if ($this->_config['encrypted'] == false) {
+    		$uri->scheme = 'http';	
+    	} else {
+    		$uri->scheme = 'https';
+    	}
+    	if (isset($this->_config['user']) AND (isset($this->_config['password']))) {
+    		$uri->user = $this->_config['user'];
+    		$uri->pass = $this->_config['password'];
+    	}
+    	return $uri;
     }
 }
 ?>

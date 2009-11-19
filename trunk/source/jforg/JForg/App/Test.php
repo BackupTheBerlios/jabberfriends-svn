@@ -3,7 +3,8 @@ class JForg_App_Test extends Solar_Controller_Page {
 	
 	public function actionIndex() {
 		try {
-			$document = new JForg_Document_Property();
+			//you should set basedocument to Vendor_Document and create your own base class
+			$document = new JForg_Document_Property(array('basedocument' => 'JForg_Document_Property'));
 			$document->setPermissions(764);
 			$document->setGroup('users');
 			$document->setOwner('daniel');

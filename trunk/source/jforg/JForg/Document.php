@@ -35,9 +35,14 @@ class JForg_Document extends Solar_Base {
 	
 	protected function _generateClassnameFromType($type) {
 		$className = $this->_config['basedocument'].'_'.str_replace(' ','_',ucwords(str_replace('-',' ',$type)));
-		if (class_exists($className)) {
-			return $className;
-		} else {
+		//TODO: this seems a little bit like a dirty hack
+		try {
+			if (class_exists($className)) {
+	            return $className;
+	        } else {
+	            return $this->_config['basedocument'];
+	        }
+		} catch (Solar_Exception_FileNotReadable $e) {
 			return $this->_config['basedocument'];
 		}
 	}

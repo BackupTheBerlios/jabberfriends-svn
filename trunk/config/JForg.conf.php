@@ -20,7 +20,7 @@ $config['Solar']['registry_set']['dodb'] = array(
     array(
         'adapter'   => 'JForg_Dodb_Adapter_CouchDb',
         'host'      => 'localhost',
-        'name'      => 'gday',
+        'dbname'      => 'gday',
         
     )
 );
